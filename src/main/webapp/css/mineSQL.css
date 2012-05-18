@@ -1,0 +1,292 @@
+/*!
+ * Ext JS Library 3.3.1
+ * Copyright(c) 2006-2010 Sencha Inc.
+ * licensing@sencha.com
+ * http://www.sencha.com/license
+ * 
+ * edit by: Alessio Finamore 31/08/2011
+ */
+body {
+ font-family: verdana;
+ font-size: 10px;
+ background: #FFFFFF;
+}
+
+#contenitore {
+ width: 1200;
+ overflow: none;
+ background: #000000;
+}
+
+#intestazione {
+	/*background-image:url(../img/menu1.gif);*/
+	border-left:2px solid #D0D0D0;
+	color:#000000;
+	font-size:10px;
+	height:130px;
+	padding-left:11px;
+	text-align:left;
+}
+
+#bottom {
+    float: bottom;
+	border:0px solid #D0D0D0;
+}
+
+/**********************************************
+ * Menu sinistro
+ */
+#corpo{
+    border: 2px 2px 2px 2px solid #FC0;
+    /*height: 920px;*/
+}
+
+/**********************************************
+ * Menu sinistro
+ */
+#sommario {
+ width:110px;
+ margin-left:5px;
+ margin-top:1px;
+ float: left;
+}
+
+#sommario ul
+{
+list-style-type: none;
+margin-top: 0%;
+padding: 0;
+}
+#sommario a
+{
+display: block;
+background-image:url("../img/menu1.gif");
+border:1px solid #D0D0D0;
+color:#333333;
+width: 110px;
+margin-left:6px;
+padding:5px 1px;
+text-decoration: none;
+}
+#sommario a:hover
+{
+background-image:url("../img/menu2.gif");
+color: #05181E;
+border: 1px Solid #D0D0D0;
+}
+#sommario li { 
+margin-bottom: 2px;
+margin: 0px;
+}
+/**********************************************
+ * Tree-panel
+ */
+
+#tree-div {
+border: 0px solid;
+overflow:auto;
+}
+#tree-div a{
+display: inline;
+border: 0px solid;
+background-image: none;
+}
+#tree-div a:hover {
+border: 0px;
+background-image: none;
+}
+#tree-div ul {
+list-style: none;
+list-style-type: none;
+}
+
+/**********************************************
+ * Blocco centrale, contiene le Tabelle ExtJS
+ */
+#principale {
+ margin-top: 0%;
+ margin-left: 0%;
+ overflow: visible;
+}
+/***********************************************
+ * Contenitore delle windows piccole e multiple 
+ */
+#secondario{
+    border: 0px Solid #D0D0D0;
+}
+
+/**************************************************
+ * Contenitore della windows bloccante ed esclusiva
+ */
+#esclusiva{
+    border: 0px Solid #D0D0D0;
+}
+#versione{text-color: #000;}
+
+/***********************************************
+ * Icone dei bottoni
+ */
+.add { background-image:url(../img/add.gif) !important; }
+.accept { background-image:url(../img/accept.png) !important; }
+.undo { background-image:url(../img/arrow_undo.png) !important; }
+.find { background-image:url(../img/find.png) !important; }
+.filter { background-image:url(../img/table_gear.png) !important; }
+.filter-menu { background-image:url(../img/database_table.png) !important; }
+.user { background-image:url(../img/user_edit.png) !important; }
+.report { background-image:url(../img/cog_go.png) !important; }
+.chart { background-image:url(../img/bar_chart2.png) !important; }
+
+.icon-grid { background-image:url(../img/grid.png) !important; }
+.icon-excel { background-image:url(../img/page_excel.png) !important; }
+.icon-save{ background-image:url(../img/table_save.png) !important; }
+.icon-update{ background-image:url(../img/table_edit.png) !important; }
+.icon-refresh{ background-image:url(../img/table_refresh.png) !important; }
+.icon-print { background-image:url(../img/printer.png) !important; }
+.icon-find { background-image:url(../img/page_find.png) !important; }
+.icon-note{ background-image:url(../img/note_edit.png) !important; }
+.icon-attachment{ background-image:url(../img/attachment.png) !important; }
+.icon-upload{ background-image:url(../img/upload-icon.png) !important; }
+.icon-delete{ background-image:url(../img/delete.png) !important; }
+
+.time{ background-image:url(../img/time.png) !important; }
+.info{ background-image:url(../img/information.png) !important; }
+.arrow-left{ background-image:url(../img/arrow_left.png) !important; }
+.none { background-image:none; }
+
+/***********************************************
+ * Icona per campi che sono link nelle form
+ */
+.x-form-field-wrap .x-form-link-trigger {
+	background:transparent url(../img/link_go.png) no-repeat 0 0;
+	cursor:pointer; 
+}
+
+/***********************************************
+ * Bottone fileupload
+ */
+/*
+ * FileUploadField component styles
+ */
+.x-form-file-wrap {
+    position: relative;
+    height: 22px;
+}
+.x-form-file-wrap .x-form-file {
+	position: absolute;
+	right: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+    height: 22px;
+}
+.x-form-file-wrap .x-form-file-btn {
+	position: absolute;
+	right: 0;
+	z-index: 1;
+}
+.x-form-file-wrap .x-form-file-text {
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    color: #777;
+}
+
+/***********************************************
+ * grid column fix for IE
+ * http://snippets.scottwalter.com/post/show/338
+ * thanks Scott ;-)
+ */
+.x-grid3-header-offset{width:auto;}
+
+/*************************************************
+ * Fix for Firefox 3, già presenti su SVN di extjs 
+ */
+.x-grid3 table {
+    table-layout:fixed;
+}
+.x-date-middle {
+    padding-top:2px;padding-bottom:2px;
+    width:130px; /* FF3 */
+}
+
+/*************************************************
+ * To add cell vertical line in grid panel
+ * Override standard grid styles (add colour to vertical grid lines)
+ */
+.vline-on .x-grid3-col {
+    border-left:  1px solid #EEEEEE;
+    border-right: 1px solid #D2D2D2;
+}
+/* Also remove padding from table data (to compensate for added grid lines) */
+.vline-on .x-grid3-row td, .x-grid3-summary-row td {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+/************************************************
+ * Scrollbar su menu molto lunghi
+ */
+ul.x-menu-list {
+  height: expression( this.scrollHeight > 350 ? "350px" : "auto" ); /* sets max-height for IE */    
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+#filterlabel{ color:#66a6f9;padding:0px 4px;text-align:center; }
+
+A:link {text-decoration: none; color: #000099}
+A:visited {text-decoration: none; color: #000099}
+A:active {text-decoration: none; color: #cc0000}
+A:hover {text-decoration: none; color: #cc0000}
+
+
+/*
+ * Campi del problem
+ */
+.redBck{
+    text-align: center;
+    color: #000;
+    background-color: #FF6633 !important;
+}
+.yellowBck{
+    text-align: center;
+    color: #000;
+    background-color: #FFFF66 !important;
+}
+.greenBck{
+    text-align: center;
+    color: #000;
+    background-color: #00FF00 !important;
+}
+.noneBck{
+    text-align: center;
+}
+.x-grid3-hd-URGENZA{
+    background-color: #999999 !important;
+}
+.x-grid3-hd-IMPATTO{
+    background-color: #999999 !important;
+}
+.x-grid3-hd-BLC{
+    background-color: #999999 !important;
+}
+.x-grid3-hd-AGE_PRB{
+    background-color: #999999 !important;
+}
+.x-grid3-hd-PRIORITA{
+    background-color: #AABB99 !important;
+}
+
+/************************************************
+ * Elementi form
+ */
+/**
+ * HtmlEditor non valido.
+ * Ho aumentato il border, perche' su firefox la linea rossa
+ * d'errore e' ben visibile, su Internet Explorer no.
+ */
+ .x-htmleditor-invalid{
+    background:#fff url(../img/invalid_line.gif) repeat-x bottom;
+    border:2.5px solid #dd7870;
+}

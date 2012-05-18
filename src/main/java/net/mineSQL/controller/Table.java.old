@@ -1,0 +1,351 @@
+/***************************************************************************
+ *
+ * Module:      Defect Management
+ * Created:     Fri Apr 17 10:40:30     2009
+ * Description: Manage generic CRUD operation on a Table
+ *
+ * Copyright(c) 2006-2009, Assioma.net
+ * Author:  Finamore
+ *
+ ***************************************************************************/
+
+package net.mineSQL.controller;
+
+import net.mineSQL.connection.ConnectionException;
+import net.mineSQL.connection.ConnectionManager;
+
+import java.util.*;
+import java.util.Date;
+
+import java.sql.*;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+
+public class Table {
+
+    private static final Logger log = Logger.getLogger(Table.class);
+    
+    // Prefisso messo sui nomi dei campi del fieldSet per capire
+    // che sono stati auto-generati 
+    private static final String _prefix = "_";
+
+    private String vTable = "";
+
+    protected final String jdbcDefect = "compending";
+
+    /***************************************************************************
+     * Constuctor
+     */
+    public Table(String nome) {
+        vTable = nome;
+    }
+
+    /***************************************************************************
+     * Insert a row
+     */
+    public boolean create(HashMap data) {
+        String names = " (";
+        String values = " VALUES (";
+
+        Iterator it = data.keySet().iterator();
+        Object key = null;
+        String value = null;
+        while (it.hasNext()) {
+            key = it.next();
+            names += key.toString();
+            value = (String)data.get(key);
+            values += "'" + value.replaceAll("'", "''") + "'";
+
+            if (it.hasNext()) {
+            names += ", ";
+            values += ", ";
+            }
+        }
+        names += ")";
+        values += ")";
+
+        String sqlInsert = "INSERT INTO " + vTable + names + values;
+
+        return _runQuery(sqlInsert);
+    }
+
+    /***************************************************************************
+     * Update a row
+     */
+    public boolean update(HashMap data, String condition) {
+        return update(data,"",condition);
+    }
+    
+    /***************************************************************************
+     * Update a row
+     */
+    public boolean update(HashMap data, String setClause, String condition) {
+        String namesValues = " SET " + setClause + " ";
+
+
+        if (condition != null )
+            condition = " WHERE " + condition;
+
+        Iterator it = data.keySet().iterator();
+        Object key = null;
+        String value = null;
+        
+        if (setClause != null && !setClause.equals("") && it.hasNext())
+            namesValues += ", ";
+        log.info(" ---------------------> Table update");
+        while (it.hasNext()) {
+            key = it.next();
+            value = (String)data.get(key);
+            namesValues += key.toString() + "=" + "'" + value.replaceAll("'", "''") + "'" ;
+
+            if (it.hasNext()) {
+            namesValues += ", ";
+            }
+        }
+        String sqlUpdate = "UPDATE " + vTable + namesValues + condition;
+
+        return _runQuery(sqlUpdate);
+    }
+
+    /***************************************************************************
+     * Update a row
+     */
+    public boolean delete(String condition) {
+        String sqlDelete = "DELETE FROM " + vTable; 
+
+        if (condition != null )
+            sqlDelete += " WHERE " + condition;
+
+        return _runQuery(sqlDelete);
+    }
+
+    /***************************************************************************
+     * Read a row
+     * @param HashMap data Contiene l'elenco dei campi da leggere, nella chiave ci va il nome
+     *                     del campo, nel valore un eventuale valore da mettere nella WHERE
+     *
+     * @return ResultSet 
+     */
+    private ResultSet _read(HashMap data, String condition) {
+        Connection con = null;
+        ResultSet rs = null;
+
+        try {
+            con = ConnectionManager.getConnection(jdbcDefect);
+            rs = _read(data, condition, con );
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } finally {
+            closeConn(con);
+            return rs; 
+        }
+    }
+    private ResultSet _read(HashMap data, String condition, Connection con) throws SQLException {
+        
+        Statement st = null;
+        String sqlSelect = null;
+        if (data == null){
+            sqlSelect = "SELECT * FROM " + vTable;
+        }else {
+        	String namesValues = "";
+		Iterator it = data.keySet().iterator();
+		Object key = null;
+		String value = null;
+		log.info(" ---------------------> Table select");
+		while (it.hasNext()) {
+		    key = it.next();
+		    value = (String)data.get(key);
+		    namesValues += key.toString(); 
+
+		    if (it.hasNext()) {
+			    namesValues += ", ";
+		    }
+		}
+            sqlSelect = "SELECT " + namesValues + " FROM " + vTable;
+	}
+
+        if (condition != null )
+            sqlSelect += " WHERE " + condition;
+
+        log.info(" ---------- Read " + sqlSelect );
+        st = con.createStatement();
+        ResultSet rsSelect = st.executeQuery(sqlSelect);
+
+        return rsSelect;
+    }
+
+    /***************************************************************************
+     * Get an Ext.dta.JsonReader of the requested Table
+     * Convention:
+     *
+     */
+    public String getJsonReader(){
+        //TODO? convenzione: se il nome del campo della tabella NON contiene il suffisso _UI
+        //viene escluso dal fieldSet 
+        Connection con = null;
+        JSONObject jsonReader = new JSONObject();
+
+        try{
+            con = ConnectionManager.getConnection(jdbcDefect);
+            ResultSet resSet  = _read(null, null, con);
+
+            ResultSetMetaData rsMd = resSet.getMetaData();
+
+            jsonReader.put("root", "row");
+            jsonReader.put("totalProperty", "totalCount");
+
+            JSONArray items_array = new JSONArray();
+            int colo = rsMd.getColumnCount();	
+
+            for (int i = 1; i <= colo; i++){
+                JSONObject item = new JSONObject();
+                item.put("name", _prefix + rsMd.getColumnName(i));
+                items_array.add(item);
+            }	
+            jsonReader.put("fields", items_array);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        }finally { 
+            closeConn(con);
+            return jsonReader.toString();
+        }
+    }
+    /***************************************************************************
+     * Get an Extjs.form.fieldSet of the requested Table
+     * Convention:
+     *
+     */
+    public String getFieldSet(){
+        //TODO? convenzione: se il nome del campo della tabella NON contiene il suffisso _UI
+        //viene escluso dal fieldSet 
+        Connection con = null;
+        JSONObject fieldSet = new JSONObject();
+
+        try{
+            con = ConnectionManager.getConnection(jdbcDefect);
+            ResultSet resSet  = _read(null, null, con);
+
+            ResultSetMetaData rsMd = resSet.getMetaData();
+
+            fieldSet.put("title", "Filter Information");
+            fieldSet.put("xtype","fieldset");
+            fieldSet.put("autoHeight", "true");
+            fieldSet.put("defaultType", "textfield");
+            fieldSet.put("defaults","{width: 310}");
+
+            JSONArray items_array = new JSONArray();
+            int colo = rsMd.getColumnCount();	
+
+            for (int i = 1; i <= colo; i++){
+                JSONObject item = new JSONObject();
+                item.put("fieldLabel", rsMd.getColumnName(i));
+                item.put("name", _prefix + rsMd.getColumnName(i));
+                items_array.add(item);
+            }	
+            fieldSet.put("items", items_array);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        }finally { 
+            closeConn(con);
+            return fieldSet.toString();
+        }
+    }
+
+    public String read(HashMap data, String condition) {
+	return read(data, condition, true);
+    }
+    public String read(HashMap data, String condition, boolean JSONformat) {
+        Connection con = null;
+        ResultSet rs = null;
+        JSONObject row = new JSONObject();
+        String result="";
+        
+        try {
+            con = ConnectionManager.getConnection(jdbcDefect);
+            rs = _read(data, condition, con );
+
+	    if (JSONformat){
+		    Grid jsonGrid = new Grid(rs);
+		    row.put("row",jsonGrid.getJSON() );
+		    result=row.toString();
+	    }else{
+		    if(rs.next())
+		        result+=rs.getString(1);
+		    while (rs.next()) {
+			result+=","+rs.getString(1);
+		    }
+	    }
+            
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } finally {
+            closeConn(con);
+            return result;
+        }
+    }
+    /***************************************************************************
+    * Execute the statement and close the connection
+    */
+    private boolean _runQuery(String statement) {
+        Statement st = null;
+        Connection con = null;
+        Date before = new Date();
+        boolean ret = false;
+
+        try {
+            log.info("Table: "+ vTable +"execute SQL statement: " + statement);
+            con = ConnectionManager.getConnection(jdbcDefect);
+            st = con.createStatement();
+            ret = st.execute(statement);
+            if (!ret) ret=(st.getUpdateCount()>0?true:false);
+
+            Date after = new Date();
+            long diff = after.getTime() - before.getTime();
+            log.info("Table: "+ vTable +" return: "+ ret +" execution time: " + diff+"ms" );
+
+            st.close();
+            
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } finally {
+            closeConn(con);
+            
+        }
+        return ret;
+    }
+
+    /***************************************************************************
+     * Close current connection to DB
+     */
+    private boolean closeConn(Connection con) {
+        try {
+            if (con != null) {
+            con.close();
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info(" ------------------------------------< "+(e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+            return false;
+        }
+    }
+}

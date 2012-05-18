@@ -1,0 +1,243 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "web-app_2_3.dtd">
+<web-app>
+	<description>web.xml file for mineSQL Web Application</description>
+
+<!-- resource-ref>
+  <description>
+    Resource reference to a factory for java.sql.Connection
+    instances that may be used for talking to a particular
+    database that is configured in the server.xml file.
+  </description>
+  <res-ref-name>
+    jdbc/mineSQL
+  </res-ref-name>
+  <res-type>
+    javax.sql.DataSource
+  </res-type>
+  <res-auth>
+    Container
+  </res-auth>
+</resource-ref -->
+    <resource-env-ref>
+        <description>Content Repository</description>
+        <resource-env-ref-name>jcr/repository</resource-env-ref-name>
+        <resource-env-ref-type>javax.jcr.Repository</resource-env-ref-type>
+    </resource-env-ref>
+
+ 
+    <!-- Versione del Defect Management -->
+    <context-param>
+        <param-name>DM_VERSION</param-name>
+        <param-value>0.9.5</param-value>
+    </context-param>
+
+    <!-- Servlet Logger caricata all'avvio di resin -->
+    <servlet>
+    <servlet-name>log4j-init</servlet-name>
+    <servlet-class>net.mineSQL.util.Log4jInit</servlet-class>
+    <init-param>
+      <param-name>log4j-init-file</param-name>
+      <param-value>WEB-INF/log.properties</param-value>
+    </init-param>
+    <init-param>
+        <param-name>log4j-log-file</param-name>
+        <param-value>log/mineSQL.log</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Servlet per la visualizzazione dei grafici -->
+    <!-- servlet>
+      <servlet-name>DisplayChart</servlet-name>
+      <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>DisplayChart</servlet-name>
+      <url-pattern>/servlet/DisplayChart</url-pattern>
+    </servlet-mapping -->
+
+    <!-- Listeners -->
+    <listener>
+            <listener-class>net.mineSQL.util.SessionWatcher</listener-class>
+    </listener>
+    <listener>
+            <listener-class>net.mineSQL.util.ApplicationWatcher</listener-class>
+    </listener>
+
+    <!-- listener>
+        <listener-class>org.h2.server.web.DbStarter</listener-class>
+    </listener -->
+    
+    <!-- Unica servlet del defect -->
+	<servlet>
+		<servlet-name>UtenteServlet</servlet-name>
+		<servlet-class>net.mineSQL.controller.UtenteServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TestConnection</servlet-name>
+		<servlet-class>net.mineSQL.util.TestConnection</servlet-class>
+	</servlet>
+	<!-- servlet>
+		<servlet-name>MailBoxServlet</servlet-name>
+		<servlet-class>net.mineSQL.controller.MailBoxServlet</servlet-class>
+	</servlet -->
+	<servlet-mapping>
+		<servlet-name>TestConnection</servlet-name>
+		<url-pattern>/TestConnection</url-pattern>
+	</servlet-mapping>
+	<!-- servlet-mapping>
+		<servlet-name>MailBoxServlet</servlet-name>
+		<url-pattern>/MailBoxServlet</url-pattern>
+        </servlet-mapping -->
+	<servlet-mapping>
+		<servlet-name>UtenteServlet</servlet-name>
+		<url-pattern>/UtenteServlet</url-pattern>
+    </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Quercus Servlet</servlet-name>
+    <servlet-class>com.caucho.quercus.servlet.QuercusServlet</servlet-class>
+
+    <!--
+      Specifies the encoding Quercus should use to read in PHP scripts.
+    -->
+    <!--
+    <init-param>
+      <param-name>script-encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    -->
+
+    <!--
+      Tells Quercus to use the following JDBC database and to ignore the
+      arguments of mysql_connect().
+    -->
+    <!--
+    <init-param>
+      <param-name>database</param-name>
+      <param-value>jdbc/test</param-value>
+    </init-param>
+    -->
+
+    <!--
+    <init-param>
+      <param-name>ini-file</param-name>
+      <param-value>WEB-INF/php.ini</param-value>
+    </init-param>
+    -->
+    
+    <!--
+      Location of the license to enable php to java compilation.
+    <init-param>
+      <param-name>license-directory</param-name>
+      <param-value>WEB-INF/licenses</param-value>
+    </init-param>
+    -->
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Quercus Servlet</servlet-name>
+    <url-pattern>*.php</url-pattern>
+  </servlet-mapping>
+	<servlet>
+        <servlet-name>Sample</servlet-name>
+        <servlet-class>net.mineSQL.util.Sample</servlet-class>
+	</servlet>
+	<servlet-mapping>
+        <servlet-name>Sample</servlet-name>
+        <url-pattern>/Sample</url-pattern>
+    </servlet-mapping>
+    <!-- Welcom Page, pre-autenticazione -->
+    <welcome-file-list>
+            <welcome-file>index.jsp</welcome-file> 
+    </welcome-file-list>
+    <context-param>
+        <param-name>SMTPuser</param-name>
+        <param-value></param-value>
+    </context-param>
+    <context-param>
+        <param-name>SMTPserver</param-name>
+        <param-value>mailhost.intranet.fw</param-value>
+    </context-param>
+    <context-param>
+        <param-name>SMTPport</param-name>
+        <param-value>25</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>NAS_DIR</param-name>
+        <param-value>/tmp/</param-value>
+    </context-param>
+
+    <!-- H2 db configuration -->
+    <!-- context-param>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:h2:~/h2-mineSQL</param-value>
+        </context-param>
+        <context-param>
+        <param-name>db.user</param-name>
+        <param-value>mine</param-value>
+        </context-param>
+        <context-param>
+        <param-name>db.password</param-name>
+        <param-value>SQL</param-value>
+    </context-param -->
+
+    <!-- START WINSTONE COMMENT -->
+    <!-- filter>
+      <filter-name>EncodingFilter</filter-name>
+      <filter-class>net.mineSQL.util.EncodingFilter</filter-class>
+      <init-param>
+          <param-name>encodingReq</param-name>
+          <param-value>UTF-8</param-value>
+       </init-param>
+       <init-param>
+          <param-name>encodingRes</param-name>
+          <param-value>ISO-8859-1</param-value>
+       </init-param>
+    </filter>
+    <filter-mapping>
+      <filter-name>EncodingFilter</filter-name>
+         <url-pattern>*.jsp</url-pattern>
+    </filter-mapping -->
+    
+    <!-- Verifica l'autenticazione nelle richiesta AJAX e risponde in JSON -->
+    <!-- filter>
+        <filter-name>login-filter-json</filter-name>
+        <filter-class>net.mineSQL.util.FirstFilter</filter-class>
+        <init-param>
+            <param-name>type</param-name>
+            <param-value>json</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>login-filter-json</filter-name>
+        <url-pattern>/workarounds/*</url-pattern>
+        <url-pattern>/defects/*</url-pattern>
+        <url-pattern>/tasks/*</url-pattern>
+        <url-pattern>/history/*</url-pattern>
+    </filter-mapping -->
+    <!-- Verifica l'autenticazione nelle richiesta di pagina e risponde in HTML -->
+    
+    <filter>
+        <filter-name>login-filter-html</filter-name>
+        <filter-class>net.mineSQL.util.Authenticate</filter-class>
+        <init-param>
+            <param-name>type</param-name>
+            <param-value>html</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>login-filter-html</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Sesion Configuration -->
+    <!-- session-config>
+        <session-timeout>30</session-timeout>
+        <session-max>4096</session-max>
+    </session-config -->
+    <!-- END WINSTONE COMMENT -->
+
+</web-app>

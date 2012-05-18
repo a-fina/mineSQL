@@ -1,0 +1,28 @@
+2011-09-28 09:46:10,501  INFO [main] (Log4jInit.java:37) - Test Livello INFO
+2011-09-28 09:46:10,501  WARN [main] (Log4jInit.java:38) - Test Livello WARNING
+2011-09-28 09:46:10,502 ERROR [main] (Log4jInit.java:39) - Test Livello ERROR
+2011-09-28 09:46:10,502 FATAL [main] (Log4jInit.java:40) - Test Livello FATAL
+2011-09-28 09:46:17,910  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 09:46:17,911  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 09:46:40,362 DEBUG [main] (Log4jInit.java:36) - Test Livello DEBUG
+2011-09-28 09:46:40,364  INFO [main] (Log4jInit.java:37) - Test Livello INFO
+2011-09-28 09:46:40,364  WARN [main] (Log4jInit.java:38) - Test Livello WARNING
+2011-09-28 09:46:40,365 ERROR [main] (Log4jInit.java:39) - Test Livello ERROR
+2011-09-28 09:46:40,365 FATAL [main] (Log4jInit.java:40) - Test Livello FATAL
+2011-09-28 09:46:54,946  INFO [RequestHandlerThread[#4]] (EncodingFilter.java:32) - Encoding req: UTF-8 res: text/html;charset=ISO-8859-1
+2011-09-28 09:47:36,497  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 09:47:36,497  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 09:47:45,683 DEBUG [main] (Log4jInit.java:36) - Test Livello DEBUG
+2011-09-28 09:47:45,685  INFO [main] (Log4jInit.java:37) - Test Livello INFO
+2011-09-28 09:47:45,686  WARN [main] (Log4jInit.java:38) - Test Livello WARNING
+2011-09-28 09:47:45,686 ERROR [main] (Log4jInit.java:39) - Test Livello ERROR
+2011-09-28 09:47:45,689 FATAL [main] (Log4jInit.java:40) - Test Livello FATAL
+2011-09-28 09:48:07,103  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 09:48:07,104  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 10:33:47,585 DEBUG [main] (Log4jInit.java:36) - Test Livello DEBUG
+2011-09-28 10:33:47,590  INFO [main] (Log4jInit.java:37) - Test Livello INFO
+2011-09-28 10:33:47,590  WARN [main] (Log4jInit.java:38) - Test Livello WARNING
+2011-09-28 10:33:47,596 ERROR [main] (Log4jInit.java:39) - Test Livello ERROR
+2011-09-28 10:33:47,596 FATAL [main] (Log4jInit.java:40) - Test Livello FATAL
+2011-09-28 10:58:24,499  INFO [Thread-0] (FirstFilter.java:31) -  destroy 
+2011-09-28 10:58:24,500  INFO [Thread-0] (FirstFilter.java:31) -  destroy 

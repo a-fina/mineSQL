@@ -1,0 +1,415 @@
+/***************************************************************************
+ *
+ * Module:      Defect Management
+ * Created:     Fri Apr 17 10:40:30     2009
+ * Description: Manage generic CRUD operation on a Table
+ *
+ * Copyright(c) 2006-2009, Assioma.net
+ * Author:  Finamore
+ *
+ ***************************************************************************/
+
+package it.fastweb.controller;
+
+import it.fastweb.connection.ConnectionException;
+import it.fastweb.connection.ConnectionManager;
+
+import it.fastweb.attivitaproblemi.Bean;
+
+import java.util.*;
+import java.util.Date;
+
+import java.sql.*;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+
+public class Table {
+
+    private static final Logger log = Logger.getLogger(Table.class);
+    
+    // Prefisso messo sui nomi dei campi del fieldSet per capire
+    // che sono stati auto-generati 
+    //TODO eventualmente se si volesse rendere piu sicuro e creare
+    // una specie di SECURE FORM generare una prefisso criptato e 
+    // diverso ad ogni richiesta, quando poi si leggono i campi SUBMITTATI
+    // verificare la criptazione
+    private static final String _prefix = "SUBMIT_";
+
+    private String vTable = "";
+
+    protected final String jdbcAttProb = "jdbc/compending";
+
+    /***************************************************************************
+     * Constuctor
+     */
+    public Table(String nome) {
+        vTable = nome;
+    }
+    /***
+    * Scan Http POST Request and look for SUBMIT_ parameters
+    */
+	public HashMap<String, String> getSubmittedParams(HttpServletRequest req) {
+		HashMap<String, String> submitParams = new HashMap<String, String>();
+		
+		String pName = "";
+		for(Enumeration e = req.getParameterNames();e.hasMoreElements(); ){
+			pName = (String)e.nextElement();
+			submitParams.put(pName, req.getParameter(pName));
+		}
+
+		return submitParams;
+	}
+
+    /***************************************************************************
+     * Insert a row
+     */
+    public boolean create(HashMap data) {
+        String names = " (";
+        String values = " VALUES (";
+
+        Iterator it = data.keySet().iterator();
+        Object key = null;
+        String value = null;
+        while (it.hasNext()) {
+            key = it.next();
+            names += key.toString();
+            value = (String)data.get(key);
+            values += "'" + value.replaceAll("'", "''") + "'";
+
+            if (it.hasNext()) {
+            names += ", ";
+            values += ", ";
+            }
+        }
+        names += ")";
+        values += ")";
+
+        String sqlInsert = "INSERT INTO " + vTable + names + values;
+
+        return _runQuery(sqlInsert);
+    }
+
+    /***************************************************************************
+     * Update a row
+     */
+    public boolean update(HashMap data, String condition) {
+        String namesValues = " SET ";
+
+        if (condition != null )
+            condition = " WHERE " + condition;
+
+        Iterator it = data.keySet().iterator();
+        Object key = null;
+        String value = null;
+        log.info(" ---------------------> Table update");
+        while (it.hasNext()) {
+            key = it.next();
+            value = (String)data.get(key);
+            namesValues += key.toString() + "=" + "'" + value.replaceAll("'", "''") + "'" ;
+
+            if (it.hasNext()) {
+            namesValues += ", ";
+            }
+        }
+        String sqlUpdate = "UPDATE " + vTable + namesValues + condition;
+
+        return _runQuery(sqlUpdate);
+    }
+
+    /***************************************************************************
+     * Delete a row
+     */
+    public boolean delete(String condition) {
+        String sqlDelete = "DELETE FROM " + vTable; 
+
+        if (condition != null )
+            sqlDelete += " WHERE " + condition;
+
+        return _runQuery(sqlDelete);
+    }
+
+    /***************************************************************************
+     * Read a row
+     * @param String data Contiene l'elenco dei campi da leggere
+     * @param String condition Contiene la condizione
+     *
+     * @return ResultSet 
+     */
+    private ResultSet _read(String data, String condition) {
+        Connection con = null;
+        ResultSet rs = null;
+
+        try {
+            //con = ConnectionManager.getConnection(jdbcAttPtob);
+            con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcAttProb);
+            rs = _read(data, condition, con );
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } finally {
+            closeConn(con);
+            return rs; 
+        }
+    }
+    private ResultSet _read(String data, String condition, Connection con) throws SQLException {
+        
+        Statement st = null;
+        String sqlSelect = null;
+        if (data == null)
+            sqlSelect = "SELECT * FROM " + vTable;
+        else 
+            sqlSelect = "SELECT " + data + " FROM " + vTable;
+
+        if (condition != null )
+            sqlSelect += " WHERE " + condition;
+
+        log.info(" ---------- Read " + sqlSelect );
+        st = con.createStatement();
+        ResultSet rsSelect = st.executeQuery(sqlSelect);
+
+        return rsSelect;
+    }
+
+    /***************************************************************************
+     * Get an Ext.dta.JsonReader of the requested Table
+     * Convention:
+     *
+     */
+    public JSONObject getJsonReader(){
+        Connection con = null;
+        JSONObject jsonReader = new JSONObject();
+
+        try{
+            //con = ConnectionManager.getConnection(jdbcAttPtob);
+            con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcAttProb);
+            ResultSet resSet  = _read(null, null, con);
+
+            ResultSetMetaData rsMd = resSet.getMetaData();
+
+            jsonReader.put("root", "row");
+            jsonReader.put("totalProperty", "totalCount");
+
+            JSONArray items_array = new JSONArray();
+            int colo = rsMd.getColumnCount();	
+
+            for (int i = 1; i <= colo; i++){
+                JSONObject item = new JSONObject();
+                item.put("name", _prefix + rsMd.getColumnName(i));
+                items_array.add(item);
+                
+            }	
+            jsonReader.put("fields", items_array);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        }finally { 
+            closeConn(con);
+            return jsonReader;
+        }
+    }
+
+    /***************************************************************************
+     * Genera un Extjs.fieldSet leggendo una stringa CSV
+     * Convention TODO: 
+     * - i campi che hanno prefisso NOUI_ non sono visuallizzati
+     * - i campi che hanno prefisso SUBMIT_ vengono submittati
+     * - i campi che hanno prefisso HIDDEN_SUBMIT_ vengono submittati 
+     *   ma non visualizzti
+     */
+    public JSONObject getFieldSetFromCSV(String CSVfields){
+
+        String [] lineTwoSplit = (CSVfields+",@").split(",");
+        String [] finalResult = new String [lineTwoSplit.length-1];
+        System.arraycopy(lineTwoSplit, 0, finalResult, 0, lineTwoSplit.length-1);
+
+        JSONObject fieldSet = new JSONObject();
+        JSONObject formFields = new JSONObject();
+
+        fieldSet.put("title", "Filter Information");
+        fieldSet.put("xtype","fieldset");
+        fieldSet.put("autoHeight", "true");
+        fieldSet.put("defaultType", "textfield");
+        fieldSet.put("defaults","{width: 310}");
+
+        JSONArray items_array = new JSONArray();
+
+        for (int i = 0; i < finalResult.length; i++) {
+            //log.debug(finalResult[i]);
+            JSONObject item = new JSONObject();
+            item.put("fieldLabel", finalResult[i] );
+            item.put("name", _prefix + finalResult[i] );
+            items_array.add(item);
+        };
+        fieldSet.put("items", items_array);
+
+        formFields.put("items",fieldSet);
+        formFields.put("reader", getJsonReader());
+
+        return formFields;
+    }
+    /***************************************************************************
+     * Get an Extjs.form.fieldSet of the requested Table
+     * from a field of the Table
+     */
+    public String getFieldSetFromField(String field, String condition){
+
+        String elencoCSV = "";
+        //viene escluso dal fieldSet 
+        Connection con = null;
+        JSONObject fieldSet = new JSONObject();
+
+        try{
+            //con = ConnectionManager.getConnection(jdbcAttPtob);
+            con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcAttProb);
+            ResultSet resSet  = _read(field, condition, con );
+
+            while (resSet.next()) {
+                elencoCSV =resSet.getString(field);
+            }
+
+            fieldSet = getFieldSetFromCSV(elencoCSV);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        }finally { 
+            closeConn(con);
+            log.debug("Campi da visualizzare nella form: " + elencoCSV);
+            return fieldSet.toString();
+        }
+    }
+    /***************************************************************************
+     * Get an Extjs.form.fieldSet of the requested Table
+     * from Metadata
+     */
+    public String getFieldSetFromMetadata(){
+        //viene escluso dal fieldSet 
+        Connection con = null;
+        JSONObject fieldSet = null;
+        JSONObject formFields = null;
+
+        try{
+            //con = ConnectionManager.getConnection(jdbcAttPtob);
+            con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcAttProb);
+            ResultSet resSet  = _read(null, null, con);
+            ResultSetMetaData rsMd = resSet.getMetaData();
+            /** TODO: 
+                centralizzare e utilizzare il metodo getFieldSetFromCSV 
+                passandogli un CSV 
+            **/
+            formFields = new JSONObject();
+            fieldSet = new JSONObject();
+
+            fieldSet.put("title", "Filter Information");
+            fieldSet.put("xtype","fieldset");
+            fieldSet.put("autoHeight", "true");
+            fieldSet.put("defaultType", "textfield");
+            fieldSet.put("defaults","{width: 310}");
+
+            JSONArray items_array = new JSONArray();
+            int colo = rsMd.getColumnCount();	
+
+            for (int i = 1; i <= colo; i++){
+                JSONObject item = new JSONObject();
+                item.put("fieldLabel", rsMd.getColumnName(i));
+                item.put("name", _prefix + rsMd.getColumnName(i));
+                items_array.add(item);
+            }	
+            fieldSet.put("items", items_array);
+
+            formFields.put("items",fieldSet);
+            formFields.put("reader", getJsonReader());
+            /** TODO fine **/
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        }finally { 
+            closeConn(con);
+            return formFields.toString();
+        }
+    }
+
+
+    /**
+     * Legge il valore dei campi
+     */
+    public String read(String data, String condition) {
+        Connection con = null;
+        ResultSet rs = null;
+        JSONObject row = new JSONObject();
+        try {
+            //con = ConnectionManager.getConnection(jdbcAttPtob);
+            con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcAttProb);
+            rs = _read(data, condition, con );
+
+            Grid jsonGrid = new Grid(rs);
+            row.put("row",jsonGrid.getJSON() );
+            
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } finally {
+            closeConn(con);
+            return row.toString(); 
+        }
+    }
+    /***************************************************************************
+    * Execute the statement and close the connection
+    */
+    private boolean _runQuery(String statement) {
+        Statement st = null;
+        Connection con = null;
+        Date before = new Date();
+        boolean ret = false;
+
+        try {
+            log.info("Table: "+ vTable +"execute SQL statement: " + statement);
+            //con = ConnectionManager.getConnection(jdbcAttPtob);
+            con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcAttProb);
+            st = con.createStatement();
+            ret = st.execute(statement);
+
+            Date after = new Date();
+            long diff = after.getTime() - before.getTime();
+            log.info("Table: "+ vTable +" return: "+ ret +" execution time: " + diff+"ms" );
+
+            st.close();
+            return ret;
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info((e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+        } finally {
+            closeConn(con);
+        }
+        return ret;
+    }
+
+    /***************************************************************************
+     * Close current connection to DB
+     */
+    private boolean closeConn(Connection con) {
+        try {
+            if (con != null) {
+            con.close();
+            }
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.info(" ------------------------------------< "+(e.getMessage().replaceAll("\"", "'")).replaceAll("\n", " "));
+            return false;
+        }
+    }
+}

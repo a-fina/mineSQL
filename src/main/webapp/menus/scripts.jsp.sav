@@ -1,0 +1,158 @@
+<%@page contentType="text/html; charset=ISO-8859-1" %>
+<%@include file="menu-lib.jsp"%>
+
+<%
+Logger log = Logger.getLogger("report.jsp");
+
+// Database init
+String jdbcDefect = "jdbc/compending";
+PreparedStatement ps = null;
+ResultSet rs = null;
+Connection con = ConnectionManager.getConnection(Bean.getSDSName(),jdbcDefect);
+
+//String idUtente = session.getAttribute("IDUTENTE").toString(); 
+
+// Prendo elenco menuItems
+//List  menuItems = new ArrayList();
+JSONArray menuItems = new JSONArray();
+
+try {
+    
+//	ps = con.prepareStatement("SHOW DATABASES");
+	ps = con.prepareStatement("SELECT ID, DESCRIZIONE FROM AP_SCRIPT_T");
+			//ResultSet.TYPE_SCROLL_SENSITIVE,
+			//ResultSet.CONCUR_READ_ONLY);
+	rs = ps.executeQuery();
+	// Mappo tutti i menuItems
+	String title = "";
+    String tip = "";
+    int idRow = 0;
+    List  savedTable = new ArrayList();
+
+	while (rs.next()) {
+
+		HashMap anagraf_map = new HashMap();
+		anagraf_map.put("id","idRow"+rs.getInt("ID"));
+
+        //Gli spazi &nbsp; servono per fissare un Bug di CSS di firefox
+        title = rs.getString("DESCRIZIONE")+"&nbsp;&nbsp;&nbsp;&nbsp;";
+        tip = "descrizione riga" + idRow; 
+        title = "<span ext:qtip=\""+ tip  +"\">"+ title + "</span>";
+
+		anagraf_map.put("nome", title); 
+		menuItems.add(anagraf_map);
+		savedTable.add(rs.getString("DESCRIZIONE"));
+        idRow++;
+	}
+	rs.close();
+	ps.close();
+
+	// Scandisco i menuItems e prendo le queries
+	Iterator iter = menuItems.iterator();
+    Iterator tablesIter = savedTable.iterator();
+	JSONArray mainMenu = new JSONArray();
+
+    // Ciclo di costruzione menu principale, elenco dei menuItems 
+    while ( iter.hasNext (  )  )  {  
+    	HashMap anagraf_map = new HashMap();
+    	anagraf_map = (HashMap)iter.next();  	
+    
+        /*String currentTable = (String)tablesIter.next();
+
+        String sql = "show tables from " +  currentTable;
+        log.debug(" currentTable: " + currentTable);
+
+
+   		ps = con.prepareStatement( sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY );
+   		rs = ps.executeQuery();
+        
+    	JSONArray gruppo_menu = new JSONArray();
+        String nuovoGruppo = "";
+        String saveGruppo = "";
+        */
+        String text = "";
+        /*
+        boolean stessoGruppo = true;
+        // Ciclo di costruzione sottoMenu, elenco delle queries associate ad ogni reparto
+        
+   		while (rs.next()) {
+    	    JSONArray date_grafico = new JSONArray();
+/ ***************************
+            if ( nuovoGruppo.equals("") ){
+                nuovoGruppo = rs.getString("GRUPPO_MENU");
+            }
+
+            stessoGruppo = true;
+            saveGruppo = nuovoGruppo + "&nbsp;&nbsp;&nbsp;&nbsp;";
+
+            while(stessoGruppo){
+                // Costruzione singolo elemento del sottoMenu
+            **************************** /
+                String id = "IDGRAFICO" + "##" +"TIPO";
+                title = "DATA";
+                text = "<span ext:qtip=\"visualizza il grafico - " + "TIPO" + 
+                       "\">"+ title + "</span>";
+
+                date_grafico.add( getSubMenuItem(id,title,text) );
+
+        / **********************************
+                try{
+                    rs.next();
+     
+                    if ( ! rs.getString("GRUPPO_MENU").equals( nuovoGruppo )  ){
+                        stessoGruppo = false;
+                        nuovoGruppo = rs.getString("GRUPPO_MENU");
+                        rs.previous();
+                    }
+                }catch(SQLException sqle){
+                    break;
+                }
+            }
+        ********************************** /
+
+            // Root reparto
+            if (date_grafico.size() > 0) {
+                String text2 = rs.getString("Tables_in_" + currentTable);
+                gruppo_menu.add( getMenuItem(text2, date_grafico, null) );
+            }
+
+   		}
+   		rs.close();
+   		ps.close();
+
+    	// Root reparto
+    	if (gruppo_menu.size() > 0) {
+            ******************/
+            text = anagraf_map.get("nome").toString();
+		    //mainMenu.add( getMenuItem(text, gruppo_menu, null) );
+		    mainMenu.add( getMenuItem(text, menuItems, null) );
+    	/* } */
+    }  
+
+    // Stampo l'errore di accesso negato
+    if ( mainMenu.isEmpty() ){
+        mainMenu.add( 
+            getMenuItem("Non sono presenti script", null, "disableMe") 
+        );
+    }
+
+
+    // E stampiamo sto benedetto JSON
+    out.print(mainMenu);
+	
+} catch (SQLException sqle) {
+	switch (sqle.getErrorCode()) {
+	default:
+        log.debug("",sqle);
+		out.println(sqle);
+		break;
+	}
+} finally {
+	try {
+		con.close();
+	}
+	catch (Exception ex) {
+		ex.printStackTrace();
+	}
+}	
+%>

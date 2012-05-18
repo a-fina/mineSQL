@@ -1,0 +1,280 @@
+   /* Copyright 2011 Google Inc. */
+
+   /* Licensed under the Apache License, Version 2.0 (the "License"); */
+   /* you may not use this file except in compliance with the License. */
+   /* You may obtain a copy of the License at */
+
+   /*     http://www.apache.org/licenses/LICENSE-2.0 */
+
+   /* Unless required by applicable law or agreed to in writing, software */
+   /* distributed under the License is distributed on an "AS IS" BASIS, */
+   /* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. */
+   /* See the License for the specific language governing permissions and */
+   /* limitations under the License. */
+
+@import url("cssreset.css")
+
+body {
+  font-family: 'Josefin Sans', serif;
+  font-size: 31px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: undefined;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
+  width: 900px;
+}
+
+h1 { font-family: 'Josefin Sans', serif; }
+
+.button{
+  text-shadow: 4px 4px 4px #bbb;
+  text-align: center;
+  font: 'Josefin Sans', serif;
+  font-weight:bold;
+  padding: 5px 5px;
+  border: 5px;
+  border-radius: 7px;
+  font-size: 1em;
+}
+
+.button:hover{
+  background-color: #888;
+  text-shadow: 4px 4px 4px #666;
+  -webkit-transition: background-color 0.25s;
+}
+
+.textinput {
+  font-size: 2em;
+  font-family: 'Josefin Sans', serif;
+  text-align: left;
+  padding: 0px 10px;
+  height: 50px
+}
+
+#loginbox {
+  width: 900px;
+  float: left;
+  text-align: right;
+}
+
+#logingroup {
+  width: 150px;
+  float: right;
+}
+
+#oauthlogin {
+  float:right;
+}
+
+#loginstatus {
+  font-family: 'Josefin Sans',  sans-serif;
+  font-size: 1em;
+  padding: 5px;
+  float:left;
+  margin: 0.25em 0;
+}
+
+#input{
+  width: 900px;
+}
+
+#predictbox {
+  float: left;
+  width: 900px;
+  margin: 0.5em 10px;
+}
+
+#predictquery{
+  float: left;
+  width: 750px;
+  margin: 0 0 0 0.5em;
+}
+
+#tagbox {
+  float: left;
+  width: 900px;
+  margin: 0.5em 0em;
+}
+
+#tags{
+  float: right;
+}
+
+.tag{
+  border-style: solid;
+  border-width: 5px;
+  padding: 5px 5px;
+  float: right;
+  font-family: 'Josefin Sans', serif;
+  font-size: 2em;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 3px 3px 2px #eee;
+  letter-spacing: 0.2em;
+  word-spacing: 0.2em;
+  line-height: 1.15;
+}
+
+#tag_category{
+  margin: 5px 2em 5px 0;
+  color: #33f;
+}
+
+#tag_sentiment{
+  margin: 5px 3em 5px 0;
+  color: #f33;
+}
+
+#pbuttonbox{
+  width: 100px;
+  float: right;
+  margin: 1em 0;
+}
+
+#predictbutton{
+  float: right;
+  margin: 0.5em 0.5em;
+}
+
+#updatebutton{
+  float: right;
+}
+
+#topicbox{
+  float: left;
+  width: 700px;
+  margin: 0.5em 0;
+}
+
+#tagText{
+  font-family: 'Josefin Sans', serif;
+  font-size: 2em;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: none;
+  word-spacing: 0.2em;
+  line-height: 1;
+  margin: 5px 0.25em;
+  float: left;
+}
+
+#label{
+  width: 100px;
+  font-size: 3em;
+  margin: 0.5em 0 0 0;
+}
+
+.results{
+  margin: 1em 0.5em;
+}
+
+.update {
+  float: center;
+  font-family: 'Josefin Sans', serif;
+  font-weight: 900;
+  font-size: 2em;
+  width: 700px;
+  margin: 0 0 0.5em 100px;
+  padding: 5px;
+  clear: both;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  min-height: 50px;
+  -webkit-border-radius: 5px;
+  -webkit-transition: top 2s ease-in;
+}
+
+.update:hover{
+  background-color: #eee;
+}  
+
+.formText{
+  font-family: 'Josefin Sans', serif;
+  color: #999;
+  font-size: 0.5em;
+  padding: 10px;
+}
+
+.dataLabel{
+  color: #00c;
+}
+
+.snippet {
+}
+
+#banner {
+    margin: 0 auto;
+    padding: 0.5em 0 0 0;
+}
+
+#banner h1 {
+  font-size: 3.5em; 
+  line-height: 1;
+}
+
+#banner h1 a:link, #banner h1 a:visited {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    font-weight: bold;
+    text-shadow: 2px 2px 1px #aaa;
+}
+
+#banner h1 a:hover, #banner h1 a:active {
+    background: none;
+    color: #444;
+    text-shadow: 2px 2px 1px #aaa;
+    -webkit-transition: color .25s;
+}
+
+#banner nav {
+    font-family: "Josefin Sans", serif;
+    background: #aaa;
+    font-size: 2em;
+    font-weight: bold;
+    height: 2em;
+    line-height: 1.8em;
+    text-align: center;
+    width: 900px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#banner nav ul {
+    list-style: none; 
+    width: auto;
+}
+
+#banner nav li {
+    float: left; 
+    display: inline; 
+    width: 8.5em;
+}
+
+#banner nav a:link, #banner nav a:visited {
+    color: #fff;
+    display: inline-block;
+    height: 1.7em;
+    width: 6em;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px 1em;
+    text-decoration: none;
+}
+
+#banner nav a:hover, #banner nav a:active {
+    background: #555;
+    -webkit-transition: background-color .5s;
+}
+
+#banner nav .active a:link{
+    background: #333;
+    -webkit-transition: background-color .5s;
+}
+
+.icon {float: center; width: 32px; height:32px; margin: 5px 5px;}
