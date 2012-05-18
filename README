@@ -8,6 +8,6 @@ edit src/main/webapp/config.jsp
 
 mvn install 
 
-java -jar target/mineSQL-0.9.5-sqalippo-standalone.jar 
+java -jar target/mineSQL-0.9.5-stone-standalone.jar 
 
 firefox localhost:9999
