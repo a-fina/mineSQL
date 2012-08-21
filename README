@@ -4,6 +4,10 @@ mineSQL
 How:
 ----
 
+git co git@github.com:bayois/mineSQL.git
+
+cd mineSQL
+
 edit src/main/webapp/config.jsp 
 
 mvn install 
