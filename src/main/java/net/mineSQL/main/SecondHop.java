@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.mineSQL.util;
+package net.mineSQL.main;
 
 import javax.jcr.Repository;
 import javax.jcr.Session;
