@@ -1,17 +1,22 @@
 mineSQL
 =======
 
-How:
-----
+How to package and run:
+----------
 
+# Download source
 git co git@github.com:bayois/mineSQL.git
 
-cd mineSQL
 
+# Configure connection ( mySQL, Oracle )
+cd mineSQL
 edit src/main/webapp/config.jsp 
 
-mvn install 
+# Create package
+mvn package
 
-java -jar target/mineSQL-0.9.5-stone-standalone.jar 
+# Run server
+sh target/bin/webapp
 
-firefox localhost:9999
+# Open UI
+firefox localhost:8080
