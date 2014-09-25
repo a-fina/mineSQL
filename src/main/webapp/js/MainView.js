@@ -7,7 +7,7 @@
  */
 function runReportRequest(params){
         this.params = params;
-        Ext.get('principale').update('<br/><br/><center><img src="../img/bigloading.gif"/><h2>Loading ...</h2></center>');
+        Ext.get('principale').update('<br/><br/><center><img src="img/bigloading.gif"/><h2>Loading ...</h2></center>');
         
         Ext.Ajax.request({
             //url : 'makeReportQuery.jsp',

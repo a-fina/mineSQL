@@ -117,7 +117,7 @@ FilterMngr.deleteWin = function(config) {
                 tableName: "msq_FILTRI_T",
                 crud: "delete",
                 modal: true,
-                url: "autogrid/auto-table.jsp",
+                url: "/autogrid/auto-table.jsp",
                 onAfterSubmit: function(){
                     // Ricarico il menu dei filtri
                     saveFilterMenu.removeAll();
@@ -182,7 +182,7 @@ FilterMngr.updateWin = function(config) {
                 tableName: "msq_FILTRI_T",
                 crud: "update",
                 modal: true,
-                url: "autogrid/auto-table.jsp",
+                url: "/autogrid/auto-table.jsp",
                 onAfterSubmit: function(){
                     // Ricarico il menu dei filtri
                     saveFilterMenu.removeAll();

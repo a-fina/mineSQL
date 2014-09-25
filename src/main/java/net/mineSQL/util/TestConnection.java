@@ -20,12 +20,18 @@ public class TestConnection extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-
+        String driver = "com.ibm.as400.access.AS400JDBCDriver";
+        String ip = "192.168.10.243";
+        String db = "BCD_BGBLUE";
+        String username = "TNFIAL";
+        String password = "ale2014";
+        String jdbc = "as400";
+        
 		PrintWriter out = response.getWriter();
 		try {
 			out.println(" Loading Driver");
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			Class.forName("com.filemaker.jdbc.Driver");
+			Class.forName(driver);
 
 			Statement stmt = null;
 			ResultSet rset = null;
@@ -35,9 +41,10 @@ public class TestConnection extends HttpServlet {
 			out.println("");
 			Connection con = DriverManager.getConnection(
 				//"jdbc:oracle:thin:@ws401act.intranet.fw:1523:actsvil", 
-				"jdbc:filemaker://IP/db",
-				"", 
-				"");
+				//"jdbc:filemaker://IP/db",
+				"jdbc:"+jdbc+"://"+ip+"/"+db,
+				username, 
+				password);
 			/**
 			Context env = (Context)new InitialContext().lookup("java:comp/env");
 			DataSource ds = (DataSource)env.lookup("jdbc/mineSQL");

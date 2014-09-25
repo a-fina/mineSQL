@@ -97,19 +97,29 @@ public class ConnectionManager {
             hcm = new HashMap();
         }
 
-        log.debug("Opened connection: " + hcm );
+        log.debug("Opened connection DEBUG: " + hcm );
         c = (Connection) hcm.get(key);
 
-        if ( c != null )
-            if ( c.isClosed() || ! c.isValid(2)){
+        if ( c != null ){
+        //TODO DB2 non va isValid    if ( c.isClosed() || ! c.isValid(2)){
+            if ( c.isClosed() ){
                 releaseConnection(c);
                 c = null;
             }
+        }
      
         return c;
     }
 
     public static synchronized Connection getConnection(
+            String host,
+            String database,
+            String userName,
+            String password) throws ConnectionException, SQLException {
+
+            return    getConnection(host, database, userName, password, "as400", "com.ibm.as400.access.AS400JDBCDriver");
+    }
+    public static synchronized Connection getMySQLConnection(
             String host,
             String database,
             String userName,

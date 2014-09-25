@@ -181,13 +181,16 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
                 dbCon = ConnectionManager.getConnection(host, database, user, password);
 
                 // Elenco dei database
-                String where = "";
+                String sqlSCHEMA = "select TABLE_SCHEM as SCHEMA from SYSIBM.SQLSCHEMAS";
+                //MySQL: SHOW DATABASES
                 if (!Boolean.parseBoolean(showAllDB)) {
-                    where = " like '" + database+"'" ;
+                    //MySQL where = " like '" + database+"'" ;
+                    //DB2
+                    sqlSCHEMA += " where TABLE_SCHEM like '" + database +"'";
                 }
 
-                ps = dbCon.prepareStatement("SHOW DATABASES " + where);
-                log.debug("Database menu: SHOW DATABASES " + where );
+                ps = dbCon.prepareStatement(sqlSCHEMA);
+                log.debug("Database DB2 menu: " + sqlSCHEMA );
                 //ResultSet.TYPE_SCROLL_SENSITIVE,
                 //ResultSet.CONCUR_READ_ONLY);
                 rs = ps.executeQuery();
@@ -204,13 +207,13 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
                     anagraf_map.put("id", "idRow" + idRow);
                     log.debug(" row: " + rs.toString());
                     //Gli spazi &nbsp; servono per fissare un Bug di CSS di firefox
-                    title = rs.getNString(1) + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                    title = rs.getString(1) + "&nbsp;&nbsp;&nbsp;&nbsp;";
                     tip = "descrizione riga" + idRow;
                     title = "<span ext:qtip=\"" + tip + "\">" + title + "</span>";
 
                     anagraf_map.put("nome", title);
                     menuItems.add(anagraf_map);
-                    savedTable.add(rs.getNString(1));
+                    savedTable.add(rs.getString(1));
                     idRow++;
                 }
                 rs.close();
@@ -227,7 +230,10 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
 
                     String currentDB = (String) tablesIter.next();
 
-                    String sql = "show tables from `" + currentDB +"`";
+                    //MySQL String sqlTABLE = "show tables from `" + currentDB +"`";
+                    String sqlTABLE = "select TABLE_NAME, TABLE_TEXT  from SYSIBM.SQLTABLES where TABLE_SCHEM = '"
+                                      + currentDB + "'";
+                    // MySQL String sql = "show tables from `" + currentDB +"`";
 
                     //if (currentDB.contains("-"));
                     //    continue;
@@ -235,7 +241,7 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
                     log.debug(" currentDB 1: " + currentDB);
 
 
-                    ps = dbCon.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                    ps = dbCon.prepareStatement(sqlTABLE, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                     rs = ps.executeQuery();
 
                     log.debug(" currentDB 2: " + currentDB);
@@ -248,12 +254,12 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
                     String textTip = "";
 
                     while (rs.next()) {
-                        String tableName = rs.getString("Tables_in_" + currentDB);
+                        String tableName = rs.getString("TABLE_NAME");
                         // Attacco elenco dei campi del database
                         id = idUniq + "##" + currentDB + "##" + tableName+"##"+host;
-                        text2 = rs.getString("Tables_in_" + currentDB);
-                        textTip = "<span ext:qtip=\"database_name_info\">" + text2 + "</span>";
-                        gruppo_menu.add(getSubMenuItem(id, text2, textTip));
+                        //MySQL text2 = rs.getString("Tables_in_" + currentDB);
+                        textTip = "<span ext:qtip=\""+ rs.getString("TABLE_TEXT") +"\">" + tableName + "</span>";
+                        gruppo_menu.add(getSubMenuItem(id, tableName, textTip));
                         //log.debug(" gruppo_menu=" + getMenuItem(text2, date_grafico, null) );
                         idUniq++;
                     }

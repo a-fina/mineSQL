@@ -4,8 +4,8 @@
  */
 package net.mineSQL.util;
 
-
 import java.io.IOException;
+import java.util.regex.Matcher;
 
 import org.apache.log4j.Logger;
 
@@ -47,19 +47,16 @@ public class Authenticate implements Filter  {
 
 
         try {
-            session = repository.login();
+//            session = repository.login();
      
-            String user = session.getUserID();
-            String name = repository.getDescriptor(Repository.REP_NAME_DESC);
+//            String user = session.getUserID();
+//            String name = repository.getDescriptor(Repository.REP_NAME_DESC);
 
-            log.info("-------------> Logged in as "+ user +" to a " + name + "repository.");
+//            log.info("-------------> Logged in as "+ user +" to a " + name + "repository.");
 
-            session.logout();
+//            session.logout();
 
-        } catch (LoginException ex) {
-            log.error("Autenticate Session error ");
-            ex.printStackTrace();
-        } catch (RepositoryException ex) {
+        } catch (Exception ex) {
             log.error("Autenticate Session error ");
             ex.printStackTrace();
             

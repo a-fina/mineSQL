@@ -55,7 +55,7 @@ ScriptSQL = function(){
      * per la costruzione della griglia
      */
     function loadAutoGrid(formPanel, params){
-        var url = params.url || "http://"+HOST+"/autogrid/auto-json.jsp";
+        var url = params.url || "autogrid/auto-json.jsp";
         var div = params.target || "principale";
         var config = {};
 
@@ -96,7 +96,8 @@ ScriptSQL = function(){
 
 				//alert(" loadAutoform _idScript: " + _idScript+ " host: "+ _hostName + " tableName: "+ _showTableName  + " DB: " + _showDatabaseName);
                 
-                var url= "http://"+HOST+"/autogrid/auto-table.jsp";
+                //var url= "http://"+HOST+"/autogrid/auto-table.jsp";
+                var url= "autogrid/auto-table.jsp";
 
                 Ext.Ajax.request({
                         url: url,
@@ -124,7 +125,7 @@ ScriptSQL = function(){
                                                                 //TODO verificare inel DB corrente l'esistenza della tabella
                                                                 // che contiene gli script
                                                                 // se non c'é iallora niente menu o menu vuoto
-                                                                url:"http://"+HOST+"/menus/scripts.jsp", 
+                                                                url:"menus/scripts.jsp", 
 																params: {
 																		tableName: 'msq_SCRIPT_T',
 																		databaseName: 'mineSQL',

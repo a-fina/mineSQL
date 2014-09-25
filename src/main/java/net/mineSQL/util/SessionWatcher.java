@@ -35,7 +35,8 @@ public class SessionWatcher implements HttpSessionListener {
 
 	public void sessionDestroyed(HttpSessionEvent se) {
 		String id = se.getSession().getId();
-		sessions.remove(id);
+        if ( sessions.containsKey(id) )
+		    sessions.remove(id);
 		
 		if(activeSessions > 0)
 			activeSessions--;

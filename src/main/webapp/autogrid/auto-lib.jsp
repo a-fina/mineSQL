@@ -16,6 +16,7 @@
 <%@ page import="net.mineSQL.controller.MineScript" %>
 <%@ page import="net.mineSQL.controller.MineTable" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.util.regex.*" %>
 
 <%@ include file="../config.jsp" %>
 <%!
@@ -196,10 +197,22 @@
 		log.debug(" getPagination sql: " + sql);
 		return sql;
     }
-    public String getPagination(String query, int start, int limit){
+    public String getPaginationDB2(String query, int start, int limit){
+        String sql = "select * from ( " +
+            "select ROW_NUMBER() OVER() as NUM, a.* from " + 
+            "( " + query +" )" + 
+            " as a) as b where  b.NUM <=" + (start + limit) + " and NUM >" + start + " ";
+
+		log.debug(" getPaginationDB2 sql: " + sql);
+		return sql;
+    }
+    public String getPaginationMySQL(String query, int start, int limit){
 		String sql =  query + " LIMIT "+start+", "+limit;
 		log.debug(" getPagination sql: " + sql);
 		return sql;
+    }
+    public String getPagination(String query, int start, int limit){
+        return getPaginationDB2(query, start, limit);
     }
 
 
