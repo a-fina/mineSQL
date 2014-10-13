@@ -148,6 +148,8 @@ ScriptSQL = function(){
                                                         },{
                                                             text: "Run Query",
                                                             handler: function(){
+                                                                Ext.MessageBox.alert("Not implemented TODO"); 
+                                                                /**
 																//runQuery(myFormPanel,'runScript');
 																loadAutoGrid(myFormPanel,{  
 																		action: 'runQuery',
@@ -157,6 +159,8 @@ ScriptSQL = function(){
 																		hostName: _hostName,
 																		target: myFormPanel.getId()
 																}); 
+                                                                ***********/
+
                                                             },
                                                             iconCls: 'accept'
                                                         },{

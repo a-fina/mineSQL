@@ -219,7 +219,7 @@ public class MineTable {
         if (condition != null )
             sqlSelect += " WHERE " + condition;
 
-        log.info(" ---------- Read " + sqlSelect );
+        log.info(" _read MARK_LIMIT Read " + sqlSelect );
         st = con.createStatement();
         ResultSet rsSelect = st.executeQuery(sqlSelect);
 
@@ -239,7 +239,8 @@ public class MineTable {
         try{
             //con = ConnectionManager.getConnection(jdbcAttProb);
             log.debug("getJsonReader");
-            ResultSet resSet  = _read(null, "1=1 LIMIT 1", vCon);
+            // MySQL ResultSet resSet  = _read(null, "1=1 LIMIT 1", vCon);
+            ResultSet resSet  = _read(null, "1=1 FETCH FIRST 1 ROW ONLY", vCon);
 
             ResultSetMetaData rsMd = resSet.getMetaData();
 

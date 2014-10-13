@@ -69,15 +69,17 @@ try {
         int rowCounter = 10;
 
 	if ( action.equals("runQuery") ){
+            // Testo libero TODO
             Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
             MineTable runQuery = new MineTable(conForsavedScript, "msq_SCRIPT_T"); 
 			log.debug(" MARK_runQuery query database:" +  databaseName +" tablename:" + tableName+" idQuery: ");
-                        query = runQuery.select("testo","ID = '"+idQuery+"'");
+            query = runQuery.select("testo","ID = '"+idQuery+"'");
 
 			HashMap formParams = table.getSubmittedParams(request);
 			log.debug(" MARK_runQuery 1 query: " +  query+ " params: " + formParams + " querySel: " + querySel);
 			query = script.mergeScriptParameters(formParams, query);  // testo e' la textarea di default
 			log.debug(" MARK_runQuery 2 query: " +  query+ " params: " + formParams + " querySel: " + querySel);
+
 		}else if ( action.equals("runDefaultScript") ){
 			// Preparo la query con Paginazione
 			String db_table = databaseName+"."+tableName; 

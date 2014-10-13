@@ -382,39 +382,24 @@ Ext.onReady(function(){
  });
 
 	shellMenu.add({
-            text: "Continuos Integration",
+            text: "MineSQL",
             menu: new Ext.menu.Menu({
             items:[{
-				        text: "XXXXXXXXX",
+				        text: "Application Log",
                         id: 'cont-int-1',
                         handler: function(){
                          var w = new Ext.IframeWindow({
                             width:940,
                             height:680,
-                            text: "Continuos Integration on Orion",
-                            src: "http://1.1.1.4:9090/job//"
+                            text: "Application Log",
+                            src: "/mineSQL/log/mineSQL.log"
                          })
                          w.show();
-
                         }
-                    },{
-				        text: "YYYYYYYYY",
-                        id: 'cont-int-2',
-                        handler: function(){
-                         var w = new Ext.IframeWindow({
-                            width:940,
-                            height:680,
-                            text: "Continuos Integration on Orion",
-                            src: "http://1.1.1.4:9090/job//"
-                         })
-                         w.show();
-
-                        }
-                    }
-                    ]
+                    }]
 			})
 		});
-
+/********
 	shellMenu.add({
             text: "GoogleAPI",
             menu: new Ext.menu.Menu({
@@ -427,7 +412,7 @@ Ext.onReady(function(){
 						width:1000,
 						height:680,
 						title: "",
-						src: "/googleAPI"
+						src: "/mineSQL/googleAPI"
 					 })
 					 w.show();
 
@@ -435,60 +420,51 @@ Ext.onReady(function(){
             }]
     })
   });
+**************/
 	shellMenu.add({
-            text: "DBViewer",
+            text: "Test",
             menu: new Ext.menu.Menu({
             items:[{
-				text: "WFL API",
-				id: 'ing-wfl',
-				handler: function(){
-					 var w = new Ext.IframeWindow({
-						id:id,
-						width:1000,
+                    text: "Map Hilight Example",
+                    id: 'map-test-1',
+                    handler: function(){
+					    var w = new Ext.IframeWindow({
+						width:840,
 						height:680,
-						title: "",
-						src: "http://"
+						title: "Map Hilight Example",
+						src: "/mineSQL/map-hilight/demo_world.html"
 					 })
 					 w.show();
-
-				}
-			},{
-				text: "Totem Access - DBviewer",
-				id: 'totem-wfl',
-				handler: function(){
-					 var w = new Ext.IframeWindow({
-						id:id,
-						width:1000,
+                    }
+                },{
+                    text: "Tabella con paginazione",
+                    id: 'map-tab-1',
+                    handler: function(){
+                            var w = new Ext.IframeWindow({
+                            width:840,
+                            height:680,
+                            title: "Tabella con paginazione",
+                            src: "http://www.datatables.net/examples/server_side/simple.html"
+                         })
+                         w.show();
+                     }
+                },{
+                    text: "Tabella con scroll",
+                    id: 'map-tab-2',
+                    handler: function(){
+					    var w = new Ext.IframeWindow({
+						width:840,
 						height:680,
-						title: "Totem",
-						src: "https://"
+						title: "Tabella con scroll",
+						src: "http://www.datatables.net/release-datatables/extensions/Scroller/examples/server-side_processing.html"
 					 })
 					 w.show();
-
-				}
+                    }
             }]
         })
     });
 
 /**********
-	shellMenu.add(
-			new Ext.menu.Item({
-				text: "jquery Map-Hilight",
-				id: 'map-jquery',
-				handler: function(){
-					 var w = new Ext.IframeWindow({
-						id:id,
-						width:840,
-						height:680,
-						title: "jquery Map-Hilight in action",
-						src: "http://"+HOST+"/map-hilight/demo_world.html"
-					 })
-					 w.show();
-
-				}
-			})
-		);
-
     TODO: in index.jsp ri-includere geo-ext.js
 	shellMenu.add(
 			new Ext.menu.Item({
@@ -616,7 +592,7 @@ Ext.onReady(function(){
                                             width:840,
                                             height:680,
                                             title: "View system status",
-                                            src: "http://"+HOST+"/status/systemStatus.jsp"
+                                            src: "http://"+HOST+"/mineSQL/status/systemStatus.jsp"
                                          })
                                          w.show();
                                         }
@@ -629,7 +605,7 @@ Ext.onReady(function(){
                                             width:840,
                                             height:680,
                                             title: "View PHP Quercus status",
-                                            src: "http://"+HOST+"/status/phpinfo.php"
+                                            src: "http://"+HOST+"/mineSQL/status/phpinfo.php"
                                          })
                                          w.show();
                                         }

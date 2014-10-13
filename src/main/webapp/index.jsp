@@ -119,7 +119,7 @@ String valore(String nomeCampo) {
     <script type="text/javascript" src="js/grid/GridAdvancedFilters.js"></script>
     <script type="text/javascript" src="js/grid/AutoGrid.js"></script>
     <script type="text/javascript" src="js/windows/ScriptSQL.js"></script>
-    <!-- script type="text/javascript" src="js/windows/iSQL.js" --></script>
+    <script type="text/javascript" src="js/windows/iSQL.js"></script>
     <script type="text/javascript" src="js/windows/UploadWindow.js"></script>
     <script type="text/javascript" src="js/windows/WindowFormTable.js"></script>
     <script type="text/javascript" src="js/GenericMenu.js"></script>

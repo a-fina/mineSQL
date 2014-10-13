@@ -292,11 +292,9 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
             return connectionDBmenu;
         }
 
-/**
- * Esegue la query e restituisce l'elenco dei filtri per una specifica
- * entiy
- */
-public JSONArray getFiltersList(String entity, String idUtente) throws SQLException {
+
+
+public JSONArray getFiltersListOLDSQL(String entity, String idUtente) throws SQLException {
         // Database init
         PreparedStatement ps = null;
         ResultSet rs = null;

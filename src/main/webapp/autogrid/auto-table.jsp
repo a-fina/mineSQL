@@ -65,7 +65,11 @@
         HashMap formParams = scriptTable.getSubmittedParams(request);
         log.debug(" MARK_create query: " +  query+ " params: " + formParams + " querySel: " + querySel);
         MineScript script = new MineScript();
-        query = script.mergeScriptParameters(formParams, query);
+        
+        // TODO non mi ricordo cazzo volevo fare? query = script.mergeScriptParameters(formParams, query);
+            
+        query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
+            
         log.debug(" MARK_create query: " +  query+ " params: " + formParams + " querySel: " + querySel);
 
 

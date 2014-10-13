@@ -108,6 +108,7 @@
     * @return integer
     */ 
     public int getRowsNumber(String _query) throws SQLException{
+        log.debug(" getRowsNumber before executed query: " + _query+ " Con: " + con);
         ResultSet rs = doQuery("select count(*) tot from (" + _query + ") as counteggio");
         rs.next();
         return rs.getInt("TOT");

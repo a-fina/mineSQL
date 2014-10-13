@@ -9,6 +9,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+
 import com.j256.ormlite.table.TableUtils;
 import java.io.File;
 import java.sql.Date;
@@ -53,19 +54,18 @@ public class TestReport {
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-    public void hello() throws SQLException, Exception {
+    public void inserisciErileggi() throws SQLException, Exception {
 
         String path = "Z:/Finamore/";
+        String dbName = "minesql_report";
+        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+
         File fpath = new File(path);
 
         fpath.mkdirs();
         //FileUtils recursiveDelete(fpath);
 
-        String dbName = "minesql_report";
-        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
-
         Server server = Server.createTcpServer();
-
         server.start();
    //     DriverManager.getConnection(connection);
 
@@ -85,9 +85,9 @@ public class TestReport {
 		String name = "elenco anagrafica " + System.currentTimeMillis();
 		String sql = "select * from TIESSEFIL.EXTAN00F";
 		Report repo = new Report(name, sql);
-    
         reportDao.create(repo);
 
+        // Rileggo la query appena inserita
 		List<Report> repos = reportDao.queryForAll();
         int last = repos.size() -1;
         assertEquals(name,  repos.get(last).getNome() );

@@ -1,15 +1,19 @@
 <%@include file="menu-lib.jsp"%>
 
+<%@page import="net.mineSQL.controller.dao.Menu"%>
+
 <%
 	JSONArray treeMenu = new JSONArray();
 
     try
     {
-    con = ConnectionManager.getConnection("localhost","mineSQL");
+    //con = ConnectionManager.getConnection("localhost","mineSQL");
 
     String idUtente = "0";//session.getAttribute("IDUTENTE").toString(); 
 
-    JSONArray filtri = getFiltersList("1", idUtente);
+    Menu menu = new Menu();
+    JSONArray filtri = menu.getFiltersList("1", idUtente);
+    //JSONArray filtri = getFiltersList("1", idUtente);
     if ( ! filtri.isEmpty() ) 
         treeMenu.add( getMenuItem("Livello 1", filtri , null) );
 
