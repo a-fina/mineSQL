@@ -460,6 +460,18 @@ Ext.onReady(function(){
 					 })
 					 w.show();
                     }
+                },{
+                    text: "Tabella con scroll",
+                    id: 'map-tab-2',
+                    handler: function(){
+					    var w = new Ext.IframeWindow({
+						width:840,
+						height:680,
+						title: "Template Foundation con Dataset",
+						src: "http://datatables.net/dev/foundation.html"
+					 })
+					 w.show();
+                    }
             }]
         })
     });

@@ -8,11 +8,13 @@
     try
     {
     //con = ConnectionManager.getConnection("localhost","mineSQL");
-
     String idUtente = "0";//session.getAttribute("IDUTENTE").toString(); 
 
     Menu menu = new Menu();
-    JSONArray filtri = menu.getFiltersList("1", idUtente);
+    JSONArray filtri = menu.getFiltersList(null, null);
+
+    log.debug("MARK_filtri :" + filtri);
+
     //JSONArray filtri = getFiltersList("1", idUtente);
     if ( ! filtri.isEmpty() ) 
         treeMenu.add( getMenuItem("Livello 1", filtri , null) );

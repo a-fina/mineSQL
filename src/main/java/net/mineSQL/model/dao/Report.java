@@ -13,7 +13,7 @@ import java.util.Objects;
 /**
  * Example account object that is persisted to disk by the DAO and other example classes.
  */
-@DatabaseTable(tableName = "accounts")
+@DatabaseTable(tableName = "REPORT")
 public class Report {
 
 	// for QueryBuilder to be able to find the fields
@@ -29,11 +29,33 @@ public class Report {
 	@DatabaseField(columnName = "HOST")
 	private String host;
 
+	@DatabaseField(columnName = "UTENTE", canBeNull = false)
+	private String utente;
+
+    public String getUtente() {
+        return utente;
+    }
+
+    public void setUtente(String utente) {
+        this.utente = utente;
+    }
+
 	@DatabaseField(columnName = "NOTE", canBeNull = false)
 	private String note;
 
 	@DatabaseField(columnName = "NOME", canBeNull = false)
 	private String nome;
+
+	@DatabaseField(columnName = "DESCRIZIONE", canBeNull = false)
+	private String descrizione;
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
 
     public String getNote() {
         return note;
@@ -118,9 +140,9 @@ public class Report {
         this.database = database;
         this.host = host;
     }
-    public Report(String nome, String sql) {
+    public Report(String nome, String note) {
         this.nome = nome;
-        this.note = sql;
+        this.note = note;
     }
 
 	Report() {

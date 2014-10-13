@@ -1,3 +1,8 @@
+<%@page import="com.j256.ormlite.dao.DaoManager"%>
+<%@page import="com.j256.ormlite.support.ConnectionSource"%>
+<%@page import="com.j256.ormlite.jdbc.JdbcConnectionSource"%>
+<%@page import="com.j256.ormlite.dao.Dao"%>
+<%@page import="net.mineSQL.model.dao.Report"%>
 <%@page contentType="text/html; charset=ISO-8859-1" %>
 <%@include file="auto-lib.jsp"%>
 
@@ -71,24 +76,32 @@
         query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
             
         log.debug(" MARK_create query: " +  query+ " params: " + formParams + " querySel: " + querySel);
-
-
-        log.info(" Saving filterd query :" + query);
         // Inserimento nuova riga nella tabella
         // TODO Generalizzare entity
         // int nextId = Utilita.nextId(con,"FILTRI");
 
-        HashMap nuovoFiltro = new HashMap();
-        nuovoFiltro.put("IDUTENTE","0"/*TODO session.getAttribute("IDUTENTE").toString() */ );
-        // nuovoFiltro.put("ID", ""+nextId );
         // nuovoFiltro.put("IDFLUSSO", request.getParameter("IDFLUSSO") );
-        nuovoFiltro.put("NOME", request.getParameter("NOME"));
-        nuovoFiltro.put("NOTE", request.getParameter("NOTE"));
-        nuovoFiltro.put("DESCRIZIONE", query);
-        nuovoFiltro.put("HOST", hostName);
-        nuovoFiltro.put("DATABASE", databaseName);
+        
+        // Inserisco una nuova query
+        // Oggetto
+        String path = "Z:/Finamore/";
+        String dbName = "minesql_report";
+        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+	    Dao<Report, Integer> reportDao;
+		ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+		reportDao = DaoManager.createDao(connectionSource, Report.class);
 
-        if (! scriptTable.create( nuovoFiltro ) )
+		Report repo = new Report(request.getParameter("NOME"), request.getParameter("NOTE"));
+        repo.setDescrizione(query);
+        repo.setHost( hostName);
+        repo.setDatabase( databaseName);
+        repo.setUtente("0"/*TODO session.getAttribute("IDUTENTE").toString() */ );
+        reportDao.create(repo);
+
+        int res = reportDao.create(repo);
+
+  //      if (! scriptTable.create( nuovoFiltro ) )
+        if ( res == 1 )
             result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore aggiornamento.\"}";
         else
             result = "{\"success\":true,\"valid\":true,\"reason\":\"Aggiornamento effettuato.\"}";
