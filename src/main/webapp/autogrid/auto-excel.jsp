@@ -54,9 +54,7 @@ try {
             log.debug("- - - - > MAR_NEW_QUERY: " + query ); 
             **********/
             HashMap formParams = table.getSubmittedParams(request);
-            log.debug(" MARK_runScript query: " +  query+ " params: " + formParams + " querySel: " + querySel);
             query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
-            log.debug(" MARK_runScript query: " +  query+ " params: " + formParams + " querySel: " + querySel);
             //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
             execScript(con, query); 
 

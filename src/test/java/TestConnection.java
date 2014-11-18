@@ -32,7 +32,7 @@ public class TestConnection extends TestCase {
 
     // TODO add test methods here. The name must begin with 'test'. For example:
     public void testHello() throws ConnectionException, SQLException {
-        Connection con = ConnectionManager.getConnection("192.168.10.243", "TIESSEFIL", "TNFIAL", "ale2014");
+        Connection con = ConnectionManager.getConnection("192.168.10.243", "TIESSEFIL", "TNFIAL", "ale20141");
 
         System.out.println("URL: " + con.getMetaData().getURL());
 

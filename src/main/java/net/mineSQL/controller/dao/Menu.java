@@ -11,6 +11,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import java.sql.SQLException;
 import java.util.List;
+import net.mineSQL.connection.ConnectionManager;
 import net.mineSQL.model.dao.Report;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -28,13 +29,12 @@ public class Menu {
         JSONArray elenco_filtri = new JSONArray();
 
         Dao<Report, Integer> reportDao;
-
-        String path = "Z:/Finamore/";
+          String path = "Z:/Finamore/";
         String dbName = "minesql_report";
         String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
 
         ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
-        reportDao = DaoManager.createDao(connectionSource, Report.class);
+        reportDao = DaoManager.createDao(connectionSource, Report.class);  
 
         List<Report> repos = reportDao.queryForAll();
         for (Report repo : repos) {
@@ -46,7 +46,6 @@ public class Menu {
                     + "##" + repo.getHost();
 
             String title = repo.getNome();//filtri_map.get("nome") + " - " + rs.getString("NOME");
-
             String tooltip = repo.getNote();
             //if (rs.wasNull())
             //   tooltip = "";

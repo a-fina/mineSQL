@@ -1,8 +1,3 @@
-<%@page import="com.j256.ormlite.dao.DaoManager"%>
-<%@page import="com.j256.ormlite.support.ConnectionSource"%>
-<%@page import="com.j256.ormlite.jdbc.JdbcConnectionSource"%>
-<%@page import="com.j256.ormlite.dao.Dao"%>
-<%@page import="net.mineSQL.model.dao.Report"%>
 <%@page contentType="text/html; charset=ISO-8859-1" %>
 <%@include file="auto-lib.jsp"%>
 
@@ -16,7 +11,8 @@
     String crud_operation = request.getParameter("crudOperation");
 
     // Istanzio il gestore della tabella
-    MineTable dmTable = new MineTable(con, request.getParameter("tableName") );
+    //---- MineTable dmTable = new MineTable(con, request.getParameter("tableName") );
+    MineTable dmTable = new MineTable(con, tableName);
     String result = "";
 
     // Gestione CRUD
@@ -30,13 +26,17 @@
         if ( request.getParameter("idScript") != null)
             id = request.getParameter("idScript");
 
-        if ( id.equals("") || action.equals("runDefaultScript") ){
+        if ( id.equals("") || action.equals("runDefaultScript") )
+        {
 			result = dmTable.getDefaultFieldSet();
-        } else if ( ! id.equals("") && action.equals("runSavedScript") ){
+        }
+        else if ( ! id.equals("") && action.equals("runSavedScript") ){
+            
             Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
             MineTable savedScript = new MineTable(conForsavedScript, "msq_FILTRI_T"); 
             String query = savedScript.select("DESCRIZIONE","ID = '"+id+"'");
 			result = savedScript.getDefaultFieldSet(query);
+            
 		}else
 			result = dmTable.getFieldSetFromField("PARAMETRI", "ID="+id);
 
@@ -60,28 +60,29 @@
         if (request.getParameter("hidden_columns") != null)
             hiddenColumns = request.getParameter("hidden_columns").split(",");
         
+        String filter = Utilita.getFilterCondition(con, request, "", "", "");
 
-        Connection conScript = ConnectionManager.getConnection("localhost","mineSQL");
-        MineTable scriptTable = new MineTable(conScript, "msq_FILTRI_T" );
-        MineTable runQuery= new MineTable(conScript,"msq_SCRIPT_T");
-        log.debug(" MARK_runQuery query database:" +  databaseName +" tablename:" + tableName+" idQuery: ");
-        query = runQuery.select("testo","ID = '"+idQuery+"'");
+        //Connection conScript = ConnectionManager.getConnection("localhost","mineSQL");
+      //  MineTable scriptTable = new MineTable(conScript, "msq_FILTRI_T" );
+        // ---- MineTable runQuery= new MineTable(conScript,"msq_SCRIPT_T");
+        // ---- log.debug(" MARK_runQuery query database:" +  databaseName +" tablename:" + tableName+" idQuery: ");
+        // ---- query = runQuery.select("testo","ID = '"+idQuery+"'");
 
-        HashMap formParams = scriptTable.getSubmittedParams(request);
-        log.debug(" MARK_create query: " +  query+ " params: " + formParams + " querySel: " + querySel);
+        HashMap formParams = dmTable.getSubmittedParams(request);
         MineScript script = new MineScript();
-        
         // TODO non mi ricordo cazzo volevo fare? query = script.mergeScriptParameters(formParams, query);
-            
-        query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
-            
-        log.debug(" MARK_create query: " +  query+ " params: " + formParams + " querySel: " + querySel);
-        // Inserimento nuova riga nella tabella
-        // TODO Generalizzare entity
+        String db_table = databaseName + "." + tableName;
+        query = "SELECT * FROM " + db_table + " WHERE 1=1";
+        log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
+        // ----- query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
+        if (filter.length() > 0) 
+        {
+            query = "select FILT_AUX.* from (" + query + ") as FILT_AUX WHERE 1=1 " + filter;
+        }
+        log.debug(" MARK - - - - FUNZA create query: " +  query+ " params: " + formParams + " querySel: " + querySel);
+        // Inserimento nuova riga nella tabella // TODO Generalizzare entity
         // int nextId = Utilita.nextId(con,"FILTRI");
-
         // nuovoFiltro.put("IDFLUSSO", request.getParameter("IDFLUSSO") );
-        
         // Inserisco una nuova query
         // Oggetto
         String path = "Z:/Finamore/";
@@ -95,13 +96,12 @@
         repo.setDescrizione(query);
         repo.setHost( hostName);
         repo.setDatabase( databaseName);
-        repo.setUtente("0"/*TODO session.getAttribute("IDUTENTE").toString() */ );
-        reportDao.create(repo);
+        repo.setUtente("0" );
 
         int res = reportDao.create(repo);
 
-  //      if (! scriptTable.create( nuovoFiltro ) )
-        if ( res == 1 )
+  /************************      if (! scriptTable.create( nuovoFiltro ) )   *******************/
+        if ( res == 0 )
             result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore aggiornamento.\"}";
         else
             result = "{\"success\":true,\"valid\":true,\"reason\":\"Aggiornamento effettuato.\"}";

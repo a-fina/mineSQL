@@ -98,7 +98,8 @@ ScriptSQL = function(){
                 
                 //var url= "http://"+HOST+"/autogrid/auto-table.jsp";
                 var url= "autogrid/auto-table.jsp";
-
+    
+                alert("MARK_ before ajax request " + url + " ScriptSQL.js");
                 Ext.Ajax.request({
                         url: url,
                         success: function(response){ 
@@ -167,6 +168,7 @@ ScriptSQL = function(){
                                                             text: "Run Script",
                                                             handler: function(){
 																//runQuery(myFormPanel,'runScript');
+                                                                alert("MARK before loadAutoGrid in ScripSQL.js");
 																loadAutoGrid(myFormPanel,{  
 																		action: 'runScript',
 																		idQuery: _idScript, 

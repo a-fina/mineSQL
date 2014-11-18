@@ -128,6 +128,7 @@ GridToolBar =  function(property){
                         // Fotografo i filtri attulamente attivi sul flusso corrente
                         // Rimuovo i filtri globali
                         var filter2string = Ext.util.JSON.encode(SessionFilters[_idFlusso]);
+                        alert("MARK_bodyQuery: " + filter2string);
                         
                         var hidden = getHiddenColumns(_cm); 
                         // Apro la finestra per l'inserimento di un nuovo filtro
@@ -142,8 +143,10 @@ GridToolBar =  function(property){
                         if ( _idFlusso == ID_FLUSSO_GENERIC ) { //TODO serve ?
                                     ajaxParams.saveSessionFilter = "false"; // se questo é true vengono sovrascitti i filtri in sessione
                         }
+                        alert("ajaxParams FilterMngr.saveWin");
                         ajaxParams.target = _target; //TODO serve ?
                         Ext.apply(ajaxParams, property);
+                        console.log(ajaxParams);
                    /*******     ajaxParams.databaseName = 'mineSQL';
                         ajaxParams.tableName = 'msq_FILTRI_T';
                         ajaxParams.hostName = 'localhost'; *******/
@@ -247,6 +250,7 @@ GridToolBar =  function(property){
             }
 		});
 
+        _items.push(this.saveReportButton);
     /***
     }else{
         // Save Filter Buttton

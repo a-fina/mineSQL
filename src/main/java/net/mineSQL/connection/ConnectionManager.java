@@ -1,5 +1,9 @@
 package net.mineSQL.connection;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
 import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -57,6 +61,13 @@ public class ConnectionManager {
             }
         }
         return ds;
+    }
+    public static synchronized ConnectionSource getMineConnection(Class objclass) throws SQLException{
+        String path = "Z:/Finamore/";
+        String dbName = "minesql_report";
+        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+
+        return new JdbcConnectionSource(DATABASE_URL);
     }
 
     public static synchronized Connection getConnection(

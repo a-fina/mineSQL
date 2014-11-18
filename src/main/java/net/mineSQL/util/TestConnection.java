@@ -24,7 +24,7 @@ public class TestConnection extends HttpServlet {
         String ip = "192.168.10.243";
         String db = "BCD_BGBLUE";
         String username = "TNFIAL";
-        String password = "ale2014";
+        String password = "ale20141";
         String jdbc = "as400";
         
 		PrintWriter out = response.getWriter();

@@ -18,6 +18,12 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.regex.*" %>
 
+<%@page import="com.j256.ormlite.dao.DaoManager"%>
+<%@page import="com.j256.ormlite.support.ConnectionSource"%>
+<%@page import="com.j256.ormlite.jdbc.JdbcConnectionSource"%>
+<%@page import="com.j256.ormlite.dao.Dao"%>
+<%@page import="net.mineSQL.model.dao.Report"%>
+
 <%@ include file="../config.jsp" %>
 <%!
     /* DB settings */
