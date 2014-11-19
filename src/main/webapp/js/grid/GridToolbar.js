@@ -80,8 +80,8 @@ GridToolBar =  function(property){
                             ajaxParams.target = _target;
                         }
                         *******/
-                        alert("ajaxParams FilterMngr.saveWin");
-                        console.dir(ajaxParams);
+                        //alert("ajaxParams FilterMngr.saveWin");
+                        //console.dir(ajaxParams);
 
                         var saveFilterWin = new FilterMngr.saveWin({
                                     submitParams: ajaxParams
@@ -128,7 +128,7 @@ GridToolBar =  function(property){
                         // Fotografo i filtri attulamente attivi sul flusso corrente
                         // Rimuovo i filtri globali
                         var filter2string = Ext.util.JSON.encode(SessionFilters[_idFlusso]);
-                        alert("MARK_bodyQuery: " + filter2string);
+                        console.log(filter2string);
                         
                         var hidden = getHiddenColumns(_cm); 
                         // Apro la finestra per l'inserimento di un nuovo filtro
@@ -143,7 +143,6 @@ GridToolBar =  function(property){
                         if ( _idFlusso == ID_FLUSSO_GENERIC ) { //TODO serve ?
                                     ajaxParams.saveSessionFilter = "false"; // se questo é true vengono sovrascitti i filtri in sessione
                         }
-                        alert("ajaxParams FilterMngr.saveWin");
                         ajaxParams.target = _target; //TODO serve ?
                         Ext.apply(ajaxParams, property);
                         console.log(ajaxParams);
@@ -233,13 +232,12 @@ GridToolBar =  function(property){
         }); ******/
 
         // TODO: abilitare solo dopo che é stato premuto il bottone "Run query" altrimenti
-        // non salva un cazz
         _items.push({
                 text: 'Query Menu',
                 iconCls: 'filter-menu',
                 menu: this.filterTool 
         });
-
+/** 19/11/14 TODO
 		_items.push({
 		    text:'Update from CSV',
 		    iconCls: 'icon-excel',
@@ -249,8 +247,6 @@ GridToolBar =  function(property){
                 uploadFile(property); 
             }
 		});
-
-        _items.push(this.saveReportButton);
     /***
     }else{
         // Save Filter Buttton

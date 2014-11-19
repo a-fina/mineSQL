@@ -93,7 +93,6 @@ function defineSearchForm(currentStore, gridstartPage, campiRicerca,currentGrid)
 		);
 	});
 	// Aggiunta Bottoni
-	
 	var submit = searchForm.addButton({
 		text : 'Ricerca',
 		// disabled:true,

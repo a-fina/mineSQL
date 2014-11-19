@@ -99,7 +99,7 @@ ScriptSQL = function(){
                 //var url= "http://"+HOST+"/autogrid/auto-table.jsp";
                 var url= "autogrid/auto-table.jsp";
     
-                alert("MARK_ before ajax request " + url + " ScriptSQL.js");
+               // alert("MARK_ before ajax request " + url + " ScriptSQL.js");
                 Ext.Ajax.request({
                         url: url,
                         success: function(response){ 
@@ -110,8 +110,8 @@ ScriptSQL = function(){
                             var myFormPanel = new Ext.FormPanel({ 
                                                    baseCls: 'x-plain',
                                                    id: formId,
-                                                //    labelAlign: 'right',
-                                                //    frame:true,
+                                                 //labelAlign: 'right',
+                                                 //frame:true,
                                                     region: 'north',
                                                     autoHeight:'auto',
                                                     layout: 'fit',  
@@ -119,13 +119,17 @@ ScriptSQL = function(){
                                                     labelWidth: 85,
                                                     waitMsgTarget: true,
                                                     defaultType: 'textfield',
-                                                    tbar: [{ 
+                                                    tbar: [/******************************************
+                                                        TODO:   bho, si possono creare dei gruppi di Query e qui
+                                                                visualizzare tutte le query/report di un determinato gruppo
+                                                                o appartenemti alla tabella inziale (tabname)
+                                                            { 
                                                             text:'Load',
                                                             menu:  new GenericMenu({ 
                                                                 id: "reportMenu", 
                                                                 //TODO verificare inel DB corrente l'esistenza della tabella
                                                                 // che contiene gli script
-                                                                // se non c'Ã© iallora niente menu o menu vuoto
+                                                                // se non c'é iallora niente menu o menu vuoto
                                                                 url:"menus/scripts.jsp", 
 																params: {
 																		tableName: 'msq_SCRIPT_T',
@@ -136,7 +140,7 @@ ScriptSQL = function(){
                                                                 clickHandler: function (menuItem){
                                                                     _myWindow.close();
                                                                     var subStr = menuItem.id.split("-"); 
-																	alert(" idQuery:  " + subStr[subStr.length -1] + " showDatabaseName:" + _showDatabaseName + " host: " + _hostName );
+																	//alert(" idQuery:  " + subStr[subStr.length -1] + " showDatabaseName:" + _showDatabaseName + " host: " + _hostName );
                                                                     loadAutoform({ 
 																			idScript: subStr[subStr.length -1], 
 																			showDatabaseName: 'mineSQL',//_showDatabaseName,
@@ -147,10 +151,10 @@ ScriptSQL = function(){
                                                                 }),
                                                             iconCls: 'report'
                                                         },{
+                                                        TODO: non va e non mi ricordo cosa volevo fare    
                                                             text: "Run Query",
                                                             handler: function(){
                                                                 Ext.MessageBox.alert("Not implemented TODO"); 
-                                                                /**
 																//runQuery(myFormPanel,'runScript');
 																loadAutoGrid(myFormPanel,{  
 																		action: 'runQuery',
@@ -160,15 +164,12 @@ ScriptSQL = function(){
 																		hostName: _hostName,
 																		target: myFormPanel.getId()
 																}); 
-                                                                ***********/
-
                                                             },
                                                             iconCls: 'accept'
-                                                        },{
+                                                        }, **************************************/
+                                                        {
                                                             text: "Run Script",
                                                             handler: function(){
-																//runQuery(myFormPanel,'runScript');
-                                                                alert("MARK before loadAutoGrid in ScripSQL.js");
 																loadAutoGrid(myFormPanel,{  
 																		action: 'runScript',
 																		idQuery: _idScript, 
@@ -221,12 +222,7 @@ ScriptSQL = function(){
      **/
     function runQuery(formPanel,action){ 
 		var _action = action || 'dummy';
-        alert("ScriptSQL runQuery");
         //var query = $$(queryBodyID).getValue();
-        //alert("js/ScriptSQL: queryBody: " + query);
-        //alert("js/ScriptSQL: _idScript: " + _idScript);
-		//alert("runQuery tableName: " + _showTableName+" DB: " + _showDatabaseName+ " action: " + _action);
-		//alert("runQuery before loadAutoGrid formPanelId: " + formPanel.getId());
         loadAutoGrid(formPanel,{  
                 action: _action, 
                 idQuery: _idScript, 

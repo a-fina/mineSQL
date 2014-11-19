@@ -32,7 +32,7 @@
                 || action.equals("runDefaultScript") || action.equals("runSavedScript") || action.equals("runScript")) {
 
             // Se submit dalla FORM eseguo lo SCRIPT e successivamente eseguo lo SCRIPT_OUTPUT
-            if ( action.equals("runScript") || action.equals("saveScript") ) {
+            if (action.equals("runScript") || action.equals("saveScript")) {
                 /**
                  * **************
                  * log.debug(" tableName.equals(\"msq_SCRIPT_T\") &&
@@ -86,18 +86,30 @@
                 log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
                 //TODO gestire la query a test libero, viene postata la variabuile query_body
             } else if (action.equals("runSavedScript")) {
-
-
-                
+/******
                 Connection conForsavedScript = ConnectionManager.getConnection("localhost", "mineSQL");
                 MineTable savedScript = new MineTable(conForsavedScript, "msq_FILTRI_T");
                 log.debug(" MARK_runSavedScript 3 database:" + databaseName + " tablename:" + tableName + " idQuery: ");
                 query = savedScript.select("DESCRIZIONE", "ID = '" + idQuery + "'");
-                log.debug(" MARK_runSavedScript database query:" + query);
+    **************/
                 /*
                  * TODO: qui volendo si puo mettere un controllo incrociato su databaseName + hostname
                  * e i valori salvati nel DB insieme al testo 
                  */
+                Dao<Report, Integer> reportDao;
+                String path = "Z:/Finamore/";
+                String dbName = "minesql_report";
+                String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+
+                ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+                reportDao = DaoManager.createDao(connectionSource, Report.class);
+                query = reportDao.queryForId(new Integer(idQuery).intValue()).getDescrizione();
+                log.debug(" MARK_runSavedScript database query:" + query);
+
+                if (connectionSource != null) {
+                    connectionSource.close();
+                }
+
             }
             // Costruzione query coni filri utente
             if (filter.length() > 0) {
@@ -113,13 +125,13 @@
 
             // TODO qui si può salvare la query con i FILTRI 
             if (action.equals("saveScript")) {
-               
+
                 String path = "Z:/Finamore/";
                 String dbName = "minesql_report";
                 String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
                 Dao<Report, Integer> reportDao;
                 ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
-              
+
                 reportDao = DaoManager.createDao(connectionSource, Report.class);
 
                 Report repo = new Report(request.getParameter("NOME"), request.getParameter("NOTE"));
@@ -130,6 +142,9 @@
                 reportDao.create(repo);
 
                 int res = reportDao.create(repo);
+                if (connectionSource != null) {
+                    connectionSource.close();
+                }
             }
 
             // Paginazione

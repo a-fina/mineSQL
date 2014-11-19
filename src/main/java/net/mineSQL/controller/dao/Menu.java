@@ -29,7 +29,7 @@ public class Menu {
         JSONArray elenco_filtri = new JSONArray();
 
         Dao<Report, Integer> reportDao;
-          String path = "Z:/Finamore/";
+        String path = "Z:/Finamore/";
         String dbName = "minesql_report";
         String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
 
@@ -53,6 +53,10 @@ public class Menu {
 
             elenco_filtri.add(getSubMenuItem(id, title, text));
             //}
+        }
+
+        if (connectionSource != null) {
+            connectionSource.close();
         }
 
         return elenco_filtri;
