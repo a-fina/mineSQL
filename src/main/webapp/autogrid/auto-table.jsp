@@ -84,6 +84,7 @@
         MineScript script = new MineScript();
         // TODO non mi ricordo cazzo volevo fare? query = script.mergeScriptParameters(formParams, query);
         String db_table = databaseName + "." + tableName;
+        // TODO: se SUBMIT_test contiene una query ??? non devo salvare quella di default--
         query = "SELECT * FROM " + db_table + " WHERE 1=1";
         log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
         // ----- query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default

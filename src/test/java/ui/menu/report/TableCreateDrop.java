@@ -49,7 +49,7 @@ public class TableCreateDrop {
     //
     @Test
     public void hello() throws SQLException {
-        String path = "Z:/Finamore/";
+        String path = "Z:/Fina/";
         String dbName = "minesql_report";
         String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
 

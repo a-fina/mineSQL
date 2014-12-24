@@ -21,11 +21,11 @@ public class TestConnection extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
         String driver = "com.ibm.as400.access.AS400JDBCDriver";
-        String ip = "192.168.10.243";
-        String db = "BCD_BGBLUE";
-        String username = "TNFIAL";
-        String password = "ale20141";
-        String jdbc = "as400";
+        String ip = "";
+        String db = "";
+        String username = "";
+        String password = "";
+        String jdbc = "";
         
 		PrintWriter out = response.getWriter();
 		try {

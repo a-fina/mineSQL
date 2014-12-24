@@ -50,12 +50,12 @@ public class ConnectSQLServer {
         //1.jdbc driver name
         String SQL_JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         // 2. Database URL, V_UDAY\FRAMEWORK is ServerName and JSF is DataBase name
-        String URL = "jdbc:sqlserver://192.168.100.20:1433;instanceName=SYNERGY;databaseName=emc_inaz";
+        String URL = "jdbc:sqlserver://1.1.1.2:1433;instanceName=SGY;databaseName=emc_inaz";
         //3.Database credentials
-        String USERNAME = "SINTECO\\dnlmhl";//UserName
+        String USERNAME = "TECO\\lml";//UserName
         String PASSWORD = "";//Password
         USERNAME = "SA";//UserName
-        PASSWORD = "Pw@SQLSynergy";//Password
+        PASSWORD = "";//Password
 
         try {
             Class.forName(SQL_JDBC_DRIVER);// Register jdbc driver

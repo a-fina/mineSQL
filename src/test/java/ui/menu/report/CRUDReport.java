@@ -52,7 +52,7 @@ public class CRUDReport {
     @Test
     public void inserisci() throws SQLException {
     
-        String path = "Z:/Finamore/";
+        String path = "Z:/Fina/";
         String dbName = "minesql_report";
         String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
         // Oggetto
@@ -62,7 +62,7 @@ public class CRUDReport {
         
         // Inserisco una nuova query
 		String name = "elenco anagrafica " + System.currentTimeMillis();
-		String sql = "select * from TIESSEFIL.EXTAN00F";
+		String sql = "select * from TAN";
 		Report repo = new Report(name, sql);
         repo.setHost("HOST");
         repo.setDatabase("dbName");

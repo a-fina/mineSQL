@@ -56,7 +56,7 @@ public class ReadReport {
     @Test
     public void inserisciErileggi() throws SQLException, Exception {
 
-        String path = "Z:/Finamore/";
+        String path = "Z:/Fina/";
         String dbName = "minesql_report";
         String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
 

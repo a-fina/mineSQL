@@ -46,7 +46,7 @@ public class TestSimple {
     // DISABLED @Test
     public void hello() throws SQLException, Exception {
 
-        String path = "Z:/Finamore/";
+        String path = "Z:/Fina/";
         File fpath = new File(path);
 
         fpath.mkdirs();

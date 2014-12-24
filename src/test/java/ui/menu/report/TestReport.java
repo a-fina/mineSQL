@@ -53,7 +53,7 @@ public class TestReport {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    //@Test
+    @Test
     public void inserisciErileggi() throws SQLException, Exception {
 
         String path = "Z:/Finamore/";
@@ -77,15 +77,16 @@ public class TestReport {
 		ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
 		reportDao = DaoManager.createDao(connectionSource, Report.class);
 		
-		TableUtils.dropTable(connectionSource, Report.class, true);
         // Crea Tabella
 		TableUtils.createTableIfNotExists(connectionSource, Report.class);
 
         // Inserisco una nuova query
 		String name = "elenco anagrafica " + System.currentTimeMillis();
-		String sql = "select * from TIESSEFIL.EXTAN00F";
+        name = "O";
+		String sql = "select * from TABLE";
 		Report repo = new Report(name, sql);
         repo.setUtente("utento");
+        repo.setDescrizione("utento descriziono");
         reportDao.create(repo);
 
         // Rileggo la query appena inserita

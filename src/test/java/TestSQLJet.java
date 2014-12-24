@@ -35,7 +35,7 @@ public class TestSQLJet extends TestCase {
     // TODO add test methods here. The name must begin with 'test'. For example:
     public void testHello() {
         try {
-            File dbFile = new File("z:\\Finamore\\db");
+            File dbFile = new File("z:\\Fina\\db");
             dbFile.delete();
             
             SqlJetDb db = SqlJetDb.open(dbFile, true);

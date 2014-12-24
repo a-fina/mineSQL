@@ -55,6 +55,7 @@ try {
             **********/
             HashMap formParams = table.getSubmittedParams(request);
             query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
+            query = "select * from TIESSEFIL.LVSPE00L WHERE LVDTSP BETWEEN 20141201  AND 20141218 AND  LVFLGX in ('N','P')";
             //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
             execScript(con, query); 
 
