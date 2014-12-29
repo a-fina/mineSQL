@@ -16,7 +16,7 @@ Run:
 ----
 git co git@github.com:bayois/mineSQL.git
 edit mineSQL/src/main/webapp/config.jsp 
-mvn package
+mvn clean package
 firefox http://localhost:8080/mineSQL/
 
 
@@ -29,3 +29,7 @@ TODO:
       <artifactId>swagger-servlet_2.10</artifactId>
       <version>1.3.10</version>
     </dependency>
+
+- REST Server / Heroku deploy
+    https://jersey.java.net/documentation/latest/deployment.html#deployment.servlet
+    https://jersey.java.net/documentation/latest/getting-started.html#heroku-webapp

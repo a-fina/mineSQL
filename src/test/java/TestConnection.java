@@ -35,6 +35,7 @@ public class TestConnection extends TestCase {
         Connection con = ConnectionManager.getConnection("1.1.1.2", "", "", "");
 
         System.out.println("URL: " + con.getMetaData().getURL());
+     con.close();
 
     }
 }

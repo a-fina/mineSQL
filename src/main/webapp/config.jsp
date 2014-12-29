@@ -17,11 +17,11 @@
 
 
     confConnection = new HashMap<String, String>();
-    confConnection.put(HOST, "");
-    confConnection.put(USER,"");
-    confConnection.put(PASSWORD,"");
-    confConnection.put(SHOW_ALL_DATABASE,"");
-    confConnection.put(DATABASE,"");
+    confConnection.put(HOST, "192.168.10.243");
+    confConnection.put(USER,"TNFIAL");
+    confConnection.put(PASSWORD,"ale20141");
+    confConnection.put(SHOW_ALL_DATABASE,"false");
+    confConnection.put(DATABASE,"TIESSEFIL");
     confConnection.put(NAME,"local");
     connections.add(confConnection);
 
