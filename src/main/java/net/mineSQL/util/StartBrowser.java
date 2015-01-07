@@ -32,7 +32,7 @@ public class StartBrowser {
 			display.dispose();
 			return;
 		}
-		browser.setUrl("http://192.168.1.3:8150/bigblue/login.pgm"); //Text(html);
+		browser.setUrl("http://192.168..:/b/l.p"); //Text(html);
 		shell.open();
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch())
