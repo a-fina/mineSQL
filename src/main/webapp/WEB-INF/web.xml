@@ -29,7 +29,7 @@
     <!-- Versione del Defect Management -->
     <context-param>
         <param-name>DM_VERSION</param-name>
-        <param-value>0.9.5</param-value>
+        <param-value>0.9.7</param-value>
     </context-param>
 
     <!-- Servlet Logger caricata all'avvio di resin -->

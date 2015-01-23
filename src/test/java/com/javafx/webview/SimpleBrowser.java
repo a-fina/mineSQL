@@ -46,6 +46,6 @@ public class SimpleBrowser {
     public void hello() {
         WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
-        webEngine.load("http://mySite.com");
+        webEngine.load("http://localhost:8080");
     }
 }

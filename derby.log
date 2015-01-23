@@ -1,0 +1,30 @@
+----------------------------------------------------------------
+2015-01-14 16:29:53.548 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-014a-e947-a107-000008317120
+on database directory C:\Users\alessio.finamore\Documents\mineSQL\repository\version\db  
+
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2015-01-14 16:29:54.871 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 888c4022-014a-e947-a107-000008317120
+on database directory C:\Users\alessio.finamore\Documents\mineSQL\repository\workspaces\default\db  
+
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2015-01-14 16:29:56.708 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance 018f0039-014a-e947-a107-000008317120
+on database directory C:\Users\alessio.finamore\Documents\mineSQL\repository\workspaces\security\db  
+
+Database Class Loader started - derby.database.classpath=''
+
+2015-01-14 16:29:58.398 GMT:
+Shutting down instance 888c4022-014a-e947-a107-000008317120
+----------------------------------------------------------------
+
+2015-01-14 16:29:58.481 GMT:
+Shutting down instance 018f0039-014a-e947-a107-000008317120
+----------------------------------------------------------------
+
+2015-01-14 16:29:58.547 GMT:
+Shutting down instance a816c00e-014a-e947-a107-000008317120
+----------------------------------------------------------------

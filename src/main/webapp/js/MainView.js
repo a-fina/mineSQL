@@ -392,7 +392,7 @@ Ext.onReady(function(){
                             width:940,
                             height:680,
                             text: "Application Log",
-                            src: "/mineSQL/log/mineSQL.log"
+                            src: "/log/mineSQL.log"
                          })
                          w.show();
                         }
@@ -432,7 +432,7 @@ Ext.onReady(function(){
 						width:840,
 						height:680,
 						title: "Map Hilight Example",
-						src: "/mineSQL/map-hilight/demo_world.html"
+						src: "/map-hilight/demo_world.html"
 					 })
 					 w.show();
                     }
@@ -604,7 +604,7 @@ Ext.onReady(function(){
                                             width:840,
                                             height:680,
                                             title: "View system status",
-                                            src: "http://"+HOST+"/mineSQL/status/systemStatus.jsp"
+                                            src: "/status/systemStatus.jsp"
                                          })
                                          w.show();
                                         }
@@ -617,7 +617,7 @@ Ext.onReady(function(){
                                             width:840,
                                             height:680,
                                             title: "View PHP Quercus status",
-                                            src: "http://"+HOST+"/mineSQL/status/phpinfo.php"
+                                            src: "/mineSQL/status/phpinfo.php"
                                          })
                                          w.show();
                                         }

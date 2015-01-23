@@ -15,8 +15,11 @@ What:
 Run:
 ----
 git co git@github.com:bayois/mineSQL.git
+
 edit mineSQL/src/main/webapp/config.jsp 
+
 mvn clean package
+
 firefox http://localhost:8080/mineSQL/
 
 
