@@ -1,6 +1,6 @@
 <%@include file="menu-lib.jsp"%>
 
-<%@page import="net.mineSQL.controller.dao.Menu"%>
+<%@page import="net.mineSQL.controller.ormlite.Menu"%>
 
 <%
 	JSONArray treeMenu = new JSONArray();

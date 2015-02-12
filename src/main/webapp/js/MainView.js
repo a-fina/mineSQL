@@ -472,6 +472,18 @@ Ext.onReady(function(){
 					 })
 					 w.show();
                     }
+                },{
+                    text: "Data Visualization",
+                    id: 'map-tree',
+                    handler: function(){
+					    var w = new Ext.IframeWindow({
+						width:900,
+						height:780,
+						title: "D3 Data-Driven Document",
+						src: "http://mbostock.github.io/d3/talk/20111018/treemap.html"
+					 })
+					 w.show();
+                    }
             }]
         })
     });
@@ -617,7 +629,7 @@ Ext.onReady(function(){
                                             width:840,
                                             height:680,
                                             title: "View PHP Quercus status",
-                                            src: "/mineSQL/status/phpinfo.php"
+                                            src: "/status/phpinfo.php"
                                          })
                                          w.show();
                                         }

@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.mineSQL.tomcat;
+package ney.mineSQL.app;
+
+import net.mineSQL.tomcat.MineBrowser;
+import net.mineSQL.tomcat.MineTomcat;
 
 /**
  *

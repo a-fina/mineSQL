@@ -226,10 +226,98 @@ public class Utilita {
 			filterCount++;
 		}
 		
-		return MakeTableForQuery.getFilterCondition(con, filterNameList, filterValueList, filter, idutente, idgruppo, flusso) +
-		       MakeTableForQuery.getSearchCondition(searchNameList, searchValueList);
+		return getFilterCondition(con, filterNameList, filterValueList, filter, idutente, idgruppo, flusso) +
+		       getSearchCondition(searchNameList, searchValueList);
 	}
 	
+	public static String getFilterCondition(Connection con,
+                ArrayList filterNameList, ArrayList filterValueList, String filter,
+                String idUtente, String idGruppo, String idFlusso)
+        {
+		String sqlCondition = "";
+		String[] conditions;
+		
+		conditions = filter.split(",", 0);
+		for (int i = 0; i < conditions.length; i++ ) {
+		    log.info(i+": "+conditions[i]);
+			if (idUtente.length()!=0 && conditions[i].equalsIgnoreCase("Utente")) {
+				sqlCondition += " AND IDUTENTE = " + idUtente + " ";
+			}
+			else if (idGruppo.length()!=0 && conditions[i].equalsIgnoreCase("Gruppo")) {
+				sqlCondition += " AND IDGRUPPO = " + idGruppo + " ";
+			}
+			else if (conditions[i].equalsIgnoreCase("In lavorazione")) {
+				/**
+				 * Ricavo tutti gli stati non finali per un certo flusso
+				 */
+				String sqlSelect = 
+				   "SELECT S.IDFASE " +
+		                   "FROM   CP_FASE_T S " +
+		                   "WHERE  S.INLAVORAZIONE <> 0 ";
+				
+			//	Connection con = getConn(jdbcDefect);
+				try {
+					Statement st = con.createStatement();
+					ResultSet rs = st.executeQuery(sqlSelect);
+					/**
+					 * Costruisco la condizione SQL con la clausola IN
+					 */
+					sqlCondition += " AND IDFASE IN ('";
+					boolean isFirst = true;
+					while (rs.next()) {
+						if (isFirst) {
+							sqlCondition += rs.getString("IDFASE");
+							isFirst = false;
+						}
+						else
+							sqlCondition += "', '" + rs.getString("IDFASE");
+					}
+					sqlCondition += "') ";
+					
+					rs.close();
+					st.close();
+				} catch (SQLException e) {
+					log.error("", e);
+				} finally {
+			    	try {
+			    		if (con != null)
+							con.close();
+					} catch (SQLException e) {
+						log.error("Chiusura connessione", e);
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < filterNameList.size(); i++) {
+			conditions = filterValueList.get(i).toString().split(",", 0);
+			sqlCondition += " AND (";
+			sqlCondition += filterNameList.get(i) + " = '" + conditions[0] + "' ";
+			for (int j = 1; j < conditions.length; j++ ) {
+				sqlCondition += "OR " + filterNameList.get(i) + " = '" + conditions[j] + "' ";
+			}
+			sqlCondition += ") ";
+		}
+		
+		return sqlCondition;
+	}
+	public static String getSearchCondition(ArrayList searchNameList, ArrayList searchValueList) {
+		String sqlCondition = "";
+		String conditions;
+        
+		for (int i = 0; i < searchNameList.size(); i++) {
+            //TODO intercettare qui le colonne 'particolari' per ora TIPO e BLC
+            // if (searchNameList.geti).equals('BLC'){
+            //   concatenare i vari valori OR LIKE 'Bug' OR LIKE 'bUg' OR LIKE 'Bag' ....
+            // }else{
+                        // TODO : check FILT_AUX in auto-lib.jsp
+			conditions = (String)searchValueList.get(i);
+			sqlCondition += " AND LOWER( FILT_AUX." + searchNameList.get(i) + ") LIKE '" + conditions.toLowerCase() + "' ";
+            //}
+		}
+		
+		return sqlCondition;
+	}
 	public static String BASE64encode(String input) {
 	    String output = null;
 	    if (input == null)

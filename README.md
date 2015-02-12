@@ -36,3 +36,13 @@ TODO:
 - REST Server / Heroku deploy
     https://jersey.java.net/documentation/latest/deployment.html#deployment.servlet
     https://jersey.java.net/documentation/latest/getting-started.html#heroku-webapp
+
+- HADOOP
+    http://azure.microsoft.com/it-it/documentation/articles/hdinsight-hbase-build-java-maven/
+    http://hbase.apache.org/book.html#quickstart
+
+- Interactive GRAPH
+    http://www.gojs.net/latest/learn/index.html
+
+- Others
+    http://www.datamartist.com/

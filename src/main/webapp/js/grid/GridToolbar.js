@@ -72,7 +72,8 @@ GridToolBar =  function(property){
                         Ext.apply(ajaxParams, property);
                         
                         if ( _idFlusso == ID_FLUSSO_GENERIC ) {
-                                    ajaxParams.saveSessionFilter = "false"; // TODO serve ? se questo é true vengono sovrascitti i filtri in sessione
+                                    // TODO serve ? se questo é true vengono sovrascitti i filtri in sessione
+                                    ajaxParams.saveSessionFilter = "false"; 
                         }
                         /*********
                         if ( typeof (_bodyQuery ) !== "undefined" ){
@@ -203,15 +204,22 @@ GridToolBar =  function(property){
                   text:'Export to Excel',
                   iconCls:'icon-excel',
                   handler: function(){ 
-                        for (var p in property){
-                             Al.addHidden(uniqId , p, property[p]);
+                        for (var p in property)
+                        {
+                            /********
+                            if ( p.endWith SUBMIT_TESTO ){
+                               codifica testo 
+                               in auto-excel.jsp mettere la decodifica
+                            }
+                            *********/
+                            Al.addHidden(uniqId , p, property[p]);
                         }
                         var  hidden = getHiddenColumns(_cm); 
                         document.exportReport.hidden_columns.value = hidden;
                         //document.exportReport.idQuery.value = _idQuery;
                         document.exportReport.submit();
                       }
-                 });
+         });
         // Aggiungo il bottone update solo quando sto caricando una griglia 
         // fitrata
         if (typeof(_idFiltro) !== "undefined" ) 

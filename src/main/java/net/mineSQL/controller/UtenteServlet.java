@@ -1,7 +1,5 @@
 package net.mineSQL.controller;
 
-import net.mineSQL.util.MakeTableForQuery;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,6 +20,7 @@ import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 
+import net.mineSQL.connection.ConnectionManager;
 /**
  * Servlet che gestisce le richieste dalle pagine HTML/JSP.
  * Utilizza il pattern J2EE "Front Controller".
@@ -46,8 +45,9 @@ public class UtenteServlet extends HttpServlet {
             // Prendo il messaggio d'errore e lo loggo
             if (req.getSession().getAttribute("content")!=null)
                 message = req.getSession().getAttribute("content").toString();
-            log.info(" UtenteServlet frowarding to page : " + url + " with error: " + message );
-            log.info(" -----------------------------------------------------");
+            log.info(" -------------------------------------------------------");
+            log.info(" UtenteServlet FORWARD to page : " + url + " with error: " + message );
+            log.info(" -------------------------------------------------------");
 
             dispatcher = getServletContext().getRequestDispatcher(url); 
             dispatcher.forward(req, resp);
@@ -69,8 +69,7 @@ public class UtenteServlet extends HttpServlet {
         resp = response;
         req = request;
         
-        log.info(" ---------------> Defect Management <-----------------");
-        log.info(" UtenteServlet get first http request ");
+        log.info(" --------------->   MineSQL  HTTP Request <-----------------");
 		if(request.getSession().getAttribute("username")==null){
 			if (request.getParameter("username") != null) {
 			        username = request.getParameter("username");
@@ -88,9 +87,9 @@ public class UtenteServlet extends HttpServlet {
 		
 		//log.info("Post UtenteServlet: apro connessioni.");
 		//log.info("username: " + username); //DEBUG
-		Connection conUte = MakeTableForQuery.getConn(jdbcUser);
+		Connection conUte = getConn(jdbcUser);
 		Statement stUte;
-		Connection conDef = MakeTableForQuery.getConn(jdbcDefect);
+		Connection conDef = getConn(jdbcDefect);
 		Statement stDef;
 		request.getSession().setAttribute("username", username);
 		
@@ -470,7 +469,7 @@ public class UtenteServlet extends HttpServlet {
 
 	public static String getCampiUser(String user, int grant){
 		StringBuffer sbCampi = new StringBuffer();
-		Connection con = MakeTableForQuery.getConn("utenze");
+		Connection con = getConn("utenze");
 		boolean Esiste=false;
 		String nome="";
 		String cognome="";
@@ -557,7 +556,7 @@ public class UtenteServlet extends HttpServlet {
 	}
 	
 	public static String getComboUser(String user, int grant){
-		Connection con = MakeTableForQuery.getConn("utenze");
+		Connection con = getConn("utenze");
 		Statement st;
 		String disabled="";
 		if(grant<2){
@@ -607,7 +606,7 @@ public class UtenteServlet extends HttpServlet {
 	}
 	
 	public static String getComboGroup(String user, int grant){
-		Connection con = MakeTableForQuery.getConn("mineSQL");
+		Connection con = getConn("mineSQL");
 		Statement st;
 		StringBuffer sbCombo = new StringBuffer();
 		String idGruppo = "";
@@ -648,7 +647,7 @@ public class UtenteServlet extends HttpServlet {
 	}
 	
 	public static String getUserGroupCombo(String user, String currentGroup){
-		Connection con = MakeTableForQuery.getConn("mineSQL");
+		Connection con = getConn("mineSQL");
 		Statement st;
 		StringBuffer sbCombo = new StringBuffer();
 		try {
@@ -699,8 +698,19 @@ public class UtenteServlet extends HttpServlet {
 		return sbCombo.toString();
 	}	 
 
+	public static Connection getConn(String jdbc){
+        log.debug(" Connection getConn jdbc: " +jdbc);
+		Connection conn = null;
+		try {
+			conn = ConnectionManager.getConnection("host","db","user","password");
+		} catch (Exception e) {
+			log.error("", e);
+		}
+		return conn;
+	}
+
 	public static String getUserGroupJson(String user, String currentGroup){
-		Connection con = MakeTableForQuery.getConn("mineSQL");
+		Connection con = getConn("mineSQL");
 		Statement st;
         JSONArray values  = new JSONArray();
 

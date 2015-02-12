@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.mineSQL.controller.dao;
+package net.mineSQL.controller.ormlite;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 import java.util.List;
 import net.mineSQL.connection.ConnectionManager;
-import net.mineSQL.model.dao.Report;
+import net.mineSQL.connection.ORMLite;
+import net.mineSQL.ormlite.model.Report;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -29,13 +31,12 @@ public class Menu {
         JSONArray elenco_filtri = new JSONArray();
 
         Dao<Report, Integer> reportDao;
-        String path = "Z:/Finamore/";
-        String dbName = "minesql_report";
-        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
 
-        ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+        ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
         reportDao = DaoManager.createDao(connectionSource, Report.class);  
-
+    
+		TableUtils.createTableIfNotExists(connectionSource, Report.class);
+        
         List<Report> repos = reportDao.queryForAll();
         for (Report repo : repos) {
             //if ( isAutorized( rs.getString("IDRUOLO"), session.getAttribute("IDRUOLO").toString()  ) ) {

@@ -42,30 +42,21 @@ try {
     MineScript script = new MineScript();
     MineTable table = new MineTable(con, tableName);
 
-        // Se submit dalla FORM eseguo lo SCRIPT e successivamente eseguo lo SCRIPT_OUTPUT
-        if ( /* tableName.equals("msq_SCRIPT_T") && action.equals("dummy") */ action.equals("runScript") ){
-            /****************
-            log.debug(" tableName.equals(\"msq_SCRIPT_T\") && action.equals(\"dummy\")  idQuery: " + idQuery);
-            // Preparo la query con Paginazione
-            getQueryStatement(request, tableName, where);
+    // Se submit dalla FORM eseguo lo SCRIPT e successivamente eseguo lo SCRIPT_OUTPUT
+    if ( action.equals("runScript") ){
+        HashMap formParams = table.getSubmittedParams(request);
+        // testo e' la textarea di default
+        query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  
+        //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
+        execScript(con, query); 
 
-            log.debug("- - - - > MAR_OLD_QUERY: " + query ); 
-            query = script.mergeScriptParameters(table.getSubmittedParams(request), query); 
-            log.debug("- - - - > MAR_NEW_QUERY: " + query ); 
-            **********/
-            HashMap formParams = table.getSubmittedParams(request);
-            query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
-            query = "select * from TIESSEFIL.LVSPE00L WHERE LVDTSP BETWEEN 20141201  AND 20141218 AND  LVFLGX in ('N','P')";
-            //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
-            execScript(con, query); 
-
-            Date after = new Date();
-            long diff = after.getTime() - before.getTime();
-            
-            log.info(" Run script : " + query);	
-            log.info(" Execution time: " + diff+"ms");	
-            //griglia.put("Script", "Successfully finished in "+diff+"ms");
-        }
+        Date after = new Date();
+        long diff = after.getTime() - before.getTime();
+        
+        log.info(" Run script : " + query);	
+        log.info(" Execution time: " + diff+"ms");	
+        //griglia.put("Script", "Successfully finished in "+diff+"ms");
+    }
 
     // Ai successivi caricamenti della pagina, che sono quelli che partono
     // quando si ricarica solo la griglia, lo SCRIPT non viene piu eseguito ma
@@ -81,7 +72,10 @@ try {
         ResultSet rs = null;
         int rowCounter = 10;
 
-	if ( action.equals("runQuery") ){
+    log.debug(" MARK_EXCEL : action " + action); 
+
+	if ( action.equals("runQuery") )
+    {
             Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
             MineTable runQuery = new MineTable(conForsavedScript, "msq_SCRIPT_T"); 
 			log.debug(" MARK_runQuery query database:" +  databaseName +" tablename:" + tableName+" idQuery: ");
@@ -91,14 +85,18 @@ try {
 		log.debug(" MARK_runQuery 1 query: " +  query+ " params: " + formParams + " querySel: " + querySel);
 		query = script.mergeScriptParameters(formParams, query);  // testo e' la textarea di default
 		log.debug(" MARK_runQuery 2 query: " +  query+ " params: " + formParams + " querySel: " + querySel);
-	}else if ( action.equals("runDefaultScript") ){
+	}
+    else if ( action.equals("runDefaultScript") )
+    {
 			// Preparo la query con Paginazione
 			String db_table = databaseName+"."+tableName; 
 			query = "SELECT * FROM "+ db_table +" WHERE 1=1";
 			//getQueryStatement(request,tableName, where);
 			log.debug(" MARK_runDefaultScriptquery database:" +  databaseName +" tablename:" + tableName);
 			//TODO gestire la query a test libero, viene postata la variabuile query_body
-	} else if ( action.equals("runSavedScript") ){
+	} 
+    else if ( action.equals("runSavedScript") )
+    {
             Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
             MineTable savedScript = new MineTable(conForsavedScript, "msq_FILTRI_T"); 
 			log.debug(" MARK_runSavedScript 3 database:" +  databaseName +" tablename:" + tableName+" idQuery: ");

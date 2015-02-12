@@ -38,9 +38,22 @@ public class Log4jInit extends HttpServlet {
     log.warn("Test Livello WARNING");
     log.error("Test Livello ERROR");
     log.fatal("Test Livello FATAL");  
+
+    // Start Scheduler
+    ApplicationWatcher.startScheduler();
+
   }
 
   public
   void doGet(HttpServletRequest req, HttpServletResponse res) {
   }
+
+    @Override
+    public void destroy() {
+        ApplicationWatcher.stopScheduler();
+       
+        super.destroy(); 
+    }
+
+  
 }

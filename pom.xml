@@ -134,6 +134,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.1.6</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
@@ -188,16 +194,16 @@
     <build>
         <finalName>${project.name}-${project.version}</finalName>
         <plugins>
-            <!-- plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.0.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
-            <plugin>
+            <!-- plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
@@ -205,12 +211,14 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
 					<archive>
 						<manifest>
-                            <mainClass>net.mineSQL.tomcat.Main</mainClass>
+                            <mainClass>net.mineSQL.app.Main</mainClass>
 						</manifest>
 					</archive>
                     <finalName>${project.artifactId}-${project.version}-full</finalName>

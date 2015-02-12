@@ -31,20 +31,10 @@
         if (id.equals("") || action.equals("runDefaultScript")) {
             result = dmTable.getDefaultFieldSet();
         } else if (!id.equals("") && action.equals("runSavedScript")) {
-            /**
-             * ******** Prima di H2 Connection conForsavedScript =
-             * ConnectionManager.getConnection("localhost","mineSQL"); MineTable
-             * savedScript = new MineTable(conForsavedScript, "msq_FILTRI_T");
-             * String query = savedScript.select("DESCRIZIONE","ID = '"+id+"'");
-             * result = savedScript.getDefaultFieldSet(query);
-            ******************
-             */
+            // Carico il testo della query
             Dao<Report, Integer> reportDao;
-            String path = "Z:/Finamore/";
-            String dbName = "minesql_report";
-            String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
-
-            ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+           
+            ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
             reportDao = DaoManager.createDao(connectionSource, Report.class);
             String query = reportDao.queryForId(new Integer(id).intValue()).getDescrizione();
             result = dmTable.getDefaultFieldSet(query);
@@ -56,7 +46,6 @@
         } else {
             result = dmTable.getFieldSetFromField("PARAMETRI", "ID=" + id);
         }
-
         // Ricavo i metaData dei campi
         //result = dmTable.getFieldSetFromMetadata();
         log.debug("before dmTable.getFieldSetFromField result: " + result);
@@ -64,44 +53,38 @@
     {
         // Ricavo i metaData dei campi
         result = dmTable.getJsonReader().toString();
-    } else if (crud_operation.equals("read")) {
+    } 
+    else if (crud_operation.equals("read")) 
+    {
         result = dmTable.read(null, "ID = " + request.getParameter("ID"));
-    } else if (crud_operation.equals("create")) {
+    } 
+    else if (crud_operation.equals("create")) 
+    {
         // Recupero lo statement NON paginato (TODO) e completo di filtri
         String[] hiddenColumns = null;
-        if (request.getParameter("hidden_columns") != null) {
+        if (request.getParameter("hidden_columns") != null) 
+        {
             hiddenColumns = request.getParameter("hidden_columns").split(",");
         }
 
         String filter = Utilita.getFilterCondition(con, request, "", "", "");
-
-        //Connection conScript = ConnectionManager.getConnection("localhost","mineSQL");
-        //  MineTable scriptTable = new MineTable(conScript, "msq_FILTRI_T" );
-        // ---- MineTable runQuery= new MineTable(conScript,"msq_SCRIPT_T");
-        // ---- log.debug(" MARK_runQuery query database:" +  databaseName +" tablename:" + tableName+" idQuery: ");
-        // ---- query = runQuery.select("testo","ID = '"+idQuery+"'");
         HashMap formParams = dmTable.getSubmittedParams(request);
         MineScript script = new MineScript();
         // TODO non mi ricordo cazzo volevo fare? query = script.mergeScriptParameters(formParams, query);
-        String db_table = databaseName + "." + tableName;
+        //String db_table = databaseName + "." + tableName;
         // TODO: se SUBMIT_test contiene una query ??? non devo salvare quella di default--
-        query = "SELECT * FROM " + db_table + " WHERE 1=1";
-        log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
-        // ----- query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
+        //query = "SELECT * FROM " + db_table + " WHERE 1=1";
+        //log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
+        // testo e' la textarea di default
+        query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  
         if (filter.length() > 0) {
             query = "select FILT_AUX.* from (" + query + ") as FILT_AUX WHERE 1=1 " + filter;
         }
-        log.debug(" MARK - - - - FUNZA create query: " + query + " params: " + formParams + " querySel: " + querySel);
+        log.debug(" MARK FUNZA salava merged query: " + query + " params: " + formParams);
         // Inserimento nuova riga nella tabella // TODO Generalizzare entity
-        // int nextId = Utilita.nextId(con,"FILTRI");
-        // nuovoFiltro.put("IDFLUSSO", request.getParameter("IDFLUSSO") );
-        // Inserisco una nuova query
         // Oggetto
-        String path = "Z:/Finamore/";
-        String dbName = "minesql_report";
-        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
         Dao<Report, Integer> reportDao;
-        ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+        ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
         reportDao = DaoManager.createDao(connectionSource, Report.class);
 
         Report repo = new Report(request.getParameter("NOME"), request.getParameter("NOTE"));

@@ -32,19 +32,8 @@
                 || action.equals("runDefaultScript") || action.equals("runSavedScript") || action.equals("runScript")) {
 
             // Se submit dalla FORM eseguo lo SCRIPT e successivamente eseguo lo SCRIPT_OUTPUT
-            if (action.equals("runScript") || action.equals("saveScript")) {
-                /**
-                 * **************
-                 * log.debug(" tableName.equals(\"msq_SCRIPT_T\") &&
-                 * action.equals(\"dummy\") idQuery: " + idQuery); // Preparo la
-                 * query con Paginazione getQueryStatement(request, tableName,
-                 * where);
-                 *
-                 * log.debug("- - - - > MAR_OLD_QUERY: " + query ); query =
-                 * script.mergeScriptParameters(table.getSubmittedParams(request),
-                 * query); log.debug("- - - - > MAR_NEW_QUERY: " + query );
-                 * ********
-                 */
+            if (action.equals("runScript") || action.equals("saveScript")) 
+            {
                 HashMap formParams = table.getSubmittedParams(request);
                 query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
                 log.debug(" MARK_runScript query: " + query + " params: " + formParams + " querySel: " + querySel);
@@ -57,7 +46,8 @@
                 log.info(" Run script : " + query);
                 log.info(" Execution time: " + diff + "ms");
                 griglia.put("Script", "Successfully finished in " + diff + "ms");
-            } else if (action.equals("runQuery")) {
+            }
+            else if (action.equals("runQuery")) {
 
                 // quando si ricarica solo la griglia, lo SCRIPT non viene piu eseguito ma
                 // si eseguo solo SCRIPT_OUTPUT che ricarica i dati della griglia
@@ -97,11 +87,8 @@
                  * e i valori salvati nel DB insieme al testo 
                  */
                 Dao<Report, Integer> reportDao;
-                String path = "Z:/Finamore/";
-                String dbName = "minesql_report";
-                String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
-
-                ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+              
+                ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
                 reportDao = DaoManager.createDao(connectionSource, Report.class);
                 query = reportDao.queryForId(new Integer(idQuery).intValue()).getDescrizione();
                 log.debug(" MARK_runSavedScript database query:" + query);

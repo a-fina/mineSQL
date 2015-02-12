@@ -112,8 +112,14 @@ AutoGrid = function (/*targetDiv,*/ targetURL, ajaxParams, config) {
                 data: json.data
             });
         } else {
-            alert("MARK_AP_REPORT_OUT_T");
-            var myParams = {limit: 20, dir: 'ASC', data: true, meta: true, act: 'AP_REPORT_OUT_T'};
+           // alert("MARK_AP_REPORT_OUT_T");
+            var myParams = {
+                limit: 20, 
+                dir: 'ASC', 
+                data: true, 
+                meta: true, 
+                act: 'AP_REPORT_OUT_T'
+            };
             Ext.apply(myParams, this.params);
             dataStore = new Ext.data.JsonStore({
                 url: _url,
@@ -257,7 +263,7 @@ AutoGrid = function (/*targetDiv,*/ targetURL, ajaxParams, config) {
         mainPanel.add(waitingPanel);
         mainPanel.doLayout();
     
-        alert("MARK_ before ajax request in AutoGrid.js");
+      //  alert("MARK_ before ajax request in AutoGrid.js");
         Ext.Ajax.request({
             url: this.targetURL,
             success: function (response) {

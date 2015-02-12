@@ -22,7 +22,7 @@
 <%@page import="com.j256.ormlite.support.ConnectionSource"%>
 <%@page import="com.j256.ormlite.jdbc.JdbcConnectionSource"%>
 <%@page import="com.j256.ormlite.dao.Dao"%>
-<%@page import="net.mineSQL.model.dao.Report"%>
+<%@page import="net.mineSQL.ormlite.model.Report"%>
 
 <%@ include file="../config.jsp" %>
 <%!

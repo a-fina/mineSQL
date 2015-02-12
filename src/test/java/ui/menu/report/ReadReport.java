@@ -15,7 +15,7 @@ import java.io.File;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-import net.mineSQL.model.dao.Report;
+import net.mineSQL.ormlite.model.Report;
 import org.h2.store.fs.FileUtils;
 import org.h2.tools.Server;
 import org.junit.After;

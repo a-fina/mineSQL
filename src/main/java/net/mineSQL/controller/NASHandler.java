@@ -2,7 +2,6 @@ package net.mineSQL.controller;
 
 import net.mineSQL.model.NASFile;
 import net.mineSQL.util.ApplicationWatcher;
-import net.mineSQL.util.Constants;
 import net.mineSQL.util.FileComparator;
 
 import java.io.File;
@@ -180,7 +179,7 @@ public class NASHandler {
     public static String getSubFolder(String idflusso) {
 	String folder = "";
 
-	if (idflusso.equals(Constants.FLUSSO_COMPENDING))
+	//if (idflusso.equals(Constants.FLUSSO_COMPENDING))
 	    folder = ApplicationWatcher.NASDir;
 
 

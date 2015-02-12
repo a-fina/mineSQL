@@ -11,7 +11,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
-import net.mineSQL.model.dao.Report;
+import net.mineSQL.ormlite.model.Report;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
