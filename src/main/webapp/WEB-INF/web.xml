@@ -34,8 +34,8 @@
 
     <!-- Servlet Logger caricata all'avvio di resin -->
     <servlet>
-    <servlet-name>log4j-init</servlet-name>
-    <servlet-class>net.mineSQL.util.Log4jInit</servlet-class>
+    <servlet-name>mineSQL-boot</servlet-name>
+    <servlet-class>net.mineSQL.app.Boot</servlet-class>
     <init-param>
       <param-name>log4j-init-file</param-name>
       <param-value>WEB-INF/log.properties</param-value>

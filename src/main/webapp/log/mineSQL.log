@@ -11626,3 +11626,104 @@ SELECT * FROM `REPORT`  [42102-181]
 2015-02-12 17:56:15,747  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: F5A9634D828AB3F2CEB922AFB2933D1C
 2015-02-12 17:56:15,747  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {F5A9634D828AB3F2CEB922AFB2933D1C={creationTime=12-feb-15 17:56:15}}
 2015-02-12 17:56:15,749  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: F5A9634D828AB3F2CEB922AFB2933D1C,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-13 14:24:30,094 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-13 14:24:30,097  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-13 14:24:30,097  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-13 14:24:30,097 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-13 14:24:30,097 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-13 14:24:30,214  INFO [localhost-startStop-1] (ApplicationWatcher.java:73) - Scheduler START
+2015-02-13 16:29:44,920 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-13 16:29:44,922  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-13 16:29:44,922  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-13 16:29:44,923 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-13 16:29:44,923 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-13 16:29:45,033  INFO [localhost-startStop-1] (ApplicationWatcher.java:98) - Scheduler START
+2015-02-13 16:29:45,223  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  someProp = null
+2015-02-13 16:30:52,743 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-13 16:30:52,746  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-13 16:30:52,746  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-13 16:30:52,746 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-13 16:30:52,746 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-13 16:30:52,833  INFO [localhost-startStop-1] (ApplicationWatcher.java:98) - Scheduler START
+2015-02-13 16:30:52,861  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  someProp = null
+2015-02-13 16:30:53,453 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:30:53,454  INFO [http-bio-8080-exec-3] (SessionWatcher.java:32) -  -----------> sessionCreated: 6D8965DE97B98F9801445ADA1669B65D date: 13-feb-15 16:30:53
+2015-02-13 16:30:53,454 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:30:53,454  INFO [http-bio-8080-exec-3] (SessionWatcher.java:57) -  -----------> id: 6D8965DE97B98F9801445ADA1669B65D
+2015-02-13 16:30:53,455  INFO [http-bio-8080-exec-3] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-13 16:30:53,460 DEBUG [http-bio-8080-exec-3] (index_jsp.java:134) -  session.getId(): 6D8965DE97B98F9801445ADA1669B65D
+2015-02-13 16:30:53,460 DEBUG [http-bio-8080-exec-3] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-13 16:30:53,460 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:30:53,460  INFO [http-bio-8080-exec-3] (SessionWatcher.java:57) -  -----------> id: 6D8965DE97B98F9801445ADA1669B65D
+2015-02-13 16:30:53,461  INFO [http-bio-8080-exec-3] (SessionWatcher.java:58) -  -----------> sessions: {6D8965DE97B98F9801445ADA1669B65D={creationTime=13-feb-15 16:30:53}}
+2015-02-13 16:30:53,461  INFO [http-bio-8080-exec-3] (SessionWatcher.java:61) -  -----------> addSession: 6D8965DE97B98F9801445ADA1669B65D,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-13 16:31:32,830  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  someProp = null
+2015-02-13 16:32:12,829  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  someProp = null
+2015-02-13 16:32:52,829  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  someProp = null
+2015-02-13 16:33:28,926 DEBUG [http-bio-8080-exec-5] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:33:28,927  INFO [http-bio-8080-exec-5] (SessionWatcher.java:32) -  -----------> sessionCreated: DE59DA3C5FBC3E624DBDC282FEDD1A0C date: 13-feb-15 16:33:28
+2015-02-13 16:33:28,927 DEBUG [http-bio-8080-exec-5] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:33:28,927  INFO [http-bio-8080-exec-5] (SessionWatcher.java:57) -  -----------> id: DE59DA3C5FBC3E624DBDC282FEDD1A0C
+2015-02-13 16:33:28,928  INFO [http-bio-8080-exec-5] (SessionWatcher.java:58) -  -----------> sessions: {6D8965DE97B98F9801445ADA1669B65D={creationTime=13-feb-15 16:30:53, remoteAddress=0:0:0:0:0:0:0:1}}
+2015-02-13 16:33:28,930 DEBUG [http-bio-8080-exec-5] (index_jsp.java:134) -  session.getId(): DE59DA3C5FBC3E624DBDC282FEDD1A0C
+2015-02-13 16:33:28,931 DEBUG [http-bio-8080-exec-5] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-13 16:33:28,931 DEBUG [http-bio-8080-exec-5] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:33:28,931  INFO [http-bio-8080-exec-5] (SessionWatcher.java:57) -  -----------> id: DE59DA3C5FBC3E624DBDC282FEDD1A0C
+2015-02-13 16:33:28,932  INFO [http-bio-8080-exec-5] (SessionWatcher.java:58) -  -----------> sessions: {6D8965DE97B98F9801445ADA1669B65D={creationTime=13-feb-15 16:30:53, remoteAddress=0:0:0:0:0:0:0:1}, DE59DA3C5FBC3E624DBDC282FEDD1A0C={creationTime=13-feb-15 16:33:28}}
+2015-02-13 16:33:28,932  INFO [http-bio-8080-exec-5] (SessionWatcher.java:61) -  -----------> addSession: DE59DA3C5FBC3E624DBDC282FEDD1A0C,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-13 16:33:32,829  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  someProp = null
+2015-02-13 16:34:12,829  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  someProp = null
+2015-02-13 16:34:52,829  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  someProp = null
+2015-02-13 16:35:32,829  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  someProp = null
+2015-02-13 16:36:12,829  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  someProp = null
+2015-02-13 16:38:04,497 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-13 16:38:04,500  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-13 16:38:04,500  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-13 16:38:04,500 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-13 16:38:04,501 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-13 16:38:04,655  INFO [localhost-startStop-1] (ApplicationWatcher.java:98) - Scheduler START
+2015-02-13 16:38:04,763  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-13 16:38:05,420 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:38:05,421  INFO [http-bio-8080-exec-1] (SessionWatcher.java:32) -  -----------> sessionCreated: AB3ADA68C2293FB47438F8B1F58539EE date: 13-feb-15 16:38:05
+2015-02-13 16:38:05,421 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:38:05,422  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: AB3ADA68C2293FB47438F8B1F58539EE
+2015-02-13 16:38:05,422  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-13 16:38:05,428 DEBUG [http-bio-8080-exec-1] (index_jsp.java:134) -  session.getId(): AB3ADA68C2293FB47438F8B1F58539EE
+2015-02-13 16:38:05,428 DEBUG [http-bio-8080-exec-1] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-13 16:38:05,428 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:38:05,429  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: AB3ADA68C2293FB47438F8B1F58539EE
+2015-02-13 16:38:05,436  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {AB3ADA68C2293FB47438F8B1F58539EE={creationTime=13-feb-15 16:38:05}}
+2015-02-13 16:38:05,436  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: AB3ADA68C2293FB47438F8B1F58539EE,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-13 16:38:44,652  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-13 16:39:24,652  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-13 16:40:04,652  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-13 16:40:44,652  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-13 16:41:24,652  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-13 16:42:04,651  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-13 16:42:44,652  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
+2015-02-13 16:43:24,651  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  eat = apple
+2015-02-13 16:44:07,883 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-13 16:44:07,885  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-13 16:44:07,886  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-13 16:44:07,886 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-13 16:44:07,886 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-13 16:44:07,971  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-13 16:44:07,984  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-13 16:44:08,566 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:44:08,567  INFO [http-bio-8080-exec-1] (SessionWatcher.java:32) -  -----------> sessionCreated: D3827411BF8427E332429C4A405152C4 date: 13-feb-15 16:44:08
+2015-02-13 16:44:08,567 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:44:08,567  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: D3827411BF8427E332429C4A405152C4
+2015-02-13 16:44:08,567  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-13 16:44:08,572 DEBUG [http-bio-8080-exec-1] (index_jsp.java:134) -  session.getId(): D3827411BF8427E332429C4A405152C4
+2015-02-13 16:44:08,573 DEBUG [http-bio-8080-exec-1] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-13 16:44:08,573 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-13 16:44:08,573  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: D3827411BF8427E332429C4A405152C4
+2015-02-13 16:44:08,575  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {D3827411BF8427E332429C4A405152C4={creationTime=13-feb-15 16:44:08}}
+2015-02-13 16:44:08,575  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: D3827411BF8427E332429C4A405152C4,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-13 16:44:47,977  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-13 16:45:27,969  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-13 16:46:07,969  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-13 16:46:47,969  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-13 16:47:27,970  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-13 16:48:07,969  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-13 16:48:47,969  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
