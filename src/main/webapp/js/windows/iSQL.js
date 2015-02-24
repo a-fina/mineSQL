@@ -28,7 +28,7 @@
  */
 iSQL = function(config){
 
-    var ver = "0.9";
+    var ver = "0.9.7";
     var contatoreWindows = 0;
 
     var interactiveSQL = undefined;

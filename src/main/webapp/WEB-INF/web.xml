@@ -33,7 +33,7 @@
     </context-param>
 
     <!-- Servlet Logger caricata all'avvio di resin -->
-    <servlet>
+    <!-- servlet>
         <servlet-name>mineSQL-boot</servlet-name>
         <servlet-class>net.mineSQL.app.Boot</servlet-class>
         <init-param>
@@ -45,7 +45,7 @@
             <param-value>log/mineSQL.log</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-    </servlet>
+    </servlet -->
     
     <!-- Servlet Web Service REST JAX-RS Jersey -->
     <servlet>
@@ -56,6 +56,10 @@
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
             <param-value>net.mineSQL.ws</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

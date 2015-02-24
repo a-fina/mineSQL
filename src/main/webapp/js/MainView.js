@@ -478,9 +478,21 @@ Ext.onReady(function(){
                     handler: function(){
 					    var w = new Ext.IframeWindow({
 						width:900,
-						height:780,
+						height:480,
 						title: "D3 Data-Driven Document",
 						src: "http://mbostock.github.io/d3/talk/20111018/treemap.html"
+					 })
+					 w.show();
+                    }
+                },{
+                    text: "Angular JS - RockScissorPaper",
+                    id: 'map-tree',
+                    handler: function(){
+					    var w = new Ext.IframeWindow({
+						width:900,
+						height:480,
+						title: "Demo App - Angular JS",
+						src: "/ng-app/"
 					 })
 					 w.show();
                     }

@@ -27,7 +27,7 @@
  */
 ScriptSQL = function(){
 
-    var ver = "0.9";
+    var ver = "0.9.7";
     var contatoreWindows = 0;
     var queryBodyID = 'queryBody'+contatoreWindows;
     var queryPanelID = 'queryPanel'+contatoreWindows;

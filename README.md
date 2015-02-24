@@ -43,6 +43,7 @@ TODO:
 
 - Interactive GRAPH
     http://www.gojs.net/latest/learn/index.html
+    http://sigmajs.org/: more closer to node stucture ( JSON )
 
 - Others
     http://www.datamartist.com/

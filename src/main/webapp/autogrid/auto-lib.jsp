@@ -11,7 +11,6 @@
 
 <%@ page import="net.mineSQL.util.*" %>
 <%@ page import="net.mineSQL.connection.*" %>
-<%@ page import="net.mineSQL.util.Constants" %>
 <%@ page import="net.mineSQL.util.Utilita" %>
 <%@ page import="net.mineSQL.controller.MineScript" %>
 <%@ page import="net.mineSQL.controller.MineTable" %>

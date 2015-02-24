@@ -1,0 +1,517 @@
+2015-02-17 18:18:28,016 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-17 18:18:28,020  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-17 18:18:28,020  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-17 18:18:28,020 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-17 18:18:28,020 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-17 18:18:28,117  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-17 18:18:28,260  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:18:32,348 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:18:32,350  INFO [http-bio-8080-exec-1] (SessionWatcher.java:32) -  -----------> sessionCreated: 1B00296A5586DC942C8166C40A809D7C date: 17-feb-15 18:18:32
+2015-02-17 18:18:32,350 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:18:32,350  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: 1B00296A5586DC942C8166C40A809D7C
+2015-02-17 18:18:32,351  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-17 18:18:32,356 DEBUG [http-bio-8080-exec-1] (index_jsp.java:134) -  session.getId(): 1B00296A5586DC942C8166C40A809D7C
+2015-02-17 18:18:32,357 DEBUG [http-bio-8080-exec-1] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:18:32,357 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:18:32,357  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: 1B00296A5586DC942C8166C40A809D7C
+2015-02-17 18:18:32,360  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {1B00296A5586DC942C8166C40A809D7C={creationTime=17-feb-15 18:18:32}}
+2015-02-17 18:18:32,360  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: 1B00296A5586DC942C8166C40A809D7C,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:19:08,116  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:19:48,114  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 18:20:28,113  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 18:21:08,127  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 18:21:43,679 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-17 18:21:43,679  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-17 18:21:43,679  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-17 18:21:43,679 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-17 18:21:43,679 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-17 18:21:43,913  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-17 18:21:43,944  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:21:45,426 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:21:45,426  INFO [http-bio-8080-exec-1] (SessionWatcher.java:32) -  -----------> sessionCreated: A2177C219DC4A99D855FA401A02BF76A date: 17-feb-15 18:21:45
+2015-02-17 18:21:45,426 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:21:45,426  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: A2177C219DC4A99D855FA401A02BF76A
+2015-02-17 18:21:45,426  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-17 18:21:45,426 DEBUG [http-bio-8080-exec-1] (index_jsp.java:134) -  session.getId(): A2177C219DC4A99D855FA401A02BF76A
+2015-02-17 18:21:45,426 DEBUG [http-bio-8080-exec-1] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:21:45,426 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:21:45,426  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: A2177C219DC4A99D855FA401A02BF76A
+2015-02-17 18:21:45,426  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {A2177C219DC4A99D855FA401A02BF76A={creationTime=17-feb-15 18:21:45}}
+2015-02-17 18:21:45,426  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: A2177C219DC4A99D855FA401A02BF76A,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:22:05,770 DEBUG [http-bio-8080-exec-4] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:22:05,771  INFO [http-bio-8080-exec-4] (SessionWatcher.java:32) -  -----------> sessionCreated: 2C3431D4B2C09E0D7DB428A3CEFD1BD5 date: 17-feb-15 18:22:05
+2015-02-17 18:22:05,771 DEBUG [http-bio-8080-exec-4] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:22:05,771  INFO [http-bio-8080-exec-4] (SessionWatcher.java:57) -  -----------> id: 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:22:05,771  INFO [http-bio-8080-exec-4] (SessionWatcher.java:58) -  -----------> sessions: {A2177C219DC4A99D855FA401A02BF76A={creationTime=17-feb-15 18:21:45, remoteAddress=0:0:0:0:0:0:0:1}}
+2015-02-17 18:22:05,772 DEBUG [http-bio-8080-exec-4] (index_jsp.java:134) -  session.getId(): 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:22:05,774 DEBUG [http-bio-8080-exec-4] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:22:05,774 DEBUG [http-bio-8080-exec-4] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:22:05,774  INFO [http-bio-8080-exec-4] (SessionWatcher.java:57) -  -----------> id: 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:22:05,774  INFO [http-bio-8080-exec-4] (SessionWatcher.java:58) -  -----------> sessions: {A2177C219DC4A99D855FA401A02BF76A={creationTime=17-feb-15 18:21:45, remoteAddress=0:0:0:0:0:0:0:1}, 2C3431D4B2C09E0D7DB428A3CEFD1BD5={creationTime=17-feb-15 18:22:05}}
+2015-02-17 18:22:05,775  INFO [http-bio-8080-exec-4] (SessionWatcher.java:61) -  -----------> addSession: 2C3431D4B2C09E0D7DB428A3CEFD1BD5,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:22:23,897  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:22:36,341 DEBUG [http-bio-8080-exec-8] (index_jsp.java:134) -  session.getId(): 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:22:36,341 DEBUG [http-bio-8080-exec-8] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:22:36,341 DEBUG [http-bio-8080-exec-8] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:22:36,342  INFO [http-bio-8080-exec-8] (SessionWatcher.java:57) -  -----------> id: 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:22:36,342  INFO [http-bio-8080-exec-8] (SessionWatcher.java:58) -  -----------> sessions: {A2177C219DC4A99D855FA401A02BF76A={creationTime=17-feb-15 18:21:45, remoteAddress=0:0:0:0:0:0:0:1}, 2C3431D4B2C09E0D7DB428A3CEFD1BD5={creationTime=17-feb-15 18:22:05, remoteAddress=0:0:0:0:0:0:0:1}}
+2015-02-17 18:22:36,342  INFO [http-bio-8080-exec-8] (SessionWatcher.java:61) -  -----------> addSession: 2C3431D4B2C09E0D7DB428A3CEFD1BD5,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:23:03,897  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 18:23:43,897  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 18:24:23,897  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 18:24:59,073 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:878) -  Creating menu databases loop host:  192.168.10.243
+2015-02-17 18:24:59,073 DEBUG [http-bio-8080-exec-24] (ConnectionManager.java:107) - Creating new Connection Map
+2015-02-17 18:24:59,073 DEBUG [http-bio-8080-exec-24] (ConnectionManager.java:111) - Opened connection DEBUG: {}
+2015-02-17 18:24:59,073 DEBUG [http-bio-8080-exec-24] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:24:59,369 DEBUG [http-bio-8080-exec-24] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:24:59,369 DEBUG [http-bio-8080-exec-24] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:24:59,634 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:539) - Database DB2 menu: select TABLE_SCHEM as SCHEMA from SYSIBM.SQLSCHEMAS where TABLE_SCHEM like 'SINERGICAD'
+2015-02-17 18:24:59,790 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:554) -  row: CRSR0001
+2015-02-17 18:24:59,790 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:587) -  currentDB 1: SINERGICAD
+2015-02-17 18:24:59,884 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:593) -  currentDB 2: SINERGICAD
+2015-02-17 18:25:01,756 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:621) -  currentDB 3: SINERGICAD
+2015-02-17 18:25:01,772 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:886) -  menu databases loop end
+2015-02-17 18:25:01,818 DEBUG [http-bio-8080-exec-24] (databases_jsp.java:897) - output printed
+2015-02-17 18:25:03,909  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-17 18:25:13,191 DEBUG [http-bio-8080-exec-15] (index_jsp.java:134) -  session.getId(): 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:25:13,191 DEBUG [http-bio-8080-exec-15] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:25:13,191 DEBUG [http-bio-8080-exec-15] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:25:13,191  INFO [http-bio-8080-exec-15] (SessionWatcher.java:57) -  -----------> id: 2C3431D4B2C09E0D7DB428A3CEFD1BD5
+2015-02-17 18:25:13,191  INFO [http-bio-8080-exec-15] (SessionWatcher.java:58) -  -----------> sessions: {A2177C219DC4A99D855FA401A02BF76A={creationTime=17-feb-15 18:21:45, remoteAddress=0:0:0:0:0:0:0:1}, 2C3431D4B2C09E0D7DB428A3CEFD1BD5={creationTime=17-feb-15 18:22:05, remoteAddress=0:0:0:0:0:0:0:1}}
+2015-02-17 18:25:13,191  INFO [http-bio-8080-exec-15] (SessionWatcher.java:61) -  -----------> addSession: 2C3431D4B2C09E0D7DB428A3CEFD1BD5,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:25:17,091 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:878) -  Creating menu databases loop host:  192.168.10.243
+2015-02-17 18:25:17,091 DEBUG [http-bio-8080-exec-13] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:25:17,091 DEBUG [http-bio-8080-exec-13] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:25:17,106 DEBUG [http-bio-8080-exec-13] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:25:17,106 DEBUG [http-bio-8080-exec-13] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-13_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:25:17,309 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:539) - Database DB2 menu: select TABLE_SCHEM as SCHEMA from SYSIBM.SQLSCHEMAS where TABLE_SCHEM like 'SINERGICAD'
+2015-02-17 18:25:17,387 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:554) -  row: CRSR0001
+2015-02-17 18:25:17,387 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:587) -  currentDB 1: SINERGICAD
+2015-02-17 18:25:17,418 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:593) -  currentDB 2: SINERGICAD
+2015-02-17 18:25:18,105 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:621) -  currentDB 3: SINERGICAD
+2015-02-17 18:25:18,105 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:886) -  menu databases loop end
+2015-02-17 18:25:18,152 DEBUG [http-bio-8080-exec-13] (databases_jsp.java:897) - output printed
+2015-02-17 18:25:43,907  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-17 18:26:23,906  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
+2015-02-17 18:26:28,508 DEBUG [http-bio-8080-exec-47] (auto_002dtable_jsp.java:90) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:26:28,508 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:85) - K: http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: false
+2015-02-17 18:26:28,508 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:85) - K: http-bio-8080-exec-13_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:26:28,508 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-13_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:26:28,508 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-13_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:26:28,508 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-13_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:26:28,523 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:26:28,523 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:26:28,554 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:26:28,554 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:26:28,554 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:26:28,554 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-13_192.168.10.243_
+2015-02-17 18:26:28,554  INFO [http-bio-8080-exec-47] (auto_002dtable_jsp.java:476) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:26:28,554 DEBUG [http-bio-8080-exec-47] (MineTable.java:341) - getDefaultFieldSet
+2015-02-17 18:26:28,586 DEBUG [http-bio-8080-exec-47] (MineTable.java:443) - getFieldsetItem
+2015-02-17 18:26:28,586 DEBUG [http-bio-8080-exec-47] (MineTable.java:241) - getJsonReader
+2015-02-17 18:26:28,586  INFO [http-bio-8080-exec-47] (MineTable.java:222) -  _read MARK_LIMIT Read SELECT * FROM AFSTD0SF WHERE 1=1 FETCH FIRST 1 ROW ONLY
+2015-02-17 18:26:29,085 DEBUG [http-bio-8080-exec-47] (auto_002dtable_jsp.java:518) - before dmTable.getFieldSetFromField result: {"items":{"title":"Filter Information","xtype":"fieldset","autoHeight":"true","defaultType":"textfield","defaults":{"width":700},"items":[{"xtype":"textarea","fieldLabel":"testo","name":"57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo","id":"57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo"}]},"reader":{"root":"row","totalProperty":"totalCount","fields":[{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFNRFT"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDTFT"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDTSP"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFFSPE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFASPE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFNSPE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFRIFM"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDEST"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFLOCD"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFPROV"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFCOLL"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFPESO"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFQTAF"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFIMPF"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFVOCE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFMITT"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFINDI"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFLOCM"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFPRMI"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDATA"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFORA"}]}}
+2015-02-17 18:26:29,085 DEBUG [http-bio-8080-exec-47] (auto_002dtable_jsp.java:609) - final result: {"items":{"title":"Filter Information","xtype":"fieldset","autoHeight":"true","defaultType":"textfield","defaults":{"width":700},"items":[{"xtype":"textarea","fieldLabel":"testo","name":"57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo","id":"57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo"}]},"reader":{"root":"row","totalProperty":"totalCount","fields":[{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFNRFT"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDTFT"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDTSP"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFFSPE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFASPE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFNSPE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFRIFM"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDEST"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFLOCD"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFPROV"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFCOLL"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFPESO"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFQTAF"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFIMPF"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFVOCE"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFMITT"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFINDI"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFLOCM"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFPRMI"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFDATA"},{"name":"81c2b806-59bb-465c-94f7-e548dffbe5f5SUBMIT_AFORA"}]}}
+2015-02-17 18:26:43,827 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:26:43,827 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:85) - K: http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:26:43,920 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:26:43,920 DEBUG [http-bio-8080-exec-47] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-47_192.168.10.243_
+2015-02-17 18:26:43,920  INFO [http-bio-8080-exec-47] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:26:43,936 DEBUG [http-bio-8080-exec-47] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:26:43,936  INFO [http-bio-8080-exec-47] (Utilita.java:242) - 0: 
+2015-02-17 18:26:43,936 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runDefaultScript
+2015-02-17 18:26:43,936 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:545) -  MARK_runDefaultScriptquery database:SINERGICAD tablename:AFSTD0SF
+2015-02-17 18:26:43,936  INFO [http-bio-8080-exec-47] (auto_002djson_jsp.java:579) - 3.1 - - - ->getQueryStatement MARK_FILTER query reset filter: SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1
+2015-02-17 18:26:43,936 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:131) -  getRowsNumber before executed query: SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 Con: S06EED9R
+2015-02-17 18:26:43,936 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:176) -  before executed query: select count(*) tot from (SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1) as counteggio Con: S06EED9R
+2015-02-17 18:26:43,983  INFO [http-bio-8080-exec-47] (auto_002djson_jsp.java:180) -  after executed query: select count(*) tot from (SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1) as counteggio
+2015-02-17 18:26:44,388 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:227) -  getPaginationDB2 sql: select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=10 and NUM >0 
+2015-02-17 18:26:44,388 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:609) - 4.2 query paginata MARK_FILTER : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=10 and NUM >0 
+2015-02-17 18:26:44,388 DEBUG [http-bio-8080-exec-47] (auto_002djson_jsp.java:612) - select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=10 and NUM >0 
+2015-02-17 18:26:44,872  INFO [http-bio-8080-exec-47] (auto_002djson_jsp.java:621) -  Run report query : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=10 and NUM >0 
+2015-02-17 18:26:44,872  INFO [http-bio-8080-exec-47] (auto_002djson_jsp.java:622) -  Execution time: 936ms
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-47_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:26:45,168 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-47_192.168.10.243_
+2015-02-17 18:26:45,215  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:26:45,215  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runDefaultScript
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:545) -  MARK_runDefaultScriptquery database:SINERGICAD tablename:AFSTD0SF
+2015-02-17 18:26:45,215  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:579) - 3.1 - - - ->getQueryStatement MARK_FILTER query reset filter: SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:131) -  getRowsNumber before executed query: SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 Con: S06EED9R
+2015-02-17 18:26:45,215 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:176) -  before executed query: select count(*) tot from (SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1) as counteggio Con: S06EED9R
+2015-02-17 18:26:45,402  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:180) -  after executed query: select count(*) tot from (SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1) as counteggio
+2015-02-17 18:26:45,839 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:227) -  getPaginationDB2 sql: select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:26:45,839 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:609) - 4.2 query paginata MARK_FILTER : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:26:45,839 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:612) - select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:26:46,229  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:621) -  Run report query : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( SELECT * FROM SINERGICAD.AFSTD0SF WHERE 1=1 ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:26:46,229  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:622) -  Execution time: 1014ms
+2015-02-17 18:27:03,904  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  eat = apple
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:12,702 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-44_192.168.10.243_
+2015-02-17 18:27:12,734  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:27:12,734  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runScript
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : column -> true
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : meta -> true
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : action -> runScript
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : idQuery -> 1
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : tableName -> AFSTD0SF
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : databaseName -> SINERGICAD
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hostName -> 192.168.10.243
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : target -> loadAutoform-fd52f858-d30a-1356-b98e-53a3545b9be1
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : 57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo -> select * from SINERGICAD.ORCDCPT0F
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (MineTable.java:72) - Table: AFSTD0SF getSubmittedParams: {testo=select * from SINERGICAD.ORCDCPT0F}
+2015-02-17 18:27:12,734 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:508) -  MARK_runScript query: select * from SINERGICAD.ORCDCPT0F params: {testo=select * from SINERGICAD.ORCDCPT0F} querySel: null
+2015-02-17 18:27:12,921 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:688) - State  : 42704
+2015-02-17 18:27:12,921 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:689) - Message: [SQL0204] ORCDCPT0F in SINERGICAD di tipo *FILE non trovato.
+2015-02-17 18:27:12,921 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:690) - Error  : -204
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:31,922 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-44_192.168.10.243_
+2015-02-17 18:27:31,953  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:27:31,953  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runScript
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : column -> true
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : meta -> true
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : action -> runScript
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : idQuery -> 1
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : tableName -> AFSTD0SF
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : databaseName -> SINERGICAD
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hostName -> 192.168.10.243
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : target -> loadAutoform-fd52f858-d30a-1356-b98e-53a3545b9be1
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : 57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo -> select * from SINERGICAD.ORCDCPT0F
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (MineTable.java:72) - Table: AFSTD0SF getSubmittedParams: {testo=select * from SINERGICAD.ORCDCPT0F}
+2015-02-17 18:27:31,953 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:508) -  MARK_runScript query: select * from SINERGICAD.ORCDCPT0F params: {testo=select * from SINERGICAD.ORCDCPT0F} querySel: null
+2015-02-17 18:27:32,187 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:688) - State  : 42704
+2015-02-17 18:27:32,187 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:689) - Message: [SQL0204] ORCDCPT0F in SINERGICAD di tipo *FILE non trovato.
+2015-02-17 18:27:32,187 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:690) - Error  : -204
+2015-02-17 18:27:43,902  INFO [DefaultQuartzScheduler_Worker-10] (StivJob.java:32) -  eat = apple
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:45,806 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-44_192.168.10.243_
+2015-02-17 18:27:45,821  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:27:45,821  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runScript
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : column -> true
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : meta -> true
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : action -> runScript
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : idQuery -> 1
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : tableName -> AFSTD0SF
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : databaseName -> SINERGICAD
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hostName -> 192.168.10.243
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : target -> loadAutoform-fd52f858-d30a-1356-b98e-53a3545b9be1
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : 57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo -> select * from SINERGICAD.ORDCDPT0F
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (MineTable.java:72) - Table: AFSTD0SF getSubmittedParams: {testo=select * from SINERGICAD.ORDCDPT0F}
+2015-02-17 18:27:45,821 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:508) -  MARK_runScript query: select * from SINERGICAD.ORDCDPT0F params: {testo=select * from SINERGICAD.ORDCDPT0F} querySel: null
+2015-02-17 18:27:46,024 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:688) - State  : 42704
+2015-02-17 18:27:46,024 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:689) - Message: [SQL0204] ORDCDPT0F in SINERGICAD di tipo *FILE non trovato.
+2015-02-17 18:27:46,024 ERROR [http-bio-8080-exec-44] (auto_002djson_jsp.java:690) - Error  : -204
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:56,663 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-44_192.168.10.243_
+2015-02-17 18:27:56,679  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:27:56,679  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runScript
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : column -> true
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : meta -> true
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : action -> runScript
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : idQuery -> 1
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : tableName -> AFSTD0SF
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : databaseName -> SINERGICAD
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hostName -> 192.168.10.243
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : target -> loadAutoform-fd52f858-d30a-1356-b98e-53a3545b9be1
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : 57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo -> select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (MineTable.java:72) - Table: AFSTD0SF getSubmittedParams: {testo=select * from SINERGICAD.ORCDPT0F}
+2015-02-17 18:27:56,679 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:508) -  MARK_runScript query: select * from SINERGICAD.ORCDPT0F params: {testo=select * from SINERGICAD.ORCDPT0F} querySel: null
+2015-02-17 18:27:56,928  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:515) -  Run script : select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:27:56,928  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:516) -  Execution time: 249ms
+2015-02-17 18:27:56,928  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:579) - 3.1 - - - ->getQueryStatement MARK_FILTER query reset filter: select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:27:56,928 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:131) -  getRowsNumber before executed query: select * from SINERGICAD.ORCDPT0F Con: S06EED9R
+2015-02-17 18:27:56,928 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:176) -  before executed query: select count(*) tot from (select * from SINERGICAD.ORCDPT0F) as counteggio Con: S06EED9R
+2015-02-17 18:27:56,928  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:180) -  after executed query: select count(*) tot from (select * from SINERGICAD.ORCDPT0F) as counteggio
+2015-02-17 18:27:56,928 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:227) -  getPaginationDB2 sql: select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:56,928 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:609) - 4.2 query paginata MARK_FILTER : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:56,928 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:612) - select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:56,960  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:621) -  Run report query : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:56,960  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:622) -  Execution time: 281ms
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:27:57,178 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-44_192.168.10.243_
+2015-02-17 18:27:57,194  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:486) - Connected to: 192.168.10.243:SINERGICAD
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:27:57,194  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:499) -  MARK_ENTRY database:SINERGICAD tablename:AFSTD0SF action: runScript
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : start -> 0
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : limit -> 20
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : dir -> ASC
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : data -> true
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : meta -> true
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : act -> AP_REPORT_OUT_T
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : action -> runScript
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : idQuery -> 1
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : tableName -> AFSTD0SF
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : databaseName -> SINERGICAD
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hostName -> 192.168.10.243
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : target -> loadAutoform-fd52f858-d30a-1356-b98e-53a3545b9be1
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : 57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo -> select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (MineTable.java:72) - Table: AFSTD0SF getSubmittedParams: {testo=select * from SINERGICAD.ORCDPT0F}
+2015-02-17 18:27:57,194 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:508) -  MARK_runScript query: select * from SINERGICAD.ORCDPT0F params: {testo=select * from SINERGICAD.ORCDPT0F} querySel: null
+2015-02-17 18:27:57,428  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:515) -  Run script : select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:27:57,428  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:516) -  Execution time: 234ms
+2015-02-17 18:27:57,428  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:579) - 3.1 - - - ->getQueryStatement MARK_FILTER query reset filter: select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:27:57,428 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:131) -  getRowsNumber before executed query: select * from SINERGICAD.ORCDPT0F Con: S06EED9R
+2015-02-17 18:27:57,428 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:176) -  before executed query: select count(*) tot from (select * from SINERGICAD.ORCDPT0F) as counteggio Con: S06EED9R
+2015-02-17 18:27:57,443  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:180) -  after executed query: select count(*) tot from (select * from SINERGICAD.ORCDPT0F) as counteggio
+2015-02-17 18:27:57,443 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:227) -  getPaginationDB2 sql: select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:57,443 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:609) - 4.2 query paginata MARK_FILTER : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:57,443 DEBUG [http-bio-8080-exec-44] (auto_002djson_jsp.java:612) - select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:57,443  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:621) -  Run report query : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from SINERGICAD.ORCDPT0F ) as a) as b where  b.NUM <=20 and NUM >0 
+2015-02-17 18:27:57,443  INFO [http-bio-8080-exec-44] (auto_002djson_jsp.java:622) -  Execution time: 249ms
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (auto_002dexcel_jsp.java:92) - Try to connecting to: 192.168.10.243:SINERGICAD
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:85) - K: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG host: 192.168.10.243 start: true
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R, http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:218) - ConnectionManager [releaseConnection] remove for thread key: http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:223) - ConnectionManager [releaseConnection] NOTIFY for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:111) - Opened connection DEBUG: {http-bio-8080-exec-24_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG=S06EED9R}
+2015-02-17 18:28:03,246 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-44_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:92) - ConnectionManager [getConnection] new c:S06EED9R
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (ConnectionManager.java:97) - Found connection for key: http-bio-8080-exec-44_192.168.10.243_
+2015-02-17 18:28:03,293  INFO [http-bio-8080-exec-44] (auto_002dexcel_jsp.java:506) - Connected to: 192.168.10.243:SINERGICAD action: runScript
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (Utilita.java:194) -  idgruppo: 
+2015-02-17 18:28:03,293  INFO [http-bio-8080-exec-44] (Utilita.java:242) - 0: 
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hidden_columns -> 
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : column -> [object Object]
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : dataStore -> [object Object]
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : entityName -> Report
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : action -> runScript
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : idQuery -> 1
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : tableName -> AFSTD0SF
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : databaseName -> SINERGICAD
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : hostName -> 192.168.10.243
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : target -> loadAutoform-fd52f858-d30a-1356-b98e-53a3545b9be1
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : 57208bc4-d2ad-4488-b717-aec16217ab5eSUBMIT_testo -> select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:65) - SUBMIT_params : items -> 
+2015-02-17 18:28:03,293 DEBUG [http-bio-8080-exec-44] (MineTable.java:72) - Table: AFSTD0SF getSubmittedParams: {testo=select * from SINERGICAD.ORCDPT0F}
+2015-02-17 18:28:03,527  INFO [http-bio-8080-exec-44] (auto_002dexcel_jsp.java:525) -  Run script : select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:28:03,527  INFO [http-bio-8080-exec-44] (auto_002dexcel_jsp.java:526) -  Execution time: 234ms
+2015-02-17 18:28:03,527 DEBUG [http-bio-8080-exec-44] (auto_002dexcel_jsp.java:544) -  MARK_EXCEL : action runScript
+2015-02-17 18:28:03,527 DEBUG [http-bio-8080-exec-44] (auto_002dexcel_jsp.java:592) - 4.1 query paginata MARK_FILTER : select * from SINERGICAD.ORCDPT0F
+2015-02-17 18:28:23,901  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:29:03,899  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:29:43,898  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 18:30:23,912  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 18:31:03,910  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 18:31:43,957  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-17 18:32:23,909  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-17 18:40:26,737 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-17 18:40:26,737  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-17 18:40:26,737  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-17 18:40:26,737 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-17 18:40:26,737 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-17 18:40:26,830  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-17 18:40:26,877  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:40:28,297 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:40:28,297  INFO [http-bio-8080-exec-1] (SessionWatcher.java:32) -  -----------> sessionCreated: 9DD988E075E83482DA38E7726A62ED4A date: 17-feb-15 18:40:28
+2015-02-17 18:40:28,297 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:40:28,297  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: 9DD988E075E83482DA38E7726A62ED4A
+2015-02-17 18:40:28,297  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-17 18:40:28,312 DEBUG [http-bio-8080-exec-1] (index_jsp.java:134) -  session.getId(): 9DD988E075E83482DA38E7726A62ED4A
+2015-02-17 18:40:28,312 DEBUG [http-bio-8080-exec-1] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:40:28,312 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:40:28,312  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: 9DD988E075E83482DA38E7726A62ED4A
+2015-02-17 18:40:28,312  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {9DD988E075E83482DA38E7726A62ED4A={creationTime=17-feb-15 18:40:28}}
+2015-02-17 18:40:28,312  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: 9DD988E075E83482DA38E7726A62ED4A,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:41:06,845  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:45:27,652 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-17 18:45:27,652  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-17 18:45:27,652  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-17 18:45:27,652 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-17 18:45:27,652 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-17 18:45:27,777  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-17 18:45:27,808  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:45:29,883 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:45:29,883  INFO [http-bio-8080-exec-1] (SessionWatcher.java:32) -  -----------> sessionCreated: A023DC5009594A207D5F32E51148B51D date: 17-feb-15 18:45:29
+2015-02-17 18:45:29,883 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:45:29,883  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: A023DC5009594A207D5F32E51148B51D
+2015-02-17 18:45:29,883  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-17 18:45:29,883 DEBUG [http-bio-8080-exec-1] (index_jsp.java:134) -  session.getId(): A023DC5009594A207D5F32E51148B51D
+2015-02-17 18:45:29,883 DEBUG [http-bio-8080-exec-1] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:45:29,883 DEBUG [http-bio-8080-exec-1] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:45:29,883  INFO [http-bio-8080-exec-1] (SessionWatcher.java:57) -  -----------> id: A023DC5009594A207D5F32E51148B51D
+2015-02-17 18:45:29,883  INFO [http-bio-8080-exec-1] (SessionWatcher.java:58) -  -----------> sessions: {A023DC5009594A207D5F32E51148B51D={creationTime=17-feb-15 18:45:29}}
+2015-02-17 18:45:29,883  INFO [http-bio-8080-exec-1] (SessionWatcher.java:61) -  -----------> addSession: A023DC5009594A207D5F32E51148B51D,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:46:07,791  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:46:47,790  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 18:51:30,856 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-17 18:51:30,871  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-17 18:51:30,871  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-17 18:51:30,871 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-17 18:51:30,871 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-17 18:51:31,043  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-17 18:51:31,121  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:51:31,729 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:51:31,729  INFO [http-bio-8080-exec-3] (SessionWatcher.java:32) -  -----------> sessionCreated: 8D1AC425E0390EC77BD21C45BCEE950D date: 17-feb-15 18:51:31
+2015-02-17 18:51:31,729 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:51:31,729  INFO [http-bio-8080-exec-3] (SessionWatcher.java:57) -  -----------> id: 8D1AC425E0390EC77BD21C45BCEE950D
+2015-02-17 18:51:31,729  INFO [http-bio-8080-exec-3] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-17 18:51:31,745 DEBUG [http-bio-8080-exec-3] (index_jsp.java:134) -  session.getId(): 8D1AC425E0390EC77BD21C45BCEE950D
+2015-02-17 18:51:31,745 DEBUG [http-bio-8080-exec-3] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-17 18:51:31,745 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:51:31,745  INFO [http-bio-8080-exec-3] (SessionWatcher.java:57) -  -----------> id: 8D1AC425E0390EC77BD21C45BCEE950D
+2015-02-17 18:51:31,745  INFO [http-bio-8080-exec-3] (SessionWatcher.java:58) -  -----------> sessions: {8D1AC425E0390EC77BD21C45BCEE950D={creationTime=17-feb-15 18:51:31}}
+2015-02-17 18:51:31,745  INFO [http-bio-8080-exec-3] (SessionWatcher.java:61) -  -----------> addSession: 8D1AC425E0390EC77BD21C45BCEE950D,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-17 18:52:03,757 DEBUG [http-bio-8080-exec-5] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:52:03,757  INFO [http-bio-8080-exec-5] (SessionWatcher.java:32) -  -----------> sessionCreated: 7A34C502CBA513DAD99CA846C100D2C7 date: 17-feb-15 18:52:03
+2015-02-17 18:52:03,757 DEBUG [http-bio-8080-exec-5] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:52:03,757  INFO [http-bio-8080-exec-5] (SessionWatcher.java:57) -  -----------> id: 7A34C502CBA513DAD99CA846C100D2C7
+2015-02-17 18:52:03,757  INFO [http-bio-8080-exec-5] (SessionWatcher.java:58) -  -----------> sessions: {8D1AC425E0390EC77BD21C45BCEE950D={creationTime=17-feb-15 18:51:31, remoteAddress=0:0:0:0:0:0:0:1}}
+2015-02-17 18:52:03,757 DEBUG [http-bio-8080-exec-5] (index_jsp.java:134) -  session.getId(): 7A34C502CBA513DAD99CA846C100D2C7
+2015-02-17 18:52:03,757 DEBUG [http-bio-8080-exec-5] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 127.0.0.1
+2015-02-17 18:52:03,757 DEBUG [http-bio-8080-exec-5] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-17 18:52:03,757  INFO [http-bio-8080-exec-5] (SessionWatcher.java:57) -  -----------> id: 7A34C502CBA513DAD99CA846C100D2C7
+2015-02-17 18:52:03,757  INFO [http-bio-8080-exec-5] (SessionWatcher.java:58) -  -----------> sessions: {8D1AC425E0390EC77BD21C45BCEE950D={creationTime=17-feb-15 18:51:31, remoteAddress=0:0:0:0:0:0:0:1}, 7A34C502CBA513DAD99CA846C100D2C7={creationTime=17-feb-15 18:52:03}}
+2015-02-17 18:52:03,757  INFO [http-bio-8080-exec-5] (SessionWatcher.java:61) -  -----------> addSession: 7A34C502CBA513DAD99CA846C100D2C7,remoteAddress,127.0.0.1
+2015-02-17 18:52:10,356 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:878) -  Creating menu databases loop host:  192.168.10.243
+2015-02-17 18:52:10,372 DEBUG [http-bio-8080-exec-6] (ConnectionManager.java:107) - Creating new Connection Map
+2015-02-17 18:52:10,372 DEBUG [http-bio-8080-exec-6] (ConnectionManager.java:111) - Opened connection DEBUG: {}
+2015-02-17 18:52:10,372 DEBUG [http-bio-8080-exec-6] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-17 18:52:10,606 DEBUG [http-bio-8080-exec-6] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-17 18:52:10,606 DEBUG [http-bio-8080-exec-6] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-6_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-17 18:52:10,855 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:539) - Database DB2 menu: select TABLE_SCHEM as SCHEMA from SYSIBM.SQLSCHEMAS where TABLE_SCHEM like 'SINERGICAD'
+2015-02-17 18:52:10,949 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:554) -  row: CRSR0001
+2015-02-17 18:52:10,949 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:587) -  currentDB 1: SINERGICAD
+2015-02-17 18:52:10,964 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:593) -  currentDB 2: SINERGICAD
+2015-02-17 18:52:11,042  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:52:11,807 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:621) -  currentDB 3: SINERGICAD
+2015-02-17 18:52:11,838 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:886) -  menu databases loop end
+2015-02-17 18:52:11,947 DEBUG [http-bio-8080-exec-6] (databases_jsp.java:897) - output printed
+2015-02-17 18:52:51,041  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 18:53:31,065  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 18:54:11,032  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 18:54:51,031  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-17 18:55:31,029  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-17 18:56:11,028  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
+2015-02-17 18:56:51,042  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  eat = apple
+2015-02-17 18:57:31,040  INFO [DefaultQuartzScheduler_Worker-10] (StivJob.java:32) -  eat = apple
+2015-02-17 18:58:11,039  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 18:58:51,037  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 18:59:31,035  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 19:00:11,034  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 19:00:51,032  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 19:01:31,031  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-17 19:02:11,029  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-17 19:02:51,027  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
+2015-02-17 19:03:31,041  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  eat = apple
+2015-02-17 19:04:11,040  INFO [DefaultQuartzScheduler_Worker-10] (StivJob.java:32) -  eat = apple
+2015-02-17 19:04:51,038  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 19:05:31,037  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 19:06:11,035  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 19:06:51,033  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 19:07:31,032  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 19:08:11,030  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-17 19:08:51,029  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-17 19:09:31,027  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
+2015-02-17 19:10:11,041  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  eat = apple
+2015-02-17 19:10:51,039  INFO [DefaultQuartzScheduler_Worker-10] (StivJob.java:32) -  eat = apple
+2015-02-17 19:11:31,038  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 19:12:11,036  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 19:12:51,035  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-17 19:13:31,033  INFO [DefaultQuartzScheduler_Worker-4] (StivJob.java:32) -  eat = apple
+2015-02-17 19:14:11,031  INFO [DefaultQuartzScheduler_Worker-5] (StivJob.java:32) -  eat = apple
+2015-02-17 19:14:51,030  INFO [DefaultQuartzScheduler_Worker-6] (StivJob.java:32) -  eat = apple
+2015-02-17 19:15:31,028  INFO [DefaultQuartzScheduler_Worker-7] (StivJob.java:32) -  eat = apple
+2015-02-17 19:16:11,027  INFO [DefaultQuartzScheduler_Worker-8] (StivJob.java:32) -  eat = apple
+2015-02-17 19:16:51,041  INFO [DefaultQuartzScheduler_Worker-9] (StivJob.java:32) -  eat = apple
+2015-02-17 19:17:31,039  INFO [DefaultQuartzScheduler_Worker-10] (StivJob.java:32) -  eat = apple
+2015-02-17 19:18:11,037  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-17 19:18:51,036  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-17 19:19:31,035  INFO [DefaultQuartzScheduler_Worker-3] (StivJob.java:32) -  eat = apple
+2015-02-20 15:55:08,085 DEBUG [localhost-startStop-1] (Boot.java:56) - Test Livello DEBUG
+2015-02-20 15:55:08,097  INFO [localhost-startStop-1] (Boot.java:57) - Test Livello INFO
+2015-02-20 15:55:08,098  WARN [localhost-startStop-1] (Boot.java:58) - Test Livello WARNING
+2015-02-20 15:55:08,098 ERROR [localhost-startStop-1] (Boot.java:59) - Test Livello ERROR
+2015-02-20 15:55:08,098 FATAL [localhost-startStop-1] (Boot.java:60) - Test Livello FATAL
+2015-02-20 15:55:08,200  INFO [localhost-startStop-1] (ApplicationWatcher.java:83) - Scheduler START
+2015-02-20 15:55:08,214  INFO [DefaultQuartzScheduler_Worker-1] (StivJob.java:32) -  eat = apple
+2015-02-20 15:55:09,463 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-20 15:55:09,463  INFO [http-bio-8080-exec-3] (SessionWatcher.java:32) -  -----------> sessionCreated: 56820FFA6D87C8F62350A40707F1B631 date: 20-feb-15 15:55:09
+2015-02-20 15:55:09,464 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-20 15:55:09,464  INFO [http-bio-8080-exec-3] (SessionWatcher.java:57) -  -----------> id: 56820FFA6D87C8F62350A40707F1B631
+2015-02-20 15:55:09,464  INFO [http-bio-8080-exec-3] (SessionWatcher.java:58) -  -----------> sessions: {}
+2015-02-20 15:55:09,470 DEBUG [http-bio-8080-exec-3] (index_jsp.java:134) -  session.getId(): 56820FFA6D87C8F62350A40707F1B631
+2015-02-20 15:55:09,470 DEBUG [http-bio-8080-exec-3] (index_jsp.java:135) -  -------------------> request.getRemoteAddr(): 0:0:0:0:0:0:0:1
+2015-02-20 15:55:09,470 DEBUG [http-bio-8080-exec-3] (SessionWatcher.java:46) - initializing getSessions() 
+2015-02-20 15:55:09,471  INFO [http-bio-8080-exec-3] (SessionWatcher.java:57) -  -----------> id: 56820FFA6D87C8F62350A40707F1B631
+2015-02-20 15:55:09,471  INFO [http-bio-8080-exec-3] (SessionWatcher.java:58) -  -----------> sessions: {56820FFA6D87C8F62350A40707F1B631={creationTime=20-feb-15 15:55:09}}
+2015-02-20 15:55:09,472  INFO [http-bio-8080-exec-3] (SessionWatcher.java:61) -  -----------> addSession: 56820FFA6D87C8F62350A40707F1B631,remoteAddress,0:0:0:0:0:0:0:1
+2015-02-20 15:55:48,198  INFO [DefaultQuartzScheduler_Worker-2] (StivJob.java:32) -  eat = apple
+2015-02-20 15:55:54,661 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:878) -  Creating menu databases loop host:  192.168.10.243
+2015-02-20 15:55:54,677 DEBUG [http-bio-8080-exec-7] (ConnectionManager.java:107) - Creating new Connection Map
+2015-02-20 15:55:54,677 DEBUG [http-bio-8080-exec-7] (ConnectionManager.java:111) - Opened connection DEBUG: {}
+2015-02-20 15:55:54,677 DEBUG [http-bio-8080-exec-7] (ConnectionManager.java:175) - ConnectionManager get new connection url: jdbc:as400://192.168.10.243/SINERGICAD
+2015-02-20 15:55:54,889 DEBUG [http-bio-8080-exec-7] (ConnectionManager.java:178) - ConnectionManager get new connection connection:S06EED9R
+2015-02-20 15:55:54,889 DEBUG [http-bio-8080-exec-7] (ConnectionManager.java:202) - ConnectionManager add new connection [getConnection] for thread key:http-bio-8080-exec-7_192.168.10.243_SINERGICAD###AUTOLOG###AUTOLOG
+2015-02-20 15:55:55,214 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:539) - Database DB2 menu: select TABLE_SCHEM as SCHEMA from SYSIBM.SQLSCHEMAS where TABLE_SCHEM like 'SINERGICAD'
+2015-02-20 15:55:55,443 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:554) -  row: CRSR0001
+2015-02-20 15:55:55,445 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:587) -  currentDB 1: SINERGICAD
+2015-02-20 15:55:55,556 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:593) -  currentDB 2: SINERGICAD
+2015-02-20 15:55:56,416 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:621) -  currentDB 3: SINERGICAD
+2015-02-20 15:55:56,445 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:886) -  menu databases loop end
+2015-02-20 15:55:56,493 DEBUG [http-bio-8080-exec-7] (databases_jsp.java:897) - output printed

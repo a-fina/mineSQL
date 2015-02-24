@@ -19,7 +19,7 @@ public class Boot extends HttpServlet {
         // Start Logger
         loggerInit();
         // Start Scheduler
-        ApplicationWatcher.startScheduler();
+        //    ApplicationWatcher.startScheduler();
 
         super.init();
     }
@@ -28,7 +28,7 @@ public class Boot extends HttpServlet {
     public void destroy() {
         
         // Start Scheduler
-        ApplicationWatcher.stopScheduler();
+        //     ApplicationWatcher.stopScheduler();
 
         super.destroy();
     }
@@ -58,10 +58,6 @@ public class Boot extends HttpServlet {
         log.warn("Test Livello WARNING");
         log.error("Test Livello ERROR");
         log.fatal("Test Livello FATAL");
-    }
-
-    public
-            void doGet(HttpServletRequest req, HttpServletResponse res) {
     }
 
 

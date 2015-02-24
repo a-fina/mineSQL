@@ -1,0 +1,30 @@
+
+<h4>Chinese Morra - Engage rules</h4>
+ <ul>
+    <li ng-repeat="scelta in choiceList">
+      <span>{{scelta.name}} win over {{scelta.win}}</span>
+    </li>
+</ul>
+
+<span></span>
+
+<div ng-controller="PlayCtrl">
+
+    <h3>Choose a sign and click Play</h3>
+    <div class="btn-group">
+        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'Scissor'">Scissor</label>
+        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'Rock'">Rock</label>
+        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'Paper'">Paper</label>
+    </div>
+
+    <div class="btn-group">
+        <button class='btn btn-default' ng-click="playMorra()">Play</button>
+    </div>
+
+    <p>Partite giocate: {{totPlay}} Totale vinte: {{totWin}} tot. perse: {{totLoose}}</p>
+
+    <pre>{{playerChoise || 'none'}} <---> {{computerChoice.name|| 'none'}}</pre>
+
+     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+
+</div>
