@@ -11,7 +11,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
 .controller('View1Ctrl', ['$scope',function($scope) {
 
-    $scope.choiceList= [
+    $scope.choiceList = [
         {'name': 'Scissor', 'win': 'Paper'},
         {'name': 'Paper', 'win': 'Rock'},
         {'name': 'Rock', 'win': 'Scissor'}
@@ -38,17 +38,21 @@ angular.module('myApp.view1', ['ngRoute'])
   $scope.totWin = 0;
   $scope.totLoose = 0;
 
-
+  function randomFromTo(from, to){
+       return Math.floor(Math.random() * (to - from + 1) + from);
+  }
+    
   $scope.feelLucky = function() {
-    $scope.alerts.push({ type: 'danger', msg: '<b>'+$scope.playerChoise+'</b> Sorry! You loose!!' });
+    $scope.alerts.push({ type: 'danger', msg: $scope.playerChoise+' Sorry! You loose!!' });
     $scope.totPlay++;
     $scope.totLoose++;
   };
 
   $scope.playMorra= function() {
     // Random choise for computer
-    $scope.computerChoice = $scope.choiceList.pop(Math.floor((Math.random() * 2) + 1)); 
-    //console.log("-->" + $scope.computerChoice.win);
+    
+    var rand = randomFromTo(0,2);
+    $scope.computerChoice = $scope.choiceList[rand];
 
     if ( $scope.computerChoice.win === $scope.playerChoise){
         // Computer Win
