@@ -49,13 +49,16 @@
     
     <!-- Servlet Web Service REST JAX-RS Jersey -->
     <servlet>
-        <servlet-name>jersey-helloworld-serlvet</servlet-name>
+        <servlet-name>jersey-serlvet</servlet-name>
         <servlet-class>
             com.sun.jersey.spi.container.servlet.ServletContainer
         </servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>net.mineSQL.ws</param-value>
+            <param-value>
+                net.mineSQL.ws,
+                com.mycompany.rockscissorpaper.services
+            </param-value>
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -65,7 +68,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>jersey-helloworld-serlvet</servlet-name>
+        <servlet-name>jersey-serlvet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     

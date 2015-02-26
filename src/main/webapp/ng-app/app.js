@@ -6,12 +6,24 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngResource'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }])
 
 .controller('WelcomeController', function($scope) {
-      $scope.greeting = 'back';
-  });
+    // TODO: login / signin
+    $scope.greeting = 'back';
+})
+// Web Services
+.factory('MorraFactory', function ($resource) {
+    return $resource('/rest/morra/choice/computer', {}, {
+        query: {
+            method: 'GET',
+            params: {},
+            isArray: false
+        }
+    })
+});

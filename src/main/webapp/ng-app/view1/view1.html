@@ -12,9 +12,9 @@
 
     <h3>Choose a sign and click Play</h3>
     <div class="btn-group">
-        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'Scissor'">Scissor</label>
-        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'Rock'">Rock</label>
-        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'Paper'">Paper</label>
+        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'scissor'">scissor</label>
+        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'rock'">rock</label>
+        <label class="btn btn-primary" ng-model="playerChoise" btn-radio="'paper'">paper</label>
     </div>
 
     <div class="btn-group">
@@ -23,8 +23,8 @@
 
     <p>Partite giocate: {{totPlay}} Totale vinte: {{totWin}} tot. perse: {{totLoose}}</p>
 
-    <pre>{{playerChoise || 'none'}} <---> {{computerChoice.name|| 'none'}}</pre>
+    <pre>{{playerChoise || 'none'}} <---> {{computerChoice || 'none'}}</pre>
 
-     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 
 </div>

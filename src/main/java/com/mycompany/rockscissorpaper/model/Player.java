@@ -31,7 +31,11 @@ public class Player {
     /*
     * Read player choice from many sources
     */
-    public Choice readChoice() {
+    public Choice readChoice(/*String channel*/) {
+        /*TODO 
+            aggiungere parametro ingresso String channel
+        */
+        
         this.choise = new Choice("scissor");
 
         return this.choise;
@@ -41,7 +45,7 @@ public class Player {
        String[] choiceList = {"scissor","paper","rock"};
 
        Random randomGenerator = new Random();
-       int r = randomGenerator.nextInt(2);
+       int r = randomGenerator.nextInt(3);
        
         this.choise = new Choice(choiceList[r]);
         

@@ -6,14 +6,21 @@
 
 package com.mycompany.rockscissorpaper.controller;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author ale
  */
+@XmlRootElement
 public class Choice {
 
     String type;
     
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Choice(String type) {
         this.type = type;
     }
@@ -21,14 +28,4 @@ public class Choice {
         return this.type;
     } 
             
-    public boolean win(String aType ){
-        if (this.type.equals("rock") && aType.equals("scissor") )
-            return true;
-        else if (this.type.equals("scissor") && aType.equals("paper") )
-            return true;
-        else if (this.type.equals("paper") && aType.equals("rock") )
-            return true;
-        return true;
-    }
-    
 }

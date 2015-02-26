@@ -10,26 +10,26 @@ angular.module('myApp.view1', ['ngRoute'])
 }])
 
 .controller('View1Ctrl', ['$scope',function($scope) {
-
+    // TODO: move to server side MorraChinese.java
     $scope.choiceList = [
-        {'name': 'Scissor', 'win': 'Paper'},
-        {'name': 'Paper', 'win': 'Rock'},
-        {'name': 'Rock', 'win': 'Scissor'}
+        {'name': 'scissor', 'win': 'paper'},
+        {'name': 'paper', 'win': 'rock'},
+        {'name': 'rock', 'win': 'scissor'}
     ];
     $scope.name = "World";
 }])
 
-.controller('PlayCtrl', function ($scope) {
+.controller('PlayCtrl',['$scope', 'MorraFactory', function ($scope, MorraFactory) {
   $scope.singleModel = 1;
 
-  $scope.playerChoise   = 'Scissor';
+  $scope.playerChoise   = 'scissor';
   $scope.computerChoice = '';
 
   
   $scope.checkModel = {
-    Scissor: false,
-    Paper: true,
-    Rock: false
+    scissor: false,
+    paper: true,
+    rock: false
   };
 
   $scope.alerts = [];
@@ -49,25 +49,27 @@ angular.module('myApp.view1', ['ngRoute'])
   };
 
   $scope.playMorra= function() {
-    // Random choise for computer
-    
-    var rand = randomFromTo(0,2);
-    $scope.computerChoice = $scope.choiceList[rand];
 
-    if ( $scope.computerChoice.win === $scope.playerChoise){
-        // Computer Win
-        $scope.alerts.push({ type: 'danger', msg: $scope.playerChoise+' Sorry! You loose!!' });
-        $scope.totPlay++;
-        $scope.totLoose++;
-    }else{
-        // Human Win
-        $scope.alerts.push({ type: 'success', msg: $scope.playerChoise+' Well done! You win!!' });
-        $scope.totPlay++;
-        $scope.totWin++;
-    }
+    // Leggo la scelta del computer viw web service
+    MorraFactory.get({}, function (MorraFactory) {
+        //$scope.computerChoice = $scope.choiceList[rand];
+        $scope.computerChoice = MorraFactory.type;
+
+        if ( $scope.computerChoice === $scope.playerChoise){
+            // Computer Win
+            $scope.alerts.push({ type: 'danger', msg: $scope.playerChoise+' Sorry! You loose!!' });
+            $scope.totPlay++;
+            $scope.totLoose++;
+        }else{
+            // Human Win
+            $scope.alerts.push({ type: 'success', msg: $scope.playerChoise+' Well done! You win!!' });
+            $scope.totPlay++;
+            $scope.totWin++;
+        }
+    })
   };
 
   $scope.closeAlert = function(index) {
     $scope.alerts.splice(index, 1);
   };
-});
+}]);

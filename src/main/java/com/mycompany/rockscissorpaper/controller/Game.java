@@ -29,10 +29,22 @@ public class Game {
 
         return players.get(1);
     }
+    /*
+    * Morra cinese engage rules
+    *
+    */
+    public boolean win(String type1, String type2 ){
+        if (type1.equals("rock") && type2.equals("scissor") )
+            return true;
+        else if (type1.equals("scissor") && type2.equals("paper") )
+            return true;
+        else if (type1.equals("paper") && type2.equals("rock") )
+            return true;
+        return true;
+    }
 
     public Choice whoWin(Choice c1, Choice c2) {
-
-        if (c1.win(c2.getType())) {
+        if (win(c1.getType(), c2.getType())) {
             return c1;
         } else {
             return c2;
