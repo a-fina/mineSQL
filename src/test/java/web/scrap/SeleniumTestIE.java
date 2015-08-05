@@ -31,7 +31,7 @@ public class SeleniumTestIE {
         // FirefoxDriver driver = new FirefoxDriver();
 
         // And now use this to visit Google
-        driver.get("http://85.88.193.120:8088");
+        driver.get("http://");
        
         System.out.println( driver.getPageSource() );
 
@@ -43,8 +43,8 @@ public class SeleniumTestIE {
         WebElement usernameElement     = driver.findElement(By.id("account"));
         WebElement passwordElement     = driver.findElement(By.id("passwd"));
 
-        usernameElement.sendKeys("user2");
-        passwordElement.sendKeys("7845");
+        usernameElement.sendKeys("");
+        passwordElement.sendKeys("");
 
         formElement.click();
 
