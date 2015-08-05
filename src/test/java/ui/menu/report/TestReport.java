@@ -15,6 +15,7 @@ import java.io.File;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
+import net.mineSQL.connection.ORMLite;
 import net.mineSQL.ormlite.model.Report;
 import org.h2.store.fs.FileUtils;
 import org.h2.tools.Server;
@@ -30,6 +31,8 @@ import org.junit.Test;
  * @author alessio.finamore
  */
 public class TestReport {
+
+    String DATABASE_URL = ORMLite.DATABASE_URL;
 
     public TestReport() {
     }
@@ -50,17 +53,27 @@ public class TestReport {
     public void tearDown() {
     }
 
+    @Test
+    public void dropAndCreate() throws SQLException {
+
+        // Oggetto
+	    Dao<Report, Integer> reportDao;
+		ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
+		reportDao = DaoManager.createDao(connectionSource, Report.class);
+		
+		TableUtils.dropTable(connectionSource, Report.class, true);
+        // Crea Tabella
+		TableUtils.createTableIfNotExists(connectionSource, Report.class);
+
+    }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
     public void inserisciErileggi() throws SQLException, Exception {
 
-        String path = "Z:/Finamore/";
-        String dbName = "minesql_report";
-        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
 
-        File fpath = new File(path);
+        File fpath = new File(ORMLite.path);
 
         fpath.mkdirs();
         //FileUtils recursiveDelete(fpath);
@@ -93,7 +106,16 @@ public class TestReport {
 		List<Report> repos = reportDao.queryForAll();
         int last = repos.size() -1;
         assertEquals(name,  repos.get(last).getNome() );
-        
+      
+        // Read Loop
+        for (Report repo2 : repos) {
+                System.out.println(" Repo ID: " + repo2.getId() );
+                System.out.println(" Repo Name: " + repo2.getNome() );
+                assertEquals(repo.getNome(), reportDao.queryForId(repo2.getId()).getNome());
+                System.out.println(" Repo Text: " + repo2.getDescrizione());
+        }
+       connectionSource.close();
+       
         // stop the TCP Server
         server.stop();
 

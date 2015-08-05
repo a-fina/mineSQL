@@ -11,17 +11,18 @@
 
 <%@ page import="net.mineSQL.util.*" %>
 <%@ page import="net.mineSQL.connection.*" %>
+<%@ page import="net.mineSQL.ormlite.connection.*" %>
 <%@ page import="net.mineSQL.util.Utilita" %>
 <%@ page import="net.mineSQL.controller.MineScript" %>
 <%@ page import="net.mineSQL.controller.MineTable" %>
+<%@ page import="net.mineSQL.controller.MineSQL" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.regex.*" %>
-
-<%@page import="com.j256.ormlite.dao.DaoManager"%>
-<%@page import="com.j256.ormlite.support.ConnectionSource"%>
-<%@page import="com.j256.ormlite.jdbc.JdbcConnectionSource"%>
-<%@page import="com.j256.ormlite.dao.Dao"%>
-<%@page import="net.mineSQL.ormlite.model.Report"%>
+<%@ page import="com.j256.ormlite.dao.DaoManager"%>
+<%@ page import="com.j256.ormlite.support.ConnectionSource"%>
+<%@ page import="com.j256.ormlite.jdbc.JdbcConnectionSource"%>
+<%@ page import="com.j256.ormlite.dao.Dao"%>
+<%@ page import="net.mineSQL.ormlite.model.Report"%>
 
 <%@ include file="../config.jsp" %>
 <%!

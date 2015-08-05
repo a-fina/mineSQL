@@ -24,13 +24,15 @@ public class Main{
         //TODO spostare in ApplicationWatcher fare oggetto statico context
         // shutdown alla chiusura del bbrowser
         MineTomcat mTm = new MineTomcat();
-        MineBrowser mBr = new MineBrowser();
         
         // Start Tomcat
         mTm.start();
         // Start Browser
-        mBr.start();
         // Wait tomcat
         mTm.await();
+        
+        
+        //MineBrowser mBr = new MineBrowser();
+        //mBr.start();
     }
 }

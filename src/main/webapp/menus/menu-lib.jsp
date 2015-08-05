@@ -168,26 +168,20 @@ private JSONArray getSubMenu(JSONArray menu, String path) {
 /*
  * Costruisce un nodo del main menu realtivo ad una connession
  */
-private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, String database, String user, String password, String showAllDB) throws ConnectionException{
+private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, String database, String user, String password, String showAllDB, String dbType) throws ConnectionException{
 
             List menuItems = new ArrayList();
             Connection dbCon = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
             ResultSet rs2 = null;
-
+            
+            String currentDB  =""; 
             
             try {
-                dbCon = ConnectionManager.getConnection(host, database, user, password);
+                dbCon = ConnectionManager.getConnection(host, database, user, password, dbType);
 
-                // Elenco dei database
-                String sqlSCHEMA = "select TABLE_SCHEM as SCHEMA from SYSIBM.SQLSCHEMAS";
-                //MySQL: SHOW DATABASES
-                if (!Boolean.parseBoolean(showAllDB)) {
-                    //MySQL where = " like '" + database+"'" ;
-                    //DB2
-                    sqlSCHEMA += " where TABLE_SCHEM like '" + database +"'";
-                }
+                String sqlSCHEMA = MineSQL.getSchemaList(dbType, Boolean.parseBoolean(showAllDB), database);
 
                 ps = dbCon.prepareStatement(sqlSCHEMA);
                 log.debug("Database DB2 menu: " + sqlSCHEMA );
@@ -228,23 +222,14 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
                     HashMap anagraf_map = new HashMap();
                     anagraf_map = (HashMap) iter.next();
 
-                    String currentDB = (String) tablesIter.next();
+                    currentDB = (String) tablesIter.next();
 
-                    //MySQL String sqlTABLE = "show tables from `" + currentDB +"`";
-                    String sqlTABLE = "select TABLE_NAME, TABLE_TEXT  from SYSIBM.SQLTABLES where TABLE_SCHEM = '"
-                                      + currentDB + "'";
-                    // MySQL String sql = "show tables from `" + currentDB +"`";
-
+                    String sqlTABLE =  MineSQL.getTableList(dbType, currentDB);
                     //if (currentDB.contains("-"));
                     //    continue;
-
-                    log.debug(" currentDB 1: " + currentDB);
-
-
                     ps = dbCon.prepareStatement(sqlTABLE, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                     rs = ps.executeQuery();
 
-                    log.debug(" currentDB 2: " + currentDB);
                     JSONArray gruppo_menu = new JSONArray();
                     String text = "";
                     // Ciclo di costruzione sottoMenu, per ogni tabella fa elenco dei campi
@@ -277,7 +262,8 @@ private JSONArray getConnectionDBMenu(JSONArray connectionDBmenu, String host, S
             } catch (SQLException sqle) {
                 switch (sqle.getErrorCode()) {
                     default:
-                        log.debug("", sqle);
+                        log.error("", sqle);
+                        //throws new ConnectionException("Errore accesso al DB: " + currentDB);
                         break;
                 }
             } finally {

@@ -31,6 +31,9 @@ public class ConnectionManager {
     private static String separator = "###";
 
 
+    public static String DB2 = "db2";
+    public static String POSTGRES = "postgresql";
+    public static String MYSQL = "mysql";
 
     public ConnectionManager() {
     }
@@ -63,13 +66,14 @@ public class ConnectionManager {
         return ds;
     }
     public static synchronized ConnectionSource getMineConnection(Class objclass) throws SQLException{
-        String path = "Z:/Finamore/";
-        String dbName = "minesql_report";
-        String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+        String DATABASE_URL = ORMLite.DATABASE_URL;
 
         return new JdbcConnectionSource(DATABASE_URL);
     }
 
+    /*
+     *  Search for already opened connection to the same host
+    */
     public static synchronized Connection getConnection(
             String host,
             String database) throws ConnectionException, SQLException {
@@ -82,13 +86,15 @@ public class ConnectionManager {
         Iterator it = hcm.keySet().iterator();
         while (it.hasNext()) {
             String k = (String) it.next();
-            log.debug("K: " + k + " host: " +  host + " start: " + k.startsWith(host_key));
+            log.debug("Connection Key: " + k + " host: " +  host + " start: " + k.startsWith(host_key));
             if (k.startsWith(host_key)){
                 c = (Connection) getConnection(k);
                 if ( c == null ){
                     String user = k.split(separator)[1];
                     String password = k.split(separator)[2];
-                    c = getConnection(host, database, user, password);
+                    String dbType = k.split(separator)[3];
+                    // TODO: propagare nuovo parametro dbType
+                    c = getConnection(host, database, user, password, dbType);
                     log.debug("ConnectionManager [getConnection] new c:" + c);
                 }
                 break;
@@ -122,22 +128,33 @@ public class ConnectionManager {
         return c;
     }
 
+    /*
+    * Connection Factory
+    */
     public static synchronized Connection getConnection(
+
             String host,
             String database,
             String userName,
-            String password) throws ConnectionException, SQLException {
+            String password,
+            String dbType) throws ConnectionException, SQLException {
 
-            return    getConnection(host, database, userName, password, "as400", "com.ibm.as400.access.AS400JDBCDriver");
-    }
-    public static synchronized Connection getMySQLConnection(
-            String host,
-            String database,
-            String userName,
-            String password) throws ConnectionException, SQLException {
+            log.info("Get Connection request: "  + host + " " + database + " " + userName + " " + password+ " "+dbType);
 
-            return    getConnection(host, database, userName, password, "mysql", "com.mysql.jdbc.Driver");
+            if (dbType.equals(DB2) || dbType.equals("as400") ){
+                return    getConnection(host, database, userName, password, "as400", "com.ibm.as400.access.AS400JDBCDriver");
+            }
+            else if (dbType.equals(POSTGRES)){
+                return    getConnection(host, database, userName, password, "postgresql", "org.postgresql.Driver");
+            }
+            else if (dbType.equals(MYSQL)){
+                return    getConnection(host, database, userName, password, "mysql", "com.mysql.jdbc.Driver");
+            }
+
+            throw new SQLException("MineSQL Database Type: <"+ dbType +"> non supportato");
+
     }
+
     public static synchronized Connection getFilemakerConnection(
             String host,
             String database,
@@ -146,38 +163,40 @@ public class ConnectionManager {
 
             return    getConnection(host, database, userName, password, "filemaker", "com.filemaker.jdbc.Driver");
     }
+
     public static synchronized Connection getConnection(
             String host,
             String database,
             String userName,
             String password,
             String dbType,
-            String driver) throws ConnectionException, SQLException {
+            String driver) throws ConnectionException {
 
         Connection c = null;
         currentThread = Thread.currentThread();
-        String key = "" + currentThread.getName()
-                + "_" + host + "_" + database
-                + separator+userName+separator+password;
 
-        c = getConnection(key);
+        // Connection Key
+        String key = "" + currentThread.getName()
+                + "_" + host +"_" + "_" + database
+                + separator+userName+separator+password+separator+dbType;
+
+        try {
+            c = getConnection(key);
+        } catch (SQLException ex) {
+            throw new ConnectionException(ex);
+        }
         while (c == null) {
           
             try {
-                //c = new MyConnection(getDataSource(sDSName).getConnection());
-               /*
-                String userName = "root";
-                String password = "root";
-                String db = "mineSQL";
-                String host = "localhost";
-                */
                 String url = "jdbc:"+ dbType +"://" + host + "/" + database;
-                log.debug("ConnectionManager get new connection url: " + url);
+                log.debug("ConnectionManager loading Driver: "+ driver);
                 Class.forName(driver).newInstance();
+                log.debug("ConnectionManager getConnection for: "+ url);
                 c = DriverManager.getConnection(url, userName, password);
-                log.debug("ConnectionManager get new connection connection:" + c);
+                log.info("ConnectionManager OK connection to "+ url + " conn: " + c);
 
                 currentConnection++;
+            /**************
             } catch (InstantiationException ex) {
                 log.debug(ex);
             } catch (IllegalAccessException ex) {
@@ -188,7 +207,8 @@ public class ConnectionManager {
                 // Non ci sono risorse disponibili, quindi
                 // si attende che venga rilasciata una connessione
                 log.debug("ConnectionManager [getConnection] WAIT for thread key:" + key);
-                log.debug(ex);
+                log.debug(ex.getCause());
+                log.debug(ex.getMessage());
                 try {
                     ConnectionManager.class.wait();
                 } catch (InterruptedException ie) {
@@ -196,7 +216,14 @@ public class ConnectionManager {
                             + " - " + ie.getMessage());
                 }
                 log.debug("ConnectionManager [getConnection] END WAIT for thread key:" + key);
+                throw new SQLException(ex);
             }
+            *************************/
+            }catch (Exception ex) {
+                log.debug(ex);
+                throw new ConnectionException(ex);
+            }
+
             if (c != null) {
                 hcm.put(key, c);
                 log.debug("ConnectionManager add new connection [getConnection] for thread key:" + key);

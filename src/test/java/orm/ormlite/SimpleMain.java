@@ -101,6 +101,8 @@ public class SimpleMain {
 		// create an instance of Account
 		String name = "Jim Coakley";
 		Account account = new Account(name);
+		// assign a password
+		account.setPassword("secret");
 
 		// persist the account object to the database
 		accountDao.create(account);
@@ -108,7 +110,7 @@ public class SimpleMain {
 		verifyDb(id, account);
 
 		// assign a password
-		account.setPassword("_secret");
+		account.setPassword("newsecret");
 		// update the database after changing the object
 		accountDao.update(account);
 		verifyDb(id, account);

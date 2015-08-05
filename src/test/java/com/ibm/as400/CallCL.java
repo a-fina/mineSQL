@@ -19,63 +19,6 @@ import com.ibm.as400.access.AS400Message;
 import com.ibm.as400.access.CommandCall;
 
 
-
-
-
-/******************** USO DEI PARAMETRI
- * try{
-//    Set up variables
-       String vendorSeq = null;
-       String rtnParm = null;
-       String rtnValues = null;
-       ProgramCall program = new ProgramCall(iSeries);
-
-//    Get program library       
-       QSYSObjectPathName pgmName = new QSYSObjectPathName("%LIBL%","RD0010L","PGM");
-
-//     Set up the 3 parameters.
-       ProgramParameter[] parameterList = new ProgramParameter[3];
-
-//     First parameter is input 
-       AS400Text keys = new AS400Text(40,iSeries);
-       parameterList[0] = new ProgramParameter(keys.toBytes(tpi.getFileName().substring(0,4) + tpi.getFileName().substring(12,20) + tpi.getFileName().substring(21,29) + tpi.getTransactionType() + tpi.getFileLength() + appFlag));
-       
-//     Second parameter is input.
-       AS400Text vendorKey = new AS400Text(256,iSeries);
-       vendorSeq = tpi.getVendorSeq();
-       parameterList[1] = new ProgramParameter(vendorKey.toBytes(vendorSeq));
-       
-//     Third Parameter is return values (Valid App/Acct(Y/N) and other data in the other 11 positions)
-       parameterList[2] = new ProgramParameter(12);
-       
-//     Set the program name and parameter list.
-       program.setProgram(pgmName.getPath(), parameterList);
-
-//    Run the program.
-       if (program.run() != true){
-           // Report failure.
-           System.out.println("Program failed!");
-           // Show the messages.
-           AS400Message[] messagelist = program.getMessageList();
-           for (int i = 0; i < messagelist.length; ++i)
-           {
-               // Show each message.
-               System.out.println(messagelist<i>);
-           }
-           return false;
-        }else{
-           // Retrieve and inspect output parameter
-           AS400Text rtntext = new AS400Text(12,iSeries);
-           rtnValues = (String)rtntext.toObject(parameterList[2].getOutputData());
-           if (rtnValues.substring(0,1).equalsIgnoreCase("Y")){
-               // do stuff 
-               return true;
-           }else{
-               return false;
-           }
-        }
- ***********************/
-
 /**
  *
  * @author alessio.finamore

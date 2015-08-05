@@ -32,6 +32,18 @@ public class Report {
 	@DatabaseField(columnName = "UTENTE", canBeNull = false)
 	private String utente;
 
+    @DatabaseField(canBeNull = true, foreign = true)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
     public String getUtente() {
         return utente;
     }

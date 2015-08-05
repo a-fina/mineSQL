@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=ISO-8859-1" %>
 <%@page import="java.util.Date" %>
 <%@ page import="net.mineSQL.connection.ConnectionManager" %>
+<%@ page import="net.mineSQL.connection.ORMLite" %>
 <%@page import="net.mineSQL.controller.MineGrid" %>
 <%@include file="auto-lib.jsp"%>
 
@@ -113,9 +114,7 @@
             // TODO qui si può salvare la query con i FILTRI 
             if (action.equals("saveScript")) {
 
-                String path = "Z:/Finamore/";
-                String dbName = "minesql_report";
-                String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+                String DATABASE_URL = ORMLite.DATABASE_URL;
                 Dao<Report, Integer> reportDao;
                 ConnectionSource connectionSource = new JdbcConnectionSource(DATABASE_URL);
 

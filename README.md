@@ -47,3 +47,6 @@ TODO:
 
 - Others
     http://www.datamartist.com/
+
+- Jersey / Grizzly JSP
+    http://blog.usul.org/using-jsp-in-a-jersey-jax-rs-restful-application/

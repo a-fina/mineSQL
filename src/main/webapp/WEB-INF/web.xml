@@ -26,14 +26,14 @@
     </resource-env-ref>
 
  
-    <!-- Versione del Defect Management -->
+    <!-- Versione  -->
     <context-param>
         <param-name>DM_VERSION</param-name>
         <param-value>0.9.7</param-value>
     </context-param>
 
     <!-- Servlet Logger caricata all'avvio di resin -->
-    <!-- servlet>
+    <servlet>
         <servlet-name>mineSQL-boot</servlet-name>
         <servlet-class>net.mineSQL.app.Boot</servlet-class>
         <init-param>
@@ -45,7 +45,7 @@
             <param-value>log/mineSQL.log</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-    </servlet -->
+    </servlet>
     
     <!-- Servlet Web Service REST JAX-RS Jersey -->
     <servlet>
@@ -72,6 +72,19 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     
+   <!-- Restlet adapter: TODO non funziona con Tomcat Embedded -->  
+   <servlet>  
+      <servlet-name>RestletServlet</servlet-name>  
+      <servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+      <init-param>
+            <param-name>org.restlet.application</param-name>
+            <param-value>net.mineSQL.app.restlet.demo.application.FirstStepsApplication</param-value>
+      </init-param>
+   </servlet>  
+   <servlet-mapping>  
+      <servlet-name>RestletServlet</servlet-name>  
+      <url-pattern>/restlet</url-pattern>  
+   </servlet-mapping>  
     <!-- Servlet per la visualizzazione dei grafici -->
     <!-- servlet>
       <servlet-name>DisplayChart</servlet-name>
@@ -123,7 +136,6 @@
     <servlet>
         <servlet-name>Quercus Servlet</servlet-name>
         <servlet-class>com.caucho.quercus.servlet.QuercusServlet</servlet-class>
-
         <!--
           Specifies the encoding Quercus should use to read in PHP scripts.
         -->

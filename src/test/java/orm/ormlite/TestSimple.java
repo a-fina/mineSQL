@@ -43,7 +43,7 @@ public class TestSimple {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // DISABLED @Test
+    //DISABLE @Test
     public void hello() throws SQLException, Exception {
 
         String path = "Z:/Fina/";
@@ -54,15 +54,13 @@ public class TestSimple {
 
         String dbName = "tata";
         String connection = "jdbc:h2:file:" + path + dbName;
-
         Server server = Server.createTcpServer();
-
         server.start();
    //     DriverManager.getConnection(connection);
 
         String[] args = {connection};
 
-        connection = "jdbc:h2:~/test";
+        //connection = "jdbc:h2:~/test";
         SimpleMain.main(args);
 
         // stop the TCP Server

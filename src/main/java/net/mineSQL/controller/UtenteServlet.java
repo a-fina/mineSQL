@@ -702,7 +702,7 @@ public class UtenteServlet extends HttpServlet {
         log.debug(" Connection getConn jdbc: " +jdbc);
 		Connection conn = null;
 		try {
-			conn = ConnectionManager.getConnection("host","db","user","password");
+			conn = ConnectionManager.getConnection("host","db","user","password","dbtype");
 		} catch (Exception e) {
 			log.error("", e);
 		}
