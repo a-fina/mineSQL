@@ -14,7 +14,7 @@ try {
     /**    
     getFinalQuery(request, request.getParameter("tableName") ); 	
 
-	log.info("Query di export EXCEL: " + query);
+    log.info("Query di export EXCEL: " + query);
         
     if ( tableName.equals("msq_SCRIPT_T") ){
         MineScript script = new MineScript();
@@ -67,24 +67,25 @@ try {
     // TODO modificare Autogrid.js in modo da diversificare il nome di tableName
     // con i parametri di POST
 
-	if ( action.equals("runQuery") )
+    if ( action.equals("runQuery") || action.equals("runSavedScript") )
     {
-        Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
-        MineTable runQuery = new MineTable(conForsavedScript, "msq_SCRIPT_T"); 
-        query = runQuery.select("testo","ID = '"+idQuery+"'");
+    //    Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
+    //    MineTable runQuery = new MineTable(conForsavedScript, "msq_SCRIPT_T"); 
+    //   query = runQuery.select("testo","ID = '"+idQuery+"'");
 
-		HashMap formParams = table.getSubmittedParams(request);
-		query = script.mergeScriptParameters(formParams, query);  // testo e' la textarea di default
-	}
+        HashMap formParams = table.getSubmittedParams(request);
+        query = script.mergeScriptParameters(formParams, query);  // testo e' la textarea di default
+    }
     else if ( action.equals("runDefaultScript") )
     {
-			// Preparo la query con Paginazione
-			String db_table = databaseName+"."+tableName; 
-			query = "SELECT * FROM "+ db_table +" WHERE 1=1";
-			log.debug(" MARK_runDefaultScriptquery database:" +  databaseName +" tablename:" + tableName);
-			//TODO gestire la query a test libero, viene postata la variabuile query_body
-	} 
-    else if ( action.equals("runSavedScript") )
+            // Preparo la query con Paginazione
+            String db_table = databaseName+"."+tableName; 
+            query = "SELECT * FROM "+ db_table +" WHERE 1=1";
+            log.debug(" MARK_runDefaultScriptquery database:" +  databaseName +" tablename:" + tableName);
+            //TODO gestire la query a test libero, viene postata la variabuile query_body
+    } 
+    /****
+     else if ( action.equals("runSavedScript") )
     {
             Connection conForsavedScript = ConnectionManager.getConnection("localhost","mineSQL");
             MineTable savedScript = new MineTable(conForsavedScript, "msq_FILTRI_T"); 
@@ -92,8 +93,9 @@ try {
             /*
              * TODO: qui volendo si puo mettere un controllo incrociato su databaseName + hostname
              * e i valori salvati nel DB insieme al testo 
-             */
-        }
+             * /
+    }
+    *************/
 
         /*
         * Filtri in sessione
@@ -116,17 +118,17 @@ try {
         
         out.print(excel);
 	
-	} catch (SQLException sqle) {
-		switch (sqle.getErrorCode()) {
+    } catch (SQLException sqle) {
+        switch (sqle.getErrorCode()) {
         default: log.error(sqle+" "+ query); break;
-	}
+    }
 } finally {
 	
-	try {
-		con.close();
-	}
-	catch (Exception ex) {
-		ex.printStackTrace();
-	}
+    try {
+        con.close();
+    }
+    catch (Exception ex) {
+        ex.printStackTrace();
+    }
 }
 %>
