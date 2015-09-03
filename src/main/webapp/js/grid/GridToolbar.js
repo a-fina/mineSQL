@@ -215,7 +215,12 @@ GridToolBar =  function(property){
                             Al.addHidden(uniqId , p, property[p]);
                         }
                         var  hidden = getHiddenColumns(_cm); 
-                        document.exportReport.hidden_columns.value = hidden;
+                        if ( document.exportReport.hidden_columns === undefined )
+                        {
+                            document.exportReport.hidden_columns = { value:hidden};
+                        }else{
+                            document.exportReport.hidden_columns.value = hidden;
+                        }
                         //document.exportReport.idQuery.value = _idQuery;
                         document.exportReport.submit();
                       }

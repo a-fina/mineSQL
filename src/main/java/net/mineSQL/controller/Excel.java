@@ -64,43 +64,14 @@ public class Excel {
 
         log.info("Get file Excel con: "  + con + " query: " + query + " numberOfColumns: " + numberOfColumns + " countRow: " + countRow);
         // TODO: StringBuilder optimization
-        String html = "<html>\n"
-                + "<head>\n"
-                + "<style>\n"
-                + ".type-GEN {\n"
-                + "  mso-number-format:General;\n"
-                + "}\n"
-                + ".type-CHAR{\n"
-                + "  mso-number-format:\"\\@\";/*force text*/\n"
-                + "}\n"
-                + ".type-NUMERIC{\n"
-                + "  mso-number-format:\"\\#0\\.00\";\n"
-                + "}\n"
-                + ".intestazione {\n"
-                + "    background-color: #5bc0de;\n"
-                + "    color: #000;\n"
-                + "    font-size: 10px;\n"
-                + "}\n"
-                + "</style>\n"
-                + "</head>\n"
-                + "<body>";
+        StringBuilder html = new StringBuilder()
+                .append("<html>\n<head>\n<style>\n.type-GEN {\nmso-number-format:General;\n}\n.type-CHAR{\nmso-number-format:\"\\@\";/*force text*/\n}\n.type-NUMERIC{\nmso-number-format:\"\\#0\\.00\";\n}\n.intestazione {\nbackground-color: #5bc0de;\ncolor: #000;\nfont-size: 10px;\n}\n</style>\n</head>\n<body>");
 
         if (countRow == 0) {
-            html += "<table id=\"tabella-report\" border=\"1\">\n"
-                    + "		<thead>	\n"
-                    + "		<tr>\n"
-                    + "			<th>Messaggio</th>\n"
-                    + "		</tr>\n"
-                    + "		</thead>\n"
-                    + "		<tr>\n"
-                    + "			<td width=\"150\"><p>Nessuna corrispondenza</p></td>\n"
-                    + "		</tr>\n"
-                    + "		</table>";
+            html.append("<table id=\"tabella-report\" border=\"1\">\n<thead>	\n<tr>\n<th>Messaggio</th>\n</tr>\n</thead>\n<tr>\n<td width=\"150\"><p>Nessuna corrispondenza</p></td>\n</tr>\n</table>");
 
         } else {
-            html += "  <table id=\"tabella-report\" border=\"1\">\n"
-                    + "        <thead>	\n"
-                    + "        <tr>";
+            html.append("<table id=\"tabella-report\" border=\"1\">\n<thead>	\n<tr>");
 
             for (int i = 1; i <= numberOfColumns; i++) {
                 String th = rsMd.getColumnLabel(i);
@@ -112,17 +83,17 @@ public class Excel {
                     }
                 }
                 if (!skip) {
-                    html += "<th class=\"intestazione\">" + th + "</th>";
+                    html.append("<th class=\"intestazione\">").append(th).append("</th>");
                 }
             }
 
-            html += "</tr>\n</thead>";
+            html.append("</tr>\n</thead>");
 
             /*
              * Ciclo sulle righe estratte 
              */
             while (rs.next()) {
-                html += "<tr>";
+                html.append("<tr>");
 
                 for (int i = 1; i <= numberOfColumns; i++) {
                     String strValue = "-";
@@ -160,17 +131,18 @@ public class Excel {
                      }
                      */
                     if (!skip) {
-                        html += "<td class=\"type-" + format + "\">" + strValue.replaceAll("<", "&lt;") + "</td>";
+                        html.append("<td class=\"type-").append(format).append("\">").append(strValue.replaceAll("<", "&lt;")).append("</td>");
                     }
                 }
-                html += "</tr>";
+                html.append("</tr>");
             }
-            html += "</table>";
+            html.append("</table>");
 
             rs.close();
             ps.close();
         }
-        return html;
+        log.info("File Excel READY");
+        return html.toString();
     }
 
 }

@@ -353,7 +353,7 @@ public class MineTable {
             fieldSet.put("xtype","fieldset");
             fieldSet.put("autoHeight", "true");
             fieldSet.put("defaultType", "textfield");
-            fieldSet.put("defaults","{width: 700}");
+            fieldSet.put("defaults","{width: '100%'}");
 
             return fieldSet;
     }

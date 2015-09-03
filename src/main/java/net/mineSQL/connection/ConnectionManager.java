@@ -26,7 +26,7 @@ public class ConnectionManager {
     private static HashMap hcm;
     // Dichiarare DataSource
     private static HashMap hds;
-    private static Thread currentThread;
+    private static Thread currentThread = Thread.currentThread();
     private static int currentConnection;
     private static String separator = "###";
 
@@ -78,6 +78,7 @@ public class ConnectionManager {
             String host,
             String database) throws ConnectionException, SQLException {
 
+        log.debug("Connection  host: " +  host );
         Connection c = null;
         String host_key = "" + currentThread.getName() + "_" + host + "_";
 
@@ -173,7 +174,6 @@ public class ConnectionManager {
             String driver) throws ConnectionException {
 
         Connection c = null;
-        currentThread = Thread.currentThread();
 
         // Connection Key
         String key = "" + currentThread.getName()

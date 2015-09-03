@@ -252,7 +252,7 @@ ScriptSQL = function(){
 			//alert("1 loadAutogrid _myGridPanel.getId: " + _myGridPanel.getId());
 
             _myWindow = new Ext.Window({
-                title:"Ricerca avanzata Host:"+_hostName +" DB: " + _showDatabaseName +" TABLE: " + _showTableName ,
+                title:"Ricerca avanzata - Host:"+_hostName +" DB: " + _showDatabaseName +" TABLE: " + _showTableName ,
                 closable:true,
                 width:850,
                 height:690,

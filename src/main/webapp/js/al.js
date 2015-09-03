@@ -100,10 +100,13 @@ Al = function(){
             }
             return r.join("\n");
         },
-        addHidden : function addInput(divName, fieldName, value){
-            var newdiv = document.createElement('div');
-            newdiv.innerHTML = "<input type='hidden' name='"+fieldName+"' value='"+value+"'>";
-            document.getElementById(divName).appendChild(newdiv);
+        addHidden : function(divName, fieldName, value){
+            // var newdiv = "<input type='hidden' name='"+fieldName+"' value='"+ encodeURI(value) +"'>";
+            var input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", fieldName);
+            input.setAttribute("value", value);
+            document.getElementById(divName).appendChild(input);
         }
     };
 }();

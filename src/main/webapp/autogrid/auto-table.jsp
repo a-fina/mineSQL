@@ -3,6 +3,8 @@
 
 <%@page import="net.mineSQL.controller.MineTable"%>
 <%
+String result = "";
+try{    
     // Prendo i parametri
     doGet(request);
 
@@ -13,7 +15,6 @@
     // Istanzio il gestore della tabella
     //---- MineTable dmTable = new MineTable(con, request.getParameter("tableName") );
     MineTable dmTable = new MineTable(con, tableName);
-    String result = "";
 
     // Gestione CRUD
     if (crud_operation.equals("fieldSet")) //TODO sincronizzare con jsonReader
@@ -139,6 +140,11 @@
         }
     }
 
+} catch (Exception ex) {
+    result = "{\"success\":false,\"valid\":true,\"reason\":\""+ex.getMessage()+","+ ex.getCause()+"\"}";
+    ex.printStackTrace();
+}finally{
     log.debug("final result: " + result);
     out.write(result);
+}
 %>
