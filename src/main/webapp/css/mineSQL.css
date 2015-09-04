@@ -21,11 +21,15 @@ body {
 #intestazione {
 	/*background-image:url(../img/menu1.gif);*/
 	border-left:2px solid #D0D0D0;
-	color:#000000;
+	color:  #000000;
 	font-size:10px;
 	height:130px;
 	padding-left:11px;
 	text-align:left;
+    background: -webkit-linear-gradient(left top, lightyellow, khaki); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, lightyellow, khaki); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, lightyellow, khaki); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, lightyellow, khaki); /* Standard syntax (must be last) */
 }
 
 #bottom {

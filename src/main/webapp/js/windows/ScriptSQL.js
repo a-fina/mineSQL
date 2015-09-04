@@ -287,7 +287,8 @@ ScriptSQL = function () {
             Ext.MessageBox.alert("Version: " + ver);
         },
         openWindow: function () {
-            loadAutoform();
+            var param = {};
+            loadAutoform(param);
         },
         viewTable: function (params) {
             params.onBeforeSuccessLoadGrid = true;

@@ -32,6 +32,15 @@ public class Report {
 	@DatabaseField(columnName = "UTENTE", canBeNull = false)
 	private String utente;
 
+	@DatabaseField(columnName = "NOTE", canBeNull = false)
+	private String note;
+
+	@DatabaseField(columnName = "NOME", canBeNull = false)
+	private String nome;
+
+	@DatabaseField(columnName = "DESCRIZIONE", canBeNull = false)
+	private String descrizione;
+
     @DatabaseField(canBeNull = true, foreign = true)
     private User user;
 
@@ -51,15 +60,6 @@ public class Report {
     public void setUtente(String utente) {
         this.utente = utente;
     }
-
-	@DatabaseField(columnName = "NOTE", canBeNull = false)
-	private String note;
-
-	@DatabaseField(columnName = "NOME", canBeNull = false)
-	private String nome;
-
-	@DatabaseField(columnName = "DESCRIZIONE", canBeNull = false)
-	private String descrizione;
 
     public String getDescrizione() {
         return descrizione;

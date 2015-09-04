@@ -42,11 +42,12 @@ GridToolBar =  function(property){
     var _target    = property.target || undefined;
 
     var uniqId = "id-" + _hostName + _databaseName + _tableName + _idFiltro;
+    var xlsId = "xls-" + _hostName + _databaseName + _tableName + _idFiltro;
     // Public items
     this.exportExcelForm = 
-                "<form name='exportReport' id='exportReport' action='autogrid/auto-excel.jsp' method='post'>"+
+                "<form name='"+xlsId+"' id='"+xlsId+"' action='autogrid/auto-excel.jsp' method='post'>"+
                 "<div id='" + uniqId + "'>"+
-                "<input type='hidden' name='hidden_columns' value=''>"+
+                "<input type='hidden' id='hid_col"+xlsId+"' name='hid_col"+xlsId+"' value=''>"+
                 /*"<input type='hidden' name='idQuery' value=''>"+
                 "<input type='hidden' name='tableName' value='"+_tableName +"'>"+
                 "<input type='hidden' name='context' value='" + _entity + "'>"+*/
@@ -214,15 +215,15 @@ GridToolBar =  function(property){
                             *********/
                             Al.addHidden(uniqId , p, property[p]);
                         }
-                        var  hidden = getHiddenColumns(_cm); 
-                        if ( document.exportReport.hidden_columns === undefined )
+                        var hidden = getHiddenColumns(_cm); 
+                        var xlsForm = document.getElementById(xlsId);
+                        if ( xlsForm.hidden_columns === undefined )
                         {
-                            document.exportReport.hidden_columns = { value:hidden};
+                            xlsForm.hidden_columns = { value:hidden};
                         }else{
-                            document.exportReport.hidden_columns.value = hidden;
+                            xlsForm.hidden_columns.value = hidden;
                         }
-                        //document.exportReport.idQuery.value = _idQuery;
-                        document.exportReport.submit();
+                        xlsForm.submit();
                       }
          });
         // Aggiungo il bottone update solo quando sto caricando una griglia 

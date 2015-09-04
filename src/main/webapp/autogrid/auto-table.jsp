@@ -2,6 +2,7 @@
 <%@include file="auto-lib.jsp"%>
 
 <%@page import="net.mineSQL.controller.MineTable"%>
+<%@page import="net.mineSQL.ormlite.controller.CRUDFactory"%>
 <%
 String result = "";
 try{    
@@ -71,19 +72,19 @@ try{
         String filter = Utilita.getFilterCondition(con, request, "", "", "");
         HashMap formParams = dmTable.getSubmittedParams(request);
         MineScript script = new MineScript();
-        // TODO non mi ricordo cazzo volevo fare? query = script.mergeScriptParameters(formParams, query);
-        //String db_table = databaseName + "." + tableName;
-        // TODO: se SUBMIT_test contiene una query ??? non devo salvare quella di default--
-        //query = "SELECT * FROM " + db_table + " WHERE 1=1";
-        //log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
+        
         // testo e' la textarea di default
         query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  
         if (filter.length() > 0) {
             query = "select FILT_AUX.* from (" + query + ") as FILT_AUX WHERE 1=1 " + filter;
         }
-        log.debug(" MARK FUNZA salava merged query: " + query + " params: " + formParams);
+        log.debug(" MARK FUNZA salva merged query: " + query + " params: " + formParams);
         // Inserimento nuova riga nella tabella // TODO Generalizzare entity
         // Oggetto
+        int res = 0;
+        CRUDFactory crf = new CRUDFactory("report", request, query); 
+        res = 1;
+        /*******************************************************
         Dao<Report, Integer> reportDao;
         ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
         reportDao = DaoManager.createDao(connectionSource, Report.class);
@@ -93,11 +94,11 @@ try{
         repo.setHost(hostName);
         repo.setDatabase(databaseName);
         repo.setUtente("0");
-
         int res = reportDao.create(repo);
         if (connectionSource != null) {
             connectionSource.close();
         }
+        ******************************************************/
 
         /**
          * ********************** if (! scriptTable.create( nuovoFiltro ) )   ******************

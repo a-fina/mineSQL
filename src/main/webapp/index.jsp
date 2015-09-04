@@ -119,14 +119,14 @@ String valore(String nomeCampo) {
     <script type="text/javascript" src="js/grid/GridAdvancedFilters.js"></script>
     <script type="text/javascript" src="js/grid/AutoGrid.js"></script>
     <script type="text/javascript" src="js/windows/ScriptSQL.js"></script>
-    <script type="text/javascript" src="js/windows/iSQL.js"></script>
     <script type="text/javascript" src="js/windows/UploadWindow.js"></script>
     <script type="text/javascript" src="js/windows/WindowFormTable.js"></script>
     <script type="text/javascript" src="js/GenericMenu.js"></script>
     <script type="text/javascript" src="js/MainView.js"></script>
     <script type="text/javascript" src="js/GenericMenu.js"></script>
-    <script type="text/javascript" src="js/FilterMngr.js"></script>
-    <script type="text/javascript" src="js/CSVMngr.js"></script>
+    <script type="text/javascript" src="js/model-form/FilterMngr.js"></script>
+    <script type="text/javascript" src="js/model-form/CSVMngr.js"></script>
+    <script type="text/javascript" src="js/model-form/DatabaseMngr.js"></script>
     <!-- i css servono per correggere dei bug di extjs -->
 
 	
@@ -185,9 +185,9 @@ String valore(String nomeCampo) {
         var maxInactiveInterval = <%=session.getMaxInactiveInterval()%>;
         var tplCombo = 
                 new Ext.XTemplate('<tpl for="."><div ext:qtip="{ID}. {NOME}" class="x-combo-list-item">{NOME}</div></tpl>');
+        
         function openWindows(){
                 ScriptSQL.openWindow();
-    //            iSQL.openWindow();
         }
         /**
          * Definisce la versione corrette dell'applicazione
@@ -229,7 +229,7 @@ String valore(String nomeCampo) {
 
     <!-- Header -->
     <div id="intestazione">
-	    <table cellspacing="0" cellpadding="0" width="100%" bordercolor="green">
+	    <table cellspacing="0" cellpadding="0" width="100%" >
 			<tr>
 			  <td colspan="3">
 				<table cellspacing="0" cellpadding="0" width="100%" border="0">

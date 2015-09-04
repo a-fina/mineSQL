@@ -9,7 +9,9 @@
 try {
 	
     // Recupero lo statement paginato e completo di filtri
-    String[] hiddenColumns = request.getParameter("hidden_columns").split(",");
+    String[] hiddenColumns = {};
+    //TODO: l'id ed il nome sono cambiati, sono univoci per ogni form. Idea: Intercettarli dal prefisso SUBMIT_hidden_
+    // request.getParameter("hidden_columns").split(",");
 
     /**    
     getFinalQuery(request, request.getParameter("tableName") ); 	
