@@ -44,7 +44,7 @@ DatabaseMngr.saveWin = function(config) {
                             name: 'HOST'
                         }, {
                             fieldLabel: 'Database',
-                            name: 'DATABASE'
+                            name: 'SOURCE'
                         }, {
                             fieldLabel: 'User',
                             name: 'USER'
@@ -59,7 +59,8 @@ DatabaseMngr.saveWin = function(config) {
                 submitParams: {
                         'idQuery':'undefined',
                         'context':'undefined',
-                        'hidden_columns': 'undefined'
+                        'hidden_columns': 'undefined',
+                        'entityName': 'Database'
                 },
                 title: 'Salva Nuova Connesione', 
                 tableName: 'Database',

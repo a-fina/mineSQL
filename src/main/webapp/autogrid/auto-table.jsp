@@ -7,19 +7,16 @@
 String result = "";
 try{    
     // Prendo i parametri
-    doGet(request);
-
-    log.info("Connected to: " + hostName + ":" + databaseName);
-
     String crud_operation = request.getParameter("crudOperation");
-
-    // Istanzio il gestore della tabella
-    //---- MineTable dmTable = new MineTable(con, request.getParameter("tableName") );
-    MineTable dmTable = new MineTable(con, tableName);
 
     // Gestione CRUD
     if (crud_operation.equals("fieldSet")) //TODO sincronizzare con jsonReader
     {
+        doGet(request);
+        log.info("Connected to: " + hostName + ":" + databaseName);
+        // Istanzio il gestore della tabella
+        MineTable dmTable = new MineTable(con, tableName);
+
         String id = "";
         String action = "";
 
@@ -53,11 +50,21 @@ try{
         log.debug("before dmTable.getFieldSetFromField result: " + result);
     } else if (crud_operation.equals("jsonReader")) //TODO sincronizzare con fieldSet
     {
+        doGet(request);
+        log.info("Connected to: " + hostName + ":" + databaseName);
+        // Istanzio il gestore della tabella
+        MineTable dmTable = new MineTable(con, tableName);
+
         // Ricavo i metaData dei campi
         result = dmTable.getJsonReader().toString();
     } 
     else if (crud_operation.equals("read")) 
     {
+        doGet(request);
+        log.info("Connected to: " + hostName + ":" + databaseName);
+        // Istanzio il gestore della tabella
+        MineTable dmTable = new MineTable(con, tableName);
+
         result = dmTable.read(null, "ID = " + request.getParameter("ID"));
     } 
     else if (crud_operation.equals("create")) 
@@ -68,38 +75,31 @@ try{
         {
             hiddenColumns = request.getParameter("hidden_columns").split(",");
         }
-
         String filter = Utilita.getFilterCondition(con, request, "", "", "");
+
+        MineTable dmTable = new MineTable(null, null);
         HashMap formParams = dmTable.getSubmittedParams(request);
+
+        // Table Name
+        if (request.getParameter("entityName") != null) tableName = request.getParameter("entityName");
+        else tableName = null;
+
         MineScript script = new MineScript();
-        
         // testo e' la textarea di default
         query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  
         if (filter.length() > 0) {
             query = "select FILT_AUX.* from (" + query + ") as FILT_AUX WHERE 1=1 " + filter;
         }
         log.debug(" MARK FUNZA salva merged query: " + query + " params: " + formParams);
+
+        log.debug(" MARK DATABSE: " + request.getParameter("DATABASE"));
+
         // Inserimento nuova riga nella tabella // TODO Generalizzare entity
-        // Oggetto
         int res = 0;
-        CRUDFactory crf = new CRUDFactory("report", request, query); 
+
+        CRUDFactory crf = new CRUDFactory(tableName, request, query); 
+
         res = 1;
-        /*******************************************************
-        Dao<Report, Integer> reportDao;
-        ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
-        reportDao = DaoManager.createDao(connectionSource, Report.class);
-
-        Report repo = new Report(request.getParameter("NOME"), request.getParameter("NOTE"));
-        repo.setDescrizione(query);
-        repo.setHost(hostName);
-        repo.setDatabase(databaseName);
-        repo.setUtente("0");
-        int res = reportDao.create(repo);
-        if (connectionSource != null) {
-            connectionSource.close();
-        }
-        ******************************************************/
-
         /**
          * ********************** if (! scriptTable.create( nuovoFiltro ) )   ******************
          */
@@ -109,6 +109,7 @@ try{
             result = "{\"success\":true,\"valid\":true,\"reason\":\"Aggiornamento effettuato.\"}";
         }
     } else if (crud_operation.equals("delete")) {
+        MineTable dmTable = new MineTable(null, null);
         // Cancellazione di una riga nella tabella
         if (dmTable.delete("ID = " + request.getParameter("ID"))) {
             result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore cancellazione.\"}";
@@ -133,6 +134,11 @@ try{
         nuovoFiltro.put("IDFLUSSO", request.getParameter("IDFLUSSO"));
         nuovoFiltro.put("NOTE", request.getParameter("NOTE"));
         nuovoFiltro.put("DESCRIZIONE", query.replaceAll("'", "''"));
+
+        doGet(request);
+        log.info("Connected to: " + hostName + ":" + databaseName);
+        // Istanzio il gestore della tabella
+        MineTable dmTable = new MineTable(con, tableName);
 
         if (dmTable.update(nuovoFiltro, "ID = " + request.getParameter("ID"))) {
             result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore aggiornamento.\"}";

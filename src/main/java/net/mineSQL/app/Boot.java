@@ -10,16 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import net.mineSQL.ormlite.controller.CRUDFactory;
 import net.mineSQL.util.ApplicationWatcher;
 
 public class Boot extends HttpServlet {
+
+    Logger log = Logger.getLogger(Boot.class);
 
     @Override
     public void init() throws ServletException {
         // Start Logger
         loggerInit();
+
         // Start Scheduler
         //    ApplicationWatcher.startScheduler();
+
+        // Create MineSQL Internal Datatabase
+       databaseInit(); 
 
         super.init();
     }
@@ -51,13 +58,17 @@ public class Boot extends HttpServlet {
             return;
         }
 
-        Logger log = Logger.getLogger(Boot.class);
-
         log.debug("Test Livello DEBUG");
         log.info("Test Livello INFO");
         log.warn("Test Livello WARNING");
         log.error("Test Livello ERROR");
         log.fatal("Test Livello FATAL");
+    }
+
+    
+    private void databaseInit() {
+        CRUDFactory.setupMineSQLTables();
+        log.info("MineSQL Internal Database Ready");
     }
 
 

@@ -70,6 +70,7 @@ WindowFormTable = Ext.extend(Ext.Window,{
             // Se non viene passato un fieldSet allora lo richiedo lato server
             if (! conf.items){
                 _saveMe.staCaricando = true;
+                alert("MARK1: " + conf.tableName);
                 //TODO var ajaxParams = {column: true, meta: true};
                             //alert("before request success : " + _saveMe.staCaricando);
                 _saveMe.formFieldRequest = Ext.Ajax.request({
@@ -216,6 +217,7 @@ WindowFormTable = Ext.extend(Ext.Window,{
                             "tableName" : conf.tableName,
                             "crudOperation" : "read"
                         };
+                        alert("MARK0: " + conf.tableName);
                         Ext.apply(_loadParams, conf.submitParams);
                         formTable.getForm().load({
                                 url:_url,

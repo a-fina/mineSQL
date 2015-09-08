@@ -1,23 +1,22 @@
-<%@include file="menu-lib.jsp"%>
-
 <%@page import="net.mineSQL.ormlite.controller.Menu"%>
+<%@page import="net.sf.json.JSONArray;"%>
 
 <%
 	JSONArray treeMenu = new JSONArray();
 
-    try
-    {
+    
+//    try
+//    {
     //con = ConnectionManager.getConnection("localhost","mineSQL");
     String idUtente = "0";//session.getAttribute("IDUTENTE").toString(); 
 
     Menu menu = new Menu();
     JSONArray filtri = menu.getFiltersList(null, null);
 
-    log.debug("MARK_filtri :" + filtri);
 
     //JSONArray filtri = getFiltersList("1", idUtente);
     if ( ! filtri.isEmpty() ) 
-        treeMenu.add( getMenuItem("Livello 1", filtri , null) );
+        treeMenu.add( menu.getMenuItem("Livello 1", filtri , null) );
 
     /**********
     filtri = getFiltersList("2", idUtente);
@@ -42,23 +41,16 @@
     ******************/
 
     if ( treeMenu.isEmpty() )
-        treeMenu.add( getMenuItem("Nessun filtro salvato", null, "disableMe") );
+        treeMenu.add( menu.getMenuItem("Nessun filtro salvato", null, "disableMe") );
 
-    } catch (SQLException sqle) {
+/*    } catch (SQLException sqle) {
         switch (sqle.getErrorCode()) {
         default:
             log.error("", sqle);
             break;
         }
-    } finally {
-        try {
-            if (con != null)
-                con.close();
-        }
-        catch (Exception ex) {
-            log.error("", ex);
-        }
-    }	
+    }
+*/	
 
     // E stampiamo sto benedetto JSON
     out.print(treeMenu);

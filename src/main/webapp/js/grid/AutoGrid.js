@@ -149,7 +149,7 @@ AutoGrid = function (/*targetDiv,*/ targetURL, ajaxParams, config) {
         var toolBar = new GridToolBar(
                 //idflusso:ID_FLUSSO_GENERIC, 
                 toolBarParam
-                );
+        );
         /*
          * Metodo di disegno della griglia
          */

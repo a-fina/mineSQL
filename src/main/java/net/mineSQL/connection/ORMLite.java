@@ -11,7 +11,7 @@ package net.mineSQL.connection;
  */
 public class ORMLite {
         public static String path = System.getProperty("user.dir");
-        public static String dbName = "minesql_report";
-        public static String DATABASE_URL = "jdbc:h2:file:" + path + dbName;
+        public static String dbName = "minesql_db";
+        public static String DATABASE_URL = "jdbc:h2:file:" + path+"/" + dbName;
 
 }

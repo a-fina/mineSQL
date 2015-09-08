@@ -86,6 +86,7 @@ String valore(String nomeCampo) {
 	
     <title>DB Mining System - Beta</title>
     <!-- Ext requirement -->
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="ext-3.4.0/resources/css/ext-all.css" />
     <link rel="stylesheet" type="text/css" href="ext-3.4.0/resources/css/xtheme-gray.css" />
 

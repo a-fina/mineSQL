@@ -12,14 +12,14 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Example account object that is persisted to disk by the DAO and other example classes.
  */
-@DatabaseTable(tableName = "REPORT")
-public class Database {
+@DatabaseTable(tableName = "DATASOURCE")
+public class Datasource {
 
 	@DatabaseField(generatedId = true)
 	private int id;
 
-	@DatabaseField(columnName = "DATABASE", canBeNull = false)
-	private String database;
+	@DatabaseField(columnName = "SOURCE", canBeNull = false)
+	private String source;
 
 	@DatabaseField(columnName = "HOST", canBeNull = false)
 	private String host;
@@ -27,7 +27,7 @@ public class Database {
 	@DatabaseField(columnName = "USER", canBeNull = false)
 	private String user;
 
-	@DatabaseField(columnName = "PASSWORD", canBeNull = false)
+	@DatabaseField(columnName = "PASSWORD", canBeNull = true)
 	private String password;
 
 	@DatabaseField(columnName = "SHOW_ALL_DATABASE", canBeNull = true)
@@ -41,14 +41,22 @@ public class Database {
 
 
 
-	Database() {
+	Datasource() {
 		// all persisted classes must define a no-arg constructor with at least package visibility
 	}
+
+    public Datasource(String name, String type, String host, String source){
+        this.setName(name);
+        this.setType(type);
+        this.setHost(host);
+        this.setSource(source);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 71 * hash + this.id;
-        hash = 71 * hash + (this.database != null ? this.database.hashCode() : 0);
+        hash = 71 * hash + (this.source!= null ? this.source.hashCode() : 0);
         hash = 71 * hash + (this.host != null ? this.host.hashCode() : 0);
         hash = 71 * hash + (this.user != null ? this.user.hashCode() : 0);
         hash = 71 * hash + (this.password != null ? this.password.hashCode() : 0);
@@ -60,7 +68,7 @@ public class Database {
 
     @Override
     public String toString() {
-        return "Database{" + "id=" + id + ", database=" + database + ", host=" + host + ", user=" + user + ", password=" + password + ", showAll=" + showAll + ", name=" + name + ", type=" + type + '}';
+        return "Database{" + "id=" + id + ", source=" + source+ ", host=" + host + ", user=" + user + ", password=" + password + ", showAll=" + showAll + ", name=" + name + ", type=" + type + '}';
     }
 
     @Override
@@ -71,11 +79,11 @@ public class Database {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Database other = (Database) obj;
+        final Datasource other = (Datasource) obj;
         if (this.id != other.id) {
             return false;
         }
-        if ((this.database == null) ? (other.database != null) : !this.database.equals(other.database)) {
+        if ((this.source == null) ? (other.source != null) : !this.source.equals(other.source)) {
             return false;
         }
         if ((this.host == null) ? (other.host != null) : !this.host.equals(other.host)) {
@@ -107,12 +115,12 @@ public class Database {
         this.id = id;
     }
 
-    public String getDatabase() {
-        return database;
+    public String getSource() {
+        return source;
     }
 
-    public void setDatabase(String database) {
-        this.database = database;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public String getHost() {

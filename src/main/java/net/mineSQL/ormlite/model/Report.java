@@ -44,6 +44,30 @@ public class Report {
     @DatabaseField(canBeNull = true, foreign = true)
     private User user;
 
+	Report() {
+		// all persisted classes must define a no-arg constructor with at least package visibility
+	}
+
+    public Report(int id, String database, String host) {
+        this.id = id;
+        this.database = database;
+        this.host = host;
+    }
+    public Report(String nome, String note) {
+        this.nome = nome;
+        this.note = note;
+    }
+
+    
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    
     public User getUser() {
         return user;
     }
@@ -139,25 +163,10 @@ public class Report {
         return true;
     }
 
-    public String getHost() {
-        return host;
+    @Override
+    public String toString() {
+        return "Report{" + "id=" + id + ", database=" + database + ", host=" + host + ", utente=" + utente + ", note=" + note + ", nome=" + nome + ", descrizione=" + descrizione + ", user=" + user + '}';
     }
 
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public Report(int id, String database, String host) {
-        this.id = id;
-        this.database = database;
-        this.host = host;
-    }
-    public Report(String nome, String note) {
-        this.nome = nome;
-        this.note = note;
-    }
-
-	Report() {
-		// all persisted classes must define a no-arg constructor with at least package visibility
-	}
+  
 }

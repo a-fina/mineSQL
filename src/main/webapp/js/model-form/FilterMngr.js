@@ -45,10 +45,12 @@ FilterMngr.saveWin = function(config) {
                 submitParams: {
                         'idQuery':'undefined',
                         'context':'undefined',
-                        'hidden_columns': 'undefined'
+                        'hidden_columns': 'undefined',
+                        'tableName': 'report',
+                        'entityName': 'Report'
                 },
                 title: 'Salva Nuovo Filtro', 
-                tableName: 'report',
+                tableName: 'Report',
                 crud: 'create',
                 modal: true,
                 url: 'autogrid/auto-table.jsp',
