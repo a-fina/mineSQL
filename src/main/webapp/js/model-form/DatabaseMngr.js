@@ -49,6 +49,9 @@ DatabaseMngr.saveWin = function(config) {
                             fieldLabel: 'User',
                             name: 'USER'
                         }, {
+                            fieldLabel: 'URL',
+                            name: 'URL'
+                        }, {
                             fieldLabel: 'Password',
                             name: 'PASSWORD'
                         }, {

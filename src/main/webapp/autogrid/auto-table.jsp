@@ -15,7 +15,7 @@ try{
         doGet(request);
         log.info("Connected to: " + hostName + ":" + databaseName);
         // Istanzio il gestore della tabella
-        MineTable dmTable = new MineTable(con, tableName);
+        MineTable dmTable = new MineTable(con, tableName, databaseName);
 
         String id = "";
         String action = "";

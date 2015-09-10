@@ -34,6 +34,7 @@ public class ConnectionManager {
     public static String DB2 = "db2";
     public static String POSTGRES = "postgresql";
     public static String MYSQL = "mysql";
+    public static String H2 = "h2";
 
     public ConnectionManager() {
     }
@@ -94,9 +95,10 @@ public class ConnectionManager {
                     String user = k.split(separator)[1];
                     String password = k.split(separator)[2];
                     String dbType = k.split(separator)[3];
+                    String url= k.split(separator)[4];
                     // TODO: propagare nuovo parametro dbType
-                    c = getConnection(host, database, user, password, dbType);
-                    log.debug("ConnectionManager [getConnection] new c:" + c);
+                    c = getConnection(host, database, user, password, dbType, url);
+                    log.debug("ConnectionManager  NEW connection c:" + c);
                 }
                 break;
             }
@@ -119,7 +121,7 @@ public class ConnectionManager {
         c = (Connection) hcm.get(key);
 
         if ( c != null ){
-        //TODO DB2 non va isValid    if ( c.isClosed() || ! c.isValid(2)){
+            //TODO DB2 non va isValid    if ( c.isClosed() || ! c.isValid(2)){
             if ( c.isClosed() ){
                 releaseConnection(c);
                 c = null;
@@ -129,6 +131,19 @@ public class ConnectionManager {
         return c;
     }
 
+    public static synchronized Connection getConnection(
+
+            String host,
+            String database,
+            String userName,
+            String password,
+            String dbType) throws ConnectionException, SQLException 
+    {
+            String url = "jdbc:"+ dbType +"://" + host + "/" + database;
+            log.info("Get Connection request: "  + host + " " + database + " " + userName + " " + password+ " "+dbType);
+   
+            return getConnection(host, database, userName, password, dbType, url);
+    }
     /*
     * Connection Factory
     */
@@ -138,47 +153,38 @@ public class ConnectionManager {
             String database,
             String userName,
             String password,
-            String dbType) throws ConnectionException, SQLException {
+            String dbType,
+            String url) throws ConnectionException, SQLException {
 
-            log.info("Get Connection request: "  + host + " " + database + " " + userName + " " + password+ " "+dbType);
-
+            String key = "" + currentThread.getName()
+                + "_" + host +"_" + "_" + database
+                + separator+userName+separator+password+separator+dbType+separator+url;
+            
             if (dbType.equals(DB2) || dbType.equals("as400") ){
-                return    getConnection(host, database, userName, password, "as400", "com.ibm.as400.access.AS400JDBCDriver");
+                return    getConnectionCal(userName, password,  url, "com.ibm.as400.access.AS400JDBCDriver", key);
             }
             else if (dbType.equals(POSTGRES)){
-                return    getConnection(host, database, userName, password, "postgresql", "org.postgresql.Driver");
+                return    getConnectionCal(userName, password,  url, "org.postgresql.Driver", key);
             }
             else if (dbType.equals(MYSQL)){
-                return    getConnection(host, database, userName, password, "mysql", "com.mysql.jdbc.Driver");
+                return    getConnectionCal(userName, password,  url, "com.mysql.jdbc.Driver", key);
+            }
+            else if (dbType.equals(H2)){
+                return    getConnectionCal(userName, password, url, "org.h2.Driver", key);
             }
 
             throw new SQLException("MineSQL Database Type: <"+ dbType +"> non supportato");
-
     }
 
-    public static synchronized Connection getFilemakerConnection(
-            String host,
-            String database,
-            String userName,
-            String password) throws ConnectionException, SQLException {
-
-            return    getConnection(host, database, userName, password, "filemaker", "com.filemaker.jdbc.Driver");
-    }
-
-    public static synchronized Connection getConnection(
-            String host,
-            String database,
+    public static synchronized Connection getConnectionCal(
             String userName,
             String password,
-            String dbType,
-            String driver) throws ConnectionException {
+            String url, 
+            String driver,
+            String key) throws ConnectionException {
 
         Connection c = null;
-
         // Connection Key
-        String key = "" + currentThread.getName()
-                + "_" + host +"_" + "_" + database
-                + separator+userName+separator+password+separator+dbType;
 
         try {
             c = getConnection(key);
@@ -186,51 +192,37 @@ public class ConnectionManager {
             throw new ConnectionException(ex);
         }
         while (c == null) {
-          
             try {
-                String url = "jdbc:"+ dbType +"://" + host + "/" + database;
-                log.debug("ConnectionManager loading Driver: "+ driver);
+                log.info("ConnectionManager OK connection to url: "+ url + " user: " + userName + " password: " + password );
                 Class.forName(driver).newInstance();
-                log.debug("ConnectionManager getConnection for: "+ url);
-                c = DriverManager.getConnection(url, userName, password);
-                log.info("ConnectionManager OK connection to "+ url + " conn: " + c);
-
+                if ( userName != null && ! userName.equals("null") && ! userName.isEmpty() )
+                    c = DriverManager.getConnection(url, userName, password);
+                else
+                    c = DriverManager.getConnection(url);
+                
+                log.info("ConnectionManager OK connected to conn: " + c);
                 currentConnection++;
-            /**************
-            } catch (InstantiationException ex) {
-                log.debug(ex);
-            } catch (IllegalAccessException ex) {
-                log.debug(ex);
-            } catch (ClassNotFoundException ex) {
-                log.debug(ex);
-            } catch (SQLException ex) {
-                // Non ci sono risorse disponibili, quindi
-                // si attende che venga rilasciata una connessione
-                log.debug("ConnectionManager [getConnection] WAIT for thread key:" + key);
-                log.debug(ex.getCause());
-                log.debug(ex.getMessage());
-                try {
-                    ConnectionManager.class.wait();
-                } catch (InterruptedException ie) {
-                    log.debug("ConnectionManager [getConnection] FAILED WAIT for thread key:" + key
-                            + " - " + ie.getMessage());
-                }
-                log.debug("ConnectionManager [getConnection] END WAIT for thread key:" + key);
-                throw new SQLException(ex);
-            }
-            *************************/
             }catch (Exception ex) {
+                ex.printStackTrace();
                 log.debug(ex);
                 throw new ConnectionException(ex);
             }
-
+            // Salvo la connessione
             if (c != null) {
                 hcm.put(key, c);
                 log.debug("ConnectionManager add new connection [getConnection] for thread key:" + key);
             }
         }
-        
         return c;
+    }
+
+    public static synchronized Connection getFilemakerConnection(
+            String userName,
+            String password,
+            String url,
+            String key) throws ConnectionException, SQLException {
+
+            return    getConnection(userName, password, "filemaker", "com.filemaker.jdbc.Driver", url, key);
     }
 
 

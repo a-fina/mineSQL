@@ -38,6 +38,7 @@ public class MineTable {
     private static final String hidden_prefix = "HIDDEN_";
 
     private String vTable = "";
+    private String vDatabase = "";
     private Connection vCon = null;
 
     protected final String jdbcAttProb = "jdbc/mineSQL";
@@ -48,6 +49,11 @@ public class MineTable {
     public MineTable(Connection con, String nome ) {
         vTable = nome;
         vCon = con;
+    }
+    public MineTable(Connection con, String table, String database) {
+        vTable = table;
+        vCon = con;
+        vDatabase = database;
     }
     /**************************
      * TODO: costruttore con host, db, user, password, si prende da solo la connession
@@ -212,9 +218,9 @@ public class MineTable {
         Statement st = null;
         String sqlSelect = null;
         if (data == null)
-            sqlSelect = "SELECT * FROM " + vTable;
+            sqlSelect = "SELECT * FROM " + vDatabase + "." + vTable;
         else 
-            sqlSelect = "SELECT " + data + " FROM " + vTable;
+            sqlSelect = "SELECT " + data + " FROM " + vDatabase + "." +  vTable;
 
         if (condition != null )
             sqlSelect += " WHERE " + condition;
@@ -240,7 +246,8 @@ public class MineTable {
             //con = ConnectionManager.getConnection(jdbcAttProb);
             log.debug("getJsonReader");
             // MySQL ResultSet resSet  = _read(null, "1=1 LIMIT 1", vCon);
-            ResultSet resSet  = _read(null, "1=1 FETCH FIRST 1 ROW ONLY", vCon);
+            //DB2 ResultSet resSet  = _read(null, "1=1 FETCH FIRST 1 ROW ONLY", vCon);
+            ResultSet resSet  = _read(null, "1=1 LIMIT 1", vCon);
 
             ResultSetMetaData rsMd = resSet.getMetaData();
 

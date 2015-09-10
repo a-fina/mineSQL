@@ -33,80 +33,36 @@ public class Datasource {
 	@DatabaseField(columnName = "SHOW_ALL_DATABASE", canBeNull = true)
 	private String showAll;
 
-	@DatabaseField(columnName = "NAME", canBeNull = true)
+	@DatabaseField(columnName = "NAME", canBeNull = false)
 	private String name;
 
 	@DatabaseField(columnName = "TYPE", canBeNull = false)
 	private String type;
 
+	@DatabaseField(columnName = "URL", canBeNull = true)
+	private String url;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
 	Datasource() {
 		// all persisted classes must define a no-arg constructor with at least package visibility
 	}
 
-    public Datasource(String name, String type, String host, String source){
+    public Datasource(String name, String type, String host, String source,  String user){
         this.setName(name);
         this.setType(type);
         this.setHost(host);
         this.setSource(source);
+        this.setUser(user);
     }
     
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + this.id;
-        hash = 71 * hash + (this.source!= null ? this.source.hashCode() : 0);
-        hash = 71 * hash + (this.host != null ? this.host.hashCode() : 0);
-        hash = 71 * hash + (this.user != null ? this.user.hashCode() : 0);
-        hash = 71 * hash + (this.password != null ? this.password.hashCode() : 0);
-        hash = 71 * hash + (this.showAll != null ? this.showAll.hashCode() : 0);
-        hash = 71 * hash + (this.name != null ? this.name.hashCode() : 0);
-        hash = 71 * hash + (this.type != null ? this.type.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "Database{" + "id=" + id + ", source=" + source+ ", host=" + host + ", user=" + user + ", password=" + password + ", showAll=" + showAll + ", name=" + name + ", type=" + type + '}';
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Datasource other = (Datasource) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if ((this.source == null) ? (other.source != null) : !this.source.equals(other.source)) {
-            return false;
-        }
-        if ((this.host == null) ? (other.host != null) : !this.host.equals(other.host)) {
-            return false;
-        }
-        if ((this.user == null) ? (other.user != null) : !this.user.equals(other.user)) {
-            return false;
-        }
-        if ((this.password == null) ? (other.password != null) : !this.password.equals(other.password)) {
-            return false;
-        }
-        if ((this.showAll == null) ? (other.showAll != null) : !this.showAll.equals(other.showAll)) {
-            return false;
-        }
-        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
-            return false;
-        }
-        if ((this.type == null) ? (other.type != null) : !this.type.equals(other.type)) {
-            return false;
-        }
-        return true;
-    }
-
+    
     public int getId() {
         return id;
     }

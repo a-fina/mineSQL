@@ -28,51 +28,66 @@ public class CRUDFactory {
 
     private static final Logger log = Logger.getLogger(CRUDFactory.class);
     private ConnectionSource connectionSource;
-   
-    public CRUDFactory(String model, HttpServletRequest request, String ... strings ) throws SQLException {
-        ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
 
-        if ( model.toLowerCase().equals("report") ){
+    public CRUDFactory(String model, HttpServletRequest request, String... strings) throws SQLException {
+        connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
+
+        if (model.toLowerCase().equals("report")) {
             createReport(request, strings[0]);
-        }else if ( model.toLowerCase().equals("database") ) {
+        } else if (model.toLowerCase().equals("database")) {
             createDatabase(request);
         }
 
         connectionSource.close();
     }
-    public static  void setupMineSQLTables()  { 
-        
+
+    public static void setupMineSQLTables() {
+
         try {
             ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
             // if you need to create the table
             TableUtils.createTableIfNotExists(connectionSource, Datasource.class);
             TableUtils.createTableIfNotExists(connectionSource, Report.class);
-            
+
+            // Creo la connesione al DB H2 interno
+            Dao<Datasource, Integer> databaseDao;
+            databaseDao = DaoManager.createDao(connectionSource, Datasource.class);
+
+            if ( databaseDao.queryForEq("NAME", "MineSQL").isEmpty() )
+            {
+                Datasource db = new Datasource("MineSQL", "h2", "localhost", "file", "");
+                db.setShowAll("true");
+                db.setUrl(ORMLite.DATABASE_URL);
+                databaseDao.create(db);
+            }
+
             connectionSource.close();
         } catch (SQLException ex) {
+            ex.printStackTrace();
             log.error(ex);
         }
     }
 
-    public void createDatabase(HttpServletRequest request) throws SQLException { 
+    public void createDatabase(HttpServletRequest request) throws SQLException {
         Dao<Datasource, Integer> databaseDao;
         databaseDao = DaoManager.createDao(connectionSource, Datasource.class);
 
-        Datasource db =  new Datasource(
+        Datasource db = new Datasource(
                 request.getParameter("NOME"),
                 request.getParameter("TYPE"),
                 request.getParameter("HOST"),
-                request.getParameter("SOURCE")
+                request.getParameter("SOURCE"),
+                request.getParameter("URL")
         );
         db.setPassword(request.getParameter("PASSWORD"));
         db.setUser(request.getParameter("USER"));
         db.setShowAll(request.getParameter("SHOW_ALL_DATABASE"));
 
         int res = databaseDao.create(db);
-        log.info("Database successfully saved ("+ res +"): " +  db.toString() );
+        log.info("Database successfully saved (" + res + "): " + db.toString());
     }
 
-    public void createReport(HttpServletRequest request, String query ) throws SQLException { 
+    public void createReport(HttpServletRequest request, String query) throws SQLException {
         Dao<Report, Integer> reportDao;
         reportDao = DaoManager.createDao(connectionSource, Report.class);
 
@@ -81,8 +96,8 @@ public class CRUDFactory {
         repo.setDatabase(request.getParameter("databaseName"));
         repo.setUtente("0");
         repo.setDescrizione(query);
-        
+
         int res = reportDao.create(repo);
-        log.info("Report successfully saved (" + res + "): " +  repo.toString() );
+        log.info("Report successfully saved (" + res + "): " + repo.toString());
     }
 }

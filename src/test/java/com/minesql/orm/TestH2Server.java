@@ -14,9 +14,9 @@ import org.h2.tools.Server;
  *
  * @author alessio.finamore
  */
-public class TestH2 extends TestCase {
+public class TestH2Server extends TestCase {
     
-    public TestH2(String testName) {
+    public TestH2Server(String testName) {
         super(testName);
     }
     
