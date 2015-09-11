@@ -41,6 +41,7 @@
     String hostName = "";
     String pageContext = "";
     String action = "";
+    String dbType= "";
 
     /* Letti dal DB */
     String query=null;
@@ -71,9 +72,10 @@
         if (req.getParameter("sort") != null) sort = req.getParameter("sort");
         if (req.getParameter("dir") != null) dir = req.getParameter("dir");
         if (req.getParameter("context") != null) pageContext = req.getParameter("context");
-        if (req.getParameter("action") != null) 
-            action = req.getParameter("action");
+        if (req.getParameter("action") != null) action = req.getParameter("action");
         else action = "dummy";
+        if (req.getParameter("dbType") != null) dbType = req.getParameter("dbType");
+        else dbType = "dummy";
 
         log.debug("Try to connecting to: " + hostName +":"+databaseName);
         con = ConnectionManager.getConnection(hostName,databaseName);
@@ -91,7 +93,11 @@
             if (where != null)
                 where = " WHERE " + where;
 			log.debug(" getQueryStatement sqL: " + "select * from "+ table +" "+  where);
-            ResultSet rs = doQuery("select * from "+ table +" "+  where);
+
+            
+            MineScript script = new MineScript();
+            ResultSet rs = script.doQuery(con, "select * from "+ table +" "+  where);
+
             while (rs.next()) {
                 nomeQuery=rs.getString("nome");
                 log.debug("-> MARK_FILTER nome script: CLOB di MERDA XXXX YYY className: " +
@@ -108,17 +114,7 @@
             log.info("->  MARK_FILTER query: " + query ); 
         }
     }
-    /**
-    * Restituisce il numero di righe della query
-    * @param query SQL statement
-    * @return integer
-    */ 
-    public int getRowsNumber(String _query) throws SQLException{
-        log.debug(" getRowsNumber before executed query: " + _query+ " Con: " + con);
-        ResultSet rs = doQuery("select count(*) tot from (" + _query + ") as counteggio");
-        rs.next();
-        return rs.getInt("TOT");
-    }
+    
 	/*public String inputStreamAsString(CLOB clob){
 		String strValue="";
 		
@@ -150,23 +146,7 @@
 		log.debug(">>>>>> inputStreamAsString | strValue: " + strValue);
 		return strValue;
 	}*/
-    /**
-    * Prepara lo staement ed esegue la query
-    * @param query
-    * @return ResultSet
-    * @see ResultSet
-    */ 
-    private ResultSet doQuery(String query) throws SQLException{
-        PreparedStatement ps = null;
-        ResultSet rs  = null;
-        log.debug(" before executed query: " + query+ " Con: " + con);
-        ps = con.prepareStatement(query,
-                                  ResultSet.TYPE_SCROLL_SENSITIVE,
-                                  ResultSet.CONCUR_READ_ONLY);
-        log.info(" after executed query: " + query);
-        rs = ps.executeQuery();
-        return rs;
-    }
+    
     /**
     * Scandisce la hashMap e costruisce la stringa della clausula WHERE
     * @param hm hashMap[nome, valore]
@@ -282,21 +262,7 @@
         return hm;
     }
 
-public static void execScript(Connection conn, String stmt) throws SQLException
-{
-    PreparedStatement st = null;
-    try
-    {
-       st = conn.prepareStatement(stmt.replaceAll("\r", "\n"));
-       //st.executeUpdate();
-       st.execute();
-    }
-
-    finally
-    {
-       if (st != null) st.close();
-    }
-}    
+   
     
 public static void execSQL(Connection conn, String stmt) throws SQLException
 {

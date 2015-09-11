@@ -73,7 +73,7 @@ public class CRUDFactory {
         databaseDao = DaoManager.createDao(connectionSource, Datasource.class);
 
         Datasource db = new Datasource(
-                request.getParameter("NOME"),
+                request.getParameter("NAME"),
                 request.getParameter("TYPE"),
                 request.getParameter("HOST"),
                 request.getParameter("SOURCE"),

@@ -50,7 +50,7 @@ try {
         // testo e' la textarea di default
         query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  
         //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
-        execScript(con, query); 
+        script.execScript(con, query); 
 
         Date after = new Date();
         long diff = after.getTime() - before.getTime();

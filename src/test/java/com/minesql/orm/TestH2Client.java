@@ -44,42 +44,25 @@ public class TestH2Client {
         // this line would initialize the database
         // from the SQL script file 'init.sql'
         // stat.execute("runscript from 'init.sql'");
-        try {
+            stat.execute("drop table if exists test");
             stat.execute("create table test(id int primary key, name varchar(255))");
             stat.execute("insert into test values(1, 'Hello')");
-        } catch (JdbcSQLException ex) {
-            System.out.println("Table exist");
-        }
+            stat.execute("insert into test values(2, 'World')");
+            stat.execute("delete from test where name = 'Hello'");
 
         ResultSet rs;
         rs = stat.executeQuery("select * from test");
         while (rs.next()) {
             System.out.println(rs.getString("name"));
         }
+
+        stat.execute("drop table if exists test");
         stat.close();
 
         // add application code here
         conn.close();
     }
 
-    @Test
-    public void insertDatasource() throws SQLException {
-        ConnectionSource connectionSource2 = new JdbcConnectionSource(ORMLite.DATABASE_URL);
-
-        TableUtils.createTableIfNotExists(connectionSource2, Report.class);
-        TableUtils.createTableIfNotExists(connectionSource2, Datasource.class);
-
-        // Creo la connesione al DB H2 interno
-        Dao<Datasource, Integer> databaseDao;
-        databaseDao = DaoManager.createDao(connectionSource2, Datasource.class);
-
-        Datasource db = new Datasource( "MineSQL", "h2", "localhost", "file", "");
-        db.setShowAll("true");
-        db.setUrl(ORMLite.DATABASE_URL);
-        databaseDao.createIfNotExists(db);
-
-        connectionSource2.close();
-    }
 
     @Test
     public void selectSchema() throws SQLException, ClassNotFoundException{
@@ -100,4 +83,5 @@ public class TestH2Client {
         // add application code here
         conn.close();
     }
+
 }

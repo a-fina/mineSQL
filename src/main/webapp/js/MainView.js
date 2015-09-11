@@ -142,12 +142,13 @@ Ext.onReady(function () {
         url: "menus/databases.jsp",
         clickHandler: function (menuItem) {
             // MenuItem se' l'ultima foglia
+            // separator
             var table_info = getIdFromText(menuItem.id).split("##");
 
             //per il 3° livello del menu var title = menuItem.parentMenu.parentMenu.parentMenu.activeItem.text +
-            var title = menuItem.parentMenu.parentMenu.activeItem.text +
-                    menuItem.title;
+            var title = menuItem.parentMenu.parentMenu.activeItem.text + menuItem.title;
 
+            var dbType = menuItem.parentMenu.parentMenu.activeItem.text.split(" - ")[1];
             var idWindow = table_info[0];
             var showDatabaseName = table_info[1];
             var showTableName = table_info[2];
@@ -161,7 +162,8 @@ Ext.onReady(function () {
                 //tableName: "DM_QUERY_T",
                 showTableName: showTableName,
                 showDatabaseName: showDatabaseName,
-                hostName: hostName
+                hostName: hostName,
+                dbType: dbType
             });
 
             /**********************

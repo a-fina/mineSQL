@@ -40,6 +40,7 @@ public class MineTable {
     private String vTable = "";
     private String vDatabase = "";
     private Connection vCon = null;
+    private String vType = null;
 
     protected final String jdbcAttProb = "jdbc/mineSQL";
 
@@ -54,6 +55,12 @@ public class MineTable {
         vTable = table;
         vCon = con;
         vDatabase = database;
+    }
+    public MineTable(Connection con, String table, String database, String type) {
+        vTable = table;
+        vCon = con;
+        vDatabase = database;
+        vType = type;
     }
     /**************************
      * TODO: costruttore con host, db, user, password, si prende da solo la connession
@@ -246,7 +253,7 @@ public class MineTable {
             //con = ConnectionManager.getConnection(jdbcAttProb);
             log.debug("getJsonReader");
             // MySQL ResultSet resSet  = _read(null, "1=1 LIMIT 1", vCon);
-            //DB2 ResultSet resSet  = _read(null, "1=1 FETCH FIRST 1 ROW ONLY", vCon);
+            // DB2 ResultSet resSet  = _read(null, "1=1 FETCH FIRST 1 ROW ONLY", vCon);
             ResultSet resSet  = _read(null, "1=1 LIMIT 1", vCon);
 
             ResultSetMetaData rsMd = resSet.getMetaData();

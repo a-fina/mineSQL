@@ -1,5 +1,9 @@
 package net.mineSQL.controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,8 +22,8 @@ public class MineScript {
     }
 
     /*
-    * Sovrascrive il prefisso delle variabili
-    */
+     * Sovrascrive il prefisso delle variabili
+     */
     public MineScript(String prefix) {
     }
 
@@ -28,19 +32,69 @@ public class MineScript {
 
         try {
 
-
-        Iterator it = params.keySet().iterator();
-        Object key = null;
-        while (it.hasNext()) {
-            key = it.next();
-            newQuery = newQuery.replaceAll("\\"+paramPrefix + key, (String) params.get(key));
-        }
+            Iterator it = params.keySet().iterator();
+            Object key = null;
+            while (it.hasNext()) {
+                key = it.next();
+                newQuery = newQuery.replaceAll("\\" + paramPrefix + key, (String) params.get(key));
+            }
 
         } catch (Exception e) {
             log.error(e);
         }
 
         return newQuery;
+    }
+
+    public void execScript(Connection conn, String stmt) throws SQLException {
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(stmt.replaceAll("\r", "\n"));
+            //st.executeUpdate();
+            st.execute();
+        } finally {
+            if (st != null) {
+                st.close();
+            }
+        }
+    }
+
+
+    /**
+    * Prepara lo staement ed esegue la query
+    * @param query
+    * @return ResultSet
+    * @see ResultSet
+    */ 
+    public ResultSet doQuery(Connection con, String query) throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs  = null;
+        log.debug(" before executed query: " + query+ " Con: " + con);
+        ps = con.prepareStatement(query,
+                                  ResultSet.TYPE_SCROLL_SENSITIVE,
+                                  ResultSet.CONCUR_READ_ONLY);
+        log.info(" after executed query: " + query);
+        rs = ps.executeQuery();
+        return rs;
+    }
+
+
+    /**
+    * Restituisce il numero di righe della query
+    * @param query SQL statement
+    * @return integer
+    */ 
+    public int getRowsNumber(Connection con, String _query) throws SQLException{
+        log.debug(" getRowsNumber before executed query: " + _query+ " Con: " + con);
+        MineScript script = new MineScript();
+
+        if ( _query.toLowerCase().startsWith("delete"))
+            return 1;
+
+        ResultSet rs = script.doQuery(con, "select count(*) tot from (" + _query + ") as counteggio");
+
+        rs.next();
+        return rs.getInt("TOT");
     }
 
 }

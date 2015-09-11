@@ -111,7 +111,7 @@ public class Menu {
             log.debug(" row: " + rs.toString());
             //Gli spazi &nbsp; servono per fissare un Bug di CSS di firefox
             title = rs.getString(1) + "&nbsp;&nbsp;&nbsp;&nbsp;";
-            tip = "descrizione riga" + idRow;
+            tip = host + " - " + dbType + " - " + database; 
             title = "<span ext:qtip=\"" + tip + "\">" + title + "</span>";
 
             anagraf_map.put("nome", title);
@@ -447,7 +447,8 @@ public class Menu {
         for (Datasource ds : datasource) {
 
             try {
-                if (!ds.getUrl().isEmpty()) {
+                // Connesione tramite URL o tramite CREDENZIALI
+                if ( ds.getUrl() != null && !ds.getUrl().isEmpty()) {
 
                     mainMenu = getConnectionTableList(
                             mainMenu,

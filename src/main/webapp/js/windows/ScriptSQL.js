@@ -92,6 +92,7 @@ ScriptSQL = function () {
         _action = loadParam.action || undefined;
         _showDatabaseName = loadParam.showDatabaseName || undefined;
         _hostName = loadParam.hostName || undefined;
+        _dbType = loadParam.dbType || undefined;
         var onBeforeSuccessLoadGrid = loadParam.onBeforeSuccessLoadGrid || undefined;
 
         //var url= "http://"+HOST+"/autogrid/auto-table.jsp";
@@ -174,6 +175,7 @@ ScriptSQL = function () {
                                         tableName: _showTableName,
                                         databaseName: _showDatabaseName,
                                         hostName: _hostName,
+                                        dbType: _dbType,
                                         target: myFormPanel.getId()
                                     });
                                 },
@@ -196,6 +198,7 @@ ScriptSQL = function () {
                             tableName: _showTableName,
                             databaseName: _showDatabaseName,
                             hostName: _hostName,
+                            dbType: _dbType,
                             target: myFormPanel.getId()
                         });
                     }
@@ -212,6 +215,7 @@ ScriptSQL = function () {
                 "databaseName": _showDatabaseName,
                 "hostName": _hostName,
                 "idScript": _idScript,
+                "dbType": _dbType,
                 "crudOperation": "fieldSet"
             }
         });
@@ -229,6 +233,7 @@ ScriptSQL = function () {
             tableName: _showTableName,
             databaseName: _showDatabaseName,
             hostName: _hostName,
+            dbType: _dbType,
             target: formPanel.getId()
         });
     }
@@ -252,7 +257,7 @@ ScriptSQL = function () {
         //alert("1 loadAutogrid _myGridPanel.getId: " + _myGridPanel.getId());
 
         _myWindow = new Ext.Window({
-            title: "Ricerca avanzata - Host:" + _hostName + " DB: " + _showDatabaseName + " TABLE: " + _showTableName,
+            title: "Ricerca avanzata - Host:" + _hostName + " Type: "+ _dbType + " DB: " + _showDatabaseName + " TABLE: " + _showTableName,
             closable: true,
             width: 850,
             height: 690,
