@@ -396,13 +396,6 @@ Ext.onReady(function () {
                         var connWin = new DatabaseMngr.saveWin({});
                         connWin.show(this);
                     }
-                },{
-                    text: 'Open Connection',
-                    id: 'shell-2',
-                    handler: function () {
-                        var sql = ScriptSQL();
-                        sql.openWindow();
-                    }
                 }]
         })
     });
