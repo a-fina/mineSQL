@@ -24,7 +24,6 @@
 <%@ page import="com.j256.ormlite.dao.Dao"%>
 <%@ page import="net.mineSQL.ormlite.model.Report"%>
 
-<%@ include file="../config.jsp" %>
 <%!
     /* DB settings */
     Connection con = null;
