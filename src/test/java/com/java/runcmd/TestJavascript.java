@@ -74,7 +74,7 @@ public class TestJavascript {
         ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("nashorn");
         
-        // Si può fare anche direttamente in Java, fa niente
+        // Si pu' fare anche direttamente in Java, fa niente
         String contactJson = "{" +
         "\"contact\": {" +
         "\"name\": \"Mr A\", \"emails\": [" +
