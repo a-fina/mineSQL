@@ -156,6 +156,10 @@ public class ConnectionManager {
             String dbType,
             String url) throws ConnectionException, SQLException {
 
+            // Driver URL Quirks 
+            if ( dbType.equals(DB2) ){
+                dbType = "as400";
+            }
             String key = "" + currentThread.getName()
                 + "_" + host +"_" + "_" + database
                 + separator+userName+separator+password+separator+dbType+separator+url;

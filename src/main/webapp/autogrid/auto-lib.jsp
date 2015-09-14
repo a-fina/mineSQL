@@ -169,38 +169,7 @@
     }
 
 
-    /**
-    * Aggiunge la paginazione alla query
-    * @param query
-    * @param start
-    * @param linit
-    */ 
-    public String getPaginationOracle(String query, int start, int limit){
-		String sql = "select * " +
-					"from (select rownum \"#\", a.* " +
-						  "from (" +  query + " ) a " +
-						  "where  rownum<=" + (start + limit) + ") " +
-					"where \"#\" > " + start + " ";
-		log.debug(" getPagination sql: " + sql);
-		return sql;
-    }
-    public String getPaginationDB2(String query, int start, int limit){
-        String sql = "select * from ( " +
-            "select ROW_NUMBER() OVER() as NUM, a.* from " + 
-            "( " + query +" )" + 
-            " as a) as b where  b.NUM <=" + (start + limit) + " and NUM >" + start + " ";
-
-		log.debug(" getPaginationDB2 sql: " + sql);
-		return sql;
-    }
-    public String getPaginationMySQL(String query, int start, int limit){
-		String sql =  query + " LIMIT "+start+", "+limit;
-		log.debug(" getPagination sql: " + sql);
-		return sql;
-    }
-    public String getPagination(String query, int start, int limit){
-        return getPaginationDB2(query, start, limit);
-    }
+  
 
 
     // C'era una volta un Export Excel che poteva leggere solo dalla tabella

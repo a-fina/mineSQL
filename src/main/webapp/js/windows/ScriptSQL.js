@@ -167,10 +167,10 @@ ScriptSQL = function () {
                          iconCls: 'accept'
                          }, **************************************/
                             {
-                                text: "Run Script",
+                                text: "Run Query",
                                 handler: function () {
                                     loadAutoGrid(myFormPanel, {
-                                        action: 'runScript',
+                                        action: 'runQuery',
                                         idQuery: _idScript,
                                         tableName: _showTableName,
                                         databaseName: _showDatabaseName,
@@ -183,6 +183,20 @@ ScriptSQL = function () {
                                         /*},{
                                          text: "Clear",
                                          handler: function(){$$(queryBodyID).reset()} */
+                            }, {
+                                text: "Execute",
+                                handler: function () {
+                                    loadAutoGrid(myFormPanel, {
+                                        action: 'runScript',
+                                        idQuery: _idScript,
+                                        tableName: _showTableName,
+                                        databaseName: _showDatabaseName,
+                                        hostName: _hostName,
+                                        dbType: _dbType,
+                                        target: myFormPanel.getId()
+                                    });
+                                },
+                                iconCls: 'accept'
                             }],
                         items: [myFields.items],
                         reader: [myFields.reader]
@@ -257,7 +271,7 @@ ScriptSQL = function () {
         //alert("1 loadAutogrid _myGridPanel.getId: " + _myGridPanel.getId());
 
         _myWindow = new Ext.Window({
-            title: "Ricerca avanzata - Host:" + _hostName + " Type: "+ _dbType + " DB: " + _showDatabaseName + " TABLE: " + _showTableName,
+            title: "Ricerca avanzata - Host:" + _hostName + " Type: " + _dbType + " DB: " + _showDatabaseName + " TABLE: " + _showTableName,
             closable: true,
             width: 850,
             height: 690,

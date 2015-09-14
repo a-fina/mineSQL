@@ -29,26 +29,24 @@
         int rowCounter = 10;
 
         log.debug(" MARK_ENTRY database:" + databaseName + " tablename:" + tableName + " action: " + action);
-        if ((/* tableName.equals("msq_SCRIPT_T")  &&*/action.equals("runQuery"))
-                || action.equals("runDefaultScript") || action.equals("runSavedScript") || action.equals("runScript")) {
+        if (action.equals("runScript") || action.equals("saveScript")) {
+            HashMap formParams = table.getSubmittedParams(request);
+            query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
+            log.debug(" MARK_runScript query: " + query + " params: " + formParams + " querySel: " + querySel);
+            //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
+            script.execScript(con, query);
+
+            Date after = new Date();
+            long diff = after.getTime() - before.getTime();
+
+            log.info(" Run script : " + query);
+            log.info(" Execution time: " + diff + "ms");
+            griglia.put("Script", "Successfully finished in " + diff + "ms");
+        }
+        else if ((action.equals("runQuery")) || action.equals("runDefaultScript") || action.equals("runSavedScript")) {
 
             // Se submit dalla FORM eseguo lo SCRIPT e successivamente eseguo lo SCRIPT_OUTPUT
-            if (action.equals("runScript") || action.equals("saveScript")) 
-            {
-                HashMap formParams = table.getSubmittedParams(request);
-                query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
-                log.debug(" MARK_runScript query: " + query + " params: " + formParams + " querySel: " + querySel);
-                //Definito in auto-lib.jsp, non produce output ed seguo lo SCRIPT riga per riga
-                script.execScript(con, query);
-
-                Date after = new Date();
-                long diff = after.getTime() - before.getTime();
-
-                log.info(" Run script : " + query);
-                log.info(" Execution time: " + diff + "ms");
-                griglia.put("Script", "Successfully finished in " + diff + "ms");
-            }
-            else if (action.equals("runQuery")) {
+             if (action.equals("runQuery")) {
 
                 // quando si ricarica solo la griglia, lo SCRIPT non viene piu eseguito ma
                 // si eseguo solo SCRIPT_OUTPUT che ricarica i dati della griglia
@@ -59,6 +57,7 @@
                 // TODO modificare Autogrid.js in modo da diversificare il nome di tableName
                 // con i parametri di POST
                 // Testo libero TODO
+/****************
                 Connection conForsavedScript = ConnectionManager.getConnection("localhost", "mineSQL");
                 MineTable runQuery = new MineTable(conForsavedScript, "msq_SCRIPT_T");
                 query = runQuery.select("testo", "ID = '" + idQuery + "'");
@@ -66,6 +65,10 @@
                 HashMap formParams = table.getSubmittedParams(request);
                 query = script.mergeScriptParameters(formParams, query);  // testo e' la textarea di default
 
+**********/
+                HashMap formParams = table.getSubmittedParams(request);
+                query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  // testo e' la textarea di default
+                log.debug(" MARK_runScript query: " + query + " params: " + formParams + " querySel: " + querySel);
             } else if (action.equals("runDefaultScript")) {
                 // Preparo la query con Paginazione
                 String db_table = databaseName + "." + tableName;
@@ -74,12 +77,6 @@
                 log.debug(" MARK_runDefaultScriptquery database:" + databaseName + " tablename:" + tableName);
                 //TODO gestire la query a test libero, viene postata la variabuile query_body
             } else if (action.equals("runSavedScript")) {
-/******
-                Connection conForsavedScript = ConnectionManager.getConnection("localhost", "mineSQL");
-                MineTable savedScript = new MineTable(conForsavedScript, "msq_FILTRI_T");
-                log.debug(" MARK_runSavedScript 3 database:" + databaseName + " tablename:" + tableName + " idQuery: ");
-                query = savedScript.select("DESCRIZIONE", "ID = '" + idQuery + "'");
-    **************/
                 /*
                  * TODO: qui volendo si puo mettere un controllo incrociato su databaseName + hostname
                  * e i valori salvati nel DB insieme al testo 
@@ -132,7 +129,7 @@
 
             // Paginazione
             rowCounter = script.getRowsNumber(con, query);
-            query = getPagination(query, start, limit);
+            query = script.getPagination(query, start, limit);
             log.debug("4.2 query paginata MARK_FILTER : " + query);
 
             // Eseguo effettivamente la query

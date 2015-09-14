@@ -95,19 +95,15 @@ try{
         log.debug(" MARK DATABSE: " + request.getParameter("DATABASE"));
 
         // Inserimento nuova riga nella tabella // TODO Generalizzare entity
-        int res = 0;
+
+        result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore aggiornamento.\"}";
 
         CRUDFactory crf = new CRUDFactory(tableName, request, query); 
 
-        res = 1;
+        result = "{\"success\":true,\"valid\":true,\"reason\":\"Aggiornamento effettuato.\"}";
         /**
          * ********************** if (! scriptTable.create( nuovoFiltro ) )   ******************
          */
-        if (res == 0) {
-            result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore aggiornamento.\"}";
-        } else {
-            result = "{\"success\":true,\"valid\":true,\"reason\":\"Aggiornamento effettuato.\"}";
-        }
     } else if (crud_operation.equals("delete")) {
         MineTable dmTable = new MineTable(null, null);
         // Cancellazione di una riga nella tabella

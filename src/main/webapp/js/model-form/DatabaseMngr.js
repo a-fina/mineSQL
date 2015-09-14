@@ -27,6 +27,11 @@ DatabaseMngr = {};
  */
 DatabaseMngr.saveWin = function(config) {
 	// pre-instantiation code
+     var values = new Ext.data.SimpleStore({
+          fields: ['DESC', 'TYPE'],
+          data : [['DB2','DB2'],['H2','H2']]
+      });
+      
 	var defaults = {
                items: new Ext.form.FieldSet({
                     title: 'Database Connection',
@@ -38,7 +43,11 @@ DatabaseMngr.saveWin = function(config) {
                             name: 'NAME'
                         }, {
                             fieldLabel: 'Type',
-                            name: 'TYPE'
+                            name: 'TYPE',
+                            xtype: 'combo',
+                            mode: 'local',
+                            store: values,
+                            displayField:'TYPE',
                         }, {
                             fieldLabel: 'Host',
                             name: 'HOST'
