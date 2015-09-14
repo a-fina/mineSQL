@@ -5,7 +5,7 @@
     <groupId>net.mineSQL</groupId>
     <artifactId>mineSQL</artifactId>
     <packaging>jar</packaging>
-    <version>0.9.7</version>
+    <version>0.9.8</version>
     <name>mineSQL</name>
     <url>http://maven.apache.org</url>
     <properties>

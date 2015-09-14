@@ -1,6 +1,7 @@
 mineSQL
 =======
 DB, Web Services and Graph playground
+
 Requisite:
 ----------
 Apache Maven 3
@@ -19,7 +20,9 @@ Run:
 ----
 git co git@github.com:bayois/mineSQL.git
 
-mvn clean package
+mvn clean install
+
+java -cp target/mineSQL-0.9.7-full.jar net.mineSQL.app.Main
 
 firefox http://localhost:8080/
 
