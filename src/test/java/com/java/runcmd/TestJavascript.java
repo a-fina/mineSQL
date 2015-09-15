@@ -53,7 +53,7 @@ public class TestJavascript {
         engine.eval("print('Hello JS')");
     }
     
-    @Test
+    //Java 1.8 @Test
     public void testNashorn() throws ScriptException {
         // create a script engine manager
         ScriptEngineManager factory = new ScriptEngineManager();
@@ -69,7 +69,7 @@ public class TestJavascript {
         System.out.println(json); 
     }
 
-    @Test
+    //Java 1.8 @Test
     public void parseJSON() throws ScriptException, NoSuchMethodException{
         ScriptEngineManager factory = new ScriptEngineManager();
         ScriptEngine engine = factory.getEngineByName("nashorn");

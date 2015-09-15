@@ -2674,3 +2674,9 @@ select count(*) tot from () as counteggio [42001-181]
 2015-09-14 17:04:49,481 DEBUG [http-bio-8080-exec-7] (auto_002djson_jsp.java:502) - select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from TIESSEFIL.AGENT00f ) as a) as b where  b.NUM <=20 and NUM >0 
 2015-09-14 17:04:49,494  INFO [http-bio-8080-exec-7] (auto_002djson_jsp.java:511) -  Run report query : select * from ( select ROW_NUMBER() OVER() as NUM, a.* from ( select * from TIESSEFIL.AGENT00f ) as a) as b where  b.NUM <=20 and NUM >0 
 2015-09-14 17:04:49,494  INFO [http-bio-8080-exec-7] (auto_002djson_jsp.java:512) -  Execution time: 255ms
+2015-09-15 09:40:59,453 DEBUG [localhost-startStop-1] (Boot.java:61) - Test Livello DEBUG
+2015-09-15 09:40:59,455  INFO [localhost-startStop-1] (Boot.java:62) - Test Livello INFO
+2015-09-15 09:40:59,456  WARN [localhost-startStop-1] (Boot.java:63) - Test Livello WARNING
+2015-09-15 09:40:59,456 ERROR [localhost-startStop-1] (Boot.java:64) - Test Livello ERROR
+2015-09-15 09:40:59,456 FATAL [localhost-startStop-1] (Boot.java:65) - Test Livello FATAL
+2015-09-15 09:40:59,881  INFO [localhost-startStop-1] (Boot.java:71) - MineSQL Internal Database Ready
