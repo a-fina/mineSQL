@@ -1,6 +1,10 @@
 mineSQL
 =======
 DB, Web Services and Graph playground
+Requisite:
+----------
+Apache Maven 3
+Oracle Java 1.7
 
 What:
 -----
@@ -9,18 +13,15 @@ What:
  - ExtJs
  - GoogleAPI
  - Map-Hilight
- - Browser: Webview
  - TomCat & NetBeans
 
 Run:
 ----
 git co git@github.com:bayois/mineSQL.git
 
-edit mineSQL/src/main/webapp/config.jsp 
-
 mvn clean package
 
-firefox http://localhost:8080/mineSQL/
+firefox http://localhost:8080/
 
 
 TODO:
