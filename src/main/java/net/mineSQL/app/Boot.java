@@ -4,14 +4,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.PrintWriter;
-import java.io.IOException;
 import javax.servlet.ServletException;
 import net.mineSQL.ormlite.controller.CRUDFactory;
-import net.mineSQL.util.ApplicationWatcher;
 
 public class Boot extends HttpServlet {
 

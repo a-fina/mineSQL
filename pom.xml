@@ -26,7 +26,31 @@
             <name>Restlet repository</name>
             <url>http://maven.restlet.com</url>
         </repository>
+        <repository>
+          <id>central-maven</id>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </repository>
+        
     </repositories>
+    
+    <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>Maven Plugin Repository</name>
+      <url>http://repo1.maven.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+    
     <dependencies>
         <dependency>
             <groupId>com.sun.jersey</groupId>

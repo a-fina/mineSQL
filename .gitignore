@@ -1,0 +1,6 @@
+/target/
+/repository/
+/minesql_db.mv.db
+/minesql_db.trace.db
+/tomcat.8080/
+/repository.xml
