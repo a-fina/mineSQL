@@ -1,5 +1,5 @@
-mineSQL
-=======
+mineSQL 0.9.8
+=============
 DB, Web Services and Graph playground
 
 Requisite:
@@ -20,9 +20,9 @@ Run:
 ----
 git co git@github.com:bayois/mineSQL.git
 
-mvn clean install
+mvn package
 
-java -cp target/mineSQL-0.9.7-full.jar net.mineSQL.app.Main
+java -cp target/mineSQL-0.9.8-full.jar [browser]
 
 firefox http://localhost:8080/
 

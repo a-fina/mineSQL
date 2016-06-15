@@ -29,7 +29,7 @@
     <!-- Versione  -->
     <context-param>
         <param-name>DM_VERSION</param-name>
-        <param-value>0.9.7</param-value>
+        <param-value>0.9.8</param-value>
     </context-param>
 
     <!-- Servlet Logger caricata all'avvio di resin -->

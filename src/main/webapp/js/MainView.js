@@ -422,21 +422,9 @@ Ext.onReady(function () {
      });
      **************/
     shellMenu.add({
-        text: "Test",
+        text: "Utility",
         menu: new Ext.menu.Menu({
             items: [{
-                    text: "Map Hilight Example",
-                    id: 'map-test-1',
-                    handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Map Hilight Example",
-                            src: "/map-hilight/demo_world.html"
-                        })
-                        w.show();
-                    }
-                }, {
                     text: "Tabella con paginazione",
                     id: 'map-tab-1',
                     handler: function () {
@@ -496,7 +484,19 @@ Ext.onReady(function () {
                         })
                         w.show();
                     }
-                }]
+                },{
+                    text: "Map Hilight Example",
+                    id: 'map-test-1',
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 840,
+                            height: 680,
+                            title: "Map Hilight Example",
+                            src: "/map-hilight/demo_world.html"
+                        })
+                        w.show();
+                    }
+		}]
         })
     });
 
