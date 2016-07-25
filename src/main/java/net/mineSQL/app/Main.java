@@ -8,38 +8,46 @@ package net.mineSQL.app;
 //import net.mineSQL.tomcat.MineBrowser;
 import net.mineSQL.tomcat.MineBrowser;
 import net.mineSQL.tomcat.MineTomcat;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Options;
 
 /**
  *
  * @author alessio.finamore
  */
+public class Main {
 
+	public static void main(String[] args) throws Exception {
 
-public class Main{
+		Options options = new Options();
+		options.addOption("browser", true, "Run with browser.");
 
-    public static void main(String[] args) throws Exception {
+		CommandLineParser parser = new DefaultParser();
+		CommandLine cmd = parser.parse(options, args);
 
-    	System.out.println("MineSQL: starting TomCat");
-        //TODO spostare in ApplicationWatcher fare oggetto statico context
-        // shutdown alla chiusura del bbrowser
-        MineTomcat mTm = new MineTomcat();
-        // Start Tomcat
-        mTm.start();
-        // Start Browser
-    	System.out.println("MineSQL: running on http://localhost:8080");
-        
-        if ( args != null ){
-		if ( args.length > 0){
-			if ( args[0].matches("browser" ) ){
-    				System.out.println("MineSQL: running UI Press [CTRL-C] to Exit");
-				MineBrowser mBr = new MineBrowser();
-				mBr.start();
+		System.out.println("MineSQL: starting TomCat");
+		//TODO spostare in ApplicationWatcher fare oggetto statico context
+		// shutdown alla chiusura del bbrowser
+		MineTomcat mTm = new MineTomcat();
+		// Start Tomcat
+		mTm.start();
+		// Start Browser
+		System.out.println("MineSQL: running on http://localhost:8080");
+
+		if (args != null) {
+			if (args.length > 0) {
+				if (args[0].matches("browser")) {
+					System.out.println("MineSQL: running UI Press [CTRL-C] to Exit");
+					MineBrowser mBr = new MineBrowser();
+					mBr.start();
+				}
+			} else {
+				System.out.println("MineSQL: running NOUI [help:browser] Press [CTRL-C] to Exit");
 			}
-		}else{
-			System.out.println("MineSQL: running NOUI [help:browser] Press [CTRL-C] to Exit");
 		}
+		// Wait tomcat
+		mTm.await();
 	}
-        // Wait tomcat
-        mTm.await();
-    }
 }

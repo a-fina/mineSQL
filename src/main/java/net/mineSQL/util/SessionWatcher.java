@@ -29,7 +29,7 @@ public class SessionWatcher implements HttpSessionListener {
         String creation = DateFormatUtils.format(
                 se.getSession().getCreationTime(), ApplicationWatcher.dateformat);
 
-        log.info(" -----------> sessionCreated: " + id +" date: "+creation);
+        //log.info(" -----------> sessionCreated: " + id +" date: "+creation);
         addSession(id, "creationTime", creation);
 	}
 
@@ -40,10 +40,10 @@ public class SessionWatcher implements HttpSessionListener {
 		
 		if(activeSessions > 0)
 			activeSessions--;
-        log.info(" -----------> removeSession: " + id );
+        //log.info(" -----------> removeSession: " + id );
 	}
 	public static HashMap getSessions() {
-		log.debug("initializing getSessions() ");
+		//log.debug("initializing getSessions() ");
 		if (sessions == null)
 			sessions = new HashMap();
 		
@@ -54,11 +54,11 @@ public class SessionWatcher implements HttpSessionListener {
 
         getSessions();
 
-        log.info(" -----------> id: " + id );
-        log.info(" -----------> sessions: " + sessions );
+        //log.info(" -----------> id: " + id );
+        //7log.info(" -----------> sessions: " + sessions );
         if (sessions.get(id) != null){
             sessionDetails = (HashMap)sessions.get(id);
-		    log.info(" -----------> addSession: " + id +","+key+","+value);
+		 //   log.info(" -----------> addSession: " + id +","+key+","+value);
         }else{
             sessionDetails = new HashMap();
 		    activeSessions++;

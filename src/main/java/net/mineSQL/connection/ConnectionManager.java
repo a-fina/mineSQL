@@ -53,10 +53,9 @@ public class ConnectionManager {
         DataSource ds = (DataSource) hds.get(sDSName);
 
         if (ds == null) {
-            log.debug(" "
-                    + "ConnectionManager [getDataSource] for source: " + sDSName);
+            //log.debug(" " + "ConnectionManager [getDataSource] for source: " + sDSName);
             try {
-                log.debug("Trying to connect to " + sDSName);
+             //   log.debug("Trying to connect to " + sDSName);
                 Context env = (Context) new InitialContext().lookup("java:comp/env");
                 ds = (DataSource) env.lookup("jdbc/" + sDSName);
                 hds.put(sDSName, ds);
@@ -79,7 +78,7 @@ public class ConnectionManager {
             String host,
             String database) throws ConnectionException, SQLException {
 
-        log.debug("Connection  host: " +  host );
+        //log.debug("Connection  host: " +  host );
         Connection c = null;
         String host_key = "" + currentThread.getName() + "_" + host + "_";
 
@@ -88,7 +87,7 @@ public class ConnectionManager {
         Iterator it = hcm.keySet().iterator();
         while (it.hasNext()) {
             String k = (String) it.next();
-            log.debug("Connection Key: " + k + " host: " +  host + " start: " + k.startsWith(host_key));
+            // log.debug("Connection Key: " + k + " host: " +  host + " start: " + k.startsWith(host_key));
             if (k.startsWith(host_key)){
                 c = (Connection) getConnection(k);
                 if ( c == null ){
@@ -98,12 +97,12 @@ public class ConnectionManager {
                     String url= k.split(separator)[4];
                     // TODO: propagare nuovo parametro dbType
                     c = getConnection(host, database, user, password, dbType, url);
-                    log.debug("ConnectionManager  NEW connection c:" + c);
+                    // log.debug("ConnectionManager  NEW connection c:" + c);
                 }
                 break;
             }
         }
-        log.debug("Found connection for key: " + host_key);
+        // log.debug("Found connection for key: " + host_key);
         // Exception ex = new Exception("Cannot find connection for key: " + key);
         // throw new ConnectionException(ex);
         return c;
@@ -113,11 +112,11 @@ public class ConnectionManager {
         Connection c = null;
 
         if (hcm == null) {
-            log.debug("Creating new Connection Map");
+            // log.debug("Creating new Connection Map");
             hcm = new HashMap();
         }
 
-        log.debug("Opened connection DEBUG: " + hcm );
+        // log.debug("Opened connection DEBUG: " + hcm );
         c = (Connection) hcm.get(key);
 
         if ( c != null ){
@@ -204,7 +203,7 @@ public class ConnectionManager {
                 else
                     c = DriverManager.getConnection(url);
                 
-                log.info("ConnectionManager OK connected to conn: " + c);
+                //log.info("ConnectionManager OK connected to conn: " + c);
                 currentConnection++;
             }catch (Exception ex) {
                 ex.printStackTrace();
@@ -214,7 +213,7 @@ public class ConnectionManager {
             // Salvo la connessione
             if (c != null) {
                 hcm.put(key, c);
-                log.debug("ConnectionManager add new connection [getConnection] for thread key:" + key);
+                //log.debug("ConnectionManager add new connection [getConnection] for thread key:" + key);
             }
         }
         return c;
@@ -238,12 +237,12 @@ public class ConnectionManager {
             String k = (String) it.next();
             if (con.equals(hcm.get(k))) {
                 con.close();
-                log.debug("ConnectionManager [releaseConnection] remove for thread key: " + k);
+                //log.debug("ConnectionManager [releaseConnection] remove for thread key: " + k);
                 hcm.remove(k);
                 currentConnection--;
                 // Notifica la disponibilitdi una connessione
                 ConnectionManager.class.notify();
-                log.debug("ConnectionManager [releaseConnection] NOTIFY for thread key:" + k);
+                //log.debug("ConnectionManager [releaseConnection] NOTIFY for thread key:" + k);
                 break;
             }
         }

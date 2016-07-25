@@ -41,6 +41,7 @@
     String pageContext = "";
     String action = "";
     String dbType= "";
+    String exportType = "";
 
     /* Letti dal DB */
     String query=null;
@@ -60,7 +61,7 @@
         if (req.getParameter("databaseName") != null) databaseName = req.getParameter("databaseName");
         else databaseName = "mineSQL";
         if (req.getParameter("tableName") != null) tableName = req.getParameter("tableName");
-        else tableName = null;
+        else tableName = "table";
         if (req.getParameter("hostName") != null) hostName = req.getParameter("hostName");
         else hostName = "localhost";
         if (req.getParameter("bodyQuery") != null && ! req.getParameter("bodyQuery").equals("")) 
@@ -73,10 +74,11 @@
         if (req.getParameter("context") != null) pageContext = req.getParameter("context");
         if (req.getParameter("action") != null) action = req.getParameter("action");
         else action = "dummy";
+        if (req.getParameter("exportType") != null) exportType= req.getParameter("exportType");
+        else exportType = "dummy";
         if (req.getParameter("dbType") != null) dbType = req.getParameter("dbType");
         else dbType = "dummy";
 
-        log.debug("Try to connecting to: " + hostName +":"+databaseName);
         con = ConnectionManager.getConnection(hostName,databaseName);
     }
     /*

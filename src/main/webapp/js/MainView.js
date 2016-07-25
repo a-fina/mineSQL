@@ -396,6 +396,13 @@ Ext.onReady(function () {
                         var connWin = new DatabaseMngr.saveWin({});
                         connWin.show(this);
                     }
+                },{
+                    text: 'New Timesheet Activity',
+                    id: 'shell-2',
+                    handler: function () {
+                        var connWin = new TimesheetMngr.saveWin({});
+                        connWin.show(this);
+                    }
                 }]
         })
     });

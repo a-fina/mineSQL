@@ -128,6 +128,7 @@ String valore(String nomeCampo) {
     <script type="text/javascript" src="js/model-form/FilterMngr.js"></script>
     <script type="text/javascript" src="js/model-form/CSVMngr.js"></script>
     <script type="text/javascript" src="js/model-form/DatabaseMngr.js"></script>
+    <script type="text/javascript" src="js/model-form/TimesheetMngr.js"></script>
     <!-- i css servono per correggere dei bug di extjs -->
 
 	

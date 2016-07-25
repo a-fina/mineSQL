@@ -41,13 +41,32 @@ GridToolBar =  function(property){
     var _bodyQuery = property.bodyQuery || undefined;
     var _target    = property.target || undefined;
 
-    var uniqId = "id-" + _hostName + _databaseName + _tableName + _idFiltro;
+    /*
+     *  Excel or PDF form generation
+     */
+    var uniqId = "xls-id-" + _hostName + _databaseName + _tableName + _idFiltro;
     var xlsId = "xls-" + _hostName + _databaseName + _tableName + _idFiltro;
     // Public items
     this.exportExcelForm = 
                 "<form name='"+xlsId+"' id='"+xlsId+"' action='autogrid/auto-excel.jsp' method='post'>"+
                 "<div id='" + uniqId + "'>"+
+                "<input type='hidden' id='exportType' name='exportType' value='excel'>"+
                 "<input type='hidden' id='hid_col"+xlsId+"' name='hid_col"+xlsId+"' value=''>"+
+                /*"<input type='hidden' name='idQuery' value=''>"+
+                "<input type='hidden' name='tableName' value='"+_tableName +"'>"+
+                "<input type='hidden' name='context' value='" + _entity + "'>"+*/
+                "</div>"+
+                "</form>";
+    /*
+     * PDF
+     */
+    var uniqIdp = "pdf-id-" + _hostName + _databaseName + _tableName + _idFiltro;
+    var pdfId = "pdf-" + _hostName + _databaseName + _tableName + _idFiltro;
+    this.exportPDFForm = 
+                "<form name='"+pdfId+"' id='"+pdfId+"' action='autogrid/auto-excel.jsp' method='post'>"+
+                "<div id='" + uniqIdp + "'>"+
+                "<input type='hidden' id='exportType' name='exportType' value='pdf'>"+
+                "<input type='hidden' id='hid_col"+pdfId+"' name='hid_col"+pdfId+"' value=''>"+
                 /*"<input type='hidden' name='idQuery' value=''>"+
                 "<input type='hidden' name='tableName' value='"+_tableName +"'>"+
                 "<input type='hidden' name='context' value='" + _entity + "'>"+*/
@@ -198,6 +217,34 @@ GridToolBar =  function(property){
         }
 
 
+        // Export PDF Button and Form
+        _items.push('->');
+        _items.push(this.exportPDFForm);
+        _items.push({
+                  text:'Export to PDF',
+                  iconCls:'icon-excel',
+                  handler: function(){ 
+                        for (var p in property)
+                        {
+                            /********
+                            if ( p.endWith SUBMIT_TESTO ){
+                               codifica testo 
+                               in auto-excel.jsp mettere la decodifica
+                            }
+                            *********/
+                            Al.addHidden(uniqId , p, property[p]);
+                        }
+                        var hidden = getHiddenColumns(_cm); 
+                        var xlsForm = document.getElementById(pdfId);
+                        if ( xlsForm.hidden_columns === undefined )
+                        {
+                            xlsForm.hidden_columns = { value:hidden};
+                        }else{
+                            xlsForm.hidden_columns.value = hidden;
+                        }
+                        xlsForm.submit();
+                      }
+         });
         // Export Excel Button and Form
         _items.push('->');
         _items.push(this.exportExcelForm);
@@ -226,6 +273,8 @@ GridToolBar =  function(property){
                         xlsForm.submit();
                       }
          });
+
+
         // Aggiungo il bottone update solo quando sto caricando una griglia 
         // fitrata
         if (typeof(_idFiltro) !== "undefined" ) 

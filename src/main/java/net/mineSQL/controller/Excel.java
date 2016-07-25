@@ -136,7 +136,7 @@ public class Excel {
                 }
                 html.append("</tr>");
             }
-            html.append("</table>");
+            html.append("</table></body></html>");
 
             rs.close();
             ps.close();

@@ -60,9 +60,19 @@ public class Boot extends HttpServlet {
     }
 
     
+    /*
+    * Setup MineSQL Internal Database
+    */
     private void databaseInit() {
+        /*
+        * MineSQL
+        */
         CRUDFactory.setupMineSQLTables();
         log.info("MineSQL Internal Database Ready");
+        // TODO: configure module custom for each Aapplication/Customer
+        /*
+        * Moveo
+        */
     }
 
 

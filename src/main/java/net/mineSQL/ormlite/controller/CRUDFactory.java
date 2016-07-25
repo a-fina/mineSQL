@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import net.mineSQL.connection.ORMLite;
+import net.mineSQL.ormlite.model.Timesheet;
 
 /**
  *
@@ -36,6 +37,8 @@ public class CRUDFactory {
             createReport(request, strings[0]);
         } else if (model.toLowerCase().equals("database")) {
             createDatabase(request);
+        } else if (model.toLowerCase().equals("timesheet")) {
+            createTimesheet(request);
         }
 
         connectionSource.close();
@@ -45,9 +48,9 @@ public class CRUDFactory {
 
         try {
             ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
-            // if you need to create the table
+
+            // Datasource Table
             TableUtils.createTableIfNotExists(connectionSource, Datasource.class);
-            TableUtils.createTableIfNotExists(connectionSource, Report.class);
 
             // Creo la connesione al DB H2 interno
             Dao<Datasource, Integer> databaseDao;
@@ -61,6 +64,16 @@ public class CRUDFactory {
                 databaseDao.create(db);
             }
 
+            /*
+            * Report Table
+            */
+            TableUtils.createTableIfNotExists(connectionSource, Report.class);
+            /*
+            * Moveo Table
+            */
+            TableUtils.createTableIfNotExists(connectionSource, Timesheet.class);
+
+            
             connectionSource.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -99,5 +112,20 @@ public class CRUDFactory {
 
         int res = reportDao.create(repo);
         log.info("Report successfully saved (" + res + "): " + repo.toString());
+    }
+
+    public void createTimesheet(HttpServletRequest request) throws SQLException {
+        Dao<Timesheet, Integer> timesheetDao;
+        timesheetDao = DaoManager.createDao(connectionSource, Timesheet.class);
+
+        Timesheet ts  = new Timesheet(
+                request.getParameter("DAY"),
+                request.getParameter("HOUR"),
+                request.getParameter("USER"),
+                request.getParameter("ACTIVITY")
+        );
+
+        int res = timesheetDao.create(ts);
+        log.info("Database successfully saved (" + res + "): " + ts.toString());
     }
 }
