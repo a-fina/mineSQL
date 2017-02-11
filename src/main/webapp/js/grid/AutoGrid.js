@@ -153,8 +153,26 @@ AutoGrid = function (/*targetDiv,*/ targetURL, ajaxParams, config) {
         /*
          * Metodo di disegno della griglia
          */
-        var renderGrid = function () {
+        var mnuContext = new Ext.menu.Menu({
+            id: 'filterContextMenuRow',
+            items: [{
+                id: 'do-something',
+                text: 'Export PDF',
+                handler: function (item) {
+                    alert("pippo");
+                }
+            }]/*,
+            listeners: {
+                itemclick: function(item) {
+                    switch (item.id) {
+                        case 'do-something':
+                            break;
+                    }
+                }
+            }*/
+        });
 
+        var renderGrid = function () {
             // GRiglia principale
             var autoGrid = new Ext.grid.GridPanel({
                 //renderTo:_div, //this.targetDiv,
@@ -169,7 +187,9 @@ AutoGrid = function (/*targetDiv,*/ targetURL, ajaxParams, config) {
                 store: dataStore, //this.ds,
                 cm: colMod, //this.cm,
                 trackMouseOver: true,
-                sm: new Ext.grid.RowSelectionModel({selectRow: Ext.emptyFn}),
+                sm: new Ext.grid.RowSelectionModel({
+                    selectRow: Ext.emptyFn
+                }),
                 loadMask: true,
                 viewConfig: {
                     forceFit: true
@@ -216,7 +236,14 @@ AutoGrid = function (/*targetDiv,*/ targetURL, ajaxParams, config) {
                     "->"
                             , toolBar
                 ],
-                bbar: pagingBar
+                bbar: pagingBar,
+                listeners: {
+                  'contextmenu': function(e){
+                            e.stopEvent();
+                            mnuContext.showAt(e.getXY());
+                            return false;
+                  }
+                }
             });
             // trigger the data store load
 

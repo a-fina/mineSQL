@@ -24,38 +24,45 @@ import org.junit.Test;
  */
 public class TestLiveCopy extends TestCase {
 
-	public TestLiveCopy(String testName) {
-		super(testName);
-	}
+    public TestLiveCopy(String testName) {
+        super(testName);
+    }
 
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
-	}
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
 
-	@Override
-	protected void tearDown() throws Exception {
-		super.tearDown();
-	}
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
 
-	// TODO add test methods here. The name must begin with 'test'. For example:
-	@Test
-	public void testHello() {
-		try {
+    // TODO add test methods here. The name must begin with 'test'. For example:
+    @Test
+    public void testHello() {
+        try {
 
-			String url = "http://localhost:4502/crx/server";
-			System.out.println("Try Connecting to " + url);
-			Repository repository = JcrUtils.getRepository(url);
-			SimpleCredentials creds = new SimpleCredentials("admin",
-				"admin".toCharArray());
-			System.out.println("Ok Connecting to " + url);
-			Session session = repository.login(creds, "crx.default");
-			System.out.println("Login successful, workspace: " + session.getWorkspace());
+            String url = "http://localhost:4502/crx/server";
+            System.out.println("Try Connecting to " + url);
+            Repository repository = JcrUtils.getRepository(url);
+            SimpleCredentials creds = new SimpleCredentials("admin",
+                    "admin".toCharArray());
+            System.out.println("Ok Connecting to " + url);
+            Session session = repository.login(creds, "crx.default");
 
-			
-			
-		} catch (RepositoryException ex) {
-			Logger.getLogger(TestLiveCopy.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+            //Create a node that represents the root node
+            Node root = session.getRootNode(); 
+            // Retrieve content 
+            Node node = root.getNode("content/hmonline/it_it");
+
+            System.out.println(node.getPath());
+            System.out.println(node.getProperty("message").getString());
+
+            System.out.println("Login successful, workspace: " + session.getWorkspace());
+
+        } catch (RepositoryException ex) {
+            Logger.getLogger(TestLiveCopy.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -1,6 +1,8 @@
 package net.mineSQL.controller;
 
+import com.mchange.v2.c3p0.impl.C3P0Defaults;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +23,7 @@ import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
 import net.mineSQL.connection.ConnectionManager;
+import net.mineSQL.util.Utilita;
 /**
  * Servlet che gestisce le richieste dalle pagine HTML/JSP.
  * Utilizza il pattern J2EE "Front Controller".
@@ -58,13 +61,57 @@ public class UtenteServlet extends HttpServlet {
             log.error("",ise);
         } 
     }	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = "";
+		String password = "";
+		String splitUserName = "";
+
+        resp = response;
+        req = request;
+        
+        log.info(" --------------->   MineSQL  HTTP Request <-----------------");
+		if(request.getSession().getAttribute(Utilita.USERNAME)==null){
+			if (request.getParameter(Utilita.USERNAME) != null) {
+			        username = request.getParameter(Utilita.USERNAME);
+			        password = request.getParameter(Utilita.PASSWORD);
+			        if (username.indexOf("\\") != -1) {
+			                String[] usernameToSplit = username.split("\\\\");
+			                splitUserName = usernameToSplit[1];
+			                username = splitUserName;
+			        }
+			}
+		}else{
+			username = (String)request.getSession().getAttribute(Utilita.USERNAME);
+		}
+		//String sqlInsert="";
+		//String sqlGrant="";
+        String result = "";
+		
+		//log.info("Post UtenteServlet: apro connessioni.");
+	
+        if (! username.isEmpty() && password.equals("12345")){
+		    request.getSession().setAttribute(Utilita.USERNAME, username);
+            request.getSession().setAttribute(username, Utilita.ISLOGGEDIN);
+            log.info("User: " + username + " is authenticated");
+            result = "{\"success\":true,\"valid\":true,\"reason\":\"Aggiornamento effettuato.\"}";
+        }else{
+            log.info("User: " + username + " is NOT authenticated");
+            result = "{\"success\":false,\"valid\":true,\"reason\":\"Errore aggiornamento.\"}";
+        }
+    
+        
+		PrintWriter out = response.getWriter();
+        out.println(result);
+
+    }
 	/**
 	 * Risponde a richieste HTTP di tipo POST.
 	 * @throws  
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username="";
-		String splitUserName="";
+	public void OLDdoPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = "";
+		String password = "";
+		String splitUserName = "";
 
         resp = response;
         req = request;
@@ -73,10 +120,11 @@ public class UtenteServlet extends HttpServlet {
 		if(request.getSession().getAttribute("username")==null){
 			if (request.getParameter("username") != null) {
 			        username = request.getParameter("username");
+			        password = request.getParameter("password");
 			        if (username.indexOf("\\") != -1) {
 			                String[] usernameToSplit = username.split("\\\\");
 			                splitUserName = usernameToSplit[1];
-			                username=splitUserName;
+			                username = splitUserName;
 			        }
 			}
 		}else{
@@ -86,14 +134,19 @@ public class UtenteServlet extends HttpServlet {
 		//String sqlGrant="";
 		
 		//log.info("Post UtenteServlet: apro connessioni.");
-		//log.info("username: " + username); //DEBUG
-		Connection conUte = getConn(jdbcUser);
+	
+        if (! username.isEmpty() && password.equals("12345")){
+		    request.getSession().setAttribute(Utilita.USERNAME, username);
+            request.getSession().setAttribute(username, Utilita.ISLOGGEDIN);
+            forward("/index.jsp");
+        }
+        
+		log.info("Login username: " + username); 
+		Connection conUte = null;// = getConn(jdbcUser);
+		Connection conDef = null;// = getConn(jdbcDefect);
 		Statement stUte;
-		Connection conDef = getConn(jdbcDefect);
 		Statement stDef;
-		request.getSession().setAttribute("username", username);
-		
-		
+	
 		/*
 		---da scommentare poi ----
 		Connection conDef = MakeTableForQuery.getConn(jdbcDefect);

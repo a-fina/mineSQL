@@ -50,19 +50,11 @@
     <!-- Servlet Web Service REST JAX-RS Jersey -->
     <servlet>
         <servlet-name>jersey-serlvet</servlet-name>
-        <servlet-class>
-            com.sun.jersey.spi.container.servlet.ServletContainer
-        </servlet-class>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>
-                net.mineSQL.ws,
-                com.mycompany.rockscissorpaper.services
-            </param-value>
-        </init-param>
-        <init-param>
-            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-            <param-value>true</param-value>
+            <param-value>net.mineSQL.ws</param-value>
+            <!-- com.mycompany.rockscissorpaper.services -->
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -73,7 +65,7 @@
     </servlet-mapping>
     
    <!-- Restlet adapter: TODO non funziona con Tomcat Embedded -->  
-   <servlet>  
+   <!-- servlet>  
       <servlet-name>RestletServlet</servlet-name>  
       <servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
       <init-param>
@@ -84,7 +76,8 @@
    <servlet-mapping>  
       <servlet-name>RestletServlet</servlet-name>  
       <url-pattern>/restlet</url-pattern>  
-   </servlet-mapping>  
+   </servlet-mapping -->  
+   
     <!-- Servlet per la visualizzazione dei grafici -->
     <!-- servlet>
       <servlet-name>DisplayChart</servlet-name>
@@ -240,7 +233,7 @@
     </filter-mapping -->
     
     <!-- Verifica l'autenticazione nelle richiesta AJAX e risponde in JSON -->
-    <!-- filter>
+    <filter>
         <filter-name>login-filter-json</filter-name>
         <filter-class>net.mineSQL.util.FirstFilter</filter-class>
         <init-param>
@@ -254,7 +247,7 @@
         <url-pattern>/defects/*</url-pattern>
         <url-pattern>/tasks/*</url-pattern>
         <url-pattern>/history/*</url-pattern>
-    </filter-mapping -->
+    </filter-mapping>
     <!-- Verifica l'autenticazione nelle richiesta di pagina e risponde in HTML -->
     
     <filter>

@@ -8,6 +8,8 @@
 <%@ page import="org.xhtmlrenderer.pdf.ITextRenderer" %>
 <%@ page import="org.xml.sax.SAXParseException" %>
 <%@ page import="org.apache.jasper.JasperException" %>
+<%@ page import="java.nio.file.Files" %>
+<%@ page import="java.nio.file.Paths" %>
 <%@ include file="auto-lib.jsp"%><%
 String excel = null;
 
@@ -123,7 +125,7 @@ try {
             //log.info("3.1 - - - ->getQueryStatement MARK_FILTER query reset filter: " + query);
         }
 
-        log.debug("4.1.2 query paginata MARK_FILTER : " + query + " con:" + con + " hiddenCol: " + hiddenColumns );
+        log.debug("4.1.2 MARK_XXX query paginata MARK_FILTER : " + query + " con:" + con + " hiddenCol: " + hiddenColumns );
 
         Excel tsExcel = new Excel();
         excel = tsExcel.getFile(con, query, hiddenColumns);
@@ -142,8 +144,14 @@ try {
 
             OutputStream o = response.getOutputStream();
             ITextRenderer renderer = new ITextRenderer();
-                
-            renderer.setDocumentFromString(excel);
+               
+            log.debug("3.1 - - - - - - - - - - - - - -  - - -> MAR PDF");
+            String content = script.getPDF(); 
+            
+            //content = new String(Files.readAllBytes(Paths.get("template-pdf.html"))); 
+        //query = script.mergeScriptParameters(formParams, DEFAULT_TESTO);  
+            
+            renderer.setDocumentFromString(content/*excel*/);
             renderer.layout();
             
             renderer.createPDF(o);

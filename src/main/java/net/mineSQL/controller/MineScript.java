@@ -1,5 +1,8 @@
 package net.mineSQL.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +28,13 @@ public class MineScript {
      * Sovrascrive il prefisso delle variabili
      */
     public MineScript(String prefix) {
+    }
+
+    public String getPDF() throws IOException {
+        String pdf =
+                    new String(Files.readAllBytes(Paths.get("c:\\Users\\a.finamore\\workspace\\template-pdf.html"))); 
+            log.info("PDF->" + pdf);
+            return pdf;
     }
 
     public String mergeScriptParameters(HashMap params, String statement) {

@@ -32,7 +32,7 @@ public class Main {
         component.getServers().add(Protocol.HTTP, 8182);
         // Attach the sample application.  
         component.getDefaultHost().attach("/firstSteps",
-                new FirstStepsApplication());
+                new CrawlerApplication());
 
         // Create Static-File application  
         component.getClients().add(Protocol.FILE);

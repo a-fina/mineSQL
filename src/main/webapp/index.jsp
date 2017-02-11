@@ -17,7 +17,6 @@
 String listaUtenti = null;
 String listaAree = null;
 String listaStati = null;
-Logger log = Logger.getLogger("main.jsp");
 String user = "";
 String group = "";
 String idruolo = "";
@@ -26,16 +25,27 @@ String idreparto = "";
 String nomeReparto = "";
 String nomeRuolo = "";
 
-boolean CONTROLLO_ACCESSO = false;
+Logger log = Logger.getLogger("index.jsp");
+
+boolean CONTROLLO_ACCESSO = true;
+
+boolean loggedin = false;
+
+user = "user";
+group = "0";
+idruolo = "0";
+groups = "[]";
 
 if (CONTROLLO_ACCESSO){	
+    /*
 	if (request.getSession().getAttribute("IDUTENTE") == null || 
 		request.getSession().getAttribute("IDUTENTE").toString().length() == 0 ||
 		! request.isRequestedSessionIdValid())
     {
-        response.sendRedirect("/index.jsp");
+        //response.sendRedirect("/login.jsp");
         return;
     }
+    **/
 
     try {
         user = session.getAttribute("username").toString();
@@ -53,15 +63,9 @@ if (CONTROLLO_ACCESSO){
         log.error(" Error on main page");
     }
 
-}else{
-    user = "user";
-    group = "0";
-    idruolo = "0";
-    groups = "[]";
 }
 
-log.debug(" session.getId(): " + session.getId());
-log.debug(" -------------------> request.getRemoteAddr(): " + request.getRemoteAddr());
+log.debug(" session.getId(): " + session.getId() +" request.getRemoteAddr(): " + request.getRemoteAddr());
 SessionWatcher.addSession(session.getId(),"remoteAddress",request.getRemoteAddr());
 
 String urlToGo = "/UtenteServlet";
@@ -96,39 +100,48 @@ String valore(String nomeCampo) {
     <!-- script type="text/javascript" src="http://openlayers.org/api/2.10/OpenLayers.js"></script>
     <script type="text/javascript" src="GeoExt/lib/GeoExt.js"></script -->
 
-    <!-- Ext Additional Plugin -->
-    <script type="text/javascript" src="js/ext-plugin/RemoteValidator.js"></script>
-    <script type="text/javascript" src="js/ext-plugin/RowExpander.js"></script>
-    <script type="text/javascript" src="js/ext-plugin/GroupSummary.js"></script>
-    <script type="text/javascript" src="js/ext-plugin/SearchField.js"></script>
-    <script type="text/javascript" src="js/ext-plugin/TableGrid.js"></script>
-	<script type="text/javascript" src="js/ext-plugin/FieldEnh.js"></script>
-	<script type="text/javascript" src="js/ext-plugin/DateFieldEnh.js"></script>
-    <script type="text/javascript" src="js/ext-plugin/HtmlEditorEnh.js"></script>
-    <script type="text/javascript" src="js/ext-plugin/FileUploadField.js"></script>
-	<script type="text/javascript" src="js/al.js"></script>
-
-    <!-- Griglie e componenti correlati -->
-    <script type="text/javascript" src="js/grid/GridFilter.js"></script>
-    <script type="text/javascript" src="js/grid/GridSearch.js"></script>
-    <script type="text/javascript" src="js/grid/GridToolbar.js"></script>
-    <script type="text/javascript" src="js/grid/EditableItem.js"></script>
-    <script type="text/javascript" src="js/grid/GridFilters.js"></script>
-    <script type="text/javascript" src="js/grid/filter/Filter.js"></script>
-    <script type="text/javascript" src="js/grid/filter/ListFilter.js"></script>
-    <script type="text/javascript" src="js/grid/filter/StringFilter.js"></script>
-    <script type="text/javascript" src="js/grid/GridAdvancedFilters.js"></script>
-    <script type="text/javascript" src="js/grid/AutoGrid.js"></script>
-    <script type="text/javascript" src="js/windows/ScriptSQL.js"></script>
-    <script type="text/javascript" src="js/windows/UploadWindow.js"></script>
     <script type="text/javascript" src="js/windows/WindowFormTable.js"></script>
-    <script type="text/javascript" src="js/GenericMenu.js"></script>
-    <script type="text/javascript" src="js/MainView.js"></script>
-    <script type="text/javascript" src="js/GenericMenu.js"></script>
-    <script type="text/javascript" src="js/model-form/FilterMngr.js"></script>
-    <script type="text/javascript" src="js/model-form/CSVMngr.js"></script>
-    <script type="text/javascript" src="js/model-form/DatabaseMngr.js"></script>
-    <script type="text/javascript" src="js/model-form/TimesheetMngr.js"></script>
+    <!-- Ext Additional Plugin -->
+    <% if ( Utilita.isLoggedIn(request) ){ %>
+        <script type="text/javascript" src="js/ext-plugin/RemoteValidator.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/RowExpander.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/GroupSummary.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/SearchField.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/TableGrid.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/FieldEnh.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/DateFieldEnh.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/HtmlEditorEnh.js"></script>
+        <script type="text/javascript" src="js/ext-plugin/FileUploadField.js"></script>
+        <script type="text/javascript" src="js/al.js"></script>
+
+        <!-- Griglie e componenti correlati -->
+        <script type="text/javascript" src="js/grid/GridFilter.js"></script>
+        <script type="text/javascript" src="js/grid/GridSearch.js"></script>
+        <script type="text/javascript" src="js/grid/GridToolbar.js"></script>
+        <script type="text/javascript" src="js/grid/EditableItem.js"></script>
+        <script type="text/javascript" src="js/grid/GridFilters.js"></script>
+        <script type="text/javascript" src="js/grid/filter/Filter.js"></script>
+        <script type="text/javascript" src="js/grid/filter/ListFilter.js"></script>
+        <script type="text/javascript" src="js/grid/filter/StringFilter.js"></script>
+        <script type="text/javascript" src="js/grid/GridAdvancedFilters.js"></script>
+        <script type="text/javascript" src="js/grid/AutoGrid.js"></script>
+        <script type="text/javascript" src="js/windows/ScriptSQL.js"></script>
+        <script type="text/javascript" src="js/windows/UploadWindow.js"></script>
+        <script type="text/javascript" src="js/MainView.js"></script>
+        <script type="text/javascript" src="js/GenericMenu.js"></script>
+        
+        <script type="text/javascript" src="js/model-form/FilterMngr.js"></script>
+        <script type="text/javascript" src="js/model-form/CSVMngr.js"></script>
+        <script type="text/javascript" src="js/model-form/DatabaseMngr.js"></script>
+        <script type="text/javascript" src="js/model-form/TimesheetMngr.js"></script>
+        <script type="text/javascript" src="js/model-form/AnagraficaClientiMngr.js"></script>
+        <script type="text/javascript" src="js/model-form/OrdiniMngr.js"></script>
+
+    <% } else { %>
+        <script type="text/javascript" src="js/LoginView.js"></script>
+        <script type="text/javascript" src="js/model-form/LoginMngr.js"></script>
+    <% } %>
+
     <!-- i css servono per correggere dei bug di extjs -->
 
 	

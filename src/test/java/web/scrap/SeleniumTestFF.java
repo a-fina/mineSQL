@@ -31,7 +31,7 @@ public class SeleniumTestFF {
         // FirefoxDriver driver = new FirefoxDriver();
 
         // And now use this to visit Google
-        driver.get("http://");
+        driver.get("http://localhost:4502");
         
         // Form login
         WebDriverWait wait = new WebDriverWait(driver, 3); 
@@ -41,8 +41,8 @@ public class SeleniumTestFF {
         WebElement usernameElement     = driver.findElement(By.id("account"));
         WebElement passwordElement     = driver.findElement(By.id("passwd"));
 
-        usernameElement.sendKeys("");
-        passwordElement.sendKeys("");
+        usernameElement.sendKeys("admin");
+        passwordElement.sendKeys("admin");
 
         formElement.click();
 

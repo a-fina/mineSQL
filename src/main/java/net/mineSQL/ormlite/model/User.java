@@ -18,10 +18,27 @@ import com.j256.ormlite.table.DatabaseTable;
 public class User {
 
 	@DatabaseField(id = true)
-    private String name;
+    private String id;
 
+	@DatabaseField(columnName = "NOME")
+	private String nome;
+	@DatabaseField(columnName = "EMAIL")
+	private String email;
+	@DatabaseField(columnName = "PASSWORD")
+	private String password;
+    
     @ForeignCollectionField
     ForeignCollection<Report> reports;
+
+
+    public User() {
+    }
+
+    public User(String nome, String password) {
+        this.nome = nome;
+        this.password = password;
+    }
+
     public ForeignCollection<Report> getReports() {
         return reports;
     }
@@ -30,26 +47,32 @@ public class User {
         this.reports = reports;
     }
 
-    @DatabaseField(canBeNull = false)
-    private String password;
 
-
-    public User() {
+    public String getId() {
+        return id;
     }
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public void setId(String id) {
+        this.id = id;
     }
 
-
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
 
     public String getPassword() {
         return password;

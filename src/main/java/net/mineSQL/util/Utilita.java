@@ -22,6 +22,10 @@ import org.apache.log4j.Logger;
 
 public class Utilita {
 
+    public static String USERNAME = "USERNAME";
+    public static String PASSWORD = "PASSWORD";
+    public static String ISLOGGEDIN = "ISLOGGED";
+
     private static final Logger log = Logger.getLogger(Utilita.class);
 		
 	public static String timeStampToString(Timestamp t, String format) {
@@ -94,6 +98,17 @@ public class Utilita {
 		}
 		return 0;
 	}
+    public static boolean isLoggedIn(HttpServletRequest request){
+        if ( request.getSession().getAttribute(USERNAME) != null ){
+            String username = request.getSession().getAttribute(USERNAME).toString();
+            if ( request.getSession().getAttribute(username) != null)
+                if ( request.getSession().getAttribute(username).equals(ISLOGGEDIN) )
+                    return true;
+        }
+        return false;
+
+    }
+
 	public static int nextId(Connection con, String table) {
 		//Connection con = null;
 		try {

@@ -72,6 +72,21 @@ GridToolBar =  function(property){
                 "<input type='hidden' name='context' value='" + _entity + "'>"+*/
                 "</div>"+
                 "</form>";
+    /*
+     * PDF ROW
+     */
+    var uniqIdpR = "pdfr-id-" + _hostName + _databaseName + _tableName + _idFiltro;
+    var pdfIdR = "pdfr-" + _hostName + _databaseName + _tableName + _idFiltro;
+    this.exportPDFRow= 
+                "<form name='"+pdfIdR+"' id='"+pdfIdR+"' action='autogrid/auto-excel.jsp' method='post'>"+
+                "<div id='" + uniqIdpR + "'>"+
+                "<input type='hidden' id='exportType' name='exportType' value='pdfrow'>"+
+                "<input type='hidden' id='hid_col"+pdfIdR+"' name='hid_col"+pdfIdR+"' value=''>"+
+                /*"<input type='hidden' name='idQuery' value=''>"+
+                "<input type='hidden' name='tableName' value='"+_tableName +"'>"+
+                "<input type='hidden' name='context' value='" + _entity + "'>"+*/
+                "</div>"+
+                "</form>";
 
     // Campo di ricerca
     this.ricercaField = property.ricercaField || undefined;
@@ -300,7 +315,7 @@ GridToolBar =  function(property){
                 iconCls: 'filter-menu',
                 menu: this.filterTool 
         });
-/** 19/11/14 TODO
+/** 19/11/14 TODO*/
 		_items.push({
 		    text:'Update from CSV',
 		    iconCls: 'icon-excel',

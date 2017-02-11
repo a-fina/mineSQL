@@ -9,7 +9,7 @@ import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.routing.Router;
 
-public class FirstStepsApplication extends Application {
+public class CrawlerApplication extends Application {
 
     /**
      * Creates a root Restlet that will receive all incoming calls.
@@ -20,7 +20,7 @@ public class FirstStepsApplication extends Application {
         Router router = new Router(getContext());
 
         // Defines only one route
-        router.attach("/hello", HelloWorldResource.class);
+        router.attach("/crawl", CrawlerResource.class);
 
         return router;
     }

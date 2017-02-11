@@ -12,6 +12,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -20,6 +21,10 @@ import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import net.mineSQL.connection.ORMLite;
 import net.mineSQL.ormlite.model.Timesheet;
+import net.mineSQL.ormlite.model.hip.AnagraficaAgenti;
+import net.mineSQL.ormlite.model.hip.AnagraficaClienti;
+import net.mineSQL.ormlite.model.hip.ListinoProdotti;
+import net.mineSQL.ormlite.model.hip.Ordini;
 
 /**
  *
@@ -39,6 +44,10 @@ public class CRUDFactory {
             createDatabase(request);
         } else if (model.toLowerCase().equals("timesheet")) {
             createTimesheet(request);
+        } else if (model.toLowerCase().equals("ordini")) {
+            createOrdini(request);
+        } else if (model.toLowerCase().equals("anagraficaclienti")) {
+            createAnagraficaClienti(request);
         }
 
         connectionSource.close();
@@ -73,6 +82,10 @@ public class CRUDFactory {
             */
             TableUtils.createTableIfNotExists(connectionSource, Timesheet.class);
 
+            TableUtils.createTableIfNotExists(connectionSource, AnagraficaAgenti.class);
+            TableUtils.createTableIfNotExists(connectionSource, AnagraficaClienti.class);
+            TableUtils.createTableIfNotExists(connectionSource, ListinoProdotti.class);
+            TableUtils.createTableIfNotExists(connectionSource, Ordini.class);
             
             connectionSource.close();
         } catch (SQLException ex) {
@@ -127,5 +140,51 @@ public class CRUDFactory {
 
         int res = timesheetDao.create(ts);
         log.info("Database successfully saved (" + res + "): " + ts.toString());
+    }
+
+    public void createAnagraficaClienti(HttpServletRequest request) throws SQLException {
+        Dao<AnagraficaClienti, Integer> acDao;
+        acDao = DaoManager.createDao(connectionSource, AnagraficaClienti.class);
+
+        AnagraficaClienti ac = new AnagraficaClienti(
+                request.getParameter("NOME"),
+                request.getParameter("COGNOME"),
+                request.getParameter("AREA"),
+                request.getParameter("DESCRIZIONE")
+        );
+
+        int res = acDao.create(ac);
+        log.info("Database successfully saved (" + res + "): " + ac.toString());
+    }
+    
+    public void createOrdini(HttpServletRequest request) throws SQLException {
+        Dao<Ordini, Integer> acDao;
+        acDao = DaoManager.createDao(connectionSource, Ordini.class);
+
+        int quantita = new Integer(request.getParameter("QUANTITA"));
+        int codiceAgente  = new Integer(request.getParameter("CODICE_AGENTE"));
+        int codiceCliente = new Integer(request.getParameter("CODICE_CLIENTE"));
+       
+        ForeignCollection<ListinoProdotti> prodotti = null;
+
+        for (int i = 0; i < quantita; i++) {
+            ListinoProdotti t = null;
+            prodotti.add(t);
+        }
+        
+        AnagraficaAgenti  agente  = new AnagraficaAgenti(codiceAgente);
+        AnagraficaClienti cliente = new AnagraficaClienti(codiceCliente);
+
+        
+        Ordini or = new Ordini(
+                request.getParameter("DATA"),
+                request.getParameter("NOTE"),
+                prodotti,
+                agente,
+                cliente
+        );
+
+        int res = acDao.create(or);
+        log.info("Database successfully saved (" + res + "): " + or.toString());
     }
 }

@@ -15,10 +15,13 @@ import org.restlet.resource.ServerResource;
 /**
  * Resource which has only one representation.
  */
-public class HelloWorldResource extends ServerResource {
+public class CrawlerResource extends ServerResource {
 
     @Get
     public String represent() {
+
+                
+        
         return "hello, world";
     }
 

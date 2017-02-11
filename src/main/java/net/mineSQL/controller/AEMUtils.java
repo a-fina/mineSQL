@@ -24,9 +24,7 @@ import org.apache.jackrabbit.core.security.principal.EveryonePrincipal;
  * @author ax.finamore
  */
 public class AEMUtils {
-	public void addPrivileges(String path) throws RepositoryException {
-		
-		String url = "http://localhost:4502/crx/server";
+    public Session getAdminSession(String url) throws RepositoryException{
 
 		System.out.println("Try Connecting to " + url);
 		Repository repository = JcrUtils.getRepository(url);
@@ -38,6 +36,16 @@ public class AEMUtils {
 		System.out.println("Ok Connecting to " + url);
 		Session session = repository.login(creds, "crx.default");
 		System.out.println("Login successful, workspace: " + session.getWorkspace());
+
+        return session;
+    }
+
+
+
+	public void addPrivileges(String path) throws RepositoryException {
+		
+		String url = "http://localhost:4502/crx/server";
+        Session session = getAdminSession(url);
 
 		Privilege[] privileges;
 		privileges = AccessControlUtils.privilegesFromNames(

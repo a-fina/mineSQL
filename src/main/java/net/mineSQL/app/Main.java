@@ -44,7 +44,7 @@ public class Main {
 					mBr.start();
 				}
 			} else {
-				System.out.println("MineSQL: running NOUI [help:browser] Press [CTRL-C] to Exit");
+				System.out.println("MineSQL: running without options [browser] Press [CTRL-C] to Exit");
 			}
 		}
 		// Wait tomcat

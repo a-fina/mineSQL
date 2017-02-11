@@ -390,17 +390,31 @@ Ext.onReady(function () {
         text: "MineSQL",
         menu: new Ext.menu.Menu({
             items: [{
-                    text: 'New Connection',
+                    text: 'Nuova Connessione',
                     id: 'shell-1',
                     handler: function () {
                         var connWin = new DatabaseMngr.saveWin({});
                         connWin.show(this);
                     }
                 },{
-                    text: 'New Timesheet Activity',
+                    text: 'Nuova Attività',
                     id: 'shell-2',
                     handler: function () {
                         var connWin = new TimesheetMngr.saveWin({});
+                        connWin.show(this);
+                    }
+                },{
+                    text: 'Nuova Anagrafica Clienti',
+                    id: 'shell-4',
+                    handler: function () {
+                        var connWin = new AnagraficaClientiMngr.saveWin({});
+                        connWin.show(this);
+                    }
+                },{
+                    text: 'Nuovo Ordine',
+                    id: 'shell-5',
+                    handler: function () {
+                        var connWin = new OrdiniMngr.saveWin({});
                         connWin.show(this);
                     }
                 }]
@@ -432,6 +446,18 @@ Ext.onReady(function () {
         text: "Utility",
         menu: new Ext.menu.Menu({
             items: [{
+                    text: "Google",
+                    id: 'map-tab-0',
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 840,
+                            height: 680,
+                            title: "Ricerca",
+                            src: "http://www.google.com"
+                        })
+                        w.show();
+                    }
+                }, {
                     text: "Tabella con paginazione",
                     id: 'map-tab-1',
                     handler: function () {
