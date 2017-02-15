@@ -29,6 +29,8 @@ firefox http://localhost:8080/
 
 TODO:
 ----
+- Presentation: https://github.com/hakimel/reveal.js
+
 - OSGI: Felix Embed
 
 - PDF: custom skin for Saved Report
@@ -51,6 +53,8 @@ DOC:
 
 - Kanbas Guide
     http://leankanban.com/guide/
+    http://www.mokabyte.it/2013/12/AgileKanban/#ref
+        
 
 - REST Server / Heroku deploy
     https://jersey.java.net/documentation/latest/deployment.html#deployment.servlet
