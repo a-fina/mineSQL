@@ -65,9 +65,7 @@ public class TestLiveCopy extends TestCase {
 
 
             QueryManager queryManager = session.getWorkspace().getQueryManager();
-            Query query = queryManager.createQuery(
-                   "{QUERY}",
-                    Query.JCR_SQL2);
+            Query query = queryManager.createQuery( "{QUERY}", Query.JCR_SQL2);
             QueryResult result = query.execute();
 
             //Iterate over the nodes in the results ...
