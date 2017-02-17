@@ -34,7 +34,6 @@ public class Main {
 		// Start Tomcat
 		mTm.start();
 		// Start Browser
-		System.out.println("MineSQL: running on http://localhost:8080");
 
 		if (args != null) {
 			if (args.length > 0) {

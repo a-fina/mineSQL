@@ -6,13 +6,19 @@ package com.aem;
  * and open the template in the editor.
  */
 import com.minesql.orm.*;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
+import javax.jcr.Property;
 import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
+import javax.jcr.query.Query;
+import javax.jcr.query.QueryManager;
+import javax.jcr.query.QueryResult;
 import junit.framework.TestCase;
 import org.apache.jackrabbit.commons.JcrUtils;
 import org.apache.jackrabbit.core.TransientRepository;
@@ -55,11 +61,35 @@ public class TestLiveCopy extends TestCase {
             Node root = session.getRootNode(); 
             // Retrieve content 
             Node node = root.getNode("content/hmonline/it_it");
-
             System.out.println(node.getPath());
-            System.out.println(node.getProperty("message").getString());
 
-            System.out.println("Login successful, workspace: " + session.getWorkspace());
+
+            QueryManager queryManager = session.getWorkspace().getQueryManager();
+            Query query = queryManager.createQuery(
+                   "{QUERY}",
+                    Query.JCR_SQL2);
+            QueryResult result = query.execute();
+
+            //Iterate over the nodes in the results ...
+            NodeIterator nodeIter = result.getNodes();
+             
+            while ( nodeIter.hasNext() ) {
+                Node n;
+                n = nodeIter.nextNode();
+                System.out.println(n.getPath());
+                
+                n.getProperties();
+                for (Iterator p = n.getProperties(); p.hasNext();) {
+                    Property prop = (Property)p.next();
+                    if ( prop.isMultiple() )
+                        System.out.println("    " + prop.getName() + " -> " + prop.getValues().toString());
+                    else
+                        System.out.println("    " + prop.getName() + " -> " + prop.getValue().getString());
+                }
+ 
+            }
+
+            session.logout();
 
         } catch (RepositoryException ex) {
             Logger.getLogger(TestLiveCopy.class.getName()).log(Level.SEVERE, null, ex);

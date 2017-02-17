@@ -11,7 +11,7 @@
     <properties>
         <tomcat.version>7.0.50</tomcat.version>
         <restlet-version>2.0.15</restlet-version>
-        <skipTests>true</skipTests>
+        <skipTests>false</skipTests>
         <swt.version>4.4</swt.version>
     </properties>
     <repositories>
