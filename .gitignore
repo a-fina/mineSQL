@@ -8,4 +8,4 @@
 /nb-configuration.xml
 /derby.log
 /nbproject/
-/gestionale/
+.env

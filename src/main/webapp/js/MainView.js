@@ -396,7 +396,14 @@ Ext.onReady(function () {
                         var connWin = new DatabaseMngr.saveWin({});
                         connWin.show(this);
                     }
-                },{
+                }]
+        })
+    });
+    
+    shellMenu.add({
+        text: "Gestionale",
+        menu: new Ext.menu.Menu({
+            items: [{
                     text: 'Nuova Attività',
                     id: 'shell-2',
                     handler: function () {
@@ -442,22 +449,37 @@ Ext.onReady(function () {
      })
      });
      **************/
+
     shellMenu.add({
-        text: "Utility",
+        text: "Tools",
         menu: new Ext.menu.Menu({
             items: [{
-                    text: "Google",
+                    text: "ExtJs - Doc",
+                    id: 'map-tab-doc',
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 840,
+                            height: 680,
+                            title: "ExtJs - Doc",
+                            src: "http://docs.sencha.com/extjs/3.4.0/"
+                        })
+                        w.show();
+                    }
+                }, {
+                /** TODO group Menu **/
+                    text: "Presentation - Slide",
                     id: 'map-tab-0',
                     handler: function () {
                         var w = new Ext.IframeWindow({
                             width: 840,
                             height: 680,
-                            title: "Ricerca",
-                            src: "http://www.google.com"
+                            title: "Presentation - Slide",
+                            src: window.location + "slide/"
                         })
                         w.show();
                     }
                 }, {
+                /**** TODO: group the "Tabella" menu under one single menu ****/
                     text: "Tabella con paginazione",
                     id: 'map-tab-1',
                     handler: function () {
@@ -493,6 +515,7 @@ Ext.onReady(function () {
                         })
                         w.show();
                     }
+                /**** TODO: group the "Tabella" menu under one single menu ****/
                 }, {
                     text: "Data Visualization",
                     id: 'map-tree',

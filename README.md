@@ -31,6 +31,9 @@ TODO:
 ----
 - Presentation: https://github.com/hakimel/reveal.js
 
+- https://github.com/jingweno/gaffer
+  mvn gaffer:start
+
 - OSGI: Felix Embed
 
 - PDF: custom skin for Saved Report
@@ -73,3 +76,5 @@ DOC:
 
 - Jersey / Grizzly JSP
     http://blog.usul.org/using-jsp-in-a-jersey-jax-rs-restful-application/
+
+
