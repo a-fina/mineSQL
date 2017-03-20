@@ -29,7 +29,7 @@
     <!-- Versione  -->
     <context-param>
         <param-name>DM_VERSION</param-name>
-        <param-value>0.9.8</param-value>
+        <param-value>0.9.9a</param-value>
     </context-param>
 
     <!-- Servlet Logger caricata all'avvio di resin -->
@@ -106,6 +106,10 @@
         <servlet-class>net.mineSQL.controller.UtenteServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>FeedRSS</servlet-name>
+        <servlet-class>net.mineSQL.controller.FeedServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TestConnection</servlet-name>
         <servlet-class>net.mineSQL.util.TestConnection</servlet-class>
     </servlet>
@@ -124,6 +128,10 @@
     <servlet-mapping>
         <servlet-name>UtenteServlet</servlet-name>
         <url-pattern>/UtenteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedRSS</servlet-name>
+        <url-pattern>/FeedRSS</url-pattern>
     </servlet-mapping>
 
     <servlet>

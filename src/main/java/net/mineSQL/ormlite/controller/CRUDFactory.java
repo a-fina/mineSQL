@@ -15,12 +15,12 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
-import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import net.mineSQL.connection.ORMLite;
 import net.mineSQL.ormlite.model.Timesheet;
+import net.mineSQL.ormlite.model.FeedRSS;
 import net.mineSQL.ormlite.model.hip.AnagraficaAgenti;
 import net.mineSQL.ormlite.model.hip.AnagraficaClienti;
 import net.mineSQL.ormlite.model.hip.ListinoProdotti;
@@ -44,6 +44,8 @@ public class CRUDFactory {
             createDatabase(request);
         } else if (model.toLowerCase().equals("timesheet")) {
             createTimesheet(request);
+        } else if (model.toLowerCase().equals("feedrss")) {
+            createFeedRSS(request);
         } else if (model.toLowerCase().equals("ordini")) {
             createOrdini(request);
         } else if (model.toLowerCase().equals("anagraficaclienti")) {
@@ -87,6 +89,8 @@ public class CRUDFactory {
             TableUtils.createTableIfNotExists(connectionSource, ListinoProdotti.class);
             TableUtils.createTableIfNotExists(connectionSource, Ordini.class);
             
+            TableUtils.createTableIfNotExists(connectionSource, FeedRSS.class);
+
             connectionSource.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -140,6 +144,20 @@ public class CRUDFactory {
 
         int res = timesheetDao.create(ts);
         log.info("Database successfully saved (" + res + "): " + ts.toString());
+    }
+
+    public void createFeedRSS(HttpServletRequest request) throws SQLException {
+        Dao<FeedRSS, Integer> feedRSSDao;
+        feedRSSDao = DaoManager.createDao(connectionSource, FeedRSS.class);
+
+        FeedRSS frs  = new FeedRSS(
+                request.getParameter("TITLE"),
+                request.getParameter("LINK"),
+                request.getParameter("DESCRIPTION")
+        );
+
+        int res = feedRSSDao.create(frs);
+        log.info("Database successfully saved (" + res + "): " + frs.toString());
     }
 
     public void createAnagraficaClienti(HttpServletRequest request) throws SQLException {

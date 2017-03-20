@@ -17,6 +17,7 @@ import org.apache.jackrabbit.api.security.*;
 import org.apache.jackrabbit.api.security.principal.*; 
 import org.apache.jackrabbit.commons.jackrabbit.authorization.*; 
 import org.apache.jackrabbit.core.security.principal.EveryonePrincipal;
+import org.apache.jackrabbit.core.RepositoryFactoryImpl;
 
 
 /**

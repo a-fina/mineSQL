@@ -28,9 +28,9 @@ import org.junit.Test;
  *
  * @author alessio.finamore
  */
-public class TestLiveCopy extends TestCase {
+public class TestConnection extends TestCase {
 
-    public TestLiveCopy(String testName) {
+    public TestConnection(String testName) {
         super(testName);
     }
 
@@ -51,6 +51,7 @@ public class TestLiveCopy extends TestCase {
 
             String url = "http://localhost:4502/crx/server";
             System.out.println("Try Connecting to " + url);
+
             Repository repository = JcrUtils.getRepository(url);
             SimpleCredentials creds = new SimpleCredentials("admin",
                     "admin".toCharArray());
@@ -90,7 +91,7 @@ public class TestLiveCopy extends TestCase {
             session.logout();
 
         } catch (RepositoryException ex) {
-            Logger.getLogger(TestLiveCopy.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

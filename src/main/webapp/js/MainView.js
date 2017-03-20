@@ -391,9 +391,16 @@ Ext.onReady(function () {
         menu: new Ext.menu.Menu({
             items: [{
                     text: 'Nuova Connessione',
-                    id: 'shell-1',
+                    id: 'a-shell-1',
                     handler: function () {
                         var connWin = new DatabaseMngr.saveWin({});
+                        connWin.show(this);
+                    }
+                },{
+                    text: 'Nuovo FeedRSS',
+                    id: 'a-shell-2',
+                    handler: function () {
+                        var connWin = new FeedRSSMngr.saveWin({});
                         connWin.show(this);
                     }
                 }]
@@ -405,21 +412,21 @@ Ext.onReady(function () {
         menu: new Ext.menu.Menu({
             items: [{
                     text: 'Nuova Attività',
-                    id: 'shell-2',
+                    id: 'g-shell-2',
                     handler: function () {
                         var connWin = new TimesheetMngr.saveWin({});
                         connWin.show(this);
                     }
                 },{
                     text: 'Nuova Anagrafica Clienti',
-                    id: 'shell-4',
+                    id: 'g-shell-4',
                     handler: function () {
                         var connWin = new AnagraficaClientiMngr.saveWin({});
                         connWin.show(this);
                     }
                 },{
                     text: 'Nuovo Ordine',
-                    id: 'shell-5',
+                    id: 'g-shell-5',
                     handler: function () {
                         var connWin = new OrdiniMngr.saveWin({});
                         connWin.show(this);

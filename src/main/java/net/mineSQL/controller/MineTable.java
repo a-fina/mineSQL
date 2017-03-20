@@ -10,8 +10,6 @@
 
 package net.mineSQL.controller;
 
-import net.mineSQL.connection.ConnectionException;
-import net.mineSQL.connection.ConnectionManager;
 
 import java.util.*;
 import java.util.Date;
@@ -20,7 +18,6 @@ import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import net.sf.json.JSONFunction;
 
 import org.apache.log4j.Logger;
 

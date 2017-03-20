@@ -20,11 +20,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import javax.jcr.Node;
+import javax.jcr.NodeIterator;
+import javax.jcr.Repository;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.jcr.SimpleCredentials;
+import javax.jcr.query.Query;
+import javax.jcr.query.QueryManager;
+import javax.jcr.query.QueryResult;
 import net.mineSQL.connection.ConnectionException;
 import net.mineSQL.connection.ConnectionManager;
+import net.mineSQL.controller.AEMUtils;
 import net.mineSQL.controller.MineSQL;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.jackrabbit.commons.JcrUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -32,6 +44,8 @@ import org.apache.log4j.Logger;
  * @author alessio.finamore
  */
 public class Menu {
+
+    private static final Logger log = Logger.getLogger(Menu.class);
 
     String host;
     String database;
@@ -51,8 +65,6 @@ public class Menu {
         this.dbType = dbType;
     }
 
-    private static final Logger log = Logger.getLogger(Menu.class);
-
     public JSONArray getConnectionTableList(
             JSONArray connectionDBmenu,
             String host,
@@ -69,7 +81,14 @@ public class Menu {
         return getConnectionTableListCALL(connectionDBmenu, dbCon, dbType, database, host);
     }
 
-    public JSONArray getConnectionTableList(JSONArray connectionDBmenu, String host, String database, String user, String password, String showAllDB, String dbType) throws ConnectionException, SQLException {
+    public JSONArray getConnectionTableList(
+            JSONArray connectionDBmenu,
+            String host,
+            String database,
+            String user,
+            String password,
+            String showAllDB,
+            String dbType) throws ConnectionException, SQLException {
 
         Connection dbCon = null;
         dbCon = ConnectionManager.getConnection(host, database, user, password, dbType);
@@ -80,8 +99,120 @@ public class Menu {
     /*
      * Recupera l'elenco delle TABELLE di un DATABASE e costruisce un nodo del Menu
      */
+    public JSONArray getConnectionTableListAEM(JSONArray connectionDBmenu, Connection dbCon, String dbType, String database, String host)
+            throws ConnectionException, SQLException {
+
+        try {
+            List menuItems = new ArrayList();
+            String currentDB = "";
+            /*
+            * Load the list of tables
+             */
+            String sqlSCHEMA = MineSQL.getSchemaList(dbType, false, database);
+
+            // JCRConnection
+            String url = "http://localhost:4502/crx/server";
+            AEMUtils au = new AEMUtils();
+            Session session = au.getAdminSession(url);
+
+            log.debug("Database DB2 menu: " + sqlSCHEMA);
+            // JCR Execute
+            QueryManager queryManager = session.getWorkspace().getQueryManager();
+            Query query = queryManager.createQuery(sqlSCHEMA, Query.JCR_SQL2);
+            QueryResult result = query.execute();
+
+            /*
+            * Fill the extJs menu items
+             */
+            String title = "";
+            String tip = "";
+            String name = "";
+            int idRow = 0;
+            List savedTable = new ArrayList();
+
+            //Iterate over the nodes in the results ...
+            NodeIterator nodeIter = result.getNodes();
+
+            while (nodeIter.hasNext()) {
+                Node n;
+                n = nodeIter.nextNode();
+                log.debug(" node path: " + n.getPath());
+                n.getProperties();
+
+                HashMap anagraf_map = new HashMap();
+                anagraf_map.put("id", "idRow" + idRow);
+
+                //Gli spazi &nbsp; servono per fissare un Bug di CSS di firefox
+                title = n.getPath() + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                tip = host + " - " + dbType + " - " + database;
+                title = "<span ext:qtip=\"" + tip + "\">" + title + "</span>";
+                name = n.getPath();
+
+                anagraf_map.put("nome", title);
+                menuItems.add(anagraf_map);
+                savedTable.add(name);
+                // addMenuItem(idRow, title, tip);
+                idRow++;
+            }
+            /**
+             * *********************************************
+             * // Scandisco i menuItems e prendo le queries Iterator iter =
+             * menuItems.iterator(); Iterator tablesIter =
+             * savedTable.iterator();
+             *
+             * // Ciclo di costruzione menu principale, cicla sull'elenco DB
+             * while (iter.hasNext()) { HashMap anagraf_map = new HashMap();
+             * anagraf_map = (HashMap) iter.next();
+             *
+             * currentDB = (String) tablesIter.next();
+             *
+             * String sqlTABLE = MineSQL.getTableList(dbType, currentDB); //if
+             * (currentDB.contains("-")); // continue; ps =
+             * dbCon.prepareStatement(sqlTABLE, ResultSet.TYPE_SCROLL_SENSITIVE,
+             * ResultSet.CONCUR_READ_ONLY); rs = ps.executeQuery();
+             *
+             * JSONArray gruppo_menu = new JSONArray(); String text = ""; //
+             * Ciclo di costruzione sottoMenu, per ogni tabella fa elenco dei
+             * campi int idUniq = 0; String id = ""; String text2 = ""; String
+             * textTip = "";
+             *
+             * while (rs.next()) { // Attacco elenco dei campi del database id =
+             * idUniq + "##" + currentDB + "##" + rs.getString(1) + "##" + host;
+             * //MySQL text2 = rs.getString("Tables_in_" + currentDB); textTip =
+             * "<span ext:qtip=\"" + rs.getString(2) + "\">" + rs.getString(1) +
+             * "</span>"; gruppo_menu.add(getSubMenuItem(id, rs.getString(1),
+             * textTip)); //log.debug(" gruppo_menu=" + getMenuItem(text2,
+             * date_grafico, null) ); idUniq++; } rs.close(); ps.close();
+             *
+             * // Attacco elenco dei databases if (gruppo_menu.size() > 0) {
+             * text = anagraf_map.get("nome").toString();
+             * connectionDBmenu.add(getMenuItem(text, gruppo_menu, null)); }
+             *
+             * log.debug(" currentDB 3: " + currentDB); } if (dbCon != null) {
+             * dbCon.close(); }
+             **********************************************************
+             */
+
+            session.logout();
+        } catch (RepositoryException ex) {
+            log.error(ex);
+            throw new ConnectionException(ex);
+        }
+
+        return connectionDBmenu;
+
+    }
+
+    /*
+     * Recupera l'elenco delle TABELLE di un DATABASE e costruisce un nodo del Menu
+     */
     public JSONArray getConnectionTableListCALL(JSONArray connectionDBmenu, Connection dbCon, String dbType, String database, String host)
             throws ConnectionException, SQLException {
+
+        log.debug("Database DB2 menu dbType: " + dbType);
+        if (dbType.toLowerCase().equals(ConnectionManager.AEM)) {
+            return getConnectionTableListAEM(connectionDBmenu, dbCon, dbType, database, host);
+        }
 
         List menuItems = new ArrayList();
         PreparedStatement ps = null;
@@ -89,7 +220,9 @@ public class Menu {
         ResultSet rs2 = null;
 
         String currentDB = "";
-
+        /*
+        * Load the list of tables
+         */
         String sqlSCHEMA = MineSQL.getSchemaList(dbType, false, database);
 
         ps = dbCon.prepareStatement(sqlSCHEMA);
@@ -98,25 +231,29 @@ public class Menu {
         //ResultSet.CONCUR_READ_ONLY);
         rs = ps.executeQuery();
 
-        // Mappo tutti i menuItems
+        /*
+        * Fill the extJs menu items
+         */
         String title = "";
         String tip = "";
+        String name = "";
         int idRow = 0;
         List savedTable = new ArrayList();
 
         while (rs.next()) {
-
             HashMap anagraf_map = new HashMap();
             anagraf_map.put("id", "idRow" + idRow);
             log.debug(" row: " + rs.toString());
             //Gli spazi &nbsp; servono per fissare un Bug di CSS di firefox
             title = rs.getString(1) + "&nbsp;&nbsp;&nbsp;&nbsp;";
-            tip = host + " - " + dbType + " - " + database; 
+            tip = host + " - " + dbType + " - " + database;
             title = "<span ext:qtip=\"" + tip + "\">" + title + "</span>";
+            name = rs.getString(1);
 
             anagraf_map.put("nome", title);
             menuItems.add(anagraf_map);
-            savedTable.add(rs.getString(1));
+            savedTable.add(name);
+            // addMenuItem(idRow, title, tip);
             idRow++;
         }
         rs.close();
@@ -448,7 +585,7 @@ public class Menu {
 
             try {
                 // Connesione tramite URL o tramite CREDENZIALI
-                if ( ds.getUrl() != null && !ds.getUrl().isEmpty()) {
+                if (ds.getUrl() != null && !ds.getUrl().isEmpty()) {
 
                     mainMenu = getConnectionTableList(
                             mainMenu,

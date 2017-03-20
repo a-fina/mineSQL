@@ -34,6 +34,9 @@ public class MineSQL {
                     //DB2
                     sqlSCHEMA += " WHERE TABLE_SCHEMA = SCHEMA() AND TABLE_NAME LIKE '" + database +"'";
                 } */
+        } else if ( dbType.toLowerCase().equals(ConnectionManager.AEM) ){
+
+                sqlSCHEMA = "SELECT * FROM [nt:base] AS s WHERE ISCHILDNODE ([/])";
         }else {
             throw new SQLException("MineSQL dbType: " + dbType +" NOT supported yet");
         }

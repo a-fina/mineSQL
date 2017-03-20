@@ -29,7 +29,13 @@ DatabaseMngr.saveWin = function(config) {
 	// pre-instantiation code
      var values = new Ext.data.SimpleStore({
           fields: ['DESC', 'TYPE'],
-          data : [['DB2','DB2'],['H2','H2']]
+          data : [['DB2','DB2'],
+                  ['H2','H2'],
+                  ['MySQL','MySQL'],
+                  ['Postgresql','Postgresql'],
+                  ['Oracle','Oracle'],
+                  ['AEM','AEM']
+              ]
       });
       
 	var defaults = {
@@ -74,7 +80,7 @@ DatabaseMngr.saveWin = function(config) {
                         'hidden_columns': 'undefined',
                         'entityName': 'Database'
                 },
-                title: 'Salva Nuova Connesione', 
+                title: 'New DB Connection', 
                 tableName: 'Database',
                 crud: "create",
                 modal: true,

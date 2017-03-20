@@ -1,17 +1,13 @@
 package net.mineSQL.connection;
 
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.logging.Level;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -35,6 +31,7 @@ public class ConnectionManager {
     public static String POSTGRES = "postgresql";
     public static String MYSQL = "mysql";
     public static String H2 = "h2";
+    public static String AEM = "aem";
 
     public ConnectionManager() {
     }
@@ -175,9 +172,13 @@ public class ConnectionManager {
             else if (dbType.equals(H2)){
                 return    getConnectionCal(userName, password, url, "org.h2.Driver", key);
             }
+            else if (dbType.toLowerCase().equals(AEM)){
+                return null;   
+            }
 
             throw new SQLException("MineSQL Database Type: <"+ dbType +"> non supportato");
     }
+
 
     public static synchronized Connection getConnectionCal(
             String userName,

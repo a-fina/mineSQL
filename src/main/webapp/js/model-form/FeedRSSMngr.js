@@ -1,6 +1,6 @@
 // vim: ts=4:sw=4:nu:fdc=4:nospell
 /**
- * @class LoginMngr
+ * @class FeedRSSMngr
  *
  * A WindowsFormTable Factory for CRUD operation on Filter menu
  *
@@ -8,7 +8,7 @@
  * @copyright (c) 2009, by Assioma.net
  * @date      30 / 04 / 09
  * @version   0.1
- * @revision  $Id: LoginMngr.js,v 1.4 2009/08/03 15:30:54 assioma Exp $
+ * @revision  $Id: FeedRSSMngr.js,v 1.4 2009/08/03 15:30:54 assioma Exp $
  *
  * @license licensed under the terms of
  * the Open Source LGPL 3.0 license. Commercial use is permitted to the extent
@@ -19,47 +19,51 @@
  * <p>License details: <a href="http://www.gnu.org/licenses/lgpl.html"
  * target="_blank">http://www.gnu.org/licenses/lgpl.html</a></p>
  */
-LoginMngr = {}; 
+FeedRSSMngr = {}; 
 /**
  * @method saveWin
  * @param {Object} config.ajaxParams Parameters to submit
  * @return {WindowFormTable} An Ext.WindowFormTable to save a filter
  */
-LoginMngr.saveWin = function(config) {
+FeedRSSMngr.saveWin = function(config) {
+	// pre-instantiation code
+     var values = new Ext.data.SimpleStore({
+          fields: ['DESC', 'ACTIVITY'],
+          data : [['DEV','DEV'],['OPS','OPS']]
+      });
+      
 	var defaults = {
                items: new Ext.form.FieldSet({
-                    title: 'Login',
+                    title: 'Timesheet Day Activity',
                     autoHeight: true,
-                    autoWidth: true,
                     defaultType: 'textfield',
+                    defaults: {width: 310},
                     items: [{
-                            fieldLabel: 'Name',
-                            name: 'USERNAME',
-                            id: 'USERNAME'
+                            fieldLabel: 'Title',
+                            name: 'TITLE'
                         }, {
-                            fieldLabel: 'Password',
-                            inputType: 'password',
-                            name: 'PASSWORD',
-                            id: 'PASSWORD'
+                            fieldLabel: 'Link',
+                            name: 'LINK'
                         }, {
-                            xtype: 'hidden',
-                            id: 'TOKEN'
+                            fieldLabel: 'Description',
+                            name: 'DESCRIPTION'
                         }]
                 }),
                 submitParams: {
                         'idQuery':'undefined',
                         'context':'undefined',
                         'hidden_columns': 'undefined',
-                        'entityName': 'Database'
+                        'entityName': 'Feedrss'
                 },
-                title: 'Login Utente', 
-                tableName: 'Login',
+                title: 'New FeedRSS', 
+                tableName: 'FeedRSS',
                 crud: "create",
                 modal: true,
-                url: "/UtenteServlet",
+                url: "autogrid/auto-table.jsp",
                 onAfterSubmit: function(){
                     // Ricarico il menu dei databases
-                    location.reload(); 
+                    saveFilterMenu.removeAll();
+                    delete(saveFilterMenu._alreadyLoaded);
                 }
 	}; // eo defaults object
  
@@ -73,7 +77,7 @@ LoginMngr.saveWin = function(config) {
  * @param {Object} config.ajaxParams Parameters to submit
  * @return {WindowFormTable} An Ext.WindowFormTable to delete a filter
  */
-LoginMngr.deleteWin = function(config) {
+FeedRSSMngr.deleteWin = function(config) {
 	var defaults = {
                items: new Ext.form.FieldSet({
                     title: 'Informationi Filtro',
@@ -134,10 +138,10 @@ LoginMngr.deleteWin = function(config) {
  * @param {Object} config.ajaxParams Parameters to submit
  * @return {WindowFormTable} An Ext.WindowFormTable to update a filter
  */
-LoginMngr.updateWin = function(config) {
+FeedRSSMngr.updateWin = function(config) {
 	var defaults = {
                items: new Ext.form.FieldSet({
-                    title: 'Informationi Filtro',
+                    title: 'FeedRSS',
                     autoHeight: true,
                     defaultType: 'textfield',
                     defaults: {width: 310},
@@ -145,18 +149,19 @@ LoginMngr.updateWin = function(config) {
                             xtype: 'hidden',
                             id: 'ID'
                         },{
-                            xtype: 'hidden',
-                            id: 'IDFLUSSO'
-                        },{
-                            fieldLabel: 'Name',
-                            id: 'NOME',
-                            name: 'NOME',
-                            disabled: false,
-                            readOnly: true 
+                            fieldLabel: 'Title',
+                            id: 'TITLE',
+                            name: 'TITLE',
+                            disabled: false
                         }, {
-                            fieldLabel: 'Note',
-                            id: 'NOTE',
-                            name: 'NOTE',
+                            fieldLabel: 'Link',
+                            id: 'LINK',
+                            name: 'LINK',
+                            disabled: false 
+                        }, {
+                            fieldLabel: 'Description',
+                            id: 'DESCRIPTION',
+                            name: 'DESCRIPTION',
                             disabled: false 
                         }]
                 }),
@@ -193,8 +198,4 @@ LoginMngr.updateWin = function(config) {
 	return updateFilterWin;
  
 } // eo function 
-
-Ext.onReady(function () {
-    var connWin = new LoginMngr.saveWin({});
-    connWin.show(this);
-});
+// eof
