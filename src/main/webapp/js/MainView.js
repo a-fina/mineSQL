@@ -391,14 +391,35 @@ Ext.onReady(function () {
         text: "Home",
         menu: new Ext.menu.Menu({
             items: [{
-                    text: "Session 1",
-                    id: 's-tab-0',
+                    text: "Talk 1 - Introduzione BOMA",
                     handler: function () {
                         var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Session 1",
-                            src: window.location + "slide/session1/"
+                            width: 950,
+                            height: 780,
+                            title: "Introduzione BOMA",
+                            src: window.location + "slide/introduzione/"
+                        })
+                        w.show();
+                    }
+                }, {
+                    text: "Talk 2 - AEM Screen",
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 950,
+                            height: 780,
+                            title: "AEM Screen",
+                            src: window.location + "slide/aem-screen/"
+                        })
+                        w.show();
+                    }
+                }, {
+                    text: "Talk 5 - AEM Campaign Integration",
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 950,
+                            height: 780,
+                            title: "AEM Campaign Integration",
+                            src: window.location + "slide/aem-campaign/"
                         })
                         w.show();
                     }
@@ -478,6 +499,7 @@ Ext.onReady(function () {
      });
      **************/
 
+    /** TODO group Menu **/
     shellMenu.add({
         text: "Tools",
         menu: new Ext.menu.Menu({
@@ -498,10 +520,9 @@ Ext.onReady(function () {
                             }, {
                                 text: "Slides.com - Editor",
                                 handler: function () {
-                                    window.open( "https://slid.es/");
+                                    window.open("https://slid.es/");
                                 }
                             }, {
-                                /** TODO group Menu **/
                                 text: "Design Guide",
                                 handler: function () {
                                     var w = new Ext.IframeWindow({
@@ -513,7 +534,6 @@ Ext.onReady(function () {
                                     w.show();
                                 }
                             }, {
-                                /** TODO group Menu **/
                                 text: "Awesome Code",
                                 handler: function () {
                                     var w = new Ext.IframeWindow({
@@ -525,7 +545,6 @@ Ext.onReady(function () {
                                     w.show();
                                 }
                             }, {
-                                /** TODO group Menu **/
                                 text: "Simple Slide",
                                 handler: function () {
                                     var w = new Ext.IframeWindow({
@@ -541,13 +560,19 @@ Ext.onReady(function () {
                 }, {
                     text: "ExtJs - Doc",
                     handler: function () {
-                        window.open( "http://docs.sencha.com/extjs/3.4.0/");
+                        window.open("http://docs.sencha.com/extjs/3.4.0/");
                     }
                 }, {
                     text: "Codeship",
                     id: 'map-tab-cod',
                     handler: function () {
-                        window.open( "http://codeship.com");
+                        window.open("http://codeship.com");
+                    }
+                }, {
+                    text: "Continuos Integration - MineSQL",
+                    id: 'map-tab-cod',
+                    handler: function () {
+                        window.open("https://app.codeship.com/projects/100272");
                     }
                 }, {
                     text: "Heroku",
@@ -560,6 +585,22 @@ Ext.onReady(function () {
                     id: 'map-test-3',
                     handler: function () {
                         window.open("https://github.com/bayois/mineSQL/tree/aem-connection/");
+                    }
+                }, {
+                    text: "AEM - Podcat Axis41",
+                    handler: function () {
+                        window.open("http://aempodcast.com/");
+                    }
+                }, {
+                    text: "AEM - FeedRSS Moveo",
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 840,
+                            height: 680,
+                            title: "AEM - FeedRSS Moveo",
+                            src: "http://boma-0.herokuapp.com/FeedRSS"
+                        })
+                        w.show();
                     }
                 }]
         })

@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>reveal.js</title>
+
+        <link rel="stylesheet" href="/js/reveal.js-3.4.1/css/reveal.css">
+        <link rel="stylesheet" href="/js/reveal.js-3.4.1/css/theme/league.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="/js/reveal.js-3.4.1/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? '/js/reveal.js-3.4.1/css/print/pdf.css' : '/js/reveal.js-3.4.1/css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section>
+                        <h1>AEM Screen</h1>
+                        <p>AEM Screens allows you to have digital experiences and interaction involving different types of screens in conjunction with a comprehensive content management solution</p>
+                        <footer>
+                            <a href="https://docs.adobe.com/docs/en/aem/6-2/administer/screens.html">Screens Concepts</a>
+                        </footer>
+                    </section>
+                    <section>
+                        <h3>Display</h3>
+                        <p>A display is a virtual grouping of screens that are usually positioned next to each other. The display is usually permanent in respect to an installation. This will be the object content authors will work with and always reference to as logical display rather than their physical counter part(s).<p>
+                    </section>
+                    <section>
+                        <h3>Device</h3>
+                        <p>A device has the ability to run the player software to produce a visual output. It is able to control displaying a cropped, scaled, translated portion of common content or experience.<br>
+                            The screen configuration is bound to a display but can be replaced in case a technical defect occurs.</p>
+                    </section>
+                    <section>
+                        <h3>Screen</h3>
+                        <p>A screen is a physical monitor or any other system capable of producing visual output, that shows the content coming from its device.</p>
+                    </section>
+
+                    <section>
+                        <h3>Player Software</h3>
+                        <p>The player is the software running on a device that will allow you to show a channel on a display.</p>
+                    </section>
+                    <section>
+                        <h3>Sequence Channel</h3>
+
+                        <p>A Sequence Channel is a page that you can author containing components that will be show one by one in a slideshow.</p>
+                    </section>
+
+                    <section>
+                        <h3>Application Channel</h3>
+                        <p>An Application Channel shows an application created by a developer that displays interactive content.</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva1.JPG" />
+                    </section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva2.JPG" />
+                    </section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva3.JPG" />
+                    </section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva4.JPG" />
+                    </section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva5.JPG" />
+                    </section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva6.JPG" />
+                    </section>
+                    <section>
+                        <h3>Copy a Channel</h3>
+                        <img src="/slide/aem-screen/1_Copy_a_Channel/Diapositiva7.JPG" />
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="/js/reveal.js-3.4.1/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js-3.4.1/js/reveal.js"></script>
+
+        <script>
+// More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+// More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    {src: '/js/reveal.js-3.4.1/plugin/markdown/marked.js'},
+                    {src: '/js/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+                    {src: '/js/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+                    {src: '/js/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }}
+                ]
+            });
+        </script>
+    </body>
+</html>

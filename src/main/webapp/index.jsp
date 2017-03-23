@@ -88,7 +88,7 @@ String valore(String nomeCampo) {
 	<META Http-Equiv="Pragma" Content="no-cache">
 	<META Http-Equiv="Expires" Content="0">
 
-    <title>Moveo BigOpp. Accellerator</title>
+    <title>Moveo BigOp Accellerator</title>
     <!-- Ext requirement -->
     <link href="/favicon.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="ext-3.4.0/resources/css/ext-all.css" />
