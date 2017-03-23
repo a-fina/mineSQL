@@ -395,7 +395,7 @@ Ext.onReady(function () {
                     handler: function () {
                         var w = new Ext.IframeWindow({
                             width: 950,
-                            height: 780,
+                            height: 730,
                             title: "Introduzione BOMA",
                             src: window.location + "slide/introduzione/"
                         })
@@ -406,23 +406,24 @@ Ext.onReady(function () {
                     handler: function () {
                         var w = new Ext.IframeWindow({
                             width: 950,
-                            height: 780,
+                            height: 730,
                             title: "AEM Screen",
                             src: window.location + "slide/aem-screen/"
                         })
                         w.show();
                     }
-                }, {
+                /***** }, {
                     text: "Talk 5 - AEM Campaign Integration",
                     handler: function () {
                         var w = new Ext.IframeWindow({
                             width: 950,
-                            height: 780,
+                            height: 730,
                             title: "AEM Campaign Integration",
                             src: window.location + "slide/aem-campaign/"
                         })
                         w.show();
-                    }
+                    } 
+                    ************/
                 }]
         })
     });

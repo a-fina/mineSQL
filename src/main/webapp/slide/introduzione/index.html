@@ -66,7 +66,6 @@
                             <li>M<em>&oacute;veo</em></li>
                             <li>A<em>ccellerator</em></li>
                         </ul>
-                        <img src="http://www.yachtevela.com/wp-content/uploads/2010/04/Boma-300x199.jpg" />
                         <footer>
                             <a href="http://boma-0.herokuapp.com">boma</a>&sdot;<a href="https://github.com/bayois/mineSQL/tree/aem-connection/">github</a>&sdot;<a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfooding</a>
                         </footer>
@@ -135,9 +134,9 @@
                         <h3>Creazione nuova applicazione</h3>
                         <p>come nasce <em>BOMA</em></p>
                         <ul>
-                            <li>git clone https://github.com/bayois/mineSQL boma<br><em>creazione sorgenti</em></li>
+                            <li>git clone https://github.com/bayois/mineSQL boma<br><em><small>creazione sorgenti</small></em></li>
                             <li>cd boma</li>
-                            <li>heroku create boma<br><em>pepara ambiente heroku</em></li>
+                            <li>heroku create boma<br><em><small>pepara ambiente heroku</small></em></li>
                             <li>git push heroku <em>boma</em><br><small>avvia deploy nel cloud</small></li>
                             <li>heroku open <br><small>apre istanza cloud</small></li>
                         </ul>
@@ -151,27 +150,37 @@
                         </ul>
                     </section>
                     <section>
-                        <h5>Repository GIT Origin</h5>  
+                        <h5>Repository GIT Origine</h5>  
                         <ul>
                             <li><em>origin</em>  https://github.com/bayois/mineSQL (fetch)</li>
                             <li><em>origin</em>  https://github.com/bayois/mineSQL (push)</li>
                         </ul>
-                        <p>git push heroku <em>origin</em><br><small>avvia continuos integration e deploy</small></p>
+                        <p>git push heroku <em>origin</em><br><small>avvia continuos integration <em>Codeship</em><br>deploy <em>Horoku</em> di mineSQL</small></p>
                     </section>
                     <section>
                         <h3>Start Locacal Server</h3>
-                        <p>sviluppo e test</p>
                         <ul>
+                            <li>modifica e sviluppo</li>
                             <li>mvn package</li>
                             <li>heroku local</li>	
                             <li>firefox http://localhost:5000<br><small>la porta 5000 &eacute; un requisito di heroku</small></li>
                         </ul>
                     </section>
                     <section>
+                        <h3>Rilascio</h3>
+                        <ul>
+                            <li>modifica, sviluppo, test</li>
+                            <li>git commit -m "Update Slide"</li>
+                            <li>git checkout master</li>
+                            <li>git merge boma<br><small>solo il master viene deployato</small>
+                            <li>git push heroku master<br><small>deploy</small></li>
+                        </ul>
+                    </section>
+                    <section>
                         <h3>Next</h3>
                         <p>proposte</p>
                         <ul>
-                            <li>FeedRSS <em>ui</em></li>
+                            <li>FeedRSS</li>
                             <li>Gestione Utenti <em>ui personalizzabile</em></li>
                             <li>Agile Dashboard <em>kanban</em></li>	
                             <li>AEM Data Exchange <em>data mining</em></li>	
@@ -186,18 +195,18 @@
 
         <script>
 // More info https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-history: true,
+            Reveal.initialize({
+                history: true,
 // More info https://github.com/hakimel/reveal.js#dependencies
-dependencies: [
-    {src: '/js/reveal.js-3.4.1/plugin/markdown/marked.js'},
-    {src: '/js/reveal.js-3.4.1/plugin/markdown/markdown.js'},
-    {src: '/js/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
-    {src: '/js/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
-        hljs.initHighlightingOnLoad();
-    }}
-]
-});
+                dependencies: [
+                    {src: '/js/reveal.js-3.4.1/plugin/markdown/marked.js'},
+                    {src: '/js/reveal.js-3.4.1/plugin/markdown/markdown.js'},
+                    {src: '/js/reveal.js-3.4.1/plugin/notes/notes.js', async: true},
+                    {src: '/js/reveal.js-3.4.1/plugin/highlight/highlight.js', async: true, callback: function () {
+                            hljs.initHighlightingOnLoad();
+                        }}
+                ]
+            });
         </script>
     </body>
 </html>
