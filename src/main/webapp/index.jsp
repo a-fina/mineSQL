@@ -12,7 +12,7 @@
 <%@page import="net.mineSQL.util.ApplicationWatcher" %>
 <%@page import="java.util.GregorianCalendar" %>
 <%@page import="org.apache.log4j.Logger"%>
-    
+
 <%
 String listaUtenti = null;
 String listaAree = null;
@@ -36,9 +36,9 @@ group = "0";
 idruolo = "0";
 groups = "[]";
 
-if (CONTROLLO_ACCESSO){	
+if (CONTROLLO_ACCESSO){
     /*
-	if (request.getSession().getAttribute("IDUTENTE") == null || 
+	if (request.getSession().getAttribute("IDUTENTE") == null ||
 		request.getSession().getAttribute("IDUTENTE").toString().length() == 0 ||
 		! request.isRequestedSessionIdValid())
     {
@@ -57,7 +57,7 @@ if (CONTROLLO_ACCESSO){
         idreparto = session.getAttribute("IDREPARTO").toString();
         nomeReparto = session.getAttribute("NOME_REPARTO").toString();
         nomeRuolo = session.getAttribute("NOME_RUOLO").toString();
-        
+
     }
     catch (NullPointerException ex) {
         log.error(" Error on main page");
@@ -73,7 +73,7 @@ String urlToGo = "/UtenteServlet";
 
 /*
 String valore(String nomeCampo) {
-	if (nomeCampo.equals("id_area")) return listaAree; 
+	if (nomeCampo.equals("id_area")) return listaAree;
 	if (nomeCampo.equals("id_utente")) return listaUtenti;
 	if (nomeCampo.equals("stato")) return listaStati;
 	return "";
@@ -87,10 +87,10 @@ String valore(String nomeCampo) {
     <META Http-Equiv="Cache-Control" Content="no-cache">
 	<META Http-Equiv="Pragma" Content="no-cache">
 	<META Http-Equiv="Expires" Content="0">
-	
-    <title>DB Mining System - Beta</title>
+
+    <title>Moveo BigOpp. Accellerator</title>
     <!-- Ext requirement -->
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/favicon.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="ext-3.4.0/resources/css/ext-all.css" />
     <link rel="stylesheet" type="text/css" href="ext-3.4.0/resources/css/xtheme-gray.css" />
 
@@ -129,7 +129,7 @@ String valore(String nomeCampo) {
         <script type="text/javascript" src="js/windows/UploadWindow.js"></script>
         <script type="text/javascript" src="js/MainView.js"></script>
         <script type="text/javascript" src="js/GenericMenu.js"></script>
-        
+
         <script type="text/javascript" src="js/model-form/FilterMngr.js"></script>
         <script type="text/javascript" src="js/model-form/FeedRSSMngr.js"></script>
         <script type="text/javascript" src="js/model-form/CSVMngr.js"></script>
@@ -145,14 +145,14 @@ String valore(String nomeCampo) {
 
     <!-- i css servono per correggere dei bug di extjs -->
 
-	
+
     <link type="text/css" rel="stylesheet" href="css/mineSQL.css" />
-    
+
     <style type="text/css">
-		.x-grid3-hd-row td.ux-filtered-column {   
-        font-style: italic;  
+		.x-grid3-hd-row td.ux-filtered-column {
+        font-style: italic;
         font-weight: bold;
-    }		
+    }
 	</style>
 
 </head>
@@ -188,20 +188,20 @@ String valore(String nomeCampo) {
         SessionFilters[ID_FLUSSO_DEFECT] = {};
         SessionFilters[ID_FLUSSO_WORKAROUND] = {};
         SessionFilters[ID_FLUSSO_TASK] = {};
-        
+
         /**
-         * Stampa messaggi d'errore nella console javascript  
+         * Stampa messaggi d'errore nella console javascript
          **/
         function debug(string){
             if (ACTIVATE_DEBUG_LOG){
-                try     { console.log(this +": " +string); } 
+                try     { console.log(this +": " +string); }
                 catch(e){ }
             }
         }
         var maxInactiveInterval = <%=session.getMaxInactiveInterval()%>;
-        var tplCombo = 
+        var tplCombo =
                 new Ext.XTemplate('<tpl for="."><div ext:qtip="{ID}. {NOME}" class="x-combo-list-item">{NOME}</div></tpl>');
-        
+
         function openWindows(){
                 ScriptSQL.openWindow();
         }
@@ -213,7 +213,7 @@ String valore(String nomeCampo) {
         }
         /**
         * Short hand
-        */ 
+        */
         $ = Ext.get;
         $$ = Ext.getCmp;
         /**
@@ -223,7 +223,7 @@ String valore(String nomeCampo) {
 
         /*
         * Go to main page
-        */ 
+        */
         function viewMain(){
             window.location.href="http://<%out.write(request.getServerName()+ ":" + request.getServerPort());%>/UtenteServlet";
         }
@@ -232,15 +232,15 @@ String valore(String nomeCampo) {
         * Check if current user is limited to disable various buttons
         */
         function isLimitedUser(){
-            if ( USER_IDRUOLO == RUOLO_READONLY || 
+            if ( USER_IDRUOLO == RUOLO_READONLY ||
                  USER_IDRUOLO == RUOLO_READWRITEONLY)
                 return true;
             else
                 return false;
-        } 
+        }
 
     </script>
-    
+
 <div id="contenitore">
 
     <!-- Header -->
@@ -282,7 +282,7 @@ String valore(String nomeCampo) {
 
     <!-- Corpo centrale -->
         <div id="sommario">
-        	
+
         </div>
         <!-- Main Body, filled with ExtJS -->
         <div id="corpo">

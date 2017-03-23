@@ -386,29 +386,43 @@ Ext.onReady(function () {
         }
     });
 
+
     shellMenu.add({
-        text: "MineSQL",
+        text: "Home",
         menu: new Ext.menu.Menu({
             items: [{
-                    text: 'Nuova Connessione',
+                    text: "Session 1",
+                    id: 's-tab-0',
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 840,
+                            height: 680,
+                            title: "Session 1",
+                            src: window.location + "slide/session1/"
+                        })
+                        w.show();
+                    }
+                }]
+        })
+    });
+
+
+    shellMenu.add({
+        text: "Database",
+        menu: new Ext.menu.Menu({
+            items: [{
+                    text: 'Connection',
                     id: 'a-shell-1',
                     handler: function () {
                         var connWin = new DatabaseMngr.saveWin({});
                         connWin.show(this);
                     }
-                },{
-                    text: 'Nuovo FeedRSS',
-                    id: 'a-shell-2',
-                    handler: function () {
-                        var connWin = new FeedRSSMngr.saveWin({});
-                        connWin.show(this);
-                    }
                 }]
         })
     });
-    
+
     shellMenu.add({
-        text: "Gestionale",
+        text: "MyApp",
         menu: new Ext.menu.Menu({
             items: [{
                     text: 'Nuova Attività',
@@ -417,18 +431,25 @@ Ext.onReady(function () {
                         var connWin = new TimesheetMngr.saveWin({});
                         connWin.show(this);
                     }
-                },{
+                }, {
                     text: 'Nuova Anagrafica Clienti',
                     id: 'g-shell-4',
                     handler: function () {
                         var connWin = new AnagraficaClientiMngr.saveWin({});
                         connWin.show(this);
                     }
-                },{
+                }, {
                     text: 'Nuovo Ordine',
                     id: 'g-shell-5',
                     handler: function () {
                         var connWin = new OrdiniMngr.saveWin({});
+                        connWin.show(this);
+                    }
+                }, {
+                    text: 'Nuovo FeedRSS',
+                    id: 'a-shell-2',
+                    handler: function () {
+                        var connWin = new FeedRSSMngr.saveWin({});
                         connWin.show(this);
                     }
                 }]
@@ -461,105 +482,86 @@ Ext.onReady(function () {
         text: "Tools",
         menu: new Ext.menu.Menu({
             items: [{
+                    text: "Slide",
+                    menu: new Ext.menu.Menu({
+                        items: [{
+                                text: "Reveal.js - Doc",
+                                handler: function () {
+                                    var w = new Ext.IframeWindow({
+                                        width: 840,
+                                        height: 680,
+                                        title: "Reveal.js - Doc",
+                                        src: "http://lab.hakim.se/reveal-js/#/"
+                                    })
+                                    w.show();
+                                }
+                            }, {
+                                text: "Slides.com - Editor",
+                                handler: function () {
+                                    window.open( "https://slid.es/");
+                                }
+                            }, {
+                                /** TODO group Menu **/
+                                text: "Design Guide",
+                                handler: function () {
+                                    var w = new Ext.IframeWindow({
+                                        width: 840,
+                                        height: 680,
+                                        title: "Design Guide",
+                                        src: "http://www.adidahiya.com/design.html#/"
+                                    })
+                                    w.show();
+                                }
+                            }, {
+                                /** TODO group Menu **/
+                                text: "Awesome Code",
+                                handler: function () {
+                                    var w = new Ext.IframeWindow({
+                                        width: 840,
+                                        height: 680,
+                                        title: "Awesome Code",
+                                        src: "http://slides.drublic.de/awesome-code/"
+                                    })
+                                    w.show();
+                                }
+                            }, {
+                                /** TODO group Menu **/
+                                text: "Simple Slide",
+                                handler: function () {
+                                    var w = new Ext.IframeWindow({
+                                        width: 840,
+                                        height: 680,
+                                        title: "Simple Slide",
+                                        src: window.location + "slide/"
+                                    })
+                                    w.show();
+                                }
+                            }],
+                    })
+                }, {
                     text: "ExtJs - Doc",
-                    id: 'map-tab-doc',
                     handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "ExtJs - Doc",
-                            src: "http://docs.sencha.com/extjs/3.4.0/"
-                        })
-                        w.show();
+                        window.open( "http://docs.sencha.com/extjs/3.4.0/");
                     }
                 }, {
-                /** TODO group Menu **/
-                    text: "Presentation - Slide",
-                    id: 'map-tab-0',
+                    text: "Codeship",
+                    id: 'map-tab-cod',
                     handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Presentation - Slide",
-                            src: window.location + "slide/"
-                        })
-                        w.show();
+                        window.open( "http://codeship.com");
                     }
                 }, {
-                /**** TODO: group the "Tabella" menu under one single menu ****/
-                    text: "Tabella con paginazione",
-                    id: 'map-tab-1',
-                    handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Tabella con paginazione",
-                            src: "http://www.datatables.net/examples/server_side/simple.html"
-                        })
-                        w.show();
-                    }
-                }, {
-                    text: "Tabella con scroll",
-                    id: 'map-tab-2',
-                    handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Tabella con scroll",
-                            src: "http://www.datatables.net/release-datatables/extensions/Scroller/examples/server-side_processing.html"
-                        })
-                        w.show();
-                    }
-                }, {
-                    text: "Tabella con scroll",
-                    id: 'map-tab-2',
-                    handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Template Foundation con Dataset",
-                            src: "http://datatables.net/dev/foundation.html"
-                        })
-                        w.show();
-                    }
-                /**** TODO: group the "Tabella" menu under one single menu ****/
-                }, {
-                    text: "Data Visualization",
-                    id: 'map-tree',
-                    handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 900,
-                            height: 480,
-                            title: "D3 Data-Driven Document",
-                            src: "http://mbostock.github.io/d3/talk/20111018/treemap.html"
-                        })
-                        w.show();
-                    }
-                }, {
-                    text: "Angular JS - RockScissorPaper",
-                    id: 'map-tree',
-                    handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 900,
-                            height: 480,
-                            title: "Demo App - Angular JS",
-                            src: "/ng-app/"
-                        })
-                        w.show();
-                    }
-                },{
-                    text: "Map Hilight Example",
+                    text: "Heroku",
                     id: 'map-test-1',
                     handler: function () {
-                        var w = new Ext.IframeWindow({
-                            width: 840,
-                            height: 680,
-                            title: "Map Hilight Example",
-                            src: "/map-hilight/demo_world.html"
-                        })
-                        w.show();
+                        window.open("https://www.heroku.com/");
                     }
-		}]
+                }, {
+                    text: "Github - Boma",
+                    id: 'map-test-3',
+                    handler: function () {
+                        window.open("https://github.com/bayois/mineSQL/tree/aem-connection/");
+                    }
+                }]
         })
     });
 
@@ -603,11 +605,11 @@ Ext.onReady(function () {
                 region: 'north',
                 contentEl: 'intestazione',
                 split: true,
-                height: 100,
+                height: 80,
                 minSize: 100,
                 maxSize: 200,
                 collapsible: true,
-                title: DM_VERSION,
+                title: "Moveo - " + DM_VERSION,
                 margins: '0 0 0 0',
                 listeners: {
                     'collapse': function () {
@@ -649,20 +651,20 @@ Ext.onReady(function () {
                          handler: function(){ viewTasks(''); },
                          iconCls: 'icon-grid'
                          *********/
-                        text: 'Shell',
+                        text: 'Menu',
                         menu: shellMenu,
                         iconCls: 'report'
                     }, '-', {
-                        text: 'Databases',
+                        text: 'Database',
                         iconCls: 'find',
                         menu: databaseMenu
                     }, {
-                        text: 'Saved Query',
+                        text: 'Report',
                         menu: saveFilterMenu,
                         iconCls: 'icon-grid'
                     },
                     '->',
-                    'Gruppo:&nbsp;<font color="#000000"><b>' + USER_GROUP + '</b></font>&nbsp;',
+                    'Gruop:&nbsp;<font color="#000000"><b>' + USER_GROUP + '</b></font>&nbsp;',
                     new Ext.form.ComboBox({
                         store: new Ext.data.SimpleStore({
                             fields: ['idgruppo', 'nomegruppo'],
