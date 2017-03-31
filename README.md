@@ -1,6 +1,6 @@
-mineSQL 0.9.8
+mineSQL 0.9.9a
 =============
-DB, Web Services and Graph playground
+DB, Web Services and Slide 
 
 Requisite:
 ----------
@@ -15,22 +15,21 @@ What:
  - GoogleAPI
  - Map-Hilight
  - TomCat & NetBeans
+ - Reveal.js
 
 Run:
 ----
-git co git@github.com:bayois/mineSQL.git
+git co https://github.com/bayois/mineSQL/tree/boma
 
 mvn package
 
-java -jar target/mineSQL-0.9.8-full.jar [browser]
+java -jar target/mineSQL-0.9.9a-full.jar [browser]
 
 firefox http://localhost:8080/
 
 
 TODO:
 ----
-- Presentation: https://github.com/hakimel/reveal.js
-
 - https://github.com/jingweno/gaffer
   mvn gaffer:start
 
