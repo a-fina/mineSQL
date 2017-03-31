@@ -423,6 +423,17 @@ Ext.onReady(function () {
                         })
                         w.show();
                     }
+                }, {
+                    text: "Talk 6 - AEM Web Content",
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 950,
+                            height: 780,
+                            title: "AEM Campaign Integration",
+                            src: window.location + "slide/aem-web-content/"
+                        })
+                        w.show();
+                    }
                 }]
         })
     });
