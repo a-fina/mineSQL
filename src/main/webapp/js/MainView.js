@@ -412,7 +412,7 @@ Ext.onReady(function () {
                         })
                         w.show();
                     }
-                /***** }, {
+                }, {
                     text: "Talk 5 - AEM Campaign Integration",
                     handler: function () {
                         var w = new Ext.IframeWindow({
@@ -423,8 +423,6 @@ Ext.onReady(function () {
                         })
                         w.show();
                     } 
-                    ************/
-                    }
                 }, {
                     text: "Talk 6 - AEM Web Content",
                     handler: function () {
