@@ -132,25 +132,31 @@
                 <section>
                     <section>
                         <h3>Creazione nuova applicazione</h3>
-                        <p>come nasce <em>BOMA</em></p>
+                        <p><em>BOMA</em></p>
                         <ul>
-                            <li>git clone https://github.com/bayois/mineSQL boma<br><em><small>creazione sorgenti</small></em></li>
+                            <li>git clone https://github.com/bayois/mineSQL <b>boma</b><br><em><small>creazione sorgenti</small></em></li>
                             <li>cd boma</li>
-                            <li>heroku create boma<br><em><small>pepara ambiente heroku</small></em></li>
-                            <li>git push heroku <em>boma</em><br><small>avvia deploy nel cloud</small></li>
+                            <li>heroku create <b>boma</b><br><em><small>pepara ambiente heroku</small></em></li>
+                            <li>git checkout <em>master</em><small>prepara il deploy</small></li>
+                            <li>git push heroku <em>master</em><br><small>avvia deploy nel cloud</small></li>
                             <li>heroku open <br><small>apre istanza cloud</small></li>
                         </ul>
                     </section>
                     <section>
                         <h5>Repository GIT Heroku</h5>  
-                        <p><small>viene creato automaticamente</small></p>
+                        <p><small>viene creato automaticamente da Heroku</small></p><br>
+                        <p><small>viene deployato solo il branch master</small></p>
+                        <p><small>viene deployato solo il branch master</small></p>
                         <ul>
                             <li><em>heroku</em>  https://git.heroku.com/boma-0.git (fetch)</li>
                             <li><em>heroku</em>  https://git.heroku.com/boma-0.git (push)</li>
                         </ul>
                     </section>
                     <section>
-                        <h5>Repository GIT Origine</h5>  
+                        <h5>Repository GITHUB Origine</h5> 
+                        <p><small>viene deployato da Codeship plugin Heroku</small></p>
+                        <p><small>continuos integration Codeship</small></p>
+                        <p><small>dashboard Codeship</small></p>
                         <ul>
                             <li><em>origin</em>  https://github.com/bayois/mineSQL (fetch)</li>
                             <li><em>origin</em>  https://github.com/bayois/mineSQL (push)</li>
@@ -158,22 +164,24 @@
                         <p>git push heroku <em>origin</em><br><small>avvia continuos integration <em>Codeship</em><br>deploy <em>Horoku</em> di mineSQL</small></p>
                     </section>
                     <section>
-                        <h3>Start Locacal Server</h3>
+                        <h3>Sviluppo e Test</h3>
                         <ul>
+                            <li>git checkout <b>boma</b></li>
                             <li>modifica e sviluppo</li>
                             <li>mvn package</li>
-                            <li>heroku local</li>	
+                            <li>heroku local<br><small>start server locale</small></li>	
                             <li>firefox http://localhost:5000<br><small>la porta 5000 &eacute; un requisito di heroku</small></li>
                         </ul>
                     </section>
                     <section>
                         <h3>Rilascio</h3>
                         <ul>
-                            <li>modifica, sviluppo, test</li>
+                            <li>le modifiche sono sul branch <em>boma</em></li>
+                            <li>git add -A</li>
                             <li>git commit -m "Update Slide"</li>
                             <li>git checkout master</li>
                             <li>git merge boma<br><small>solo il master viene deployato</small>
-                            <li>git push heroku master<br><small>deploy</small></li>
+                            <li>git push heroku master<br><small>avvia deploy automatico</small></li>
                         </ul>
                     </section>
                     <section>
