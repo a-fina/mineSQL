@@ -20,13 +20,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-import java.util.logging.Level;
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
-import javax.jcr.Repository;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.SimpleCredentials;
 import javax.jcr.query.Query;
 import javax.jcr.query.QueryManager;
 import javax.jcr.query.QueryResult;
@@ -36,7 +33,6 @@ import net.mineSQL.controller.AEMUtils;
 import net.mineSQL.controller.MineSQL;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.apache.jackrabbit.commons.JcrUtils;
 import org.apache.log4j.Logger;
 
 /**
@@ -602,7 +598,7 @@ public class Menu {
                             ds.getPassword(), ds.getShowAll(), ds.getType());
                 }
 
-            } catch (Exception ex) {
+            } catch (ConnectionException | SQLException ex) {
                 log.error(ex);
                 mainMenu.add(getMenuItem("Impossibile connettersi a " + ds.getHost() + " " + ds.getSource(), null, "disableMe"));
             }

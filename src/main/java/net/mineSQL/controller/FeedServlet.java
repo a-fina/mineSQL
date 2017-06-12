@@ -1,5 +1,9 @@
 package net.mineSQL.controller;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
 import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -10,13 +14,18 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedOutput;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.mineSQL.connection.ORMLite;
+import net.mineSQL.ormlite.model.FeedRSS;
 
 import org.apache.log4j.Logger;
 
@@ -38,7 +47,7 @@ public class FeedServlet extends HttpServlet {
             SyndFeed feed = new SyndFeedImpl();
             feed.setFeedType("rss_2.0");
 
-            feed.setTitle("MOVEO - AEM RSS");
+            feed.setTitle("MOVEO - AEM RSS 1.0");
             feed.setDescription("News abodut Adobe Experience Manager and Tech");
             feed.setLink("https://boma-0.herokuapp.org/slide/introduzione/");
             feed.setAuthor("Alessio Finamore");
@@ -46,21 +55,40 @@ public class FeedServlet extends HttpServlet {
             // creiamo la entry realtiva ad un nuovo Articolo
             java.util.List<SyndEntry> entries = new ArrayList<SyndEntry>();
 
-            /***************************************
-            ************************************/
-            SyndEntry entry;
-            SyndContent description;
-            entry = new SyndEntryImpl();
-            entry.setTitle("Talk 1");     //Titolo Contenuto
-            entry.setLink("https://boma-0.herokuapp.org/slide/introduzione/");    //Hyperlink associato al contenuto  
-            entry.setPublishedDate(new Date()); //Data di pubblicazione articolo
-            description = new SyndContentImpl();
-            description.setType("text/plain");  //Content-Type del contenuto 
-            description.setValue("Talk 1 - Introduzione BOMA");    //Breve descrizione del mio articolo
-            entry.setDescription(description);
+            ConnectionSource connectionSource;
+            try {
+                connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
+                Dao<FeedRSS, Integer> feedDao;
+                feedDao = DaoManager.createDao(connectionSource, FeedRSS.class);
+                List<FeedRSS> allFeeds = feedDao.queryForAll();
 
-            // aggiungiamo l'articolo alla lista complessiva
-            entries.add(entry);
+                /************* Start Loop ************************/
+                for (FeedRSS myFeed : allFeeds) {
+
+                    SyndEntry entry;
+                    SyndContent description;
+                    entry = new SyndEntryImpl();
+
+                    entry.setTitle(myFeed.getTitle());     //Titolo Contenuto
+                    entry.setLink(myFeed.getLink());    //Hyperlink associato al contenuto  
+
+                    entry.setPublishedDate(new Date()); //Data di pubblicazione articolo
+                    description = new SyndContentImpl();
+
+                    description.setType("text/plain");  //Content-Type del contenuto 
+                    description.setValue(myFeed.getDescription());    //Breve descrizione del mio articolo
+                    entry.setDescription(description);
+
+                    // aggiungiamo l'articolo alla lista complessiva
+                    entries.add(entry);
+                }
+
+                /**
+                 * ********** End Loop **********************
+                 */
+            } catch (SQLException ex) {
+                java.util.logging.Logger.getLogger(FeedServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             // qui potremmo aggiungere gli altri articoli...
             feed.setEntries(entries);

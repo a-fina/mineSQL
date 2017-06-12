@@ -20,10 +20,11 @@ import javax.jcr.query.Query;
 import javax.jcr.query.QueryManager;
 import javax.jcr.query.QueryResult;
 import junit.framework.TestCase;
+
 import org.apache.jackrabbit.commons.JcrUtils;
 import org.apache.jackrabbit.core.TransientRepository;
-import org.junit.Test;
 
+import org.junit.Test;
 /**
  *
  * @author alessio.finamore
@@ -53,8 +54,10 @@ public class TestConnection extends TestCase {
             System.out.println("Try Connecting to " + url);
 
             Repository repository = JcrUtils.getRepository(url);
-            SimpleCredentials creds = new SimpleCredentials("admin",
-                    "admin".toCharArray());
+            SimpleCredentials creds = new SimpleCredentials(
+                    "admin",
+                    "admin".toCharArray()
+            );
             System.out.println("Ok Connecting to " + url);
             Session session = repository.login(creds, "crx.default");
 

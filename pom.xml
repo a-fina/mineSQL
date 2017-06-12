@@ -70,11 +70,11 @@
             <artifactId>jersey-bundle</artifactId>
             <version>1.18</version>
         </dependency>
-	<dependency>
-        <groupId>com.owlike</groupId>
-        <artifactId>genson</artifactId>
-        <version>0.99</version>
-    </dependency>
+        <dependency>
+            <groupId>com.owlike</groupId>
+            <artifactId>genson</artifactId>
+            <version>0.99</version>
+        </dependency>
 
         <!-- Jackrabbit content repository -->
         <dependency>
@@ -359,6 +359,24 @@
             <type>jar</type>
         </dependency>
 
+        <!-- JCR API -->
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <!-- All the Jackrabbit libraries needed for DavEx, plus JcrUtils -->
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-jcr2dav</artifactId>
+            <version>2.0-beta6</version>
+        </dependency>
+        <!-- The SFL4J logging implementation you prefer -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.5.8</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>${project.name}-${project.version}</finalName>

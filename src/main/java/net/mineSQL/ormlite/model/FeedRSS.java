@@ -58,11 +58,11 @@ public class FeedRSS {
         this.link = link;
     }
 
-    public String getDesxcription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDesxcription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

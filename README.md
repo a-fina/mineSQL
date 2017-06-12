@@ -17,7 +17,7 @@ What:
  - TomCat & NetBeans
  - Reveal.js
 
-Run:
+Stand-alone Run:
 ----
 git co https://github.com/bayois/mineSQL/tree/boma
 
@@ -26,6 +26,11 @@ mvn package
 java -jar target/mineSQL-0.9.9a-full.jar [browser]
 
 firefox http://localhost:8080/
+
+
+Heroku:
+-------
+heroku local
 
 
 TODO:

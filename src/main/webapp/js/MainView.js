@@ -609,7 +609,18 @@ Ext.onReady(function () {
                             width: 840,
                             height: 680,
                             title: "AEM - FeedRSS Moveo",
-                            src: "http://boma-0.herokuapp.com/FeedRSS"
+                            src: "/FeedRSS"
+                        })
+                        w.show();
+                    }
+                }, {
+                    text: "AEM - Blog Moveo",
+                    handler: function () {
+                        var w = new Ext.IframeWindow({
+                            width: 840,
+                            height: 680,
+                            title: "AEM - FeedRSS Moveo",
+                            src: "/blog/index.html"
                         })
                         w.show();
                     }

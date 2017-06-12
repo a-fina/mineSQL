@@ -160,19 +160,20 @@ public class ConnectionManager {
                 + "_" + host +"_" + "_" + database
                 + separator+userName+separator+password+separator+dbType+separator+url;
             
-            if (dbType.equals(DB2) || dbType.equals("as400") ){
+            if (dbType.toLowerCase().equals(DB2) || dbType.toLowerCase().equals("as400") ){
                 return    getConnectionCal(userName, password,  url, "com.ibm.as400.access.AS400JDBCDriver", key);
             }
-            else if (dbType.equals(POSTGRES)){
+            else if (dbType.toLowerCase().equals(POSTGRES)){
                 return    getConnectionCal(userName, password,  url, "org.postgresql.Driver", key);
             }
-            else if (dbType.equals(MYSQL)){
+            else if (dbType.toLowerCase().equals(MYSQL)){
+                url+= "?socketTimeout=1500&amp;" ;
                 return    getConnectionCal(userName, password,  url, "com.mysql.jdbc.Driver", key);
             }
-            else if (dbType.equals(H2)){
+            else if (dbType.toLowerCase().equals(H2)){
                 return    getConnectionCal(userName, password, url, "org.h2.Driver", key);
             }
-            else if (dbType.toLowerCase().equals(AEM)){
+            else if (dbType.toLowerCase().toLowerCase().equals(AEM)){
                 return null;   
             }
 
