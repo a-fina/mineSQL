@@ -63,20 +63,35 @@
         <servlet-name>jersey-serlvet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
-    
-   <!-- Restlet adapter: TODO non funziona con Tomcat Embedded -->  
-   <!-- servlet>  
-      <servlet-name>RestletServlet</servlet-name>  
-      <servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
-      <init-param>
-            <param-name>org.restlet.application</param-name>
-            <param-value>net.mineSQL.app.restlet.demo.application.FirstStepsApplication</param-value>
-      </init-param>
-   </servlet>  
-   <servlet-mapping>  
-      <servlet-name>RestletServlet</servlet-name>  
-      <url-pattern>/restlet</url-pattern>  
-   </servlet-mapping -->  
+   
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>WARN</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+ 
+    <!-- Restlet adapter: TODO non funziona con Tomcat Embedded -->  
+    <!-- servlet>  
+       <servlet-name>RestletServlet</servlet-name>  
+       <servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+       <init-param>
+             <param-name>org.restlet.application</param-name>
+             <param-value>net.mineSQL.app.restlet.demo.application.FirstStepsApplication</param-value>
+       </init-param>
+    </servlet>  
+    <servlet-mapping>  
+       <servlet-name>RestletServlet</servlet-name>  
+       <url-pattern>/restlet</url-pattern>  
+    </servlet-mapping -->  
    
     <!-- Servlet per la visualizzazione dei grafici -->
     <!-- servlet>

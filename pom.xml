@@ -377,6 +377,11 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.5.8</version>
         </dependency>
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewritefilter</artifactId>
+            <version>4.0.3</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>${project.name}-${project.version}</finalName>
