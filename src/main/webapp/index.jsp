@@ -131,7 +131,7 @@ String valore(String nomeCampo) {
         <script type="text/javascript" src="js/GenericMenu.js"></script>
 
         <script type="text/javascript" src="js/model-form/FilterMngr.js"></script>
-        <script type="text/javascript" src="js/model-form/FeedRSSMngr.js"></script>
+        <script type="text/javascript" src="js/model-form/PostMngr.js"></script>
         <script type="text/javascript" src="js/model-form/CSVMngr.js"></script>
         <script type="text/javascript" src="js/model-form/DatabaseMngr.js"></script>
         <script type="text/javascript" src="js/model-form/TimesheetMngr.js"></script>

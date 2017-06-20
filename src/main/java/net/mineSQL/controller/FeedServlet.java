@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.mineSQL.connection.ORMLite;
-import net.mineSQL.ormlite.model.FeedRSS;
+import net.mineSQL.ormlite.model.Post;
 
 import org.apache.log4j.Logger;
 
@@ -58,12 +58,12 @@ public class FeedServlet extends HttpServlet {
             ConnectionSource connectionSource;
             try {
                 connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
-                Dao<FeedRSS, Integer> feedDao;
-                feedDao = DaoManager.createDao(connectionSource, FeedRSS.class);
-                List<FeedRSS> allFeeds = feedDao.queryForAll();
+                Dao<Post, Integer> feedDao;
+                feedDao = DaoManager.createDao(connectionSource, Post.class);
+                List<Post> allFeeds = feedDao.queryForAll();
 
                 /************* Start Loop ************************/
-                for (FeedRSS myFeed : allFeeds) {
+                for (Post myFeed : allFeeds) {
 
                     SyndEntry entry;
                     SyndContent description;

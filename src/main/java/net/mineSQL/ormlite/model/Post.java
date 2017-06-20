@@ -5,6 +5,7 @@
  */
 package net.mineSQL.ormlite.model;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -12,8 +13,8 @@ import com.j256.ormlite.table.DatabaseTable;
  *
  * @author alessio.finamore
  */
-@DatabaseTable(tableName = "FEEDRSS")
-public class FeedRSS {
+@DatabaseTable(tableName = "POST")
+public class Post {
 
 	@DatabaseField(generatedId = true)
     private int id;
@@ -24,14 +25,25 @@ public class FeedRSS {
 	private String link;
 	@DatabaseField(columnName = "DESCRIPTION")
 	private String description;
-    
-    public FeedRSS() {
+	@DatabaseField(columnName = "TEXT", dataType = DataType.STRING_BYTES)
+	private String text;
+
+    public String getText() {
+        return text;
     }
 
-    public FeedRSS(String title, String link, String description) {
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public Post() {
+    }
+
+    public Post(String title, String link, String description, String text) {
         this.title = title;
         this.link = link;
         this.description = description;
+        this.text = text;
     }
 
     public int getId() {
@@ -68,7 +80,7 @@ public class FeedRSS {
 
     @Override
     public String toString() {
-        return "FeedRSS{" + "id=" + id + ", title=" + title + ", link=" + link + ", description=" + description + '}';
+        return "Post{" + "id=" + id + ", title=" + title + ", link=" + link + ", description=" + description + '}';
     }
 
 }

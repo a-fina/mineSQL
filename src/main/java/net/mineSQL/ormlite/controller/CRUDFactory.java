@@ -20,7 +20,8 @@ import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import net.mineSQL.connection.ORMLite;
 import net.mineSQL.ormlite.model.Timesheet;
-import net.mineSQL.ormlite.model.FeedRSS;
+import net.mineSQL.ormlite.model.Post;
+import net.mineSQL.ormlite.model.User;
 import net.mineSQL.ormlite.model.hip.AnagraficaAgenti;
 import net.mineSQL.ormlite.model.hip.AnagraficaClienti;
 import net.mineSQL.ormlite.model.hip.ListinoProdotti;
@@ -38,14 +39,16 @@ public class CRUDFactory {
     public CRUDFactory(String model, HttpServletRequest request, String... strings) throws SQLException {
         connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
 
+        log.info("CRUDFactory - create Entity: " + model );
+        
         if (model.toLowerCase().equals("report")) {
             createReport(request, strings[0]);
         } else if (model.toLowerCase().equals("database")) {
             createDatabase(request);
         } else if (model.toLowerCase().equals("timesheet")) {
             createTimesheet(request);
-        } else if (model.toLowerCase().equals("feedrss")) {
-            createFeedRSS(request);
+        } else if (model.toLowerCase().equals("post")) {
+            createPost(request);
         } else if (model.toLowerCase().equals("ordini")) {
             createOrdini(request);
         } else if (model.toLowerCase().equals("anagraficaclienti")) {
@@ -57,6 +60,7 @@ public class CRUDFactory {
 
     public static void setupMineSQLTables() {
 
+        log.info("setupMineSQLTables - preparing DATABASES");
         try {
             ConnectionSource connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
 
@@ -69,10 +73,10 @@ public class CRUDFactory {
 
             if ( databaseDao.queryForEq("NAME", "MineSQL").isEmpty() )
             {
-                Datasource db = new Datasource("MineSQL", "h2", "localhost", "file", "");
-                db.setShowAll("true");
-                db.setUrl(ORMLite.DATABASE_URL);
-                databaseDao.create(db);
+                Datasource minedb = new Datasource("MineSQL", "h2", "localhost", "file", "");
+                minedb.setShowAll("true");
+                minedb.setUrl(ORMLite.DATABASE_URL);
+                databaseDao.create(minedb);
             }
 
             /*
@@ -80,16 +84,36 @@ public class CRUDFactory {
             */
             TableUtils.createTableIfNotExists(connectionSource, Report.class);
             /*
+            * Users tables
+            */
+            TableUtils.createTableIfNotExists(connectionSource, User.class);
+            // Create default user if not exists
+            if ( databaseDao.queryForEq("NAME", "MineSQL").isEmpty() ){
+
+            }
+            Dao<User, Integer> userDao;
+            userDao = DaoManager.createDao(connectionSource, User.class);
+            if ( userDao.queryForEq("NAME", "admin").isEmpty() )
+            {
+                User admin = new User("admin", "admin");
+                userDao.create(admin);
+            }
+            /*
             * Moveo Table
             */
             TableUtils.createTableIfNotExists(connectionSource, Timesheet.class);
 
+            /*
+            *Hip
+            */
             TableUtils.createTableIfNotExists(connectionSource, AnagraficaAgenti.class);
             TableUtils.createTableIfNotExists(connectionSource, AnagraficaClienti.class);
             TableUtils.createTableIfNotExists(connectionSource, ListinoProdotti.class);
             TableUtils.createTableIfNotExists(connectionSource, Ordini.class);
-            
-            TableUtils.createTableIfNotExists(connectionSource, FeedRSS.class);
+            /*
+            *Blog POST
+            */ 
+            TableUtils.createTableIfNotExists(connectionSource, Post.class);
 
             connectionSource.close();
         } catch (SQLException ex) {
@@ -146,17 +170,18 @@ public class CRUDFactory {
         log.info("Database successfully saved (" + res + "): " + ts.toString());
     }
 
-    public void createFeedRSS(HttpServletRequest request) throws SQLException {
-        Dao<FeedRSS, Integer> feedRSSDao;
-        feedRSSDao = DaoManager.createDao(connectionSource, FeedRSS.class);
+    public void createPost(HttpServletRequest request) throws SQLException {
+        Dao<Post, Integer> PostDao;
+        PostDao = DaoManager.createDao(connectionSource, Post.class);
 
-        FeedRSS frs  = new FeedRSS(
+        Post frs  = new Post(
                 request.getParameter("TITLE"),
                 request.getParameter("LINK"),
-                request.getParameter("DESCRIPTION")
+                request.getParameter("DESCRIPTION"),
+                request.getParameter("TEXT")
         );
 
-        int res = feedRSSDao.create(frs);
+        int res = PostDao.create(frs);
         log.info("Database successfully saved (" + res + "): " + frs.toString());
     }
 

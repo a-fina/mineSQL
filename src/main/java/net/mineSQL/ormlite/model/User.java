@@ -17,11 +17,19 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "USER")
 public class User {
 
-	@DatabaseField(id = true)
-    private String id;
+	@DatabaseField(generatedId = true)
+    private int id;
 
-	@DatabaseField(columnName = "NOME")
-	private String nome;
+	@DatabaseField(columnName = "NAME")
+	private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 	@DatabaseField(columnName = "EMAIL")
 	private String email;
 	@DatabaseField(columnName = "PASSWORD")
@@ -34,8 +42,8 @@ public class User {
     public User() {
     }
 
-    public User(String nome, String password) {
-        this.nome = nome;
+    public User(String name, String password) {
+        this.name = name;
         this.password = password;
     }
 
@@ -48,20 +56,12 @@ public class User {
     }
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getEmail() {

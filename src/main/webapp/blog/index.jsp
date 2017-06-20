@@ -95,6 +95,7 @@
                 Blog blog = new Blog();
                 out.print(blog.getBlogPost());
                 %>
+                <!--
                 <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
@@ -103,6 +104,7 @@
                     </a>
                     <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
                 </div>
+                -->
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">

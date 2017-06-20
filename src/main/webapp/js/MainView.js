@@ -478,10 +478,10 @@ Ext.onReady(function () {
                         connWin.show(this);
                     }
                 }, {
-                    text: 'Nuovo FeedRSS',
+                    text: 'Nuovo Post',
                     id: 'a-shell-2',
                     handler: function () {
-                        var connWin = new FeedRSSMngr.saveWin({});
+                        var connWin = new PostMngr.saveWin({});
                         connWin.show(this);
                     }
                 }]
@@ -603,7 +603,7 @@ Ext.onReady(function () {
                         window.open("http://aempodcast.com/");
                     }
                 }, {
-                    text: "AEM - FeedRSS Moveo",
+                    text: "AEM - FeedRSS",
                     handler: function () {
                         var w = new Ext.IframeWindow({
                             width: 840,
@@ -614,12 +614,12 @@ Ext.onReady(function () {
                         w.show();
                     }
                 }, {
-                    text: "AEM - Blog Moveo",
+                    text: "AEM - Blog",
                     handler: function () {
                         var w = new Ext.IframeWindow({
                             width: 840,
                             height: 680,
-                            title: "AEM - FeedRSS Moveo",
+                            title: "AEM - Post Moveo",
                             src: "/blog/index.html"
                         })
                         w.show();

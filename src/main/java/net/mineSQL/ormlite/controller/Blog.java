@@ -12,7 +12,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import java.util.List;
 import net.mineSQL.connection.ORMLite;
 import java.sql.SQLException;
-import net.mineSQL.ormlite.model.FeedRSS;
+import net.mineSQL.ormlite.model.Post;
 import org.apache.log4j.Logger;
 
 /**
@@ -32,14 +32,14 @@ public class Blog {
         
         try {
             connectionSource = new JdbcConnectionSource(ORMLite.DATABASE_URL);
-            Dao<FeedRSS, Integer> feedDao;
-            feedDao = DaoManager.createDao(connectionSource, FeedRSS.class);
-            List<FeedRSS> allFeeds = feedDao.queryForAll();
+            Dao<Post, Integer> feedDao;
+            feedDao = DaoManager.createDao(connectionSource, Post.class);
+            List<Post> allFeeds = feedDao.queryForAll();
 
             /**
              * *********** Start Loop ***********************
              */
-            for (FeedRSS myFeed : allFeeds) {
+            for (Post myFeed : allFeeds) {
                 sb.append("<div class=\"post-preview\">")
                 .append("<a href=\"").append(myFeed.getLink()).append("\">")
                 .append("<h2 class=\"post-title\">").append(myFeed.getTitle()).append("</h2>")
