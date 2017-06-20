@@ -4,6 +4,8 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+import com.sun.syndication.feed.rss.Content;
+
 import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
@@ -64,20 +66,19 @@ public class FeedServlet extends HttpServlet {
 
                 /************* Start Loop ************************/
                 for (Post myFeed : allFeeds) {
-
-                    SyndEntry entry;
-                    SyndContent description;
-                    entry = new SyndEntryImpl();
-
-                    entry.setTitle(myFeed.getTitle());     //Titolo Contenuto
-                    entry.setLink(myFeed.getLink());    //Hyperlink associato al contenuto  
-
-                    entry.setPublishedDate(new Date()); //Data di pubblicazione articolo
-                    description = new SyndContentImpl();
+                    SyndContent description = new SyndContentImpl();
+                    SyndEntry entry = new SyndEntryImpl();
 
                     description.setType("text/plain");  //Content-Type del contenuto 
                     description.setValue(myFeed.getDescription());    //Breve descrizione del mio articolo
                     entry.setDescription(description);
+                    
+                    entry.setTitle(myFeed.getTitle());     //Titolo Contenuto
+                    entry.setLink(myFeed.getLink());    //Hyperlink associato al contenuto  
+                    entry.setPublishedDate(myFeed.getCreationDate());
+                    entry.setAuthor(myFeed.getAuthor());
+                    List<Content> lsc = new ArrayList<Content>();
+                    entry.setContents(lsc);
 
                     // aggiungiamo l'articolo alla lista complessiva
                     entries.add(entry);

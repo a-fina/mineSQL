@@ -47,7 +47,10 @@ public class Blog {
                 .append(myFeed.getDescription())
                 .append("</h3>")
                 .append("</a>")
-                .append("<p class=\"post-meta\">Posted by <a href=\"#\">Ax</a><!-- on September 24, 2017 --></p>")
+                .append("<p class=\"post-meta\">Posted by <a href=\"#\">&nbsp;")
+                .append(myFeed.getAuthor()).append("</a>")
+                .append(myFeed.getCreationDate())
+                .append("</p>")
                 .append("</div>")
                 .append("<hr>");
             }

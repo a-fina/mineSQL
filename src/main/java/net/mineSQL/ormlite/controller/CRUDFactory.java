@@ -15,6 +15,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
+import java.util.Date;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ import net.mineSQL.ormlite.model.hip.AnagraficaAgenti;
 import net.mineSQL.ormlite.model.hip.AnagraficaClienti;
 import net.mineSQL.ormlite.model.hip.ListinoProdotti;
 import net.mineSQL.ormlite.model.hip.Ordini;
+import net.mineSQL.util.Utilita;
 
 /**
  *
@@ -170,6 +172,10 @@ public class CRUDFactory {
         log.info("Database successfully saved (" + res + "): " + ts.toString());
     }
 
+    public String getUsernameSession(HttpServletRequest request){
+        return request.getSession().getAttribute(Utilita.USERNAME).toString();
+    }
+
     public void createPost(HttpServletRequest request) throws SQLException {
         Dao<Post, Integer> PostDao;
         PostDao = DaoManager.createDao(connectionSource, Post.class);
@@ -178,6 +184,8 @@ public class CRUDFactory {
                 request.getParameter("TITLE"),
                 request.getParameter("LINK"),
                 request.getParameter("DESCRIPTION"),
+                getUsernameSession(request),
+                new Date(),
                 request.getParameter("TEXT")
         );
 

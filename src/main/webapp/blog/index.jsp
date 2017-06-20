@@ -107,11 +107,13 @@
                 -->
                 <hr>
                 <!-- Pager -->
+                <!-- TODO
                 <ul class="pager">
                     <li class="next">
                         <a href="#">Older Posts &rarr;</a>
                     </li>
                 </ul>
+                -->
             </div>
         </div>
     </div>

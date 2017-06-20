@@ -8,6 +8,7 @@ package net.mineSQL.ormlite.model;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import java.util.Date;
 
 /**
  *
@@ -21,10 +22,35 @@ public class Post {
 
 	@DatabaseField(columnName = "TITLE")
 	private String title;
+
 	@DatabaseField(columnName = "LINK")
 	private String link;
+
 	@DatabaseField(columnName = "DESCRIPTION")
 	private String description;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+	@DatabaseField(columnName = "AUTHOR")
+	private String author;
+    
+	@DatabaseField(columnName = "CREATION_DATE", dataType = DataType.DATE)
+	private Date creationDate;
+
 	@DatabaseField(columnName = "TEXT", dataType = DataType.STRING_BYTES)
 	private String text;
 
@@ -39,12 +65,15 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String link, String description, String text) {
+    public Post(String title, String link, String description, String author, Date creationDate, String text) {
         this.title = title;
         this.link = link;
         this.description = description;
+        this.author = author;
+        this.creationDate = creationDate;
         this.text = text;
     }
+
 
     public int getId() {
         return id;
