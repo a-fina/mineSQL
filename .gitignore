@@ -10,3 +10,4 @@
 /nbproject/
 .env
 tomcat.5000
+/src/main/webapp/blog/nbproject/private/

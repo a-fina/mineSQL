@@ -34,10 +34,15 @@
     </outbound-rule>
 
 
-        <rule>
-            <from>/blog/index.html</from>
-            <to type="redirect">/blog/index.jsp</to>
-        </rule>
+    <rule>
+        <from>/blog/index.html</from>
+        <to>/blog/index.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/blog/post.html</from>
+        <to>/blog/post.jsp</to>
+    </rule>
 
     <!--
 

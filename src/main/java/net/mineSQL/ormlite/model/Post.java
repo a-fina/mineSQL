@@ -29,22 +29,6 @@ public class Post {
 	@DatabaseField(columnName = "DESCRIPTION")
 	private String description;
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
 	@DatabaseField(columnName = "AUTHOR")
 	private String author;
     
@@ -54,13 +38,7 @@ public class Post {
 	@DatabaseField(columnName = "TEXT", dataType = DataType.STRING_BYTES)
 	private String text;
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
+   
     
     public Post() {
     }
@@ -68,6 +46,16 @@ public class Post {
     public Post(String title, String link, String description, String author, Date creationDate, String text) {
         this.title = title;
         this.link = link;
+        this.description = description;
+        this.author = author;
+        this.creationDate = creationDate;
+        this.text = text;
+    }
+
+
+    public Post(String title, String description, String author, Date creationDate, String text) {
+        this.title = title;
+        this.link = title.replaceAll(" ", "-");
         this.description = description;
         this.author = author;
         this.creationDate = creationDate;
@@ -107,6 +95,32 @@ public class Post {
         this.description = description;
     }
 
+     public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+
+    
     @Override
     public String toString() {
         return "Post{" + "id=" + id + ", title=" + title + ", link=" + link + ", description=" + description + '}';

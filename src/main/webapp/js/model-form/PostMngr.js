@@ -19,6 +19,26 @@
  * <p>License details: <a href="http://www.gnu.org/licenses/lgpl.html"
  * target="_blank">http://www.gnu.org/licenses/lgpl.html</a></p>
  */
+function ToSeoUrl(url) {
+       
+  //TODO:
+  // https://pid.github.io/speakingurl/
+  // http://demo.spidersoft.com.au/index.html
+  
+  // make the url lowercase         
+  var encodedUrl = url.toString().toLowerCase(); 
+  // replace & with and           
+  encodedUrl = encodedUrl.split(/\&+/).join("-and-")
+  // remove invalid characters 
+  encodedUrl = encodedUrl.split(/[^a-z0-9]/).join("-");       
+  // remove duplicates 
+  encodedUrl = encodedUrl.split(/-+/).join("-");
+  // trim leading & trailing characters 
+  encodedUrl = encodedUrl.trim('-'); 
+
+  return encodedUrl; 
+}
+
 PostMngr = {};
 /**
  * @method saveWin
@@ -41,9 +61,16 @@ PostMngr.saveWin = function (config) {
             defaults: {width: 700},
             items: [{
                     fieldLabel: 'Title',
-                    name: 'TITLE'
+                    name: 'TITLE',
+                    listeners   : {
+                                blur : function(field) {
+                                    var pageUrl = ToSeoUrl( field.getValue() );
+                                    Ext.getCmp('post-link').setValue( pageUrl );
+                                }
+                            }
                 }, {
                     fieldLabel: 'Link',
+                    id: 'post-link', 
                     name: 'LINK'
                 }, {
                     fieldLabel: 'Description',
@@ -52,8 +79,13 @@ PostMngr.saveWin = function (config) {
                     fieldLabel: 'Text',
                     name: 'TEXT',
                     height: 300,
-                    xtype: 'htmleditor'
-
+                    xtype: 'htmleditor',
+                    defaultValue: 
+                        '<h2 class="section-heading">The Final Frontier</h2>'+
+                        '<p>There can be no thought of finishing for aiming for the stars.</p>'+
+                        '<blockquote>The dreams of yesterday are the hopes of today and the reality of tomorrow</blockquote>'+
+                        '<a href="#"><img class="img-responsive" src="img/post-sample-image.jpg" alt=""></a>'+
+                        '<span class="caption text-muted">To go places and do things that have never been done before that what living is all about.</span>'
                 }]
         }),
         submitParams: {
