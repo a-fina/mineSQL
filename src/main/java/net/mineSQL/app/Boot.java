@@ -6,6 +6,7 @@ import org.apache.log4j.PropertyConfigurator;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
 import net.mineSQL.ormlite.controller.CRUDFactory;
+import net.mineSQL.util.ApplicationWatcher;
 
 public class Boot extends HttpServlet {
 
@@ -17,20 +18,19 @@ public class Boot extends HttpServlet {
         loggerInit();
 
         // Start Scheduler
-        //    ApplicationWatcher.startScheduler();
+        ApplicationWatcher.startScheduler();
 
         // Create MineSQL Internal Datatabase
-       databaseInit(); 
+        databaseInit();
 
         super.init();
     }
 
     @Override
     public void destroy() {
-        
-        // Start Scheduler
-        //     ApplicationWatcher.stopScheduler();
 
+        // Start Scheduler
+        ApplicationWatcher.stopScheduler();
         super.destroy();
     }
 
@@ -59,21 +59,19 @@ public class Boot extends HttpServlet {
         log.fatal("Test Livello FATAL");
     }
 
-    
     /*
     * Setup MineSQL Internal Database
-    */
+     */
     private void databaseInit() {
         /*
         * MineSQL
-        */
+         */
         CRUDFactory.setupMineSQLTables();
         log.info("MineSQL Internal Database Ready");
         // TODO: configure module custom for each Aapplication/Customer
         /*
         * Moveo
-        */
+         */
     }
-
 
 }
