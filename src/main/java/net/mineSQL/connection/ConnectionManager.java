@@ -32,6 +32,7 @@ public class ConnectionManager {
     public static String MYSQL = "mysql";
     public static String H2 = "h2";
     public static String AEM = "aem";
+    public static String Oracle = "Oracle";
 
     public ConnectionManager() {
     }
@@ -172,6 +173,9 @@ public class ConnectionManager {
             }
             else if (dbType.toLowerCase().equals(H2)){
                 return    getConnectionCal(userName, password, url, "org.h2.Driver", key);
+            }
+            else if (dbType.toLowerCase().equals(Oracle)){
+                return    getConnectionCal(userName, password, url, "oracle.jdbc.OracleDriver", key);
             }
             else if (dbType.toLowerCase().toLowerCase().equals(AEM)){
                 return null;   
