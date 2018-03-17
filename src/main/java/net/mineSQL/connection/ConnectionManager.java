@@ -26,13 +26,12 @@ public class ConnectionManager {
     private static int currentConnection;
     private static String separator = "###";
 
-
     public static String DB2 = "db2";
     public static String POSTGRES = "postgresql";
     public static String MYSQL = "mysql";
     public static String H2 = "h2";
     public static String AEM = "aem";
-    public static String Oracle = "Oracle";
+    public static String Oracle = "oracle";
 
     public ConnectionManager() {
     }
@@ -53,7 +52,7 @@ public class ConnectionManager {
         if (ds == null) {
             //log.debug(" " + "ConnectionManager [getDataSource] for source: " + sDSName);
             try {
-             //   log.debug("Trying to connect to " + sDSName);
+                //   log.debug("Trying to connect to " + sDSName);
                 Context env = (Context) new InitialContext().lookup("java:comp/env");
                 ds = (DataSource) env.lookup("jdbc/" + sDSName);
                 hds.put(sDSName, ds);
@@ -63,7 +62,8 @@ public class ConnectionManager {
         }
         return ds;
     }
-    public static synchronized ConnectionSource getMineConnection(Class objclass) throws SQLException{
+
+    public static synchronized ConnectionSource getMineConnection(Class objclass) throws SQLException {
         String DATABASE_URL = ORMLite.DATABASE_URL;
 
         return new JdbcConnectionSource(DATABASE_URL);
@@ -71,7 +71,7 @@ public class ConnectionManager {
 
     /*
      *  Search for already opened connection to the same host
-    */
+     */
     public static synchronized Connection getConnection(
             String host,
             String database) throws ConnectionException, SQLException {
@@ -81,18 +81,17 @@ public class ConnectionManager {
         String host_key = "" + currentThread.getName() + "_" + host + "_";
 
         // Search already open connection to the same host
-        
         Iterator it = hcm.keySet().iterator();
         while (it.hasNext()) {
             String k = (String) it.next();
             // log.debug("Connection Key: " + k + " host: " +  host + " start: " + k.startsWith(host_key));
-            if (k.startsWith(host_key)){
+            if (k.startsWith(host_key)) {
                 c = (Connection) getConnection(k);
-                if ( c == null ){
+                if (c == null) {
                     String user = k.split(separator)[1];
                     String password = k.split(separator)[2];
                     String dbType = k.split(separator)[3];
-                    String url= k.split(separator)[4];
+                    String url = k.split(separator)[4];
                     // TODO: propagare nuovo parametro dbType
                     c = getConnection(host, database, user, password, dbType, url);
                     // log.debug("ConnectionManager  NEW connection c:" + c);
@@ -105,8 +104,8 @@ public class ConnectionManager {
         // throw new ConnectionException(ex);
         return c;
     }
-    
-    public static synchronized Connection getConnection(String key) throws SQLException{
+
+    public static synchronized Connection getConnection(String key) throws SQLException {
         Connection c = null;
 
         if (hcm == null) {
@@ -117,35 +116,41 @@ public class ConnectionManager {
         // log.debug("Opened connection DEBUG: " + hcm );
         c = (Connection) hcm.get(key);
 
-        if ( c != null ){
+        if (c != null) {
             //TODO DB2 non va isValid    if ( c.isClosed() || ! c.isValid(2)){
-            if ( c.isClosed() ){
+            if (c.isClosed()) {
                 releaseConnection(c);
                 c = null;
             }
         }
-     
+
         return c;
     }
 
     public static synchronized Connection getConnection(
-
             String host,
             String database,
             String userName,
             String password,
-            String dbType) throws ConnectionException, SQLException 
-    {
-            String url = "jdbc:"+ dbType +"://" + host + "/" + database;
-            log.info("Get Connection request: "  + host + " " + database + " " + userName + " " + password+ " "+dbType);
-   
-            return getConnection(host, database, userName, password, dbType, url);
+            String dbType) throws ConnectionException, SQLException {
+
+        String url = "";
+
+        if (dbType.toLowerCase().equals(Oracle)) {
+            url = "jdbc:" + dbType.toLowerCase() + ":thin@" + host + ":" + database;
+        } else {
+            url = "jdbc:" + dbType.toLowerCase() + "://" + host + "/" + database;
+        }
+        log.info("Get Connection request: " + host + " " + database + " " + userName + " " + password + " " + dbType);
+        log.info("Get Connection URL:" + url);
+
+        return getConnection(host, database, userName, password, dbType, url);
     }
+
     /*
     * Connection Factory
-    */
+     */
     public static synchronized Connection getConnection(
-
             String host,
             String database,
             String userName,
@@ -153,42 +158,37 @@ public class ConnectionManager {
             String dbType,
             String url) throws ConnectionException, SQLException {
 
-            // Driver URL Quirks 
-            if ( dbType.equals(DB2) ){
-                dbType = "as400";
-            }
-            String key = "" + currentThread.getName()
-                + "_" + host +"_" + "_" + database
-                + separator+userName+separator+password+separator+dbType+separator+url;
-            
-            if (dbType.toLowerCase().equals(DB2) || dbType.toLowerCase().equals("as400") ){
-                return    getConnectionCal(userName, password,  url, "com.ibm.as400.access.AS400JDBCDriver", key);
-            }
-            else if (dbType.toLowerCase().equals(POSTGRES)){
-                return    getConnectionCal(userName, password,  url, "org.postgresql.Driver", key);
-            }
-            else if (dbType.toLowerCase().equals(MYSQL)){
-                url+= "?socketTimeout=1500&amp;" ;
-                return    getConnectionCal(userName, password,  url, "com.mysql.jdbc.Driver", key);
-            }
-            else if (dbType.toLowerCase().equals(H2)){
-                return    getConnectionCal(userName, password, url, "org.h2.Driver", key);
-            }
-            else if (dbType.toLowerCase().equals(Oracle)){
-                return    getConnectionCal(userName, password, url, "oracle.jdbc.OracleDriver", key);
-            }
-            else if (dbType.toLowerCase().toLowerCase().equals(AEM)){
-                return null;   
-            }
+        // Driver URL Quirks 
+        if (dbType.equals(DB2)) {
+            dbType = "as400";
+        }
+        String key = "" + currentThread.getName()
+                + "_" + host + "_" + "_" + database
+                + separator + userName + separator + password + separator + dbType + separator + url;
 
-            throw new SQLException("MineSQL Database Type: <"+ dbType +"> non supportato");
+        if (dbType.toLowerCase().equals(DB2) || dbType.toLowerCase().equals("as400")) {
+            return getConnectionCal(userName, password, url, "com.ibm.as400.access.AS400JDBCDriver", key);
+        } else if (dbType.toLowerCase().equals(POSTGRES)) {
+            return getConnectionCal(userName, password, url, "org.postgresql.Driver", key);
+        } else if (dbType.toLowerCase().equals(MYSQL)) {
+            url += "?socketTimeout=1500&amp;";
+            return getConnectionCal(userName, password, url, "com.mysql.jdbc.Driver", key);
+        } else if (dbType.toLowerCase().equals(H2)) {
+            return getConnectionCal(userName, password, url, "org.h2.Driver", key);
+        } else if (dbType.toLowerCase().equals(Oracle)) {
+            log.info("dbType: " + dbType + "Oracle: " + Oracle);
+            return getConnectionCal(userName, password, url, "oracle.jdbc.OracleDriver", key);
+        } else if (dbType.toLowerCase().toLowerCase().equals(AEM)) {
+            return null;
+        }
+
+        throw new SQLException("MineSQL Database Type: <" + dbType + "> non supportato");
     }
-
 
     public static synchronized Connection getConnectionCal(
             String userName,
             String password,
-            String url, 
+            String url,
             String driver,
             String key) throws ConnectionException {
 
@@ -202,16 +202,17 @@ public class ConnectionManager {
         }
         while (c == null) {
             try {
-                log.info("ConnectionManager OK connection to url: "+ url + " user: " + userName + " password: " + password );
+                log.info("ConnectionManager OK connection to url: " + url + " user: " + userName + " password: " + password);
                 Class.forName(driver).newInstance();
-                if ( userName != null && ! userName.equals("null") && ! userName.isEmpty() )
+                if (userName != null && !userName.equals("null") && !userName.isEmpty()) {
                     c = DriverManager.getConnection(url, userName, password);
-                else
+                } else {
                     c = DriverManager.getConnection(url);
-                
+                }
+
                 //log.info("ConnectionManager OK connected to conn: " + c);
                 currentConnection++;
-            }catch (Exception ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
                 log.debug(ex);
                 throw new ConnectionException(ex);
@@ -231,10 +232,8 @@ public class ConnectionManager {
             String url,
             String key) throws ConnectionException, SQLException {
 
-            return    getConnection(userName, password, "filemaker", "com.filemaker.jdbc.Driver", url, key);
+        return getConnection(userName, password, "filemaker", "com.filemaker.jdbc.Driver", url, key);
     }
-
-
 
     public static synchronized void releaseConnection(Connection con) throws SQLException {
 
